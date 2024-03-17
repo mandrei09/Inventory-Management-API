@@ -1,0 +1,72 @@
+14       ;0        ;BM1                      ;SGEBS/DIR
+                                                                                         ;
+15       ;0        ;BM10                     ;SGEBS/CORP/HR/LD
+                                                                                  ;
+16       ;0        ;BM11                     ;SGEBS/CORP/HR/CMP                                                                                   ;
+17       ;0        ;BM12                     ;SGEBS/CORP/HR/HBP
+                                                                                 ;
+18       ;0        ;BM13                     ;SGEBS/CORP/HR/MDO
+                                                                                 ;
+19       ;0        ;BM14                     ;SGEBS/CORP/CFO/DIR                                                                                  ;
+20       ;0        ;BM15                     ;SGEBS/CORP/COO/GTS/DIR
+                                                                            ;
+21       ;0        ;BM16                     ;SGEBS/CORP/COO/COM/DIR
+                                                                            ;
+22       ;0        ;BM17                     ;SGEBS/CORP/COO/INC/DIR
+                                                                            ;
+23       ;0        ;BM18                     ;SGEBS/CTL/DIR                                                                                       ;
+24       ;0        ;BM19                     ;SGEBS/CORP/COO/ACH/DIR
+                                                                            ;
+25       ;0        ;BM2                      ;SGEBS/BAU/DIR                                                                                       ;
+26       ;0        ;BM20                     ;SGEBS/CORP/COO/RES/DIR                                                                              ;
+27       ;0        ;BM21                     ;SGEBS/CORP/COO/HSE/DIR                                                                              ;
+28       ;0        ;BM22                     ;SGEBS/DOM/ACR/FRA/DIR
+                                                                             ;
+29       ;0        ;BM23                     ;SGEBS/DOM/ACR/EUR/DIR
+                                                                             ;
+30       ;0        ;BM24                     ;SGEBS/DOM/COO/DIR
+                                                                                 ;
+31       ;0        ;BM25                     ;SGEBS/DOM/EMR/DIR                                                                                   ;
+32       ;0        ;BM26                     ;SGEBS/DOM/PTP/DIR
+                                                                                 ;
+33       ;0        ;BM27                     ;SGEBS/DRHG/TCI/DIR
+                                                                                ;
+34       ;0        ;BM28                     ;SGEBS/DRHG/TRE/DIR
+                                                                                ;
+35       ;0        ;BM29                     ;SGEBS/DRHG/DMC/DIR
+                                                                                ;
+36       ;0        ;BM3                      ;SGEBS/CORP/TO/DIR                                                                                   ;
+37       ;0        ;BM30                     ;SGEBS/IT/ITE/DIR
+                                                                                  ;
+38       ;0        ;BM31                     ;SGEBS/IT/BSC/DIR
+                                                                                  ;
+39       ;0        ;BM32                     ;SGEBS/IT/ITM/DIR
+                                                                                  ;
+40       ;0        ;BM34                     ;SGEBS/KYU/CAO                                                                                       ;
+41       ;0        ;BM35                     ;SGEBS/KYU/KYC                                                                                       ;
+42       ;0        ;BM36                     ;SGEBS/KYU/CPLE                                                                                      ;
+43       ;0        ;BM37                     ;SGEBS/COP/PM/DIR
+                                                                                  ;
+44       ;0        ;BM38                     ;SGEBS/COP/CM/DIR
+                                                                                  ;
+45       ;0        ;BM4                      ;SGEBS/CORP/HR/DIR
+                                                                                 ;
+46       ;0        ;BM5                      ;SGEBS/CORP/COO/DIR
+                                                                                ;
+47       ;0        ;BM6                      ;SGEBS/DOM/DIR
+                                                                                     ;
+48       ;0        ;BM7                      ;SGEBS/DRHG/DIR
+                                                                                    ;
+49       ;0        ;BM8                      ;SGEBS/IT/DIR
+                                                                                      ;
+50       ;0        ;BM9                      ;SGEBS/KYU/DIR                                                                                       ;
+52       ;0        ;BM41                     ;PAID                                                                                                ;
+53       ;0        ;BM42                     ;SGEBS/CORP/COO/BSC                                                                                  ;
+54       ;0        ;BM43                     ;SGEBS/CORP/COO/LGL                                                                                  ;
+55       ;0        ;BM44                     ;SGEBS/IT/GTS/SEC HUB                                                                                ;
+56       ;0        ;BM45                     ;SGEBS/IT/COO/DIR                                                                                    ;
+999      ;0        ;BM39                     ;SGEBS/IT/GTS&SEC/DIR                                                                                ;
+1000     ;0        ;BM40                     ;SONIC TAG                                                                                           ;
+1001     ;0        ;BM46                     ;SGEBS/CORP/HR/TM                                                                                    ;
+1002     ;0        ;BM47                     ;SGEBS/KYU/TRF                                                                                       ;
+1003     ;0        ;BM48                     ;SGEBS/KYU/OFB                                                                                       ;

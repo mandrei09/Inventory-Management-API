@@ -1,0 +1,303 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>Optima.Fais.Data</AssemblyName>
+    <PackageId>Optima.Fais.Data</PackageId>
+    <RunAnalyzersDuringBuild>False</RunAnalyzersDuringBuild>
+    <RunAnalyzersDuringLiveAnalysis>False</RunAnalyzersDuringLiveAnalysis>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20190304082836_AddHistoryUser.cs" />
+    <Compile Remove="Migrations\20190306153549_AddUserReport.cs" />
+    <Compile Remove="Migrations\20190306154009_AddUserReport.cs" />
+    <Compile Remove="Migrations\20190306160159_AddUserReport.cs" />
+    <Compile Remove="Migrations\20190329084108_AddMembers.cs" />
+    <Compile Remove="Migrations\20190329140807_AddCommittee.cs" />
+    <Compile Remove="Migrations\20190329200508_RemoveCommiitee.cs" />
+    <Compile Remove="Migrations\20190329201819_AddCommitteeTable.cs" />
+    <Compile Remove="Migrations\20190329202448_AddCommitteeTable.cs" />
+    <Compile Remove="Migrations\20190329203838_AddCommitteeTable.cs" />
+    <Compile Remove="Migrations\20190329204823_AddCommitteeTable.cs" />
+    <Compile Remove="Migrations\20190502081545_AddAccesLevelLocation.cs" />
+    <Compile Remove="Migrations\20190520072256_AddRecycleTable.cs" />
+    <Compile Remove="Migrations\20190524073625_AddArchiveOp.cs" />
+    <Compile Remove="Migrations\20190527220647_AddArchiveUser.cs" />
+    <Compile Remove="Migrations\20190529202921_Add-ArchiveOpAdmCenter.cs" />
+    <Compile Remove="Migrations\20190603102144_changeKeepTimeType.cs" />
+    <Compile Remove="Migrations\20190604185727_addSectionTable.cs" />
+    <Compile Remove="Migrations\20190604190239_addSectionTable.cs" />
+    <Compile Remove="Migrations\20190604204441_AddSectionId.cs" />
+    <Compile Remove="Migrations\20190604204748_AddSectionId.cs" />
+    <Compile Remove="Migrations\20200221143843_AddDeletedByUser.cs" />
+    <Compile Remove="Migrations\20200318082919_AddLocationEmployeeCount.cs" />
+    <Compile Remove="Migrations\20200603101533_AddCommitteeEmpoyeeId67.cs" />
+    <Compile Remove="Migrations\20200704221322_AddAssetComponentCompanyType.cs" />
+    <Compile Remove="Migrations\20200711070550_AddAssetRecoState.cs" />
+    <Compile Remove="Migrations\20200726215948_AddTempSN.cs" />
+    <Compile Remove="Migrations\20210319210720_AddOrderOp.cs" />
+    <Compile Remove="Migrations\20210319210720_AddOrderOp.Designer.cs" />
+    <Compile Remove="Migrations\20210403082236_AddConfigValueRole.cs" />
+    <Compile Remove="Migrations\20210403082236_AddConfigValueRole.Designer.cs" />
+    <Compile Remove="Migrations\20210403111249_AddRoute.cs" />
+    <Compile Remove="Migrations\20210403111249_AddRoute.Designer.cs" />
+    <Compile Remove="Migrations\20210403111616_AddRoute.cs" />
+    <Compile Remove="Migrations\20210403111616_AddRoute.Designer.cs" />
+    <Compile Remove="Migrations\20210403111958_AddRoute.cs" />
+    <Compile Remove="Migrations\20210403111958_AddRoute.Designer.cs" />
+    <Compile Remove="Migrations\20210403185633_AddRoute.cs" />
+    <Compile Remove="Migrations\20210403185633_AddRoute.Designer.cs" />
+    <Compile Remove="Migrations\20210403185812_AddRoute.cs" />
+    <Compile Remove="Migrations\20210403185812_AddRoute.Designer.cs" />
+    <Compile Remove="Migrations\20210403190339_AddRoute.cs" />
+    <Compile Remove="Migrations\20210403190339_AddRoute.Designer.cs" />
+    <Compile Remove="Migrations\20210403190759_AddRoute.cs" />
+    <Compile Remove="Migrations\20210403190759_AddRoute.Designer.cs" />
+    <Compile Remove="Migrations\20210403234953_AddPermission.cs" />
+    <Compile Remove="Migrations\20210403234953_AddPermission.Designer.cs" />
+    <Compile Remove="Migrations\20210403235126_AddPermissions.cs" />
+    <Compile Remove="Migrations\20210403235126_AddPermissions.Designer.cs" />
+    <Compile Remove="Migrations\20210404000846_AddPermissions.cs" />
+    <Compile Remove="Migrations\20210404000846_AddPermissions.Designer.cs" />
+    <Compile Remove="Migrations\20210407130047_AddIconRoute.cs" />
+    <Compile Remove="Migrations\20210407130047_AddIconRoute.Designer.cs" />
+    <Compile Remove="Migrations\20210630095231_AddAssetDepMDTables.cs" />
+    <Compile Remove="Migrations\20210630095231_AddAssetDepMDTables.Designer.cs" />
+    <Compile Remove="Migrations\20210706204424_AddAssetMaterial.cs" />
+    <Compile Remove="Migrations\20210706204424_AddAssetMaterial.Designer.cs" />
+    <Compile Remove="Migrations\20210707083850_AddMaterial.cs" />
+    <Compile Remove="Migrations\20210707083850_AddMaterial.Designer.cs" />
+    <Compile Remove="Migrations\20210713130210_AddDivisionDepartment.cs" />
+    <Compile Remove="Migrations\20210713130210_AddDivisionDepartment.Designer.cs" />
+    <Compile Remove="Migrations\20210713232340_AddCostCenterAdministration.cs" />
+    <Compile Remove="Migrations\20210713232340_AddCostCenterAdministration.Designer.cs" />
+    <Compile Remove="Migrations\20210713232810_RemoveCostCenterAdministration.cs" />
+    <Compile Remove="Migrations\20210713232810_RemoveCostCenterAdministration.Designer.cs" />
+    <Compile Remove="Migrations\20210829202601_AddBudgetImportTemplate.cs" />
+    <Compile Remove="Migrations\20210829202601_AddBudgetImportTemplate.Designer.cs" />
+    <Compile Remove="Migrations\20210906212030_AddBudgetMonth.cs" />
+    <Compile Remove="Migrations\20210906212030_AddBudgetMonth.Designer.cs" />
+    <Compile Remove="Migrations\20210906212254_AddBudgetMonth.cs" />
+    <Compile Remove="Migrations\20210906212254_AddBudgetMonth.Designer.cs" />
+    <Compile Remove="Migrations\20210906225449_AddBudgetMonth.cs" />
+    <Compile Remove="Migrations\20210906225449_AddBudgetMonth.Designer.cs" />
+    <Compile Remove="Migrations\20210906230038_AddBudgetMonth.cs" />
+    <Compile Remove="Migrations\20210906230038_AddBudgetMonth.Designer.cs" />
+    <Compile Remove="Migrations\20210906230231_AddBudgetMonth.cs" />
+    <Compile Remove="Migrations\20210906230231_AddBudgetMonth.Designer.cs" />
+    <Compile Remove="Migrations\20210906231529_AddBudgetMonth.cs" />
+    <Compile Remove="Migrations\20210906231529_AddBudgetMonth.Designer.cs" />
+    <Compile Remove="Migrations\20210907191034_AddBudgetMonth.cs" />
+    <Compile Remove="Migrations\20210907191034_AddBudgetMonth.Designer.cs" />
+    <Compile Remove="Migrations\20210907191537_AddBudgetMonth.cs" />
+    <Compile Remove="Migrations\20210907191537_AddBudgetMonth.Designer.cs" />
+    <Compile Remove="Migrations\20210907194002_AddBudgetMonth.cs" />
+    <Compile Remove="Migrations\20210907194002_AddBudgetMonth.Designer.cs" />
+    <Compile Remove="Migrations\20210907195017_AddBudgetMonth.cs" />
+    <Compile Remove="Migrations\20210907195017_AddBudgetMonth.Designer.cs" />
+    <Compile Remove="Migrations\20210907200426_AddBudgetMonth.cs" />
+    <Compile Remove="Migrations\20210907200426_AddBudgetMonth.Designer.cs" />
+    <Compile Remove="Migrations\20210907214857_AddBudgetMonth.cs" />
+    <Compile Remove="Migrations\20210907214857_AddBudgetMonth.Designer.cs" />
+    <Compile Remove="Migrations\20210908074148_AdddBudgetMonth.cs" />
+    <Compile Remove="Migrations\20210908074148_AdddBudgetMonth.Designer.cs" />
+    <Compile Remove="Migrations\20210908074652_AdddBudgetMonth.cs" />
+    <Compile Remove="Migrations\20210908074652_AdddBudgetMonth.Designer.cs" />
+    <Compile Remove="Migrations\20210908082207_AdddBudgetMonth.cs" />
+    <Compile Remove="Migrations\20210908082207_AdddBudgetMonth.Designer.cs" />
+    <Compile Remove="Migrations\20210908235011_AddBudgetMonthTotal.cs" />
+    <Compile Remove="Migrations\20210908235011_AddBudgetMonthTotal.Designer.cs" />
+    <Compile Remove="Migrations\20211012190917_AddSubCategory.cs" />
+    <Compile Remove="Migrations\20211012190917_AddSubCategory.Designer.cs" />
+    <Compile Remove="Migrations\20211012225134_AddSubCategory.cs" />
+    <Compile Remove="Migrations\20211012225134_AddSubCategory.Designer.cs" />
+    <Compile Remove="Migrations\20211012225739_AddSubCategory.cs" />
+    <Compile Remove="Migrations\20211012225739_AddSubCategory.Designer.cs" />
+    <Compile Remove="Migrations\20211015205149_AddContract.cs" />
+    <Compile Remove="Migrations\20211015205149_AddContract.Designer.cs" />
+    <Compile Remove="Migrations\20211031013345_AddStock.cs" />
+    <Compile Remove="Migrations\20211031013345_AddStock.Designer.cs" />
+    <Compile Remove="Migrations\20211031014500_AddStock.cs" />
+    <Compile Remove="Migrations\20211031014500_AddStock.Designer.cs" />
+    <Compile Remove="Migrations\20211031020620_AddStock.cs" />
+    <Compile Remove="Migrations\20211031020620_AddStock.Designer.cs" />
+    <Compile Remove="Migrations\20211102211446_AddOfferMaterialRem.cs" />
+    <Compile Remove="Migrations\20211102211446_AddOfferMaterialRem.Designer.cs" />
+    <Compile Remove="Migrations\20211102213413_AddOfferMaterialOrder.cs" />
+    <Compile Remove="Migrations\20211102213413_AddOfferMaterialOrder.Designer.cs" />
+    <Compile Remove="Migrations\20211105214314_AddRate.cs" />
+    <Compile Remove="Migrations\20211105214314_AddRate.Designer.cs" />
+    <Compile Remove="Migrations\20211112220346_AddMatrix.cs" />
+    <Compile Remove="Migrations\20211112220346_AddMatrix.Designer.cs" />
+    <Compile Remove="Migrations\20211113095518_AddMatrix.cs" />
+    <Compile Remove="Migrations\20211113095518_AddMatrix.Designer.cs" />
+    <Compile Remove="Migrations\20211114220642_AddEntityFileGUID.cs" />
+    <Compile Remove="Migrations\20211114220642_AddEntityFileGUID.Designer.cs" />
+    <Compile Remove="Migrations\20211114220900_AddEntityFileGUID.cs" />
+    <Compile Remove="Migrations\20211114220900_AddEntityFileGUID.Designer.cs" />
+    <Compile Remove="Migrations\20211130184538_AddContractAmountRate.cs" />
+    <Compile Remove="Migrations\20211130184538_AddContractAmountRate.Designer.cs" />
+    <Compile Remove="Migrations\20211130185854_AddContractAmountRate.cs" />
+    <Compile Remove="Migrations\20211130185854_AddContractAmountRate.Designer.cs" />
+    <Compile Remove="Migrations\20211130195700_AddContractAmountRate.cs" />
+    <Compile Remove="Migrations\20211130195700_AddContractAmountRate.Designer.cs" />
+    <Compile Remove="Migrations\20211201224423_AddQuantityUsed.cs" />
+    <Compile Remove="Migrations\20211201224423_AddQuantityUsed.Designer.cs" />
+    <Compile Remove="Migrations\20211201224943_AddQuantityUsed.cs" />
+    <Compile Remove="Migrations\20211201224943_AddQuantityUsed.Designer.cs" />
+    <Compile Remove="Migrations\20211219031243_AddOrderMaterialOfferMaterial.cs" />
+    <Compile Remove="Migrations\20211219031243_AddOrderMaterialOfferMaterial.Designer.cs" />
+    <Compile Remove="Migrations\20211228210043_AddAssetDEPMDSync.cs" />
+    <Compile Remove="Migrations\20211228210043_AddAssetDEPMDSync.Designer.cs" />
+    <Compile Remove="Migrations\20211228223544_AddAssetDEPMDSync.cs" />
+    <Compile Remove="Migrations\20211228223544_AddAssetDEPMDSync.Designer.cs" />
+    <Compile Remove="Migrations\20211229010010_AddAssetDEPMDSync.cs" />
+    <Compile Remove="Migrations\20211229010010_AddAssetDEPMDSync.Designer.cs" />
+    <Compile Remove="Migrations\20211231172611_AddOfferMaterialOrderMaterial.cs" />
+    <Compile Remove="Migrations\20211231172611_AddOfferMaterialOrderMaterial.Designer.cs" />
+    <Compile Remove="Migrations\20220107224220_AddBudgetForecast.cs" />
+    <Compile Remove="Migrations\20220107224220_AddBudgetForecast.Designer.cs" />
+    <Compile Remove="Migrations\20220107224558_AddBudgetForecast.cs" />
+    <Compile Remove="Migrations\20220107224558_AddBudgetForecast.Designer.cs" />
+    <Compile Remove="Migrations\20220107224940_AddBudgetForecast.cs" />
+    <Compile Remove="Migrations\20220107224940_AddBudgetForecast.Designer.cs" />
+    <Compile Remove="Migrations\20220107225352_AddBudgetForecast.cs" />
+    <Compile Remove="Migrations\20220107225352_AddBudgetForecast.Designer.cs" />
+    <Compile Remove="Migrations\20220116011149_AddDepartmentProjectType.cs" />
+    <Compile Remove="Migrations\20220116011149_AddDepartmentProjectType.Designer.cs" />
+    <Compile Remove="Migrations\20220130011033_AddMatrixImport.cs" />
+    <Compile Remove="Migrations\20220130011033_AddMatrixImport.Designer.cs" />
+    <Compile Remove="Migrations\20220130013419_AddMatrixImport.cs" />
+    <Compile Remove="Migrations\20220130013419_AddMatrixImport.Designer.cs" />
+    <Compile Remove="Migrations\20220130013944_AddMatrixImport.cs" />
+    <Compile Remove="Migrations\20220130013944_AddMatrixImport.Designer.cs" />
+    <Compile Remove="Migrations\20220130020339_AddMatrixImport.cs" />
+    <Compile Remove="Migrations\20220130020339_AddMatrixImport.Designer.cs" />
+    <Compile Remove="Migrations\20220130020832_AddMatrixImport.cs" />
+    <Compile Remove="Migrations\20220130020832_AddMatrixImport.Designer.cs" />
+    <Compile Remove="Migrations\20220130021512_AddMatrixImport.cs" />
+    <Compile Remove="Migrations\20220130021512_AddMatrixImport.Designer.cs" />
+    <Compile Remove="Migrations\20220130021738_AddMatrixImport.cs" />
+    <Compile Remove="Migrations\20220130021738_AddMatrixImport.Designer.cs" />
+    <Compile Remove="Migrations\20220130212346_AddProjectTypeDepartment.cs" />
+    <Compile Remove="Migrations\20220130212346_AddProjectTypeDepartment.Designer.cs" />
+    <Compile Remove="Migrations\20220131235205_AddRequestBudgetBase.cs" />
+    <Compile Remove="Migrations\20220131235205_AddRequestBudgetBase.Designer.cs" />
+    <Compile Remove="Migrations\20220201002055_AddOfferBudgetBase.cs" />
+    <Compile Remove="Migrations\20220201002055_AddOfferBudgetBase.Designer.cs" />
+    <Compile Remove="Migrations\20220201004741_AddOrderBudgetBase.cs" />
+    <Compile Remove="Migrations\20220201004741_AddOrderBudgetBase.Designer.cs" />
+    <Compile Remove="Migrations\20220201082037_AddAssetBudgetBase.cs" />
+    <Compile Remove="Migrations\20220201082037_AddAssetBudgetBase.Designer.cs" />
+    <Compile Remove="Migrations\20220201084718_AddAssetBudgetBase.cs" />
+    <Compile Remove="Migrations\20220201084718_AddAssetBudgetBase.Designer.cs" />
+    <Compile Remove="Migrations\20220205160012_AddAccountancySubCategory.cs" />
+    <Compile Remove="Migrations\20220205160012_AddAccountancySubCategory.Designer.cs" />
+    <Compile Remove="Migrations\20220207235855_AddAssetRecoState.cs" />
+    <Compile Remove="Migrations\20220207235855_AddAssetRecoState.Designer.cs" />
+    <Compile Remove="Migrations\20220208001747_AddStockInvoice.cs" />
+    <Compile Remove="Migrations\20220208001747_AddStockInvoice.Designer.cs" />
+    <Compile Remove="Migrations\20220209225131_AddDictionaryItemBrand.cs" />
+    <Compile Remove="Migrations\20220209225131_AddDictionaryItemBrand.Designer.cs" />
+    <Compile Remove="Migrations\20220209225726_AddBrandDictionaryItem.cs" />
+    <Compile Remove="Migrations\20220209225726_AddBrandDictionaryItem.Designer.cs" />
+    <Compile Remove="Migrations\20220210010604_AddCreateAssetSAP.cs" />
+    <Compile Remove="Migrations\20220210010604_AddCreateAssetSAP.Designer.cs" />
+    <Compile Remove="Migrations\20220210011545_AddCreateAssetSAP.cs" />
+    <Compile Remove="Migrations\20220210011545_AddCreateAssetSAP.Designer.cs" />
+    <Compile Remove="Migrations\20220210195621_AddAssetSyncSAP.cs" />
+    <Compile Remove="Migrations\20220210195621_AddAssetSyncSAP.Designer.cs" />
+    <Compile Remove="Migrations\20220211195457_AddAssetSyncSAP2.cs" />
+    <Compile Remove="Migrations\20220211195457_AddAssetSyncSAP2.Designer.cs" />
+    <Compile Remove="Migrations\20220211195710_AddAssetSyncSAP2.cs" />
+    <Compile Remove="Migrations\20220211195710_AddAssetSyncSAP2.Designer.cs" />
+    <Compile Remove="Migrations\20220211201426_AddAssetSyncSAP2.cs" />
+    <Compile Remove="Migrations\20220211201426_AddAssetSyncSAP2.Designer.cs" />
+    <Compile Remove="Migrations\20220211201824_AddAssetSyncSAP2.cs" />
+    <Compile Remove="Migrations\20220211201824_AddAssetSyncSAP2.Designer.cs" />
+    <Compile Remove="Migrations\20220211202646_AddAssetSyncSAP2.cs" />
+    <Compile Remove="Migrations\20220211202646_AddAssetSyncSAP2.Designer.cs" />
+    <Compile Remove="Migrations\20220211205120_AddAssetSyncSAP2.cs" />
+    <Compile Remove="Migrations\20220211205120_AddAssetSyncSAP2.Designer.cs" />
+    <Compile Remove="Migrations\20220211233022_AddAssetSyncSAP2.cs" />
+    <Compile Remove="Migrations\20220211233022_AddAssetSyncSAP2.Designer.cs" />
+    <Compile Remove="Migrations\20220212000305_AddAssetSyncSAP2.cs" />
+    <Compile Remove="Migrations\20220212000305_AddAssetSyncSAP2.Designer.cs" />
+    <Compile Remove="Migrations\20220212011543_AddAssetSyncSAP.cs" />
+    <Compile Remove="Migrations\20220212011543_AddAssetSyncSAP.Designer.cs" />
+    <Compile Remove="Migrations\20220212011902_AddAssetSyncSAP.cs" />
+    <Compile Remove="Migrations\20220212011902_AddAssetSyncSAP.Designer.cs" />
+    <Compile Remove="Migrations\20220212012519_AddAssetSyncSAP.cs" />
+    <Compile Remove="Migrations\20220212012519_AddAssetSyncSAP.Designer.cs" />
+    <Compile Remove="Migrations\20220212012817_AddAssetSyncSAP.cs" />
+    <Compile Remove="Migrations\20220212012817_AddAssetSyncSAP.Designer.cs" />
+    <Compile Remove="Migrations\20220212204024_AddTransferAssetSAPFromTo.cs" />
+    <Compile Remove="Migrations\20220212204024_AddTransferAssetSAPFromTo.Designer.cs" />
+    <Compile Remove="Migrations\20220219003528_AddTransferInStockSAPCreateAssetSAP.cs" />
+    <Compile Remove="Migrations\20220219003528_AddTransferInStockSAPCreateAssetSAP.Designer.cs" />
+    <Compile Remove="Migrations\20220223223709_ChangePartnerLocation.cs" />
+    <Compile Remove="Migrations\20220223223709_ChangePartnerLocation.Designer.cs" />
+    <Compile Remove="Migrations\20220227134349_AddBudgetBaseAsset.cs" />
+    <Compile Remove="Migrations\20220227134349_AddBudgetBaseAsset.Designer.cs" />
+    <Compile Remove="Migrations\20220227184312_AddBudgetBaseAsset.cs" />
+    <Compile Remove="Migrations\20220227184312_AddBudgetBaseAsset.Designer.cs" />
+    <Compile Remove="Migrations\20220306212729_AddOrderType.cs" />
+    <Compile Remove="Migrations\20220306212729_AddOrderType.Designer.cs" />
+    <Compile Remove="Migrations\20220307212503_AddOrderType.cs" />
+    <Compile Remove="Migrations\20220307212503_AddOrderType.Designer.cs" />
+    <Compile Remove="Migrations\20220312215547_AddOfferOrderType.cs" />
+    <Compile Remove="Migrations\20220312215547_AddOfferOrderType.Designer.cs" />
+    <Compile Remove="Migrations\20220409160225_AddStornoDoc.cs" />
+    <Compile Remove="Migrations\20220409160225_AddStornoDoc.Designer.cs" />
+    <Compile Remove="Migrations\20220411204405_AddCreateAssetSAPInvoice.cs" />
+    <Compile Remove="Migrations\20220411204405_AddCreateAssetSAPInvoice.Designer.cs" />
+    <Compile Remove="Migrations\20220424094315_AddEmailStatus.cs" />
+    <Compile Remove="Migrations\20220424094315_AddEmailStatus.Designer.cs" />
+    <Compile Remove="Migrations\20220424095035_AddEmailStatus.cs" />
+    <Compile Remove="Migrations\20220424095035_AddEmailStatus.Designer.cs" />
+    <Compile Remove="Migrations\20220507193653_AddAssetEmployeeTransfer.cs" />
+    <Compile Remove="Migrations\20220507193653_AddAssetEmployeeTransfer.Designer.cs" />
+    <Compile Remove="Migrations\20220510103100_AddRequestOwner.cs" />
+    <Compile Remove="Migrations\20220510103100_AddRequestOwner.Designer.cs" />
+    <Compile Remove="Migrations\20220510194602_AddRequestBudgetValueNeed.cs" />
+    <Compile Remove="Migrations\20220510194602_AddRequestBudgetValueNeed.Designer.cs" />
+    <Compile Remove="Migrations\20220517094445_AddAssetIsCLone.cs" />
+    <Compile Remove="Migrations\20220517094445_AddAssetIsCLone.Designer.cs" />
+    <Compile Remove="Migrations\20220517094846_AddAssetIsCLone.cs" />
+    <Compile Remove="Migrations\20220517094846_AddAssetIsCLone.Designer.cs" />
+    <Compile Remove="Migrations\20220523211411_AddOrderBudgetValueNeed.cs" />
+    <Compile Remove="Migrations\20220523211411_AddOrderBudgetValueNeed.Designer.cs" />
+    <Compile Remove="Migrations\20220602175741_AddRequestImplementationDate.cs" />
+    <Compile Remove="Migrations\20220602175741_AddRequestImplementationDate.Designer.cs" />
+    <Compile Remove="Migrations\20220604184900_AddEmailOrderStatus.cs" />
+    <Compile Remove="Migrations\20220604184900_AddEmailOrderStatus.Designer.cs" />
+    <Compile Remove="Migrations\20240223111016_Add-new-column-EmployeeDivision.cs" />
+    <Compile Remove="Migrations\20240223111016_Add-new-column-EmployeeDivision.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Optima.Fais.Model\Optima.Fais.Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.0" />
+  <PackageReference Include="Microsoft.NETCore.Targets" Version="5.0.0" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Optima\Fais\Model\" />
+  </ItemGroup>
+
+</Project>

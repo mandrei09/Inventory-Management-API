@@ -1,0 +1,47 @@
+{
+  "ObjectType": "Optima.Fais.Dto.AcquisitionAsset, Optima.Fais.Dto, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+  "Value": {
+    "Sap_function": "ZFIF_FIXED_ASSET_ACQUISITION",
+    "Options": {
+      "Api_call_timeout": 180
+    },
+    "Remote_host_name": "test",
+    "Data": [
+      {
+        "I_INPUT": {
+          "STORNO": "",
+          "COMPANYCODE": "RO10",
+          "DOC_DATE": "20231022",
+          "PSTNG_DATE": "20231128",
+          "REF_DOC_NO": ". 23023",
+          "HEADER_TXT": null,
+          "VENDOR_NO": "0001028065",
+          "CURRENCY": "RON",
+          "EXCH_RATE": 0.0000,
+          "TOTAL_AMOUNT": 57751.44,
+          "ASSETS": [
+            {
+              "ASSET": "212100000630",
+              "SUBNUMBER": "0000",
+              "ITEM_TEXT": "SOLUTII DE PROIECTARE",
+              "TAX_CODE": "3J",
+              "NET_AMOUNT": 48530.62,
+              "TAX_AMOUNT": 9220.82,
+              "GL_ACCOUNT": "",
+              "ASVAL_DATE": "20231120",
+              "WBS_ELEMENT": "10IM_01_98_30_09"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "Headers": [
+    {
+      "Key": "Content-Type",
+      "Value": [
+        "application/json; charset=utf-8"
+      ]
+    }
+  ]
+}

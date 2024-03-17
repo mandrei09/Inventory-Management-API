@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>Optima.Fais.EfRepository</AssemblyName>
+    <PackageId>Optima.Fais.EfRepository</PackageId>
+    <RunAnalyzersDuringBuild>False</RunAnalyzersDuringBuild>
+    <RunAnalyzersDuringLiveAnalysis>False</RunAnalyzersDuringLiveAnalysis>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Optima.Fais.Data\Optima.Fais.Data.csproj" />
+    <ProjectReference Include="..\Optima.Fais.Model\Optima.Fais.Model.csproj" />
+    <ProjectReference Include="..\Optima.Fais.Repository\Optima.Fais.Repository.csproj" />
+    <PackageReference Include="EPPlus" Version="4.5.3.3" />
+    <PackageReference Include="Microsoft.NETCore.Targets" Version="5.0.0" PrivateAssets="all" />
+  </ItemGroup>
+
+</Project>

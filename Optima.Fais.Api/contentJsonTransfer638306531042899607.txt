@@ -1,0 +1,30 @@
+{
+  "ObjectType": "Optima.Fais.Dto.DeleteAsset, Optima.Fais.Dto, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+  "Value": {
+    "Sap_function": "ZFIF_FIXED_ASSET_DELETE",
+    "Options": {
+      "Api_call_timeout": 180
+    },
+    "Remote_host_name": "test",
+    "Data": [
+      {
+        "I_INPUT": {
+          "COMPANYCODE": "RO10",
+          "ASSET": "205000000002",
+          "SUBNUMBER": "0000",
+          "DELETE_IND": "X",
+          "OPTIMA_ASSET_NO": "205000000002",
+          "OPTIMA_ASSET_PARENT_NO": "205000000002"
+        }
+      }
+    ]
+  },
+  "Headers": [
+    {
+      "Key": "Content-Type",
+      "Value": [
+        "application/json; charset=utf-8"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+--Remote Connection Cosmina--
+emag\cosmina.pricop
+2dVtL8J48Y9vbB
+
+--Remote Connection eMAG--
+10.96.120.210 - prod
+10.96.120.211 - uat
+
+--VPN--
+Username: emag\andrei.mihai.ext
+Password: .,Acce55AM!@2590@
+
+--Conectare baza de date Optima--
+Username: sa
+Password: Optima1234+
+
+--Comanda build Angular eMAG prod--
+ng build --base-href /ofa/ --deploy-url /ofa/
+
+--Comanda build Angular eMAG UAT--
+ng build --base-href /ofauat/ --deploy-url /ofauat/

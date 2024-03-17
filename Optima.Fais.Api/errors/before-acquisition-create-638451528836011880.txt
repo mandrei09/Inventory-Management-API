@@ -1,0 +1,47 @@
+{
+  "ObjectType": "Optima.Fais.Dto.AcquisitionAsset, Optima.Fais.Dto, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+  "Value": {
+    "Sap_function": "ZFIF_FIXED_ASSET_ACQUISITION",
+    "Options": {
+      "Api_call_timeout": 180
+    },
+    "Remote_host_name": "test",
+    "Data": [
+      {
+        "I_INPUT": {
+          "STORNO": "",
+          "COMPANYCODE": "RO10",
+          "DOC_DATE": "20200420",
+          "PSTNG_DATE": "20240304",
+          "REF_DOC_NO": "9001474352",
+          "HEADER_TXT": "CAMERA IP DOME- NOD",
+          "VENDOR_NO": "0000000004",
+          "CURRENCY": "RON",
+          "EXCH_RATE": 0.0000,
+          "TOTAL_AMOUNT": 5514.67,
+          "ASSETS": [
+            {
+              "ASSET": "303000006248",
+              "SUBNUMBER": "0000",
+              "ITEM_TEXT": "SISTEME DE SUPRAVEGHERE SI SECURITATE",
+              "TAX_CODE": "W1",
+              "NET_AMOUNT": 4634.18,
+              "TAX_AMOUNT": 880.49,
+              "GL_ACCOUNT": "",
+              "ASVAL_DATE": "20230922",
+              "WBS_ELEMENT": "10IM_01_19_29_09"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "Headers": [
+    {
+      "Key": "Content-Type",
+      "Value": [
+        "application/json; charset=utf-8"
+      ]
+    }
+  ]
+}

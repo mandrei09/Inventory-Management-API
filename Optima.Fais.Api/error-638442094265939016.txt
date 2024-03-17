@@ -1,0 +1,12 @@
+   at Novell.Directory.Ldap.Connection.Connect(String host, Int32 port, Int32 semaphoreId)
+   at Novell.Directory.Ldap.Connection.Connect(String host, Int32 port)
+   at Novell.Directory.Ldap.LdapConnection.Connect(String host, Int32 port)
+   at Optima.Fais.Api.Services.LDAP.LdapSyncService.GetAllEmployees() in C:\bogdan\Dev_Azure\Fais_Emag\fais-api\Optima.Fais.Api\Services\LDAP\LdapSyncService.cs:line 147
+   at Optima.Fais.Api.Services.LDAP.LdapSyncService.SyncEmployeesAsync() in C:\bogdan\Dev_Azure\Fais_Emag\fais-api\Optima.Fais.Api\Services\LDAP\LdapSyncService.cs:line 72
+   at Optima.Fais.Api.Services.LDAP.LdapBackgroundService.ExecuteAsync(CancellationToken stoppingToken) in C:\bogdan\Dev_Azure\Fais_Emag\fais-api\Optima.Fais.Api\Services\LDAP\LdapBackgroundService.cs:line 29
+LdapException: Unable to connect to server ad-dc01-ro.emag.local:636 (91) Connect Error
+System.Net.Internals.SocketExceptionFactory+ExtendedSocketException (10060): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond. 192.168.6.85:636
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   at Novell.Directory.Ldap.ConnectTimeoutExtensions.Connect(Socket socket, IPEndPoint ipEndPoint, Int32 connectionTimeout)
+   at Novell.Directory.Ldap.Connection.Connect(String host, Int32 port, Int32 semaphoreId)

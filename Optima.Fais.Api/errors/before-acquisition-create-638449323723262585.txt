@@ -1,0 +1,47 @@
+{
+  "ObjectType": "Optima.Fais.Dto.AcquisitionAsset, Optima.Fais.Dto, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+  "Value": {
+    "Sap_function": "ZFIF_FIXED_ASSET_ACQUISITION",
+    "Options": {
+      "Api_call_timeout": 180
+    },
+    "Remote_host_name": "test",
+    "Data": [
+      {
+        "I_INPUT": {
+          "STORNO": "",
+          "COMPANYCODE": "RO10",
+          "DOC_DATE": "20240301",
+          "PSTNG_DATE": "20240301",
+          "REF_DOC_NO": "F5_01/03/2024_test!",
+          "HEADER_TXT": "Laptop Dell Latitude 5411 Display FHD, Procesor i5-10400H, Memorie 8GB, SSD 512, Windows 10 Pro",
+          "VENDOR_NO": "0000170594",
+          "CURRENCY": "RON",
+          "EXCH_RATE": 0.0000,
+          "TOTAL_AMOUNT": 238.00,
+          "ASSETS": [
+            {
+              "ASSET": "303000101252",
+              "SUBNUMBER": "0000",
+              "ITEM_TEXT": "LAPTOP / NOTEBOOK",
+              "TAX_CODE": "W1",
+              "NET_AMOUNT": 200.00,
+              "TAX_AMOUNT": 38.00,
+              "GL_ACCOUNT": "",
+              "ASVAL_DATE": "20240301",
+              "WBS_ELEMENT": "10IM_01_03_29_07"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "Headers": [
+    {
+      "Key": "Content-Type",
+      "Value": [
+        "application/json; charset=utf-8"
+      ]
+    }
+  ]
+}

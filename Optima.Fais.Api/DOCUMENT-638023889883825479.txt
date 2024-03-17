@@ -1,0 +1,7 @@
+   at System.Nullable`1.get_Value()
+   at Optima.Fais.Api.Services.Appendix1Generator.GenerateDocumentAsync(Int32 ducumentNumber, String resourcesPath) in C:\work\github\fais5.0\Emag\fais-api\Optima.Fais.Api\Services\PDFGenerator\Appendix1Generator.cs:line 208
+   at Optima.Fais.Api.Services.EmailStatusService.GenerateAppendixAsync(Int32 documentNumber) in C:\work\github\fais5.0\Emag\fais-api\Optima.Fais.Api\Services\EmailStatus\EmailStatusService.cs:line 2705
+System.InvalidOperationException: Nullable object must have a value.
+   at System.Nullable`1.get_Value()
+   at Optima.Fais.Api.Services.Appendix1Generator.GenerateDocumentAsync(Int32 ducumentNumber, String resourcesPath) in C:\work\github\fais5.0\Emag\fais-api\Optima.Fais.Api\Services\PDFGenerator\Appendix1Generator.cs:line 208
+   at Optima.Fais.Api.Services.EmailStatusService.GenerateAppendixAsync(Int32 documentNumber) in C:\work\github\fais5.0\Emag\fais-api\Optima.Fais.Api\Services\EmailStatus\EmailStatusService.cs:line 2705

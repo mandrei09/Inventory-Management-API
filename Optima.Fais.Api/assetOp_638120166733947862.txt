@@ -1,0 +1,15 @@
+{
+  "AssetId": 326881,
+  "RoomId": 34077,
+  "InvStateId": 1,
+  "IsDeleted": "false",
+  "ModifiedAt": "2023-02-14T22:10:51.178Z",
+  "SerialNumber": "2V133D3",
+  "Info": null,
+  "AllowLabel": "true",
+  "UserId": "admin@optima.ro",
+  "Quantity": 1.0,
+  "InvName": "Laptop Dell Latitude 7420, DIsplay FHD, Procesor i",
+  "EmployeeId": 3874,
+  "CostCenterId": 631
+}

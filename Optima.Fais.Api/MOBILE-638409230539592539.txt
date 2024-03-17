@@ -1,0 +1,9 @@
+   at Novell.Directory.Ldap.Connection.Connect(String host, Int32 port, Int32 semaphoreId)
+   at Novell.Directory.Ldap.Connection.Connect(String host, Int32 port)
+   at Novell.Directory.Ldap.LdapConnection.Connect(String host, Int32 port)
+   at Optima.Fais.Api.Identity.LdapAuthenticationService.DoLoginAsync(String username, String password) in C:\Proiecte\Dev\eMAG\fais-api\Optima.Fais.Api\Identity\LdapAuthenticationService.cs:line 88
+   at Optima.Fais.Api.Identity.LdapAuthenticationService.LoginAsync(String username, String password) in C:\Proiecte\Dev\eMAG\fais-api\Optima.Fais.Api\Identity\LdapAuthenticationService.cs:line 53
+LdapException: Unable to connect to server ad-dc01-ro.emag.local:389 (91) Connect Error
+System.Net.Sockets.SocketException (10060): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+   at Novell.Directory.Ldap.AsyncExtensions.WaitAndUnwrap(Task task, Int32 timeout)
+   at Novell.Directory.Ldap.Connection.Connect(String host, Int32 port, Int32 semaphoreId)

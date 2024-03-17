@@ -1,0 +1,1 @@
+{"sap_function":"ZMMF_GET_STOCK","options":{"api_call_timeout":180},"remote_host_name":"test","data":[{"i_INPUT":{"plant":"RO02","storage_Location":"MFX","category":"","material":"","batch":""}}]}
