@@ -30,10 +30,6 @@
 
 		public int? ERPId { get; set; }
 
-		public int? InterCompanyId { get; set; }
-
-		public virtual InterCompany InterCompany { get; set; }
-
         public int? SubTypeId { get; set; }
 
         public virtual SubType SubType { get; set; }

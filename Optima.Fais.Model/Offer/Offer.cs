@@ -44,10 +44,6 @@ namespace Optima.Fais.Model
 
         public virtual AccMonth AccMonth { get; set; }
 
-        public int? InterCompanyId { get; set; }
-
-        public virtual InterCompany InterCompany { get; set; }
-
         public int? PartnerId { get; set; }
 
         public virtual Partner Partner { get; set; }

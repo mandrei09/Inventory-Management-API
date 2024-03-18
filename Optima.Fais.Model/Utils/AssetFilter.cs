@@ -18,7 +18,6 @@ namespace Optima.Fais.Model.Utils
         public List<int?> AssetCategoryIds { get; set; }
         public List<int?> AssetNatureIds { get; set; }
         public List<int?> CompanyIds { get; set; }
-        public List<int?> InterCompanyIds { get; set; }
         public List<int?> InsuranceCategoryIds { get; set; }
         public List<int?> RegionIds { get; set; }
         public List<int?> LocationIds { get; set; }

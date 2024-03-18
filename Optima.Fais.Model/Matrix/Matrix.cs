@@ -22,10 +22,6 @@ namespace Optima.Fais.Model
 
         public virtual CostCenter CostCenter { get; set; }
 
-        public int? AreaId { get; set; }
-
-        public virtual Area Area { get; set; }
-
         public int AppStateId { get; set; }
 
         public virtual AppState AppState { get; set; }

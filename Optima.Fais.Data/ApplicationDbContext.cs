@@ -68,7 +68,6 @@ namespace Optima.Fais.Data
         public DbSet<Model.CostCenter> CostCenters { get; set; }
         public DbSet<Model.Company> Companies { get; set; }
         public DbSet<Model.Committee> Committees { get; set; }
-        public DbSet<Model.InterCompany> InterCompanies { get; set; }
         public DbSet<Model.InsuranceCategory> InsuranceCategories { get; set; }
         public DbSet<Model.EntityFile> EntityFiles { get; set; }
         public DbSet<Model.Employee> Employees { get; set; }
@@ -1123,10 +1122,6 @@ namespace Optima.Fais.Data
                .WithMany()
                .HasForeignKey(a => a.ProjectId);
             builder.Entity<Budget>()
-               .HasOne(a => a.InterCompany)
-               .WithMany()
-               .HasForeignKey(a => a.InterCompanyId);
-            builder.Entity<Budget>()
                 .HasOne(a => a.CostCenter)
                 .WithMany()
                 .HasForeignKey(a => a.CostCenterId);
@@ -1243,10 +1238,6 @@ namespace Optima.Fais.Data
                .WithMany()
                .HasForeignKey(a => a.ProjectId);
             builder.Entity<Offer>()
-               .HasOne(a => a.InterCompany)
-               .WithMany()
-               .HasForeignKey(a => a.InterCompanyId);
-            builder.Entity<Offer>()
                 .HasOne(a => a.CostCenter)
                 .WithMany()
                 .HasForeignKey(a => a.CostCenterId);
@@ -1296,10 +1287,6 @@ namespace Optima.Fais.Data
                 .ToTable("Matrix")
                 .Property(p => p.Id)
                 .HasColumnName("Id");
-            builder.Entity<Matrix>()
-                .HasOne(a => a.Area)
-                .WithMany()
-                .HasForeignKey(a => a.AreaId);
             builder.Entity<Matrix>()
                .HasOne(a => a.AppState)
                .WithMany()
@@ -1679,10 +1666,6 @@ namespace Optima.Fais.Data
                .HasOne(a => a.Project)
                .WithMany()
                .HasForeignKey(a => a.ProjectId);
-            builder.Entity<Order>()
-               .HasOne(a => a.InterCompany)
-               .WithMany()
-               .HasForeignKey(a => a.InterCompanyId);
             builder.Entity<Order>()
                 .HasOne(a => a.CostCenter)
                 .WithMany()
@@ -2083,69 +2066,6 @@ namespace Optima.Fais.Data
                 .IsRequired()
                 .HasMaxLength(100);
 
-            //Area
-            builder.Entity<Area>()
-                .ToTable("Area")
-                .Property(p => p.Id)
-                .HasColumnName("AreaId");
-            builder.Entity<Area>()
-                .Property(p => p.Code)
-                .IsRequired()
-                .HasMaxLength(100);
-            builder.Entity<Area>()
-                .Property(p => p.Name)
-                .IsRequired()
-                .HasMaxLength(200);
-
-            //InterCompany
-            builder.Entity<InterCompany>()
-                .ToTable("InterCompany")
-                .Property(p => p.Id)
-                .HasColumnName("Id");
-            builder.Entity<InterCompany>()
-                .Property(p => p.Code)
-                .IsRequired()
-                .HasMaxLength(30);
-            builder.Entity<InterCompany>()
-                .Property(p => p.Name)
-                .IsRequired()
-                .HasMaxLength(100);
-            builder.Entity<InterCompany>()
-               .HasOne(a => a.InterCompanyEN)
-               .WithMany()
-               .HasForeignKey(a => a.InterCompanyENId);
-            builder.Entity<InterCompany>()
-                  .HasOne(a => a.Account)
-                  .WithMany()
-                  .HasForeignKey(a => a.AccountId);
-            builder.Entity<InterCompany>()
-              .HasOne(a => a.ExpAccount)
-              .WithMany()
-              .HasForeignKey(a => a.ExpAccountId);
-            builder.Entity<InterCompany>()
-              .HasOne(a => a.AssetCategory)
-              .WithMany()
-              .HasForeignKey(a => a.AssetCategoryId);
-            builder.Entity<InterCompany>()
-              .HasOne(a => a.AssetType)
-              .WithMany()
-              .HasForeignKey(a => a.AssetTypeId);
-
-            //InterCompanyEN
-            builder.Entity<InterCompanyEN>()
-                .ToTable("InterCompanyEN")
-                .Property(p => p.Id)
-                .HasColumnName("Id");
-            builder.Entity<InterCompanyEN>()
-                .Property(p => p.Code)
-                .IsRequired()
-                .HasMaxLength(30);
-            builder.Entity<InterCompanyEN>()
-                .Property(p => p.Name)
-                .IsRequired()
-                .HasMaxLength(100);
-
-
             //Category
             builder.Entity<Category>()
                 .ToTable("Category")
@@ -2159,10 +2079,6 @@ namespace Optima.Fais.Data
                 .Property(p => p.Name)
                 .IsRequired()
                 .HasMaxLength(100);
-            builder.Entity<Category>()
-                .HasOne(a => a.InterCompany)
-                .WithMany()
-                .HasForeignKey(a => a.InterCompanyId);
 
             //CategoryEN
             builder.Entity<CategoryEN>()
@@ -2177,10 +2093,6 @@ namespace Optima.Fais.Data
                 .Property(p => p.Name)
                 .IsRequired()
                 .HasMaxLength(100);
-            builder.Entity<CategoryEN>()
-              .HasOne(a => a.InterCompanyEN)
-              .WithMany()
-              .HasForeignKey(a => a.InterCompanyENId);
 
             //SubCategory
             builder.Entity<SubCategory>()
@@ -2456,10 +2368,6 @@ namespace Optima.Fais.Data
                .HasOne(a => a.Project)
                .WithMany()
                .HasForeignKey(a => a.ProjectId);
-            builder.Entity<Asset>()
-               .HasOne(a => a.InterCompany)
-               .WithMany()
-               .HasForeignKey(a => a.InterCompanyId);
             builder.Entity<Asset>()
                 .HasOne(a => a.AssetCategory)
                 .WithMany()
@@ -2816,14 +2724,6 @@ namespace Optima.Fais.Data
                 .WithMany()
                 .HasForeignKey(i => i.EmployeeIdFinal);
             builder.Entity<BudgetOp>()
-                .HasOne(i => i.InterCompanyInitial)
-                .WithMany()
-                .HasForeignKey(i => i.InterCompanyIdInitial);
-            builder.Entity<BudgetOp>()
-                .HasOne(i => i.InterCompanyFinal)
-                .WithMany()
-                .HasForeignKey(i => i.InterCompanyIdFinal);
-            builder.Entity<BudgetOp>()
                  .HasOne(i => i.PartnerInitial)
                  .WithMany()
                  .HasForeignKey(i => i.PartnerIdInitial);
@@ -3168,14 +3068,6 @@ namespace Optima.Fais.Data
                 .WithMany()
                 .HasForeignKey(i => i.EmployeeIdFinal);
             builder.Entity<OrderOp>()
-                .HasOne(i => i.InterCompanyInitial)
-                .WithMany()
-                .HasForeignKey(i => i.InterCompanyIdInitial);
-            builder.Entity<OrderOp>()
-                .HasOne(i => i.InterCompanyFinal)
-                .WithMany()
-                .HasForeignKey(i => i.InterCompanyIdFinal);
-            builder.Entity<OrderOp>()
                  .HasOne(i => i.PartnerInitial)
                  .WithMany()
                  .HasForeignKey(i => i.PartnerIdInitial);
@@ -3366,14 +3258,6 @@ namespace Optima.Fais.Data
                 .HasOne(i => i.EmployeeFinal)
                 .WithMany()
                 .HasForeignKey(i => i.EmployeeIdFinal);
-            builder.Entity<OfferOp>()
-                .HasOne(i => i.InterCompanyInitial)
-                .WithMany()
-                .HasForeignKey(i => i.InterCompanyIdInitial);
-            builder.Entity<OfferOp>()
-                .HasOne(i => i.InterCompanyFinal)
-                .WithMany()
-                .HasForeignKey(i => i.InterCompanyIdFinal);
             builder.Entity<OfferOp>()
                  .HasOne(i => i.PartnerInitial)
                  .WithMany()
@@ -3852,10 +3736,6 @@ namespace Optima.Fais.Data
                .HasOne(a => a.Project)
                .WithMany()
                .HasForeignKey(a => a.ProjectId);
-            builder.Entity<AssetAdmMD>()
-               .HasOne(a => a.InterCompany)
-               .WithMany()
-               .HasForeignKey(a => a.InterCompanyId);
             builder.Entity<AssetAdmMD>()
                 .HasOne(a => a.AssetCategory)
                 .WithMany()

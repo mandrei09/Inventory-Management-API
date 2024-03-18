@@ -46,7 +46,7 @@ namespace Optima.Fais.Dto
         public int? AdministrationId { get; set; }
         public int? EmployeeId { get; set; }
         public int? ProjectId { get; set; }
-        public int? InterCompanyId { get; set; }
+       
         public int? SubTypeId { get; set; }
         public int? CostCenterId { get; set; }
         public int? AccountId { get; set; }

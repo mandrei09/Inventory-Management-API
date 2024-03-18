@@ -4153,7 +4153,7 @@ namespace Optima.Fais.EfRepository
                 //assetAdmMD.InsuranceCategoryId = assetDto.InsuranceCategoryId;
                 //assetAdmMD.ModelId = assetDto.ModelId;
                 //assetAdmMD.BrandId = assetDto.BrandId;
-                //assetAdmMD.InterCompanyId = assetDto.InterCompanyId;
+                //
                 //assetAdmMD.ProjectId = order.ProjectId;
 
                 assetAdmMD.AdmCenterId = costCenter.AdmCenterId;
@@ -4653,7 +4653,7 @@ namespace Optima.Fais.EfRepository
                 //assetAdmMD.InsuranceCategoryId = assetDto.InsuranceCategoryId;
                 //assetAdmMD.ModelId = assetDto.ModelId;
                 //assetAdmMD.BrandId = assetDto.BrandId;
-                //assetAdmMD.InterCompanyId = assetDto.InterCompanyId;
+                //
                 //assetAdmMD.ProjectId = order.ProjectId;
 
                 assetAdmMD.AdmCenterId = costCenter.AdmCenterId;

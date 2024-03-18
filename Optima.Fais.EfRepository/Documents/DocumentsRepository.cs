@@ -1105,7 +1105,7 @@ namespace Optima.Fais.EfRepository
                     operation.IsPlus = false;
                     operation.CompanyId = asset.CompanyId;
                     operation.InsuranceCategoryId = asset.InsuranceCategoryId;
-                    operation.InterCompanyId = asset.InterCompanyId;
+                    
                     operation.UomId = asset.UomId;
                     operation.TaxId = asset.TaxId;
                     operation.ValueAdd = documentNumber;
@@ -1332,7 +1332,7 @@ namespace Optima.Fais.EfRepository
                     operation.IsPlus = false;
                     operation.CompanyId = asset.CompanyId;
                     operation.InsuranceCategoryId = asset.InsuranceCategoryId;
-                    operation.InterCompanyId = asset.InterCompanyId;
+                    
                     operation.UomId = asset.UomId;
                     operation.TaxId = asset.TaxId;
                     operation.ValueAdd = documentNumber;
@@ -1541,7 +1541,7 @@ namespace Optima.Fais.EfRepository
                     operation.IsPlus = false;
                     operation.CompanyId = asset.CompanyId;
                     operation.InsuranceCategoryId = asset.InsuranceCategoryId;
-                    operation.InterCompanyId = asset.InterCompanyId;
+                    
                     operation.UomId = asset.UomId;
                     operation.TaxId = asset.TaxId;
                     operation.ValueAdd = documentNumber;
