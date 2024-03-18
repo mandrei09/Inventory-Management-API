@@ -2,7 +2,6 @@
 {
     public class AccountancyAdd
     {
-        public int[] InterCompanyIds { get; set; }
         public int AccountId { get; set; }
         public int ExpAccountId { get; set; }
         public int AssetTypeId { get; set; }

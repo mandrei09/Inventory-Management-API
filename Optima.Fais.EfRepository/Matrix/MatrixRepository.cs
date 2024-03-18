@@ -42,13 +42,6 @@ namespace Optima.Fais.EfRepository
                     : r => assetTypeIds.Contains(r.AssetTypeId);
             }
 
-            if ((areaIds != null) && (areaIds.Count > 0))
-            {
-                predicate = predicate != null
-                    ? ExpressionHelper.And<Model.Matrix>(predicate, r => areaIds.Contains(r.AreaId))
-                    : r => areaIds.Contains(r.AreaId);
-            }
-
             if ((countryIds != null) && (countryIds.Count > 0))
             {
                 predicate = predicate != null

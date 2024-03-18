@@ -591,7 +591,7 @@ namespace Optima.Fais.EfRepository
 					// .Include(i => i.Asset)
 					//	.ThenInclude(i => i.InsuranceCategory)
 					// .Include(i => i.Asset)
-					//	.ThenInclude(i => i.InterCompany)
+					//	
 					// .Include(i => i.Asset)
 					//	.ThenInclude(i => i.Material)
 					// .Include(i => i.Asset)

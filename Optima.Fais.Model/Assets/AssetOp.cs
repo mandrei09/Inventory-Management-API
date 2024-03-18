@@ -203,10 +203,6 @@ namespace Optima.Fais.Model
 
         public virtual Uom Uom { get; set; }
 
-        public int? InterCompanyId { get; set; }
-
-        public virtual InterCompany InterCompany { get; set; }
-
         public int? InsuranceCategoryId { get; set; }
 
         public virtual InsuranceCategory InsuranceCategory { get; set; }

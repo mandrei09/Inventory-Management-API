@@ -236,690 +236,690 @@ namespace Optima.Fais.Api.Controllers
 
         }
 
-        [HttpPost("change")]
-        public async Task<IActionResult> AssetChange([FromBody] AssetChangeDTO asset)
-        {
-            int assetId = 0;
+        //[HttpPost("change")]
+        //public async Task<IActionResult> AssetChange([FromBody] AssetChangeDTO asset)
+        //{
+        //    int assetId = 0;
 
-            assetId = (_itemsRepository as IAssetsRepository).AssetChange(asset, out List<Dto.AssetChangeSAP> newAsset);
-            AssetChangeResult createAssetResult = null;
+        //    assetId = (_itemsRepository as IAssetsRepository).AssetChange(asset, out List<Dto.AssetChangeSAP> newAsset);
+        //    AssetChangeResult createAssetResult = null;
 
-            if (assetId > 0)
-            {
+        //    if (assetId > 0)
+        //    {
 
-                using (var errorfile = System.IO.File.CreateText("validate-" + DateTime.Now.Ticks + ".txt"))
-                {
-                    errorfile.WriteLine(newAsset);
+        //        using (var errorfile = System.IO.File.CreateText("validate-" + DateTime.Now.Ticks + ".txt"))
+        //        {
+        //            errorfile.WriteLine(newAsset);
 
-                };
+        //        };
 
 
-                var result = await this.AssetChangeAsync(newAsset);
+        //        var result = await this.AssetChangeAsync(newAsset);
 
-                if (result != "")
-                {
-                    string errorFilePath = System.IO.Path.Combine("errors", "error-validate" + DateTime.Now.Ticks + ".txt");
+        //        if (result != "")
+        //        {
+        //            string errorFilePath = System.IO.Path.Combine("errors", "error-validate" + DateTime.Now.Ticks + ".txt");
 
-                    using (var errorfile = System.IO.File.CreateText(errorFilePath))
-                    {
-                        errorfile.WriteLine(result);
+        //            using (var errorfile = System.IO.File.CreateText(errorFilePath))
+        //            {
+        //                errorfile.WriteLine(result);
 
-                    };
+        //            };
 
-                    try
-                    {
-                        createAssetResult = JsonConvert.DeserializeObject<AssetChangeResult>(result);
+        //            try
+        //            {
+        //                createAssetResult = JsonConvert.DeserializeObject<AssetChangeResult>(result);
 
-                        if (createAssetResult.Data != null && createAssetResult.Data.Return_Code == "1")
-                        {
-                            Model.Asset assetUpdate = _context.Set<Model.Asset>().Where(a => a.Id == assetId).Single();
+        //                if (createAssetResult.Data != null && createAssetResult.Data.Return_Code == "1")
+        //                {
+        //                    Model.Asset assetUpdate = _context.Set<Model.Asset>().Where(a => a.Id == assetId).Single();
 
-                            assetUpdate.InvNo = createAssetResult.Data.Asset;
-                            assetUpdate.ModifiedAt = DateTime.Now;
-                            assetUpdate.AssetStateId = 1;
-                            _context.Update(assetUpdate);
-                            _context.SaveChanges();
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        var assetToDelete = _context.Set<Model.Asset>().Where(a => a.Id == assetId).Single();
+        //                    assetUpdate.InvNo = createAssetResult.Data.Asset;
+        //                    assetUpdate.ModifiedAt = DateTime.Now;
+        //                    assetUpdate.AssetStateId = 1;
+        //                    _context.Update(assetUpdate);
+        //                    _context.SaveChanges();
+        //                }
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                var assetToDelete = _context.Set<Model.Asset>().Where(a => a.Id == assetId).Single();
                         
-                        assetToDelete.IsDeleted = true;
-                        _context.Update(assetToDelete);
-                        _context.SaveChanges();
+        //                assetToDelete.IsDeleted = true;
+        //                _context.Update(assetToDelete);
+        //                _context.SaveChanges();
 
-                        using (var errorfile = System.IO.File.CreateText(System.IO.Path.Combine("errors", "error-" + DateTime.Now.Ticks + ".txt")))
-                        {
-                            errorfile.WriteLine(ex.StackTrace);
-                            errorfile.WriteLine(ex.ToString());
+        //                using (var errorfile = System.IO.File.CreateText(System.IO.Path.Combine("errors", "error-" + DateTime.Now.Ticks + ".txt")))
+        //                {
+        //                    errorfile.WriteLine(ex.StackTrace);
+        //                    errorfile.WriteLine(ex.ToString());
 
-                        };
-                    }
-
-
-
-                    return Ok(createAssetResult);
-                }
-                else
-                {
-
-                    var assetToDelete = _context.Set<Model.Asset>().Where(a => a.Id == assetId).Single();
-
-                    assetToDelete.IsDeleted = true;
-                    _context.Update(assetToDelete);
-                    _context.SaveChanges();
-
-                    using (var errorfile = System.IO.File.CreateText(System.IO.Path.Combine("errors", "error-" + DateTime.Now.Ticks + ".txt")))
-                    {
-                        errorfile.WriteLine(result);
-                        errorfile.WriteLine(result);
-
-                    };
-
-                    return Ok(result);
-                }
+        //                };
+        //            }
 
 
-            }
+
+        //            return Ok(createAssetResult);
+        //        }
+        //        else
+        //        {
+
+        //            var assetToDelete = _context.Set<Model.Asset>().Where(a => a.Id == assetId).Single();
+
+        //            assetToDelete.IsDeleted = true;
+        //            _context.Update(assetToDelete);
+        //            _context.SaveChanges();
+
+        //            using (var errorfile = System.IO.File.CreateText(System.IO.Path.Combine("errors", "error-" + DateTime.Now.Ticks + ".txt")))
+        //            {
+        //                errorfile.WriteLine(result);
+        //                errorfile.WriteLine(result);
+
+        //            };
+
+        //            return Ok(result);
+        //        }
 
 
-            return Ok(assetId);
-        }
+        //    }
 
-        [HttpPost("newTransferAsset")]
-        public async Task<CreateAssetSAPResult> TransferAsset([FromBody] SaveAssetTransfer newAssetTransferSAP)
-        {
-            if (HttpContext.User.Identity.Name != null)
-            {
-                var userName = HttpContext.User.Identity.Name;
-                var user = await userManager.FindByEmailAsync(userName);
-                if (user == null)
-                {
-                    user = await userManager.FindByNameAsync(userName);
-                }
-                _context.UserId = user.Id.ToString();
 
-                var createAssetSAPResult = (_itemsRepository as IAssetsRepository).TransferAssetSAP(newAssetTransferSAP);
+        //    return Ok(assetId);
+        //}
 
-                await this._notifyService.NotifyDataTransferAssetAsync(createAssetSAPResult);
+        //[HttpPost("newTransferAsset")]
+        //public async Task<CreateAssetSAPResult> TransferAsset([FromBody] SaveAssetTransfer newAssetTransferSAP)
+        //{
+        //    if (HttpContext.User.Identity.Name != null)
+        //    {
+        //        var userName = HttpContext.User.Identity.Name;
+        //        var user = await userManager.FindByEmailAsync(userName);
+        //        if (user == null)
+        //        {
+        //            user = await userManager.FindByNameAsync(userName);
+        //        }
+        //        _context.UserId = user.Id.ToString();
 
-                return createAssetSAPResult;
-            }
-            else
-            {
-                return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Va rugam sa va autentificati!" };
-            }
-        }
+        //        var createAssetSAPResult = (_itemsRepository as IAssetsRepository).TransferAssetSAP(newAssetTransferSAP);
 
-        [HttpPost("newTransferCloneAsset")]
-        public async Task<CreateAssetSAPResult> TransferCloneAsset([FromBody] SaveAssetCloneTransfer newAssetTransferSAP)
-        {
-            if (HttpContext.User.Identity.Name != null)
-            {
-                var userName = HttpContext.User.Identity.Name;
-                var user = await userManager.FindByEmailAsync(userName);
-                if (user == null)
-                {
-                    user = await userManager.FindByNameAsync(userName);
-                }
-                _context.UserId = user.Id.ToString();
+        //        await this._notifyService.NotifyDataTransferAssetAsync(createAssetSAPResult);
 
-                var createAssetSAPResult = (_itemsRepository as IAssetsRepository).TransferCloneAssetSAP(newAssetTransferSAP);
+        //        return createAssetSAPResult;
+        //    }
+        //    else
+        //    {
+        //        return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Va rugam sa va autentificati!" };
+        //    }
+        //}
 
-                await this._notifyService.NotifyDataTransferAssetAsync(createAssetSAPResult);
+        //[HttpPost("newTransferCloneAsset")]
+        //public async Task<CreateAssetSAPResult> TransferCloneAsset([FromBody] SaveAssetCloneTransfer newAssetTransferSAP)
+        //{
+        //    if (HttpContext.User.Identity.Name != null)
+        //    {
+        //        var userName = HttpContext.User.Identity.Name;
+        //        var user = await userManager.FindByEmailAsync(userName);
+        //        if (user == null)
+        //        {
+        //            user = await userManager.FindByNameAsync(userName);
+        //        }
+        //        _context.UserId = user.Id.ToString();
 
-                return createAssetSAPResult;
-            }
-            else
-            {
-                return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Va rugam sa va autentificati!" };
-            }
-        }
+        //        var createAssetSAPResult = (_itemsRepository as IAssetsRepository).TransferCloneAssetSAP(newAssetTransferSAP);
 
-        [HttpPost("newRetireAsset")]
-        public async Task<CreateAssetSAPResult> RetireAsset([FromBody] SaveRetireAsset newRetireAssetSAP)
-        {
-            if (HttpContext.User.Identity.Name != null)
-            {
-                var userName = HttpContext.User.Identity.Name;
-                var user = await userManager.FindByEmailAsync(userName);
-                if (user == null)
-                {
-                    user = await userManager.FindByNameAsync(userName);
-                }
-                _context.UserId = user.Id.ToString();
+        //        await this._notifyService.NotifyDataTransferAssetAsync(createAssetSAPResult);
 
-                var retireAssetSAPResult = (_itemsRepository as IAssetsRepository).RetireAsset(newRetireAssetSAP);
+        //        return createAssetSAPResult;
+        //    }
+        //    else
+        //    {
+        //        return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Va rugam sa va autentificati!" };
+        //    }
+        //}
 
-                 await this._notifyService.NotifyDataRetireAssetAsync(retireAssetSAPResult);
+  //      [HttpPost("newRetireAsset")]
+  //      public async Task<CreateAssetSAPResult> RetireAsset([FromBody] SaveRetireAsset newRetireAssetSAP)
+  //      {
+  //          if (HttpContext.User.Identity.Name != null)
+  //          {
+  //              var userName = HttpContext.User.Identity.Name;
+  //              var user = await userManager.FindByEmailAsync(userName);
+  //              if (user == null)
+  //              {
+  //                  user = await userManager.FindByNameAsync(userName);
+  //              }
+  //              _context.UserId = user.Id.ToString();
 
-                return retireAssetSAPResult;
-            }
-            else
-            {
-                return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Va rugam sa va autentificati!" };
-            }
-        }
+  //              var retireAssetSAPResult = (_itemsRepository as IAssetsRepository).RetireAsset(newRetireAssetSAP);
 
-		[HttpPost("publicRetireAsset")]
-		public async Task<CreateAssetSAPResult> PublicRetireAsset([FromBody] SaveRetireAsset newRetireAssetSAP)
-		{
-			if (HttpContext.User.Identity.Name != null)
-			{
-				var userName = HttpContext.User.Identity.Name;
-				var user = await userManager.FindByEmailAsync(userName);
-				if (user == null)
-				{
-					user = await userManager.FindByNameAsync(userName);
-				}
-				_context.UserId = user.Id.ToString();
+  //               await this._notifyService.NotifyDataRetireAssetAsync(retireAssetSAPResult);
 
-				var retireAssetSAPResult = await (_itemsRepository as IAssetsRepository).PublicRetireAsset(newRetireAssetSAP);
+  //              return retireAssetSAPResult;
+  //          }
+  //          else
+  //          {
+  //              return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Va rugam sa va autentificati!" };
+  //          }
+  //      }
 
-				await this._notifyService.NotifyDataRetireAssetAsync(retireAssetSAPResult);
+		//[HttpPost("publicRetireAsset")]
+		//public async Task<CreateAssetSAPResult> PublicRetireAsset([FromBody] SaveRetireAsset newRetireAssetSAP)
+		//{
+		//	if (HttpContext.User.Identity.Name != null)
+		//	{
+		//		var userName = HttpContext.User.Identity.Name;
+		//		var user = await userManager.FindByEmailAsync(userName);
+		//		if (user == null)
+		//		{
+		//			user = await userManager.FindByNameAsync(userName);
+		//		}
+		//		_context.UserId = user.Id.ToString();
 
-				return retireAssetSAPResult;
-			}
-			else
-			{
-				return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Va rugam sa va autentificati!" };
-			}
-		}
+		//		var retireAssetSAPResult = await (_itemsRepository as IAssetsRepository).PublicRetireAsset(newRetireAssetSAP);
 
-		[HttpPost("newStornoAsset")]
-        public async Task<CreateAssetSAPResult> StornoAsset([FromBody] SaveStornoAsset stornoAssetSAP)
-        {
-            if (HttpContext.User.Identity.Name != null)
-            {
-                var userName = HttpContext.User.Identity.Name;
-                var user = await userManager.FindByEmailAsync(userName);
-                if (user == null)
-                {
-                    user = await userManager.FindByNameAsync(userName);
-                }
-                _context.UserId = user.Id.ToString();
+		//		await this._notifyService.NotifyDataRetireAssetAsync(retireAssetSAPResult);
 
-                var stornoAssetSAPResult = (_itemsRepository as IAssetsRepository).StornoAsset(stornoAssetSAP);
+		//		return retireAssetSAPResult;
+		//	}
+		//	else
+		//	{
+		//		return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Va rugam sa va autentificati!" };
+		//	}
+		//}
 
-                await this._notifyService.NotifyDataStornoAssetAsync(stornoAssetSAPResult);
+		//[HttpPost("newStornoAsset")]
+  //      public async Task<CreateAssetSAPResult> StornoAsset([FromBody] SaveStornoAsset stornoAssetSAP)
+  //      {
+  //          if (HttpContext.User.Identity.Name != null)
+  //          {
+  //              var userName = HttpContext.User.Identity.Name;
+  //              var user = await userManager.FindByEmailAsync(userName);
+  //              if (user == null)
+  //              {
+  //                  user = await userManager.FindByNameAsync(userName);
+  //              }
+  //              _context.UserId = user.Id.ToString();
 
-                return stornoAssetSAPResult;
-            }
-            else
-            {
-                return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Va rugam sa va autentificati!" };
-            }
-        }
+  //              var stornoAssetSAPResult = (_itemsRepository as IAssetsRepository).StornoAsset(stornoAssetSAP);
 
-        [HttpPost("newStornoAssetMFX")]
-        public async Task<CreateAssetSAPResult> StornoAssetMFX([FromBody] SaveStornoAssetMFX stornoAssetSAP)
-        {
-            if (HttpContext.User.Identity.Name != null)
-            {
-                var userName = HttpContext.User.Identity.Name;
-                var user = await userManager.FindByEmailAsync(userName);
-                if (user == null)
-                {
-                    user = await userManager.FindByNameAsync(userName);
-                }
-                _context.UserId = user.Id.ToString();
+  //              await this._notifyService.NotifyDataStornoAssetAsync(stornoAssetSAPResult);
 
-                var stornoAssetSAPResult = await (_itemsRepository as IAssetsRepository).StornoAssetMFX(stornoAssetSAP);
+  //              return stornoAssetSAPResult;
+  //          }
+  //          else
+  //          {
+  //              return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Va rugam sa va autentificati!" };
+  //          }
+  //      }
 
-                await this._notifyService.NotifyDataStornoAssetAsync(stornoAssetSAPResult);
+  //      [HttpPost("newStornoAssetMFX")]
+  //      public async Task<CreateAssetSAPResult> StornoAssetMFX([FromBody] SaveStornoAssetMFX stornoAssetSAP)
+  //      {
+  //          if (HttpContext.User.Identity.Name != null)
+  //          {
+  //              var userName = HttpContext.User.Identity.Name;
+  //              var user = await userManager.FindByEmailAsync(userName);
+  //              if (user == null)
+  //              {
+  //                  user = await userManager.FindByNameAsync(userName);
+  //              }
+  //              _context.UserId = user.Id.ToString();
 
-                Model.Asset selectedAsset = _context.Set<Model.Asset>().Where(a => a.Id == stornoAssetSAP.AssetId).FirstOrDefault();
-                selectedAsset.IsInTransfer = true;
-                _context.Update(selectedAsset);
-                _context.SaveChanges();
+  //              var stornoAssetSAPResult = await (_itemsRepository as IAssetsRepository).StornoAssetMFX(stornoAssetSAP);
 
-                Model.Stock selectedStock = _context.Set<Model.Stock>().Where(s => s.Id == selectedAsset.StockId).FirstOrDefault();
-                selectedStock.Imported = false;
-                _context.Update(selectedStock);
-                _context.SaveChanges();
+  //              await this._notifyService.NotifyDataStornoAssetAsync(stornoAssetSAPResult);
 
-                return stornoAssetSAPResult;
-            }
-            else
-            {
-                return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Va rugam sa va autentificati!" };
-            }
-        }
+  //              Model.Asset selectedAsset = _context.Set<Model.Asset>().Where(a => a.Id == stornoAssetSAP.AssetId).FirstOrDefault();
+  //              selectedAsset.IsInTransfer = true;
+  //              _context.Update(selectedAsset);
+  //              _context.SaveChanges();
 
-        [HttpPost("newAssetAcquisitionStorno")]
-        public async Task<CreateAssetSAPResult> StornoAcqAsset([FromBody] SaveAssetAcquisitionStorno stornoAcqAssetSAP)
-        {
-            if (HttpContext.User.Identity.Name != null)
-            {
-                var userName = HttpContext.User.Identity.Name;
-                var user = await userManager.FindByEmailAsync(userName);
-                if (user == null)
-                {
-                    user = await userManager.FindByNameAsync(userName);
-                }
-                _context.UserId = user.Id.ToString();
+  //              Model.Stock selectedStock = _context.Set<Model.Stock>().Where(s => s.Id == selectedAsset.StockId).FirstOrDefault();
+  //              selectedStock.Imported = false;
+  //              _context.Update(selectedStock);
+  //              _context.SaveChanges();
 
-                var stornoAssetSAPResult = (_itemsRepository as IAssetsRepository).StornoAcquisitionAsset(stornoAcqAssetSAP);
+  //              return stornoAssetSAPResult;
+  //          }
+  //          else
+  //          {
+  //              return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Va rugam sa va autentificati!" };
+  //          }
+  //      }
 
-                await this._notifyService.NotifyDataStornoAcquisitionAssetAsync(stornoAssetSAPResult);
+  //      [HttpPost("newAssetAcquisitionStorno")]
+  //      public async Task<CreateAssetSAPResult> StornoAcqAsset([FromBody] SaveAssetAcquisitionStorno stornoAcqAssetSAP)
+  //      {
+  //          if (HttpContext.User.Identity.Name != null)
+  //          {
+  //              var userName = HttpContext.User.Identity.Name;
+  //              var user = await userManager.FindByEmailAsync(userName);
+  //              if (user == null)
+  //              {
+  //                  user = await userManager.FindByNameAsync(userName);
+  //              }
+  //              _context.UserId = user.Id.ToString();
 
-                return stornoAssetSAPResult;
-            }
-            else
-            {
-                return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Va rugam sa va autentificati!" };
-            }
-        }
+  //              var stornoAssetSAPResult = (_itemsRepository as IAssetsRepository).StornoAcquisitionAsset(stornoAcqAssetSAP);
 
-        [HttpPost("newAssetInvPlus")]
-        public async Task<Model.CreateAssetSAPResult> AssetInvPlus([FromBody] SaveAssetInvPlus assetInvPlus)
-        {
-            if (HttpContext.User.Identity.Name != null)
-            {
-                var userName = HttpContext.User.Identity.Name;
-                var user = await userManager.FindByEmailAsync(userName);
-                if (user == null)
-                {
-                    user = await userManager.FindByNameAsync(userName);
-                }
-                _context.UserId = user.Id.ToString();
+  //              await this._notifyService.NotifyDataStornoAcquisitionAssetAsync(stornoAssetSAPResult);
 
-                var createAssetSAPResult = (_itemsRepository as IAssetsRepository).AssetInvPlus(assetInvPlus);
+  //              return stornoAssetSAPResult;
+  //          }
+  //          else
+  //          {
+  //              return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Va rugam sa va autentificati!" };
+  //          }
+  //      }
 
-                await this._notifyService.NotifyDataAssetInvPlusAsync(createAssetSAPResult);
+  //      [HttpPost("newAssetInvPlus")]
+  //      public async Task<Model.CreateAssetSAPResult> AssetInvPlus([FromBody] SaveAssetInvPlus assetInvPlus)
+  //      {
+  //          if (HttpContext.User.Identity.Name != null)
+  //          {
+  //              var userName = HttpContext.User.Identity.Name;
+  //              var user = await userManager.FindByEmailAsync(userName);
+  //              if (user == null)
+  //              {
+  //                  user = await userManager.FindByNameAsync(userName);
+  //              }
+  //              _context.UserId = user.Id.ToString();
 
-                return createAssetSAPResult;
-            }
-            else
-            {
-                return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Va rugam sa va autentificati!" };
-            }
-        }
+  //              var createAssetSAPResult = (_itemsRepository as IAssetsRepository).AssetInvPlus(assetInvPlus);
 
-        [HttpPost("newAssetInvMinus")]
-        public async Task<Model.CreateAssetSAPResult> AssetInvMinus([FromBody] SaveAssetInvMinus assetInvMinus)
-        {
-            if (HttpContext.User.Identity.Name != null)
-            {
-                var userName = HttpContext.User.Identity.Name;
-                var user = await userManager.FindByEmailAsync(userName);
-                if (user == null)
-                {
-                    user = await userManager.FindByNameAsync(userName);
-                }
-                _context.UserId = user.Id.ToString();
+  //              await this._notifyService.NotifyDataAssetInvPlusAsync(createAssetSAPResult);
 
-                var createAssetSAPResult = (_itemsRepository as IAssetsRepository).AssetInvMinus(assetInvMinus);
+  //              return createAssetSAPResult;
+  //          }
+  //          else
+  //          {
+  //              return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Va rugam sa va autentificati!" };
+  //          }
+  //      }
 
-                await this._notifyService.NotifyDataAssetInvMinusAsync(createAssetSAPResult);
+  //      [HttpPost("newAssetInvMinus")]
+  //      public async Task<Model.CreateAssetSAPResult> AssetInvMinus([FromBody] SaveAssetInvMinus assetInvMinus)
+  //      {
+  //          if (HttpContext.User.Identity.Name != null)
+  //          {
+  //              var userName = HttpContext.User.Identity.Name;
+  //              var user = await userManager.FindByEmailAsync(userName);
+  //              if (user == null)
+  //              {
+  //                  user = await userManager.FindByNameAsync(userName);
+  //              }
+  //              _context.UserId = user.Id.ToString();
 
-                return createAssetSAPResult;
-            }
-            else
-            {
-                return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Va rugam sa va autentificati!" };
-            }
-        }
+  //              var createAssetSAPResult = (_itemsRepository as IAssetsRepository).AssetInvMinus(assetInvMinus);
 
-        [HttpPost("acquisition")]
-        public async Task<CreateAssetSAPResult> AcquisitionAsset([FromBody] AssetAcquisition asset)
-        {
+  //              await this._notifyService.NotifyDataAssetInvMinusAsync(createAssetSAPResult);
 
-            if (HttpContext.User.Identity.Name != null)
-            {
-                var userName = HttpContext.User.Identity.Name;
-                var user = await userManager.FindByEmailAsync(userName);
-                if (user == null)
-                {
-                    user = await userManager.FindByNameAsync(userName);
-                }
-                _context.UserId = user.Id.ToString();
+  //              return createAssetSAPResult;
+  //          }
+  //          else
+  //          {
+  //              return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Va rugam sa va autentificati!" };
+  //          }
+  //      }
 
-				try
-				{
-                    var createAssetSAPResult = await (_itemsRepository as IAssetsRepository).AcquisitionAssetSAP(asset);
-                    // await this._notifyService.NotifyDataCreateAssetAsync(createAssetSAPResult);
-                    return createAssetSAPResult;
-                }
-                catch (Exception ex)
-				{
+    //    [HttpPost("acquisition")]
+    //    public async Task<CreateAssetSAPResult> AcquisitionAsset([FromBody] AssetAcquisition asset)
+    //    {
 
-                    return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = ex.Message };
-                }
+    //        if (HttpContext.User.Identity.Name != null)
+    //        {
+    //            var userName = HttpContext.User.Identity.Name;
+    //            var user = await userManager.FindByEmailAsync(userName);
+    //            if (user == null)
+    //            {
+    //                user = await userManager.FindByNameAsync(userName);
+    //            }
+    //            _context.UserId = user.Id.ToString();
 
-            }
-            else
-            {
-                return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Va rugam sa va autentificati!" };
-            }
-        }
+				//try
+				//{
+    //                var createAssetSAPResult = await (_itemsRepository as IAssetsRepository).AcquisitionAssetSAP(asset);
+    //                // await this._notifyService.NotifyDataCreateAssetAsync(createAssetSAPResult);
+    //                return createAssetSAPResult;
+    //            }
+    //            catch (Exception ex)
+				//{
 
-        [HttpPost("stornoacquisition")]
-		public async Task<CreateAssetSAPResult> StornoAcquisitionAsset([FromBody] AssetAcquisition asset)
-		{
-			Model.Asset assetToValidate = null;
-			if (HttpContext.User.Identity.Name != null)
-			{
-				var userName = HttpContext.User.Identity.Name;
-				var user = await userManager.FindByEmailAsync(userName);
-				if (user == null)
-				{
-					user = await userManager.FindByNameAsync(userName);
-				}
-				_context.UserId = user.Id.ToString();
+    //                return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = ex.Message };
+    //            }
 
-				try
-				{
-					assetToValidate = await _context.Set<Model.Asset>().Include(o => o.Order).Where(a => a.Id == asset.Id).SingleAsync();
-					if (assetToValidate.OrderId == null)
-                    {
-						var createAssetSAPResult = await (_itemsRepository as IAssetsRepository).StornoAcquisitionNoPOAssetSAP(asset);
-						// await this._notifyService.NotifyDataCreateAssetAsync(createAssetSAPResult);
-						return createAssetSAPResult;
-                    }
-                    else
-                    {
-						var createAssetSAPResult = await (_itemsRepository as IAssetsRepository).StornoAcquisitionAssetSAP(asset);
-						// await this._notifyService.NotifyDataCreateAssetAsync(createAssetSAPResult);
-						return createAssetSAPResult;
-					}
+    //        }
+    //        else
+    //        {
+    //            return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Va rugam sa va autentificati!" };
+    //        }
+    //    }
+
+  //      [HttpPost("stornoacquisition")]
+		//public async Task<CreateAssetSAPResult> StornoAcquisitionAsset([FromBody] AssetAcquisition asset)
+		//{
+		//	Model.Asset assetToValidate = null;
+		//	if (HttpContext.User.Identity.Name != null)
+		//	{
+		//		var userName = HttpContext.User.Identity.Name;
+		//		var user = await userManager.FindByEmailAsync(userName);
+		//		if (user == null)
+		//		{
+		//			user = await userManager.FindByNameAsync(userName);
+		//		}
+		//		_context.UserId = user.Id.ToString();
+
+		//		try
+		//		{
+		//			assetToValidate = await _context.Set<Model.Asset>().Include(o => o.Order).Where(a => a.Id == asset.Id).SingleAsync();
+		//			if (assetToValidate.OrderId == null)
+  //                  {
+		//				var createAssetSAPResult = await (_itemsRepository as IAssetsRepository).StornoAcquisitionNoPOAssetSAP(asset);
+		//				// await this._notifyService.NotifyDataCreateAssetAsync(createAssetSAPResult);
+		//				return createAssetSAPResult;
+  //                  }
+  //                  else
+  //                  {
+		//				var createAssetSAPResult = await (_itemsRepository as IAssetsRepository).StornoAcquisitionAssetSAP(asset);
+		//				// await this._notifyService.NotifyDataCreateAssetAsync(createAssetSAPResult);
+		//				return createAssetSAPResult;
+		//			}
 						
-				}
-				catch (Exception ex)
-				{
+		//		}
+		//		catch (Exception ex)
+		//		{
 
-					return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = ex.Message };
-				}
+		//			return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = ex.Message };
+		//		}
 
-			}
-			else
-			{
-				return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Va rugam sa va autentificati!" };
-			}
-		}
+		//	}
+		//	else
+		//	{
+		//		return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Va rugam sa va autentificati!" };
+		//	}
+		//}
 
-		[HttpPost("validateacquisition")]
-		public async Task<CreateAssetSAPResult> ValidateAcquisitionAsset([FromBody] AssetAcquisition asset)
-		{
+		//[HttpPost("validateacquisition")]
+		//public async Task<CreateAssetSAPResult> ValidateAcquisitionAsset([FromBody] AssetAcquisition asset)
+		//{
 
-			if (HttpContext.User.Identity.Name != null)
-			{
-				var userName = HttpContext.User.Identity.Name;
-				var user = await userManager.FindByEmailAsync(userName);
-				if (user == null)
-				{
-					user = await userManager.FindByNameAsync(userName);
-				}
-				_context.UserId = user.Id.ToString();
+		//	if (HttpContext.User.Identity.Name != null)
+		//	{
+		//		var userName = HttpContext.User.Identity.Name;
+		//		var user = await userManager.FindByEmailAsync(userName);
+		//		if (user == null)
+		//		{
+		//			user = await userManager.FindByNameAsync(userName);
+		//		}
+		//		_context.UserId = user.Id.ToString();
 
-				try
-				{
-					var createAssetSAPResult = await (_itemsRepository as IAssetsRepository).ValidateAcquisitionAssetSAP(asset);
-					// await this._notifyService.NotifyDataCreateAssetAsync(createAssetSAPResult);
-					return createAssetSAPResult;
-				}
-				catch (Exception ex)
-				{
+		//		try
+		//		{
+		//			var createAssetSAPResult = await (_itemsRepository as IAssetsRepository).ValidateAcquisitionAssetSAP(asset);
+		//			// await this._notifyService.NotifyDataCreateAssetAsync(createAssetSAPResult);
+		//			return createAssetSAPResult;
+		//		}
+		//		catch (Exception ex)
+		//		{
 
-					return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = ex.Message };
-				}
+		//			return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = ex.Message };
+		//		}
 
-			}
-			else
-			{
-				return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Va rugam sa va autentificati!" };
-			}
-		}
+		//	}
+		//	else
+		//	{
+		//		return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Va rugam sa va autentificati!" };
+		//	}
+		//}
 
-		[HttpPost("validatestornoacquisition")]
-		public async Task<CreateAssetSAPResult> ValidateStornoAcquisitionAsset([FromBody] AssetAcquisition asset)
-		{
-            Model.Asset assetToValidate = null;
-			if (HttpContext.User.Identity.Name != null)
-			{
-				var userName = HttpContext.User.Identity.Name;
-				var user = await userManager.FindByEmailAsync(userName);
-				if (user == null)
-				{
-					user = await userManager.FindByNameAsync(userName);
-				}
-				_context.UserId = user.Id.ToString();
+		//[HttpPost("validatestornoacquisition")]
+		//public async Task<CreateAssetSAPResult> ValidateStornoAcquisitionAsset([FromBody] AssetAcquisition asset)
+		//{
+  //          Model.Asset assetToValidate = null;
+		//	if (HttpContext.User.Identity.Name != null)
+		//	{
+		//		var userName = HttpContext.User.Identity.Name;
+		//		var user = await userManager.FindByEmailAsync(userName);
+		//		if (user == null)
+		//		{
+		//			user = await userManager.FindByNameAsync(userName);
+		//		}
+		//		_context.UserId = user.Id.ToString();
 
-				try
-				{
-                    assetToValidate = await _context.Set<Model.Asset>().Include(o => o.Order).Where(a => a.Id == asset.Id).SingleAsync();
-                    if(assetToValidate.OrderId == null)
-                    {
-						var createAssetSAPResult = await (_itemsRepository as IAssetsRepository).ValidateStornoNoPOAcquisitionAssetSAP(asset);
-						// await this._notifyService.NotifyDataCreateAssetAsync(createAssetSAPResult);
-						return createAssetSAPResult;
-					}
-                    else
-                    {
-						var createAssetSAPResult = await (_itemsRepository as IAssetsRepository).ValidateStornoAcquisitionAssetSAP(asset);
-						// await this._notifyService.NotifyDataCreateAssetAsync(createAssetSAPResult);
-						return createAssetSAPResult;
-					}
+		//		try
+		//		{
+  //                  assetToValidate = await _context.Set<Model.Asset>().Include(o => o.Order).Where(a => a.Id == asset.Id).SingleAsync();
+  //                  if(assetToValidate.OrderId == null)
+  //                  {
+		//				var createAssetSAPResult = await (_itemsRepository as IAssetsRepository).ValidateStornoNoPOAcquisitionAssetSAP(asset);
+		//				// await this._notifyService.NotifyDataCreateAssetAsync(createAssetSAPResult);
+		//				return createAssetSAPResult;
+		//			}
+  //                  else
+  //                  {
+		//				var createAssetSAPResult = await (_itemsRepository as IAssetsRepository).ValidateStornoAcquisitionAssetSAP(asset);
+		//				// await this._notifyService.NotifyDataCreateAssetAsync(createAssetSAPResult);
+		//				return createAssetSAPResult;
+		//			}
 					
-				}
-				catch (Exception ex)
-				{
+		//		}
+		//		catch (Exception ex)
+		//		{
 
-					return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = ex.Message };
-				}
+		//			return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = ex.Message };
+		//		}
 
-			}
-			else
-			{
-				return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Va rugam sa va autentificati!" };
-			}
-		}
+		//	}
+		//	else
+		//	{
+		//		return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Va rugam sa va autentificati!" };
+		//	}
+		//}
 
-		[HttpPost("validatestornonopoacquisition")]
-		public async Task<CreateAssetSAPResult> ValidateStornoNoPOAcquisitionAsset([FromBody] AssetAcquisition asset)
-		{
+		//[HttpPost("validatestornonopoacquisition")]
+		//public async Task<CreateAssetSAPResult> ValidateStornoNoPOAcquisitionAsset([FromBody] AssetAcquisition asset)
+		//{
 
-			if (HttpContext.User.Identity.Name != null)
-			{
-				var userName = HttpContext.User.Identity.Name;
-				var user = await userManager.FindByEmailAsync(userName);
-				if (user == null)
-				{
-					user = await userManager.FindByNameAsync(userName);
-				}
-				_context.UserId = user.Id.ToString();
+		//	if (HttpContext.User.Identity.Name != null)
+		//	{
+		//		var userName = HttpContext.User.Identity.Name;
+		//		var user = await userManager.FindByEmailAsync(userName);
+		//		if (user == null)
+		//		{
+		//			user = await userManager.FindByNameAsync(userName);
+		//		}
+		//		_context.UserId = user.Id.ToString();
 
-				try
-				{
-					var createAssetSAPResult = await (_itemsRepository as IAssetsRepository).ValidateStornoNoPOAcquisitionAssetSAP(asset);
-					// await this._notifyService.NotifyDataCreateAssetAsync(createAssetSAPResult);
-					return createAssetSAPResult;
-				}
-				catch (Exception ex)
-				{
+		//		try
+		//		{
+		//			var createAssetSAPResult = await (_itemsRepository as IAssetsRepository).ValidateStornoNoPOAcquisitionAssetSAP(asset);
+		//			// await this._notifyService.NotifyDataCreateAssetAsync(createAssetSAPResult);
+		//			return createAssetSAPResult;
+		//		}
+		//		catch (Exception ex)
+		//		{
 
-					return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = ex.Message };
-				}
+		//			return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = ex.Message };
+		//		}
 
-			}
-			else
-			{
-				return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Va rugam sa va autentificati!" };
-			}
-		}
+		//	}
+		//	else
+		//	{
+		//		return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Va rugam sa va autentificati!" };
+		//	}
+		//}
 
-		[HttpPost("rejectAsset/{assetId}/{reason}")]
-        public async Task<RejectResult> RejectAsset(int assetId, string reason)
-        {
-			Model.Asset asset = null;
-			List<Model.Asset> assets = null;
-            Model.EmailStatus emailStatus = null;
-            Model.Inventory inventory = null;
-			Model.EmailType emailType = null;
-			Model.EntityType entityType = null;
-            Model.ApplicationUser receptionUser = null;
-			int documentNumber = 0;
-            int appStateId = 0;
-            string createdBy = "";
-			string modifiedBy = "";
+		//[HttpPost("rejectAsset/{assetId}/{reason}")]
+  //      public async Task<RejectResult> RejectAsset(int assetId, string reason)
+  //      {
+		//	Model.Asset asset = null;
+		//	List<Model.Asset> assets = null;
+  //          Model.EmailStatus emailStatus = null;
+  //          Model.Inventory inventory = null;
+		//	Model.EmailType emailType = null;
+		//	Model.EntityType entityType = null;
+  //          Model.ApplicationUser receptionUser = null;
+		//	int documentNumber = 0;
+  //          int appStateId = 0;
+  //          string createdBy = "";
+		//	string modifiedBy = "";
 
-			if (HttpContext.User.Identity.Name != null)
-			{
-				var userName = HttpContext.User.Identity.Name;
-				var user = await userManager.FindByEmailAsync(userName);
-				if (user == null)
-				{
-					user = await userManager.FindByNameAsync(userName);
-				}
-				_context.UserId = user.Id.ToString();
+		//	if (HttpContext.User.Identity.Name != null)
+		//	{
+		//		var userName = HttpContext.User.Identity.Name;
+		//		var user = await userManager.FindByEmailAsync(userName);
+		//		if (user == null)
+		//		{
+		//			user = await userManager.FindByNameAsync(userName);
+		//		}
+		//		_context.UserId = user.Id.ToString();
 
-				try
-				{
-					asset = await _context.Set<Model.Asset>().Include(d => d.Document).Where(a => a.Id == assetId).SingleAsync();
-					appStateId = await _context.Set<Model.AppState>().AsNoTracking().Where(a => a.Code == "REJECTASSET").Select(a => a.Id).FirstOrDefaultAsync();
+		//		try
+		//		{
+		//			asset = await _context.Set<Model.Asset>().Include(d => d.Document).Where(a => a.Id == assetId).SingleAsync();
+		//			appStateId = await _context.Set<Model.AppState>().AsNoTracking().Where(a => a.Code == "REJECTASSET").Select(a => a.Id).FirstOrDefaultAsync();
 
-                    createdBy = asset.CreatedBy;
-                    modifiedBy = asset.ModifiedBy;
+  //                  createdBy = asset.CreatedBy;
+  //                  modifiedBy = asset.ModifiedBy;
 
-					if (asset.Document.DocNo1 != "" && asset.Document.DocNo1 != null && asset.Document.DocNo1.Trim().Length > 2)
-                    {
-						assets = await _context.Set<Model.Asset>().Include(d => d.Document).Where(a => a.Document.DocNo1 == asset.Document.DocNo1).ToListAsync();
+		//			if (asset.Document.DocNo1 != "" && asset.Document.DocNo1 != null && asset.Document.DocNo1.Trim().Length > 2)
+  //                  {
+		//				assets = await _context.Set<Model.Asset>().Include(d => d.Document).Where(a => a.Document.DocNo1 == asset.Document.DocNo1).ToListAsync();
 
-						int assetStateId = await _context.Set<Model.AssetState>().AsNoTracking().Where(a => a.Code == "Rejected").Select(a => a.Id).FirstOrDefaultAsync();
+		//				int assetStateId = await _context.Set<Model.AssetState>().AsNoTracking().Where(a => a.Code == "Rejected").Select(a => a.Id).FirstOrDefaultAsync();
 
-						for (int i = 0; i < assets.Count; i++)
-                        {
-                            assets[i].Info = reason;
-							assets[i].AppStateId = appStateId;
-							assets[i].AssetStateId = assetStateId;
-							assets[i].ModifiedAt = DateTime.Now;
-							assets[i].ModifiedBy = _context.UserId;
+		//				for (int i = 0; i < assets.Count; i++)
+  //                      {
+  //                          assets[i].Info = reason;
+		//					assets[i].AppStateId = appStateId;
+		//					assets[i].AssetStateId = assetStateId;
+		//					assets[i].ModifiedAt = DateTime.Now;
+		//					assets[i].ModifiedBy = _context.UserId;
 
-                            //Model.Order order = await _context.Set<Model.Order>().AsNoTracking().Where(or => or.Id == asset.OrderId).FirstOrDefaultAsync();
-                            //OrderDelete orderDelete = new OrderDelete(order.Id, reason, order.UserId);
-                            //await this._orderFlowService.DeleteOrder(orderDelete);
+  //                          //Model.Order order = await _context.Set<Model.Order>().AsNoTracking().Where(or => or.Id == asset.OrderId).FirstOrDefaultAsync();
+  //                          //OrderDelete orderDelete = new OrderDelete(order.Id, reason, order.UserId);
+  //                          //await this._orderFlowService.DeleteOrder(orderDelete);
 
-                            _context.Update(assets[i]);
+  //                          _context.Update(assets[i]);
 
-                            _context.SaveChanges();
-						}
+  //                          _context.SaveChanges();
+		//				}
 
-					}
+		//			}
 
-					inventory = await _context.Set<Model.Inventory>().AsNoTracking().Where(a => a.Active == true).FirstOrDefaultAsync();
-					emailType = await _context.Set<Model.EmailType>().AsNoTracking().Where(a => a.Code == "REJECTASSET").FirstOrDefaultAsync();
-					entityType = await _context.Set<Model.EntityType>().AsNoTracking().Where(a => a.Code == "REJECTASSET").FirstOrDefaultAsync();
+		//			inventory = await _context.Set<Model.Inventory>().AsNoTracking().Where(a => a.Active == true).FirstOrDefaultAsync();
+		//			emailType = await _context.Set<Model.EmailType>().AsNoTracking().Where(a => a.Code == "REJECTASSET").FirstOrDefaultAsync();
+		//			entityType = await _context.Set<Model.EntityType>().AsNoTracking().Where(a => a.Code == "REJECTASSET").FirstOrDefaultAsync();
 
-					Guid guid = Guid.NewGuid();
-					Guid guidAll = Guid.NewGuid();
+		//			Guid guid = Guid.NewGuid();
+		//			Guid guidAll = Guid.NewGuid();
 
-					documentNumber = int.Parse(entityType.Name);
+		//			documentNumber = int.Parse(entityType.Name);
 
-					documentNumber++;
+		//			documentNumber++;
 
-                    if(createdBy != null && createdBy != "")
-                    {
-						receptionUser = await userManager.FindByIdAsync(asset.CreatedBy);
-					}
-                    else if (modifiedBy != null && modifiedBy != "")
-                    {
-						receptionUser = await userManager.FindByIdAsync(asset.ModifiedBy);
-                    }
-                    else
-                    {
-						receptionUser = await userManager.FindByIdAsync("92E74C4F-A79A-4C83-A7D0-A3202BD2507F");
-					}
+  //                  if(createdBy != null && createdBy != "")
+  //                  {
+		//				receptionUser = await userManager.FindByIdAsync(asset.CreatedBy);
+		//			}
+  //                  else if (modifiedBy != null && modifiedBy != "")
+  //                  {
+		//				receptionUser = await userManager.FindByIdAsync(asset.ModifiedBy);
+  //                  }
+  //                  else
+  //                  {
+		//				receptionUser = await userManager.FindByIdAsync("92E74C4F-A79A-4C83-A7D0-A3202BD2507F");
+		//			}
 
 
-					emailStatus = new Model.EmailStatus()
-					{
-						AppStateId = appStateId,
-						AssetId = asset.Id,
-						AssetOp = null,
-						BudgetBaseId = asset.BudgetBaseId,
-						CompanyId = asset.CompanyId,
-						Completed = false,
-						CostCenterIdFinal = asset.CostCenterId,
-						CostCenterIdInitial = asset.CostCenterId,
-						CreatedAt = DateTime.Now,
-						CreatedBy = _context.UserId,
-						DocumentNumber = documentNumber,
-						DstEmployeeEmailSend = false,
-						DstEmployeeValidateAt = null,
-						DstEmployeeValidateBy = null,
-						DstManagerEmailSend = false,
-						DstManagerValidateAt = null,
-						DstManagerValidateBy = null,
-						EmailSend = false,
-						EmailTypeId = emailType.Id,
-						EmployeeIdFinal = receptionUser.EmployeeId,
-						EmployeeIdInitial = user.EmployeeId,
-						ErrorId = null,
-						Exported = false,
-						FinalValidateAt = null,
-						FinalValidateBy = null,
-						Guid = guid,
-						GuidAll = guidAll,
-						Info = reason,
-						IsAccepted = false,
-						IsDeleted = false,
-						ModifiedAt = DateTime.Now,
-						ModifiedBy = _context.UserId,
-						NotCompletedSync = true,
-						NotDstEmployeeSync = false,
-						NotDstManagerSync = false,
-						NotSrcEmployeeSync = false,
-						NotSrcManagerSync = false,
-						NotSync = true,
-						OfferId = asset.Order != null ? asset.Order.OfferId : null,
-						OrderId = asset.OrderId,
-						PartnerId = asset.Document.PartnerId,
-						RequestId = asset.RequestId,
-						SameEmployee = true,
-						SameManager = false,
-						Skip = false,
-						SkipDstEmployee = false,
-						SkipDstManager = false,
-						SkipSrcEmployee = false,
-						SkipSrcManager = false,
-						SrcEmployeeEmailSend = false,
-						SrcEmployeeValidateAt = DateTime.Now,
-						SrcEmployeeValidateBy = _context.UserId,
-						SrcManagerEmailSend = false,
-						SrcManagerValidateAt = DateTime.Now,
-						SrcManagerValidateBy = _context.UserId,
-						StockId = asset.StockId,
-						SyncCompletedErrorCount = 0,
-						SyncDstEmployeeErrorCount = 0,
-						SyncDstManagerErrorCount = 0,
-						SyncErrorCount = 0,
-						SyncSrcEmployeeErrorCount = 0,
-						SyncSrcManagerErrorCount = 0,
+		//			emailStatus = new Model.EmailStatus()
+		//			{
+		//				AppStateId = appStateId,
+		//				AssetId = asset.Id,
+		//				AssetOp = null,
+		//				BudgetBaseId = asset.BudgetBaseId,
+		//				CompanyId = asset.CompanyId,
+		//				Completed = false,
+		//				CostCenterIdFinal = asset.CostCenterId,
+		//				CostCenterIdInitial = asset.CostCenterId,
+		//				CreatedAt = DateTime.Now,
+		//				CreatedBy = _context.UserId,
+		//				DocumentNumber = documentNumber,
+		//				DstEmployeeEmailSend = false,
+		//				DstEmployeeValidateAt = null,
+		//				DstEmployeeValidateBy = null,
+		//				DstManagerEmailSend = false,
+		//				DstManagerValidateAt = null,
+		//				DstManagerValidateBy = null,
+		//				EmailSend = false,
+		//				EmailTypeId = emailType.Id,
+		//				EmployeeIdFinal = receptionUser.EmployeeId,
+		//				EmployeeIdInitial = user.EmployeeId,
+		//				ErrorId = null,
+		//				Exported = false,
+		//				FinalValidateAt = null,
+		//				FinalValidateBy = null,
+		//				Guid = guid,
+		//				GuidAll = guidAll,
+		//				Info = reason,
+		//				IsAccepted = false,
+		//				IsDeleted = false,
+		//				ModifiedAt = DateTime.Now,
+		//				ModifiedBy = _context.UserId,
+		//				NotCompletedSync = true,
+		//				NotDstEmployeeSync = false,
+		//				NotDstManagerSync = false,
+		//				NotSrcEmployeeSync = false,
+		//				NotSrcManagerSync = false,
+		//				NotSync = true,
+		//				OfferId = asset.Order != null ? asset.Order.OfferId : null,
+		//				OrderId = asset.OrderId,
+		//				PartnerId = asset.Document.PartnerId,
+		//				RequestId = asset.RequestId,
+		//				SameEmployee = true,
+		//				SameManager = false,
+		//				Skip = false,
+		//				SkipDstEmployee = false,
+		//				SkipDstManager = false,
+		//				SkipSrcEmployee = false,
+		//				SkipSrcManager = false,
+		//				SrcEmployeeEmailSend = false,
+		//				SrcEmployeeValidateAt = DateTime.Now,
+		//				SrcEmployeeValidateBy = _context.UserId,
+		//				SrcManagerEmailSend = false,
+		//				SrcManagerValidateAt = DateTime.Now,
+		//				SrcManagerValidateBy = _context.UserId,
+		//				StockId = asset.StockId,
+		//				SyncCompletedErrorCount = 0,
+		//				SyncDstEmployeeErrorCount = 0,
+		//				SyncDstManagerErrorCount = 0,
+		//				SyncErrorCount = 0,
+		//				SyncSrcEmployeeErrorCount = 0,
+		//				SyncSrcManagerErrorCount = 0,
 
-					};
+		//			};
 
-					entityType.Name = documentNumber.ToString();
+		//			entityType.Name = documentNumber.ToString();
 
-                    _context.Update(entityType);
-                    _context.Add(emailStatus);
+  //                  _context.Update(entityType);
+  //                  _context.Add(emailStatus);
 
-                    _context.SaveChanges();
+  //                  _context.SaveChanges();
 
-					return new Model.RejectResult { Success = true, Message = $"Numarul de inventar {asset.InvNo}/{asset.SubNo} a fost refuzat." };
-				}
-				catch (Exception ex)
-				{
+		//			return new Model.RejectResult { Success = true, Message = $"Numarul de inventar {asset.InvNo}/{asset.SubNo} a fost refuzat." };
+		//		}
+		//		catch (Exception ex)
+		//		{
 
-					return new Model.RejectResult { Success = false, Message = ex.Message };
-				}
+		//			return new Model.RejectResult { Success = false, Message = ex.Message };
+		//		}
 
-			}
-			else
-			{
-				return new Model.RejectResult { Success = false, Message = $"Va rugam sa va autentificati!" };
-			}
-		}
+		//	}
+		//	else
+		//	{
+		//		return new Model.RejectResult { Success = false, Message = $"Va rugam sa va autentificati!" };
+		//	}
+		//}
 
         [HttpPost("clone")]
         public async Task<IActionResult> PostCloneDetail([FromBody] AssetClone asset)
@@ -10248,7 +10248,6 @@ namespace Optima.Fais.Api.Controllers
                 worksheet.Cells[1, 53].Value = "Material";
 
                 worksheet.Cells[1, 54].Value = "Material Description";
-                worksheet.Cells[1, 55].Value = "Supracategorie TRN";
                 worksheet.Cells[1, 56].Value = "Username";
                 worksheet.Cells[1, 57].Value = "Company";
                 worksheet.Cells[1, 58].Value = "CostCenter HR";
@@ -10364,7 +10363,6 @@ namespace Optima.Fais.Api.Controllers
                     worksheet.Cells[recordIndex, 52].Value = item.Asset.Employee != null ? item.Asset.Employee.InternalCode : "";
                     worksheet.Cells[recordIndex, 53].Value = item.Asset.Material != null ? item.Asset.Material.Code : "";
                     worksheet.Cells[recordIndex, 54].Value = item.Asset.Material != null ? item.Asset.Material.Name : "";
-                    worksheet.Cells[recordIndex, 55].Value = item.Asset.InterCompany != null ? item.Asset.InterCompany.Name : "";
                     worksheet.Cells[recordIndex, 56].Value = item.Asset.Employee != null ? item.Asset.Employee.FirstName + " " + item.Asset.Employee.LastName : "";
                     worksheet.Cells[recordIndex, 57].Value = "";
                     worksheet.Cells[recordIndex, 58].Value = "";

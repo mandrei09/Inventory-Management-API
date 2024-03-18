@@ -69,13 +69,9 @@ namespace Optima.Fais.Model
 
         public virtual Employee EmployeeFinal { get; set; }
 
-        public int? InterCompanyIdInitial { get; set; }
+        
 
-        public virtual InterCompany InterCompanyInitial { get; set; }
-
-        public int? InterCompanyIdFinal { get; set; }
-
-        public virtual InterCompany InterCompanyFinal { get; set; }
+        
 
         public int? PartnerIdInitial { get; set; }
 

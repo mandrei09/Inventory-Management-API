@@ -11,7 +11,6 @@ namespace Optima.Fais.Model
         public string CostCenterCode { get; set; }
         public string CostCenterName { get; set; }
         public string AdmCenter { get; set; }
-        public string Area { get; set; }
         public string CountryCode { get; set; }
         public string CountryName { get; set; }
         public string DepartmentCode { get; set; }
