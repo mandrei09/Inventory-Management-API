@@ -1031,7 +1031,6 @@ namespace Optima.Fais.EfRepository
                     EndDate = null,
                     StartDate = DateTime.Now,
                     Info = offer.Info,
-                    InterCompanyId = offer.InterCompanyId,
                     IsAccepted = false,
                     IsDeleted = false,
                     ModifiedAt = DateTime.Now,
@@ -1816,7 +1815,6 @@ namespace Optima.Fais.EfRepository
                         EndDate = request.StartDate,
                         StartDate = request.EndDate,
                         Info = request.Info,
-                        InterCompanyId = null,
                         IsAccepted = false,
                         IsDeleted = false,
                         ModifiedAt = DateTime.Now,
@@ -2023,7 +2021,6 @@ namespace Optima.Fais.EfRepository
                     // EndDate = orderDto.EndDate,
                     StartDate = DateTime.Now,
                     Info = offer.Info,
-                    InterCompanyId = offer.InterCompanyId,
                     IsAccepted = false,
                     IsDeleted = false,
                     ModifiedAt = DateTime.Now,
@@ -3139,7 +3136,6 @@ namespace Optima.Fais.EfRepository
                         EndDate = request.StartDate,
                         StartDate = request.EndDate,
                         Info = request.Info,
-                        InterCompanyId = null,
                         IsAccepted = false,
                         IsDeleted = true,
                         ModifiedAt = DateTime.Now,
@@ -3364,7 +3360,6 @@ namespace Optima.Fais.EfRepository
                     EndDate = null,
                     StartDate = DateTime.Now,
                     Info = offer.Info,
-                    InterCompanyId = offer.InterCompanyId,
                     IsAccepted = true,
                     IsDeleted = true,
                     ModifiedAt = DateTime.Now,
@@ -4916,7 +4911,7 @@ namespace Optima.Fais.EfRepository
                 //        .ThenInclude(m => m.MasterType)
                 .Include(b => b.Employee)
                 .Include(b => b.AccMonth)
-                .Include(b => b.InterCompany)
+                
                 .Include(b => b.Partner)
                 .Include(b => b.Account)
                 .Include(b => b.CostCenter)

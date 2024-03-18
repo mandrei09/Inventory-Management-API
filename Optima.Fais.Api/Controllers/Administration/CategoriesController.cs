@@ -68,16 +68,12 @@ namespace Optima.Fais.Api.Controllers
                 //First add the headers
                 worksheet.Cells[1, 1].Value = "Cod Categorie";
                 worksheet.Cells[1, 2].Value = "Categorie";
-                worksheet.Cells[1, 3].Value = "Cod SupraCategorie";
-				worksheet.Cells[1, 4].Value = "SupraCategorie";
 
 				int recordIndex = 2;
                 foreach (var item in interCompanies)
                 {
                     worksheet.Cells[recordIndex, 1].Value = item.Code;
                     worksheet.Cells[recordIndex, 2].Value = item.Name;
-                    worksheet.Cells[recordIndex, 3].Value = item.InterCompany != null ? item.InterCompany.Code : "";
-					worksheet.Cells[recordIndex, 4].Value = item.InterCompany != null ? item.InterCompany.Name : "";
 					recordIndex++;
                 }
 

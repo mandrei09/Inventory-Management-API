@@ -86,33 +86,33 @@ namespace Optima.Fais.Api.Controllers
             }
         }
 
-        [HttpPost]
-        [Route("add")]
-        public async virtual Task<IActionResult> AddAccountancy([FromBody] Dto.AccountancyAdd offerMatAdd)
-        {
-            Model.Accountancy accountancy = null;
+        //[HttpPost]
+        //[Route("add")]
+        //public async virtual Task<IActionResult> AddAccountancy([FromBody] Dto.AccountancyAdd offerMatAdd)
+        //{
+        //    Model.Accountancy accountancy = null;
 
-            for (int i = 0; i < offerMatAdd.InterCompanyIds.Length; i++)
-            {
-                var interCompany = await _context.Set<Model.InterCompany>().Where(u => u.Id == offerMatAdd.InterCompanyIds[i]).FirstOrDefaultAsync();
+        //    for (int i = 0; i < offerMatAdd.InterCompanyIds.Length; i++)
+        //    {
+        //        var interCompany = await _context.Set<Model.InterCompany>().Where(u => u.Id == offerMatAdd.InterCompanyIds[i]).FirstOrDefaultAsync();
 
 
-                accountancy = new Model.Accountancy()
-                {
-                    AccountId = offerMatAdd.AccountId,
-                    // InterCompanyId = offerMatAdd.InterCompanyIds[i],
-                    ExpAccountId = offerMatAdd.ExpAccountId,
-                    AssetCategoryId = offerMatAdd.AssetCategoryId,
-                    AssetTypeId = offerMatAdd.AssetTypeId
-                };
+        //        accountancy = new Model.Accountancy()
+        //        {
+        //            AccountId = offerMatAdd.AccountId,
+        //            // InterCompanyId = offerMatAdd.InterCompanyIds[i],
+        //            ExpAccountId = offerMatAdd.ExpAccountId,
+        //            AssetCategoryId = offerMatAdd.AssetCategoryId,
+        //            AssetTypeId = offerMatAdd.AssetTypeId
+        //        };
 
-                _context.Add(accountancy);
+        //        _context.Add(accountancy);
 
-                _context.SaveChanges();
-            }
+        //        _context.SaveChanges();
+        //    }
 
-            return Ok(StatusCode(200));
-        }
+        //    return Ok(StatusCode(200));
+        //}
 
         [HttpDelete("remove/{id}")]
         public virtual IActionResult DeleteOfferMaterial(int id)
@@ -160,8 +160,6 @@ namespace Optima.Fais.Api.Controllers
 				worksheet.Cells[1, 8].Value = "SubCategorie";
 				worksheet.Cells[1, 9].Value = "Cod Categorie";
 				worksheet.Cells[1, 10].Value = "Categorie";
-				worksheet.Cells[1, 11].Value = "Cod SupraCategorie";
-				worksheet.Cells[1, 12].Value = "SupraCategorie";
 				worksheet.Cells[1, 13].Value = "Value";
 
 				int recordIndex = 2;
@@ -177,8 +175,6 @@ namespace Optima.Fais.Api.Controllers
 					worksheet.Cells[recordIndex, 8].Value = item.SubCategory != null ? item.SubCategory.Name : "";
 					worksheet.Cells[recordIndex, 9].Value = item.SubCategory != null && item.SubCategory.Category != null ? item.SubCategory.Category.Code : "";
 					worksheet.Cells[recordIndex, 10].Value = item.SubCategory != null && item.SubCategory.Category != null ? item.SubCategory.Category.Name : "";
-					worksheet.Cells[recordIndex, 11].Value = item.SubCategory != null && item.SubCategory.Category != null && item.SubCategory.Category.InterCompany != null ? item.SubCategory.Category.InterCompany.Code : "";
-					worksheet.Cells[recordIndex, 12].Value = item.SubCategory != null && item.SubCategory.Category != null && item.SubCategory.Category.InterCompany != null ? item.SubCategory.Category.InterCompany.Name : "";
 					worksheet.Cells[recordIndex, 13].Value = item.Value;
 					recordIndex++;
 				}

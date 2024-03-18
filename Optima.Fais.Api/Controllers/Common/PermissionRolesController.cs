@@ -407,8 +407,6 @@ namespace Optima.Fais.Api.Controllers
                         EmployeeIdFinal = offer.EmployeeId,
                         InfoIni = offer.Info,
                         InfoFin = offer.Info,
-                        InterCompanyIdInitial = offer.InterCompanyId,
-                        InterCompanyIdFinal = offer.InterCompanyId,
                         IsAccepted = false,
                         IsDeleted = false,
                         ModifiedAt = DateTime.Now,

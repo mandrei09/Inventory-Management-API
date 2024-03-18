@@ -8,7 +8,6 @@ namespace Optima.Fais.Dto
         public string Code { get; set; }
         public string Name { get; set; }
         public CodeNameEntity CategoryEN { get; set; }
-        public CodeNameEntity InterCompanyEN { get; set; }
         public DateTime ModifiedAt { get; set; }
     }
 }

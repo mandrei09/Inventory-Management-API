@@ -462,7 +462,6 @@ namespace Optima.Fais.EfRepository
                     EndDate = request.StartDate,
                     StartDate = request.EndDate,
                     Info = request.Info,
-                    InterCompanyId = null,
                     IsAccepted = false,
                     IsDeleted = false,
                     ModifiedAt = DateTime.Now,
@@ -512,8 +511,6 @@ namespace Optima.Fais.EfRepository
                     EmployeeIdFinal = offerSave.EmployeeId,
                     InfoIni = request.Info,
                     InfoFin = request.Info,
-                    InterCompanyIdInitial = null,
-                    InterCompanyIdFinal = null,
                     IsAccepted = false,
                     IsDeleted = false,
                     ModifiedAt = DateTime.Now,
@@ -586,7 +583,7 @@ namespace Optima.Fais.EfRepository
                 //        .ThenInclude(m => m.MasterType)
                 .Include(b => b.Employee)
                 .Include(b => b.AccMonth)
-                .Include(b => b.InterCompany)
+                
                 .Include(b => b.Partner)
                 .Include(b => b.Account)
                 .Include(b => b.CostCenter)
@@ -765,7 +762,6 @@ namespace Optima.Fais.EfRepository
                     .Include(e => e.Partner)
                     .Include(e => e.Account)
                     .Include(e => e.AccMonth)
-                    .Include(e => e.InterCompany)
                     .Where(a => a.Id == budgetId).Single();
 
                 if (budget.Employee != null && budget.Employee.Email != "" && budget.Employee.Email != null)
@@ -817,7 +813,6 @@ namespace Optima.Fais.EfRepository
                                                             <tr>
                                                              <td class=""description"">" + budget.Employee.FirstName + " " + budget.Employee.LastName + @" </td >
                                                              <td class=""description"">" + budget.AccMonth.Year + @" </ td >
-                                                             <td class=""description"">" + budget.InterCompany.Name + @" </ td >
                                                              <td class=""description"">" + budget.ValueIni + @" </ td >
                                                              <td class=""description"">" + budget.Quantity + @" </ td >
                                                              <td class=""description"">" + budget.Info + @" </ td >

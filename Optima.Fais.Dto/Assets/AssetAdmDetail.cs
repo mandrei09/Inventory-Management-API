@@ -16,7 +16,6 @@
         public CodeNameEntity AssetNature { get; set; }
         public CodeNameEntity BudgetManager { get; set; }
         public CodeNameEntity Project { get; set; }
-        public CodeNameEntity InterCompany { get; set; }
         public CodeNameEntity AdmCenter { get; set; }
         public CodeNameEntity CostCenter { get; set; }
         public CodeNameEntity Region { get; set; }

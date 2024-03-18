@@ -20,13 +20,6 @@ namespace Optima.Fais.EfRepository
             Expression<Func<Model.SubCategory, bool>> predicate = null;
             if ((filter != null) && (filter.Length > 0)) predicate = ExpressionHelper.GetAllPartsFilter(filter, _filterPredicate);
 
-            if ((assetTypeIds != null) && (assetTypeIds.Count > 0))
-            {
-                predicate = predicate != null
-                    ? ExpressionHelper.And<Model.SubCategory>(predicate, r => assetTypeIds.Contains(r.Category.InterCompany.AssetTypeId.Value))
-                    : r => assetTypeIds.Contains(r.Category.InterCompany.AssetTypeId.Value);
-            }
-
             if ((categoryIds != null) && (categoryIds.Count > 0))
             {
                 predicate = predicate != null

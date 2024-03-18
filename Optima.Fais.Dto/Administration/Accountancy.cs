@@ -5,7 +5,6 @@ namespace Optima.Fais.Dto
     public class Accountancy
     {
         public int Id { get; set; }
-        public CodeNameEntity InterCompany { get; set; }
         public CodeNameEntity Account { get; set; }
         public CodeNameEntity ExpAccount { get; set; }
         public CodeNameEntity AssetType { get; set; }

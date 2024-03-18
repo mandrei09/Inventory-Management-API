@@ -38,10 +38,6 @@ namespace Optima.Fais.Dto
 
         public MonthEntity AccMonth { get; set; }
 
-        public CodeNameEntity InterCompanyInitial { get; set; }
-
-        public CodeNameEntity InterCompanyFinal { get; set; }
-
         public CodePartnerEntity PartnerInitial { get; set; }
 
         public CodePartnerEntity PartnerFinal { get; set; }

@@ -631,8 +631,6 @@ namespace Optima.Fais.Api.Controllers
                     EmployeeIdInitial = budget.EmployeeId,
                     InfoIni = budget.Info,
                     InfoFin = employee[0].Reason,
-                    InterCompanyIdFinal = budget.InterCompanyId,
-                    InterCompanyIdInitial = budget.InterCompanyId,
                     IsAccepted = employee[0].Accepted,
                     IsDeleted = false,
                     ModifiedAt = DateTime.UtcNow,

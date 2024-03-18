@@ -86,8 +86,6 @@ namespace Optima.Fais.Api.Controllers
                 worksheet.Cells[1, 2].Value = "Descriere";
                 worksheet.Cells[1, 3].Value = "Cod Categorie";
 				worksheet.Cells[1, 4].Value = "Categorie";
-				worksheet.Cells[1, 5].Value = "Cod SupraCategorie";
-				worksheet.Cells[1, 6].Value = "SupraCategorie";
 
 				int recordIndex = 2;
                 foreach (var item in interCompanies)
@@ -96,8 +94,6 @@ namespace Optima.Fais.Api.Controllers
 					worksheet.Cells[recordIndex, 2].Value = item.Name;
 					worksheet.Cells[recordIndex, 3].Value = item.Category != null ? item.Category.Code : "";
 					worksheet.Cells[recordIndex, 4].Value = item.Category != null ? item.Category.Name : "";
-					worksheet.Cells[recordIndex, 5].Value = item.Category != null && item.Category.InterCompany != null ? item.Category.InterCompany.Code : "";
-					worksheet.Cells[recordIndex, 6].Value = item.Category != null && item.Category.InterCompany != null ? item.Category.InterCompany.Name : "";
 					recordIndex++;
                 }
 
@@ -105,8 +101,7 @@ namespace Optima.Fais.Api.Controllers
                 worksheet.Column(2).AutoFit();
                 worksheet.Column(3).AutoFit();
 				worksheet.Column(4).AutoFit();
-				worksheet.Column(5).AutoFit();
-				worksheet.Column(6).AutoFit();
+
 
 				using (var cells = worksheet.Cells[1, 1, 1, 6])
                 {

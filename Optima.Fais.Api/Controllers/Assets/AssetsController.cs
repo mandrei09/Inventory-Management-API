@@ -5126,7 +5126,6 @@ namespace Optima.Fais.Api.Controllers
                 worksheet.Cells[1, 38].Value = "Run change";
                 worksheet.Cells[1, 39].Value = "Project";
                 worksheet.Cells[1, 40].Value = "Client";
-                worksheet.Cells[1, 41].Value = "Inter Company";
                 worksheet.Cells[1, 42].Value = "IT/NON-IT";
                 worksheet.Cells[1, 43].Value = "Asset Category";
 
@@ -5176,7 +5175,6 @@ namespace Optima.Fais.Api.Controllers
                     worksheet.Cells[recordIndex, 38].Value = item.Dimension != null ? item.Dimension.Length : "";
                     worksheet.Cells[recordIndex, 39].Value = item.Adm.Project != null ? item.Adm.Project.Name : "";
                     worksheet.Cells[recordIndex, 40].Value = item.Uom != null ? item.Uom.Name : "";
-                    worksheet.Cells[recordIndex, 41].Value = item.Adm.InterCompany != null ? item.Adm.InterCompany.Name : "";
 					worksheet.Cells[recordIndex, 42].Value = item.Company != null ? item.Company.Name : "";
 					worksheet.Cells[recordIndex, 43].Value = item.Adm.AssetCategory != null ? item.Adm.AssetCategory.Name : "";
 

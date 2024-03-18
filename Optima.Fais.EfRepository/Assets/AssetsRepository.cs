@@ -6631,7 +6631,6 @@ namespace Optima.Fais.EfRepository
             asset.InsuranceCategoryId = oldAsset.InsuranceCategoryId;
             asset.BrandId = oldAsset.BrandId;
             asset.ModelId = oldAsset.ModelId;
-            asset.InterCompanyId = oldAsset.InterCompanyId;
             asset.ProjectId = oldAsset.ProjectId;
             asset.InvoiceDate = oldAsset.InvoiceDate;
             asset.PODate = oldAsset.PODate;
@@ -6831,8 +6830,6 @@ namespace Optima.Fais.EfRepository
             assetAdmMD.InsuranceCategoryId = assetAdmMDOld.InsuranceCategoryId;
             assetAdmMD.BrandId = assetAdmMDOld.BrandId;
             assetAdmMD.ModelId = assetAdmMDOld.ModelId;
-
-            assetAdmMD.InterCompanyId = assetAdmMDOld.InterCompanyId;
             assetAdmMD.ProjectId = assetAdmMDOld.ProjectId;
             assetAdmMD.DivisionId = assetAdmMDOld.DivisionId;
             assetAdmMD.AdmCenterId = assetAdmMDOld.AdmCenterId;
@@ -11439,7 +11436,6 @@ namespace Optima.Fais.EfRepository
                     InsuranceCategoryId = null,
                     BrandId = null,
                     ModelId = null,
-                    InterCompanyId = null,
                     ProjectId = null,
                     InvoiceDate = assetImport.UsageStartDate,
                     RemovalDate = assetImport.RemovalDate,
@@ -11649,7 +11645,6 @@ namespace Optima.Fais.EfRepository
                     InsuranceCategoryId = null,
                     BrandId = null,
                     ModelId = null,
-                    InterCompanyId = null,
                     ProjectId = null,
                     DivisionId = costCenter != null ? costCenter.DivisionId : null,
                     AdmCenterId = admCenter != null ? admCenter.Id : (int?)null
@@ -22003,11 +21998,6 @@ namespace Optima.Fais.EfRepository
                 query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Asset.CompanyId == id; }, assetFilter.CompanyIds));
             }
 
-            if ((assetFilter.InterCompanyIds != null) && (assetFilter.InterCompanyIds.Count > 0))
-            {
-                query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Adm.InterCompanyId == id; }, assetFilter.InterCompanyIds));
-            }
-
             if ((assetFilter.InsuranceCategoryIds != null) && (assetFilter.InsuranceCategoryIds.Count > 0))
             {
                 query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Adm.InsuranceCategoryId == id; }, assetFilter.InsuranceCategoryIds));
@@ -22568,11 +22558,6 @@ namespace Optima.Fais.EfRepository
                 query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Asset.CompanyId == id; }, assetFilter.CompanyIds));
             }
 
-            if ((assetFilter.InterCompanyIds != null) && (assetFilter.InterCompanyIds.Count > 0))
-            {
-                query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Adm.InterCompanyId == id; }, assetFilter.InterCompanyIds));
-            }
-
             if ((assetFilter.InsuranceCategoryIds != null) && (assetFilter.InsuranceCategoryIds.Count > 0))
             {
                 query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Adm.InsuranceCategoryId == id; }, assetFilter.InsuranceCategoryIds));
@@ -22952,11 +22937,6 @@ namespace Optima.Fais.EfRepository
                 query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Asset.CompanyId == id; }, assetFilter.CompanyIds));
             }
 
-            if ((assetFilter.InterCompanyIds != null) && (assetFilter.InterCompanyIds.Count > 0))
-            {
-                query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Adm.InterCompanyId == id; }, assetFilter.InterCompanyIds));
-            }
-
             if ((assetFilter.InsuranceCategoryIds != null) && (assetFilter.InsuranceCategoryIds.Count > 0))
             {
                 query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Adm.InsuranceCategoryId == id; }, assetFilter.InsuranceCategoryIds));
@@ -23334,11 +23314,6 @@ namespace Optima.Fais.EfRepository
             if ((assetFilter.CompanyIds != null) && (assetFilter.CompanyIds.Count > 0))
             {
                 query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Asset.CompanyId == id; }, assetFilter.CompanyIds));
-            }
-
-            if ((assetFilter.InterCompanyIds != null) && (assetFilter.InterCompanyIds.Count > 0))
-            {
-                query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Adm.InterCompanyId == id; }, assetFilter.InterCompanyIds));
             }
 
             if ((assetFilter.InsuranceCategoryIds != null) && (assetFilter.InsuranceCategoryIds.Count > 0))
@@ -24050,11 +24025,6 @@ namespace Optima.Fais.EfRepository
                 query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Asset.CompanyId == id; }, assetFilter.CompanyIds));
             }
 
-            if ((assetFilter.InterCompanyIds != null) && (assetFilter.InterCompanyIds.Count > 0))
-            {
-                query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Adm.InterCompanyId == id; }, assetFilter.InterCompanyIds));
-            }
-
             if ((assetFilter.InsuranceCategoryIds != null) && (assetFilter.InsuranceCategoryIds.Count > 0))
             {
                 query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Adm.InsuranceCategoryId == id; }, assetFilter.InsuranceCategoryIds));
@@ -24416,11 +24386,6 @@ namespace Optima.Fais.EfRepository
             if ((assetFilter.CompanyIds != null) && (assetFilter.CompanyIds.Count > 0))
             {
                 query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Asset.CompanyId == id; }, assetFilter.CompanyIds));
-            }
-
-            if ((assetFilter.InterCompanyIds != null) && (assetFilter.InterCompanyIds.Count > 0))
-            {
-                query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Adm.InterCompanyId == id; }, assetFilter.InterCompanyIds));
             }
 
             if ((assetFilter.InsuranceCategoryIds != null) && (assetFilter.InsuranceCategoryIds.Count > 0))
@@ -25835,11 +25800,6 @@ namespace Optima.Fais.EfRepository
 				query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Asset.CompanyId == id; }, assetFilter.CompanyIds));
 			}
 
-			if ((assetFilter.InterCompanyIds != null) && (assetFilter.InterCompanyIds.Count > 0))
-			{
-				query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Adm.InterCompanyId == id; }, assetFilter.InterCompanyIds));
-			}
-
 			if ((assetFilter.InsuranceCategoryIds != null) && (assetFilter.InsuranceCategoryIds.Count > 0))
 			{
 				query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Adm.InsuranceCategoryId == id; }, assetFilter.InsuranceCategoryIds));
@@ -26379,11 +26339,6 @@ namespace Optima.Fais.EfRepository
 			if ((assetFilter.CompanyIds != null) && (assetFilter.CompanyIds.Count > 0))
 			{
 				query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Asset.CompanyId == id; }, assetFilter.CompanyIds));
-			}
-
-			if ((assetFilter.InterCompanyIds != null) && (assetFilter.InterCompanyIds.Count > 0))
-			{
-				query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Adm.InterCompanyId == id; }, assetFilter.InterCompanyIds));
 			}
 
 			if ((assetFilter.InsuranceCategoryIds != null) && (assetFilter.InsuranceCategoryIds.Count > 0))
@@ -28103,11 +28058,6 @@ namespace Optima.Fais.EfRepository
                 query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Asset.CompanyId == id; }, assetFilter.CompanyIds));
             }
 
-            if ((assetFilter.InterCompanyIds != null) && (assetFilter.InterCompanyIds.Count > 0))
-            {
-                query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Adm.InterCompanyId == id; }, assetFilter.InterCompanyIds));
-            }
-
             if ((assetFilter.InsuranceCategoryIds != null) && (assetFilter.InsuranceCategoryIds.Count > 0))
             {
                 query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Adm.InsuranceCategoryId == id; }, assetFilter.InsuranceCategoryIds));
@@ -28509,11 +28459,6 @@ namespace Optima.Fais.EfRepository
 			if ((assetFilter.CompanyIds != null) && (assetFilter.CompanyIds.Count > 0))
 			{
 				query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Asset.CompanyId == id; }, assetFilter.CompanyIds));
-			}
-
-			if ((assetFilter.InterCompanyIds != null) && (assetFilter.InterCompanyIds.Count > 0))
-			{
-				query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Adm.InterCompanyId == id; }, assetFilter.InterCompanyIds));
 			}
 
 			if ((assetFilter.InsuranceCategoryIds != null) && (assetFilter.InsuranceCategoryIds.Count > 0))
@@ -29338,11 +29283,6 @@ namespace Optima.Fais.EfRepository
                 query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Asset.CompanyId == id; }, assetFilter.CompanyIds));
             }
 
-            if ((assetFilter.InterCompanyIds != null) && (assetFilter.InterCompanyIds.Count > 0))
-            {
-                query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Adm.InterCompanyId == id; }, assetFilter.InterCompanyIds));
-            }
-
             if ((assetFilter.InsuranceCategoryIds != null) && (assetFilter.InsuranceCategoryIds.Count > 0))
             {
                 query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Adm.InsuranceCategoryId == id; }, assetFilter.InsuranceCategoryIds));
@@ -29610,11 +29550,6 @@ namespace Optima.Fais.EfRepository
             if ((assetFilter.CompanyIds != null) && (assetFilter.CompanyIds.Count > 0))
             {
                 query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Asset.CompanyId == id; }, assetFilter.CompanyIds));
-            }
-
-            if ((assetFilter.InterCompanyIds != null) && (assetFilter.InterCompanyIds.Count > 0))
-            {
-                query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Adm.InterCompanyId == id; }, assetFilter.InterCompanyIds));
             }
 
             if ((assetFilter.InsuranceCategoryIds != null) && (assetFilter.InsuranceCategoryIds.Count > 0))
@@ -29890,11 +29825,6 @@ namespace Optima.Fais.EfRepository
                 query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Asset.CompanyId == id; }, assetFilter.CompanyIds));
             }
 
-            if ((assetFilter.InterCompanyIds != null) && (assetFilter.InterCompanyIds.Count > 0))
-            {
-                query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Adm.InterCompanyId == id; }, assetFilter.InterCompanyIds));
-            }
-
             if ((assetFilter.InsuranceCategoryIds != null) && (assetFilter.InsuranceCategoryIds.Count > 0))
             {
                 query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Adm.InsuranceCategoryId == id; }, assetFilter.InsuranceCategoryIds));
@@ -30157,11 +30087,6 @@ namespace Optima.Fais.EfRepository
             if ((assetFilter.CompanyIds != null) && (assetFilter.CompanyIds.Count > 0))
             {
                 query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Asset.CompanyId == id; }, assetFilter.CompanyIds));
-            }
-
-            if ((assetFilter.InterCompanyIds != null) && (assetFilter.InterCompanyIds.Count > 0))
-            {
-                query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Adm.InterCompanyId == id; }, assetFilter.InterCompanyIds));
             }
 
             if ((assetFilter.InsuranceCategoryIds != null) && (assetFilter.InsuranceCategoryIds.Count > 0))
@@ -30488,11 +30413,6 @@ namespace Optima.Fais.EfRepository
             if ((assetFilter.CompanyIds != null) && (assetFilter.CompanyIds.Count > 0))
             {
                 query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Asset.CompanyId == id; }, assetFilter.CompanyIds));
-            }
-
-            if ((assetFilter.InterCompanyIds != null) && (assetFilter.InterCompanyIds.Count > 0))
-            {
-                query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Adm.InterCompanyId == id; }, assetFilter.InterCompanyIds));
             }
 
             if ((assetFilter.InsuranceCategoryIds != null) && (assetFilter.InsuranceCategoryIds.Count > 0))
@@ -30874,11 +30794,6 @@ namespace Optima.Fais.EfRepository
             if ((assetFilter.CompanyIds != null) && (assetFilter.CompanyIds.Count > 0))
             {
                 query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Asset.CompanyId == id; }, assetFilter.CompanyIds));
-            }
-
-            if ((assetFilter.InterCompanyIds != null) && (assetFilter.InterCompanyIds.Count > 0))
-            {
-                query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Adm.InterCompanyId == id; }, assetFilter.InterCompanyIds));
             }
 
             if ((assetFilter.InsuranceCategoryIds != null) && (assetFilter.InsuranceCategoryIds.Count > 0))
@@ -35356,7 +35271,6 @@ namespace Optima.Fais.EfRepository
                     InsuranceCategoryId = null,
                     // Brand = brand,
                     // ModelId = 148,
-                    InterCompanyId = null,
                     ProjectId = null,
                     InvoiceDate = null,
                     RemovalDate = null,
@@ -35574,7 +35488,6 @@ namespace Optima.Fais.EfRepository
                     InsuranceCategoryId = null,
                     // BrandId = brand.Id,
                     // ModelId = 148,
-                    InterCompanyId = null,
                     ProjectId = null,
                     DivisionId = null
                 };

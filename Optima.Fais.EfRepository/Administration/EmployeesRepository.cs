@@ -603,11 +603,6 @@ namespace Optima.Fais.EfRepository
                 query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Asset.CompanyId == id; }, assetFilter.CompanyIds));
             }
 
-            if ((assetFilter.InterCompanyIds != null) && (assetFilter.InterCompanyIds.Count > 0))
-            {
-                query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Adm.InterCompanyId == id; }, assetFilter.InterCompanyIds));
-            }
-
             if ((assetFilter.InsuranceCategoryIds != null) && (assetFilter.InsuranceCategoryIds.Count > 0))
             {
                 query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Adm.InsuranceCategoryId == id; }, assetFilter.InsuranceCategoryIds));

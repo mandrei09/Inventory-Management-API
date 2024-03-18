@@ -4140,8 +4140,6 @@ namespace Optima.Fais.Api.Controllers
 										EmployeeIdFinal = order.EmployeeId,
 										InfoIni = order.Info,
 										InfoFin = order.Info,
-										InterCompanyIdInitial = order.InterCompanyId,
-										InterCompanyIdFinal = order.InterCompanyId,
 										IsAccepted = false,
 										IsDeleted = false,
 										ModifiedAt = DateTime.Now,

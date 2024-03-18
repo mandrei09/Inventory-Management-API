@@ -44,7 +44,6 @@ namespace Optima.Fais.Dto
         public string RunChange { get; set; }
         public string Project { get; set; }
         public string Client { get; set; }
-        public string InterCompany { get; set; }
         public string Uom { get; set; }
         public string AssetCategory { get; set; }
     }
