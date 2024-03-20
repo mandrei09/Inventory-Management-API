@@ -72,10 +72,6 @@ namespace Optima.Fais.Model
 
         public virtual Room Room { get; set; }
 
-        public int? StorageId { get; set; }
-
-        public virtual Storage Storage { get; set; }
-
 		public int? ArticleId { get; set; }
 
 		public virtual Article Article { get; set; }

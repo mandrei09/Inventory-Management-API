@@ -53,12 +53,12 @@ namespace Optima.Fais.EfRepository
                     : r => !exceptMaterialIds.Contains(r.Id);
             }
 
-            if ((storageInitialIds != null) && (storageInitialIds.Count > 0))
-            {
-                predicate = predicate != null
-                    ? ExpressionHelper.And<Model.Stock>(predicate, r => storageInitialIds.Contains(r.StorageInitialId))
-                    : r => storageInitialIds.Contains(r.StorageInitialId);
-            }
+            //if ((storageInitialIds != null) && (storageInitialIds.Count > 0))
+            //{
+            //    predicate = predicate != null
+            //        ? ExpressionHelper.And<Model.Stock>(predicate, r => storageInitialIds.Contains(r.StorageInitialId))
+            //        : r => storageInitialIds.Contains(r.StorageInitialId);
+            //}
 
             predicate = predicate != null
                     ? ExpressionHelper.And<Model.Stock>(predicate, r => r.Imported == showStock)

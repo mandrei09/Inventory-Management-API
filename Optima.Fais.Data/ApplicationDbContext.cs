@@ -2038,20 +2038,6 @@ namespace Optima.Fais.Data
                 .IsRequired()
                 .HasMaxLength(100);
 
-            //Storage
-            builder.Entity<Storage>()
-                .ToTable("Storage")
-                .Property(p => p.Id)
-                .HasColumnName("StorageId");
-            builder.Entity<Storage>()
-                .Property(p => p.Code)
-                .IsRequired()
-                .HasMaxLength(30);
-            builder.Entity<Storage>()
-                .Property(p => p.Name)
-                .IsRequired()
-                .HasMaxLength(100);
-
             //Plant
             builder.Entity<Plant>()
                 .ToTable("Plant")
@@ -4217,20 +4203,6 @@ namespace Optima.Fais.Data
                .HasOne(a => a.Division)
                .WithMany()
                .HasForeignKey(a => a.DivisionId);
-
-            // EmployeeStorage
-            builder.Entity<EmployeeStorage>()
-                .ToTable("EmployeeStorage")
-                .Property(p => p.Id)
-                .HasColumnName("Id");
-            builder.Entity<EmployeeStorage>()
-               .HasOne(a => a.Employee)
-               .WithMany()
-               .HasForeignKey(a => a.EmployeeId);
-            builder.Entity<EmployeeStorage>()
-               .HasOne(a => a.Storage)
-               .WithMany()
-               .HasForeignKey(a => a.StorageId);
 
             // RequestBudgetForecast
             builder.Entity<RequestBudgetForecast>()

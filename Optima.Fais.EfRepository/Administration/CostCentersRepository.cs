@@ -22,8 +22,7 @@ namespace Optima.Fais.EfRepository
                 c.Region.Name.Contains(filter) ||
                 c.Administration.Name.Contains(filter) ||
                 c.Location.Name.Contains(filter) ||
-                c.AdmCenter.Name.Contains(filter) ||
-                c.Storage.Code.Equals(filter)); })
+                c.AdmCenter.Name.Contains(filter)); })
         { }
 
         private Expression<Func<Model.CostCenter, bool>> GetFiltersPredicate(string filter, List<int> administrationIds, List<int> admCenterIds, List<int?> divisionIds, List<int?> departmentIds, List<int> locationIds, List<int> costCenterIds, List<int?> exceptCostCenterIds, bool fromStock)

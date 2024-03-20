@@ -13104,8 +13104,8 @@ namespace Optima.Fais.Api.Controllers
                         Model.Partner partner = null;
                         Model.PartnerLocation partnerLocation = null;
                         Model.Stock stock = null;
-                        Model.Storage storage = null;
-                        Model.Storage storageInitial = null;
+                        //Model.Storage storage = null;
+                        //Model.Storage storageInitial = null;
                         Model.Plant plantInitial = null;
                         Model.Plant plantActual = null;
 
@@ -13146,39 +13146,39 @@ namespace Optima.Fais.Api.Controllers
                             }
 
 
-                            if (saveStockResult.Data.E_OutPut[c].Storage_Location_Initial != "")
-                            {
-                                storageInitial = _context.Set<Model.Storage>().Where(com => com.Code.Trim() == saveStockResult.Data.E_OutPut[c].Storage_Location_Initial.Trim()).FirstOrDefault();
+                            //if (saveStockResult.Data.E_OutPut[c].Storage_Location_Initial != "")
+                            //{
+                            //    storageInitial = _context.Set<Model.Storage>().Where(com => com.Code.Trim() == saveStockResult.Data.E_OutPut[c].Storage_Location_Initial.Trim()).FirstOrDefault();
 
-                                if (storageInitial == null)
-                                {
-                                    storageInitial = new Model.Storage()
-                                    {
-                                        Code = saveStockResult.Data.E_OutPut[c].Storage_Location_Initial.Trim(),
-                                        Name = saveStockResult.Data.E_OutPut[c].Storage_Location_Initial.Trim(),
-                                        IsDeleted = false
-                                    };
+                            //    if (storageInitial == null)
+                            //    {
+                            //        storageInitial = new Model.Storage()
+                            //        {
+                            //            Code = saveStockResult.Data.E_OutPut[c].Storage_Location_Initial.Trim(),
+                            //            Name = saveStockResult.Data.E_OutPut[c].Storage_Location_Initial.Trim(),
+                            //            IsDeleted = false
+                            //        };
 
-                                    _context.Add(storageInitial);
-                                }
-                            }
+                            //        _context.Add(storageInitial);
+                            //    }
+                            //}
 
-                            if (saveStockResult.Data.E_OutPut[c].Storage_Location != "")
-                            {
-                                storage = _context.Set<Model.Storage>().Where(com => com.Code.Trim() == saveStockResult.Data.E_OutPut[c].Storage_Location.Trim()).FirstOrDefault();
+                            //if (saveStockResult.Data.E_OutPut[c].Storage_Location != "")
+                            //{
+                            //    storage = _context.Set<Model.Storage>().Where(com => com.Code.Trim() == saveStockResult.Data.E_OutPut[c].Storage_Location.Trim()).FirstOrDefault();
 
-                                if (storage == null)
-                                {
-                                    storage = new Model.Storage()
-                                    {
-                                        Code = saveStockResult.Data.E_OutPut[c].Storage_Location.Trim(),
-                                        Name = saveStockResult.Data.E_OutPut[c].Storage_Location.Trim(),
-                                        IsDeleted = false
-                                    };
+                            //    if (storage == null)
+                            //    {
+                            //        storage = new Model.Storage()
+                            //        {
+                            //            Code = saveStockResult.Data.E_OutPut[c].Storage_Location.Trim(),
+                            //            Name = saveStockResult.Data.E_OutPut[c].Storage_Location.Trim(),
+                            //            IsDeleted = false
+                            //        };
 
-                                    _context.Add(storage);
-                                }
-                            }
+                            //        _context.Add(storage);
+                            //    }
+                            //}
 
 
 
@@ -13368,8 +13368,8 @@ namespace Optima.Fais.Api.Controllers
                                 Invoice = saveStockResult.Data.E_OutPut[c].Invoice,
                                 PlantInitial = plantInitial,
                                 PlantActual = plantActual,
-                                Storage = storage,
-                                StorageInitial = storageInitial
+                                // Storage = storage,
+                                //StorageInitial = storageInitial
                             };
 
 

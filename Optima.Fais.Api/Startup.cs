@@ -259,7 +259,6 @@ namespace Optima.Fais.Api
 			services.AddTransient<IEmployeeCostCentersRepository, EmployeeCostCentersRepository>();
 			services.AddTransient<IEmployeeCompaniesRepository, EmployeeCompaniesRepository>();
 			services.AddTransient<IEmployeeDivisionsRepository, EmployeeDivisionsRepository>();
-			services.AddTransient<IEmployeeStoragesRepository, EmployeeStoragesRepository>();
 			services.AddTransient<IRequestBudgetForecastsRepository, RequestBudgetForecastsRepository>();
 			services.AddTransient<IRequestBudgetForecastMaterialsRepository, RequestBudgetForecastMaterialsRepository>();
 			services.AddTransient<IRequestBFMaterialCostCentersRepository, RequestBFMaterialCostCentersRepository>();
@@ -272,7 +271,6 @@ namespace Optima.Fais.Api
 			services.AddTransient<IPrintLabelsRepository, PrintLabelsRepository>();
 			services.AddTransient<IStocksRepository, StocksRepository>();
 			services.AddTransient<IRatesRepository, RatesRepository>();
-			services.AddTransient<IStoragesRepository, StoragesRepository>();
 			services.AddTransient<IMatrixRepository, MatrixRepository>();
 			services.AddTransient<ILevelsRepository, LevelsRepository>();
 			services.AddTransient<IMatrixLevelsRepository, MatrixLevelsRepository>();

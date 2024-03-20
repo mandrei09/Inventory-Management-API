@@ -3898,8 +3898,6 @@ namespace Optima.Fais.EfRepository
                     .Include(c => c.Administration)
                     .Include(c => c.Division)
                         .ThenInclude(d => d.Department)
-                    .Include(a => a.Storage)
-                        .ThenInclude(p => p.Plant)
                     .Where(a => a.Code == "10RO700310").SingleAsync();
 
 
@@ -4395,8 +4393,6 @@ namespace Optima.Fais.EfRepository
                     .Include(c => c.Administration)
                     .Include(c => c.Division)
                         .ThenInclude(d => d.Department)
-                    .Include(a => a.Storage)
-                        .ThenInclude(p => p.Plant)
                     .Where(a => a.Code == "10RO700310").FirstOrDefaultAsync();
             if (costCenter == null) return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = "Cost-Center-Missing" };
 

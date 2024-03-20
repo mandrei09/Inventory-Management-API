@@ -58,7 +58,7 @@ namespace Optima.Fais.Api.Controllers
                 user = await _userManager.FindByNameAsync(userName);
             }
 
-            storageIds = _context.Set<Model.EmployeeStorage>().AsNoTracking().Where(e => e.EmployeeId == user.EmployeeId && e.IsDeleted == false).Select(c => (int?)c.StorageId).ToList();
+            //storageIds = _context.Set<Model.EmployeeStorage>().AsNoTracking().Where(e => e.EmployeeId == user.EmployeeId && e.IsDeleted == false).Select(c => (int?)c.StorageId).ToList();
 
             if (storageIds.Count == 0)
             {
@@ -115,7 +115,7 @@ namespace Optima.Fais.Api.Controllers
 				user = await _userManager.FindByNameAsync(userName);
 			}
 
-			storageIds = _context.Set<Model.EmployeeStorage>().AsNoTracking().Where(e => e.EmployeeId == user.EmployeeId && e.IsDeleted == false).Select(c => (int?)c.StorageId).ToList();
+			//storageIds = _context.Set<Model.EmployeeStorage>().AsNoTracking().Where(e => e.EmployeeId == user.EmployeeId && e.IsDeleted == false).Select(c => (int?)c.StorageId).ToList();
 
 			if (storageIds.Count == 0)
 			{
@@ -170,7 +170,7 @@ namespace Optima.Fais.Api.Controllers
 				user = await _userManager.FindByNameAsync(userName);
 			}
 
-			storageIds = _context.Set<Model.EmployeeStorage>().AsNoTracking().Where(e => e.EmployeeId == user.EmployeeId && e.IsDeleted == false).Select(c => (int?)c.StorageId).ToList();
+			//storageIds = _context.Set<Model.EmployeeStorage>().AsNoTracking().Where(e => e.EmployeeId == user.EmployeeId && e.IsDeleted == false).Select(c => (int?)c.StorageId).ToList();
 
 			if (storageIds.Count == 0)
 			{
@@ -201,8 +201,8 @@ namespace Optima.Fais.Api.Controllers
 				worksheet.Cells[1, 7].Value = "Cod Material";
 				worksheet.Cells[1, 8].Value = "Plant Initial";
 				worksheet.Cells[1, 9].Value = "Plant";
-				worksheet.Cells[1, 10].Value = "Storage Initial";
-				worksheet.Cells[1, 11].Value = "Storage";
+				//worksheet.Cells[1, 10].Value = "Storage Initial";
+				//worksheet.Cells[1, 11].Value = "Storage";
 				worksheet.Cells[1, 12].Value = "Brand";
 				worksheet.Cells[1, 13].Value = "Cantitate";
 				worksheet.Cells[1, 14].Value = "Short_Description";
@@ -225,8 +225,8 @@ namespace Optima.Fais.Api.Controllers
 					worksheet.Cells[recordIndex, 7].Value = item.Material != null ? item.Material.Code : "";
 					worksheet.Cells[recordIndex, 8].Value = item.PlantInitial != null ? item.PlantInitial.Name : "";
 					worksheet.Cells[recordIndex, 9].Value = item.PlantActual != null ? item.PlantActual.Code : "";
-					worksheet.Cells[recordIndex, 10].Value = item.StorageInitial != null ? item.StorageInitial.Code : "";
-					worksheet.Cells[recordIndex, 11].Value = item.Storage != null ? item.Storage.Code : "";
+					//worksheet.Cells[recordIndex, 10].Value = item.StorageInitial != null ? item.StorageInitial.Code : "";
+					//worksheet.Cells[recordIndex, 11].Value = item.Storage != null ? item.Storage.Code : "";
 					worksheet.Cells[recordIndex, 12].Value = item.Brand != null ? item.Brand.Name : "";
 					worksheet.Cells[recordIndex, 13].Value = item.Quantity;
 					worksheet.Cells[recordIndex, 14].Value = item.Name;

@@ -99,8 +99,6 @@ namespace Optima.Fais.Api
                  .ForMember(i => i.Error, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.Error.Id, Code = i.Error.Code, Name = i.Error.Name }))
                  .ForMember(i => i.PlantInitial, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.PlantInitial.Id, Code = i.PlantInitial.Code, Name = i.PlantInitial.Name }))
                  .ForMember(i => i.PlantActual, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.PlantActual.Id, Code = i.PlantActual.Code, Name = i.PlantActual.Name }))
-                 .ForMember(i => i.StorageInitial, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.StorageInitial.Id, Code = i.StorageInitial.Code, Name = i.StorageInitial.Name }))
-                 .ForMember(i => i.Storage, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.Storage.Id, Code = i.Storage.Code, Name = i.Storage.Name }))
                  .ForMember(i => i.Company, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.Company.Id, Code = i.Company.Code, Name = i.Company.Name }))
                  .ForMember(i => i.Uom, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.Uom.Id, Code = i.Uom.Code, Name = i.Uom.Name }))
                  .ForMember(i => i.Material, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.Material.Id, Code = i.Material.Code, Name = i.Material.Name }))
@@ -2449,8 +2447,6 @@ namespace Optima.Fais.Api
                     .ForMember(i => i.Name, opt => opt.MapFrom(i => i.Name))
                     .ForMember(i => i.Employee, opt => opt.Ignore())
                     .ForMember(i => i.EmployeeId, opt => opt.MapFrom(i => i.EmployeeId));
-            CreateMap<Model.Storage, Dto.Storage>();
-            CreateMap<Dto.Storage, Model.Storage>();
             CreateMap<Model.Level, Dto.Level>();
             CreateMap<Dto.Level, Model.Level>();
             CreateMap<Model.AssetType, Dto.AssetType>();
@@ -2531,7 +2527,6 @@ namespace Optima.Fais.Api
                     //.ForMember(i => i.Employee3, opt => opt.MapFrom(i => new Dto.EmployeeResource { Id = i.Employee3.Id, FirstName = i.Employee3.FirstName, LastName = i.Employee3.LastName, Email = i.Employee3.Email, InternalCode = i.Employee3.InternalCode }))
                     .ForMember(i => i.Administration, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.Administration.Id, Code = i.Administration.Code, Name = i.Administration.Name }))
                     .ForMember(i => i.Company, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.Company.Id, Code = i.Company.Code, Name = i.Company.Name }))
-                    .ForMember(i => i.Storage, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.Storage.Id, Code = i.Storage.Code, Name = i.Storage.Name }))
                     .ForMember(i => i.Room, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.Room.Id, Code = i.Room.Code, Name = i.Room.Name }));
             CreateMap<Dto.CostCenter, Model.CostCenter>()
                     .ForMember(i => i.Id, opt => opt.MapFrom(i => i.Id))
@@ -2558,8 +2553,6 @@ namespace Optima.Fais.Api
                     //.ForMember(i => i.EmployeeId3, opt => opt.MapFrom(i => i.EmployeeId3))
                     .ForMember(i => i.Administration, opt => opt.Ignore())
                     .ForMember(i => i.AdministrationId, opt => opt.MapFrom(i => i.Administration != null ? i.Administration.Id : defaultId))
-					.ForMember(i => i.Storage, opt => opt.Ignore())
-					.ForMember(i => i.StorageId, opt => opt.MapFrom(i => i.Storage != null ? i.Storage.Id : defaultId))
 					.ForMember(i => i.Room, opt => opt.Ignore())
                     .ForMember(i => i.RoomId, opt => opt.MapFrom(i => i.Room != null ? i.Room.Id : defaultId));
             CreateMap<Model.Matrix, Dto.Matrix>()
@@ -2642,7 +2635,6 @@ namespace Optima.Fais.Api
 
             CreateMap<Model.EmployeeCostCenter, Dto.EmployeeCostCenter>()
              .ForMember(i => i.CostCenter, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.CostCenter.Id, Code = i.CostCenter.Code, Name = i.CostCenter.Name }))
-             .ForMember(i => i.Storage, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.CostCenter.Storage.Id, Code = i.CostCenter.Storage.Code, Name = i.CostCenter.Storage.Name }))
              .ForMember(i => i.Employee, opt => opt.MapFrom(i => new Dto.EmployeeResource { Id = i.Employee.Id, InternalCode = i.Employee.InternalCode, FirstName = i.Employee.FirstName, LastName = i.Employee.LastName, Email = i.Employee.Email }));
             CreateMap<Dto.EmployeeCostCenter, Model.EmployeeCostCenter>()
                 .ForMember(i => i.Id, opt => opt.MapFrom(i => i.Id))
@@ -2668,16 +2660,6 @@ namespace Optima.Fais.Api
                 .ForMember(i => i.Id, opt => opt.MapFrom(i => i.Id))
                 .ForMember(i => i.Division, opt => opt.Ignore())
                 .ForMember(i => i.DivisionId, opt => opt.MapFrom(i => i.Division.Id))
-                .ForMember(i => i.Employee, opt => opt.Ignore())
-                .ForMember(i => i.EmployeeId, opt => opt.MapFrom(i => i.Employee.Id));
-
-            CreateMap<Model.EmployeeStorage, Dto.EmployeeStorage>()
-            .ForMember(i => i.Storage, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.Storage.Id, Code = i.Storage.Code, Name = i.Storage.Name }))
-            .ForMember(i => i.Employee, opt => opt.MapFrom(i => new Dto.EmployeeResource { Id = i.Employee.Id, InternalCode = i.Employee.InternalCode, FirstName = i.Employee.FirstName, LastName = i.Employee.LastName, Email = i.Employee.Email }));
-            CreateMap<Dto.EmployeeStorage, Model.EmployeeStorage>()
-                .ForMember(i => i.Id, opt => opt.MapFrom(i => i.Id))
-                .ForMember(i => i.Storage, opt => opt.Ignore())
-                .ForMember(i => i.StorageId, opt => opt.MapFrom(i => i.Storage.Id))
                 .ForMember(i => i.Employee, opt => opt.Ignore())
                 .ForMember(i => i.EmployeeId, opt => opt.MapFrom(i => i.Employee.Id));
 

@@ -4668,8 +4668,6 @@ namespace Optima.Fais.EfRepository
                     .Include(c => c.Administration)
                     .Include(c => c.Division)
                         .ThenInclude(d => d.Department)
-                    .Include(a => a.Storage)
-                        .ThenInclude(p => p.Plant)
                     .Where(a => a.Code == "10RO700310").Single();
 
             //costCenter = _context.Set<Model.CostCenter>()
@@ -29242,27 +29240,27 @@ namespace Optima.Fais.EfRepository
                 }
                 else
                 {
-                    if (assetFilter.Role.ToUpper() == "USER")
-                    {
+                    //if (assetFilter.Role.ToUpper() == "USER")
+                    //{
 
-                        List<int?> costCenterIds = _context.Set<Model.EmployeeCostCenter>().AsNoTracking().Where(e => e.EmployeeId == assetFilter.EmployeeId && e.IsDeleted == false && e.CostCenter.Storage.Code == "MFX").Select(c => (int?)c.CostCenterId).ToList();
+                    //    List<int?> costCenterIds = _context.Set<Model.EmployeeCostCenter>().AsNoTracking().Where(e => e.EmployeeId == assetFilter.EmployeeId && e.IsDeleted == false && e.CostCenter.Storage.Code == "MFX").Select(c => (int?)c.CostCenterId).ToList();
 
-                        if (costCenterIds.Count == 0)
-                        {
-                            costCenterIds = new List<int?>();
-                            costCenterIds.Add(-1);
-                        }
-
-
-                        query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => ((a.Adm.CostCenterId == id)); }, costCenterIds));
+                    //    if (costCenterIds.Count == 0)
+                    //    {
+                    //        costCenterIds = new List<int?>();
+                    //        costCenterIds.Add(-1);
+                    //    }
 
 
-                        if ((assetFilter.CostCenterIds != null) && (assetFilter.CostCenterIds.Count > 0))
-                        {
-                            query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => ((a.Adm.CostCenterId == id)); }, assetFilter.CostCenterIds));
-                        }
+                    //    query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => ((a.Adm.CostCenterId == id)); }, costCenterIds));
 
-                    }
+
+                    //    if ((assetFilter.CostCenterIds != null) && (assetFilter.CostCenterIds.Count > 0))
+                    //    {
+                    //        query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => ((a.Adm.CostCenterId == id)); }, assetFilter.CostCenterIds));
+                    //    }
+
+                    //}
                 }
             }
 
@@ -29511,27 +29509,27 @@ namespace Optima.Fais.EfRepository
                 }
                 else
                 {
-                    if (assetFilter.Role.ToUpper() == "USER")
-                    {
+                    //if (assetFilter.Role.ToUpper() == "USER")
+                    //{
 
-                        List<int?> costCenterIds = _context.Set<Model.EmployeeCostCenter>().Include(c => c.CostCenter).ThenInclude(s => s.Storage).Include(c => c.CostCenter).ThenInclude(s => s.Storage).AsNoTracking().Where(e => e.EmployeeId == assetFilter.EmployeeId && e.IsDeleted == false && e.CostCenter.Storage.Code == "MFX").Select(c => (int?)c.CostCenterId).ToList();
+                    //    List<int?> costCenterIds = _context.Set<Model.EmployeeCostCenter>().Include(c => c.CostCenter).ThenInclude(s => s.Storage).Include(c => c.CostCenter).ThenInclude(s => s.Storage).AsNoTracking().Where(e => e.EmployeeId == assetFilter.EmployeeId && e.IsDeleted == false && e.CostCenter.Storage.Code == "MFX").Select(c => (int?)c.CostCenterId).ToList();
 
-                        if (costCenterIds.Count == 0)
-                        {
-                            costCenterIds = new List<int?>();
-                            costCenterIds.Add(-1);
-                        }
-
-
-                        query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => ((a.Adm.CostCenterId == id)); }, costCenterIds));
+                    //    if (costCenterIds.Count == 0)
+                    //    {
+                    //        costCenterIds = new List<int?>();
+                    //        costCenterIds.Add(-1);
+                    //    }
 
 
-                        if ((assetFilter.CostCenterIds != null) && (assetFilter.CostCenterIds.Count > 0))
-                        {
-                            query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => ((a.Adm.CostCenterId == id)); }, assetFilter.CostCenterIds));
-                        }
+                    //    query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => ((a.Adm.CostCenterId == id)); }, costCenterIds));
 
-                    }
+
+                    //    if ((assetFilter.CostCenterIds != null) && (assetFilter.CostCenterIds.Count > 0))
+                    //    {
+                    //        query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => ((a.Adm.CostCenterId == id)); }, assetFilter.CostCenterIds));
+                    //    }
+
+                    //}
                 }
             }
 
@@ -29784,27 +29782,27 @@ namespace Optima.Fais.EfRepository
                 }
                 else
                 {
-                    if (assetFilter.Role.ToUpper() == "USER")
-                    {
+                    //if (assetFilter.Role.ToUpper() == "USER")
+                    //{
 
-                        List<int?> costCenterIds = _context.Set<Model.EmployeeCostCenter>().Include(c => c.CostCenter).ThenInclude(s => s.Storage).AsNoTracking().Where(e => e.EmployeeId == assetFilter.EmployeeId && e.IsDeleted == false && e.CostCenter.Storage.Code == "MFX").Select(c => (int?)c.CostCenterId).ToList();
+                    //    List<int?> costCenterIds = _context.Set<Model.EmployeeCostCenter>().Include(c => c.CostCenter).ThenInclude(s => s.Storage).AsNoTracking().Where(e => e.EmployeeId == assetFilter.EmployeeId && e.IsDeleted == false && e.CostCenter.Storage.Code == "MFX").Select(c => (int?)c.CostCenterId).ToList();
 
-                        if (costCenterIds.Count == 0)
-                        {
-                            costCenterIds = new List<int?>();
-                            costCenterIds.Add(-1);
-                        }
-
-
-                        query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => ((a.Adm.CostCenterId == id)); }, costCenterIds));
+                    //    if (costCenterIds.Count == 0)
+                    //    {
+                    //        costCenterIds = new List<int?>();
+                    //        costCenterIds.Add(-1);
+                    //    }
 
 
-                        if ((assetFilter.CostCenterIds != null) && (assetFilter.CostCenterIds.Count > 0))
-                        {
-                            query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => ((a.Adm.CostCenterId == id)); }, assetFilter.CostCenterIds));
-                        }
+                    //    query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => ((a.Adm.CostCenterId == id)); }, costCenterIds));
 
-                    }
+
+                    //    if ((assetFilter.CostCenterIds != null) && (assetFilter.CostCenterIds.Count > 0))
+                    //    {
+                    //        query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => ((a.Adm.CostCenterId == id)); }, assetFilter.CostCenterIds));
+                    //    }
+
+                    //}
                 }
             }
 
@@ -30048,27 +30046,27 @@ namespace Optima.Fais.EfRepository
                 }
                 else
                 {
-                    if (assetFilter.Role.ToUpper() == "USER")
-                    {
+                    //if (assetFilter.Role.ToUpper() == "USER")
+                    //{
 
-                        List<int?> costCenterIds = _context.Set<Model.EmployeeCostCenter>().Include(c => c.CostCenter).ThenInclude(s => s.Storage).AsNoTracking().Where(e => e.EmployeeId == assetFilter.EmployeeId && e.IsDeleted == false && e.CostCenter.Storage.Code == "MFX").Select(c => (int?)c.CostCenterId).ToList();
+                    //    List<int?> costCenterIds = _context.Set<Model.EmployeeCostCenter>().Include(c => c.CostCenter).ThenInclude(s => s.Storage).AsNoTracking().Where(e => e.EmployeeId == assetFilter.EmployeeId && e.IsDeleted == false && e.CostCenter.Storage.Code == "MFX").Select(c => (int?)c.CostCenterId).ToList();
 
-                        if (costCenterIds.Count == 0)
-                        {
-                            costCenterIds = new List<int?>();
-                            costCenterIds.Add(-1);
-                        }
-
-
-                        query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => ((a.Adm.CostCenterId == id)); }, costCenterIds));
+                    //    if (costCenterIds.Count == 0)
+                    //    {
+                    //        costCenterIds = new List<int?>();
+                    //        costCenterIds.Add(-1);
+                    //    }
 
 
-                        if ((assetFilter.CostCenterIds != null) && (assetFilter.CostCenterIds.Count > 0))
-                        {
-                            query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => ((a.Adm.CostCenterId == id)); }, assetFilter.CostCenterIds));
-                        }
+                    //    query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => ((a.Adm.CostCenterId == id)); }, costCenterIds));
 
-                    }
+
+                    //    if ((assetFilter.CostCenterIds != null) && (assetFilter.CostCenterIds.Count > 0))
+                    //    {
+                    //        query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => ((a.Adm.CostCenterId == id)); }, assetFilter.CostCenterIds));
+                    //    }
+
+                    //}
                 }
             }
 

@@ -58,14 +58,6 @@ namespace Optima.Fais.Model
 
         public bool Imported { get; set; }
 
-        public int? StorageInitialId { get; set; }
-
-        public virtual Storage StorageInitial { get; set; }
-
-        public int? StorageId { get; set; }
-
-        public virtual Storage Storage { get; set; }
-
         public int? PlantInitialId { get; set; }
 
         public virtual Plant PlantInitial { get; set; }
