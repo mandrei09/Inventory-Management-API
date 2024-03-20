@@ -105,10 +105,6 @@
 
         public virtual ProjectType ProjectType { get; set; }
 
-        public int? SubCategoryId { get; set; }
-
-        public virtual SubCategory SubCategory { get; set; }
-
         public int? RequestId { get; set; }
 
         public virtual Request Request { get; set; }

@@ -1213,7 +1213,6 @@ namespace Optima.Fais.Api.Controllers
                     .Include(a => a.AssetState)
                     .Include(a => a.Tax)
                     .Include(a => a.Rate).ThenInclude(u => u.Uom)
-                    .Include(a => a.SubCategory)
                     .Include(a => a.Request)
                     .Include(a => a.DictionaryItem)
                     .Include(a => a.BudgetForecast).ThenInclude(b => b.BudgetBase)

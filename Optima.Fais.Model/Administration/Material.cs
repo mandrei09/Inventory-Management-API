@@ -16,14 +16,6 @@ namespace Optima.Fais.Model
 
         public virtual Company Company { get; set; }
 
-        public int? SubCategoryId { get; set; }
-
-        public virtual SubCategory SubCategory { get; set; }
-
-        public int? SubCategoryENId { get; set; }
-
-        public virtual SubCategoryEN SubCategoryEN { get; set; }
-
         public int? SubTypeId { get; set; }
 
         public virtual SubType SubType { get; set; }

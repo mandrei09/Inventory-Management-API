@@ -55,7 +55,7 @@ namespace Optima.Fais.EfRepository
         //        Model.AssetClass assetClass = null;
         //        // Model.AssetCategory assetCategory = null;
         //        Model.DictionaryItem dictionaryItem = null;
-        //        Model.SubCategory subCategory = null;
+        //        //Model.SubCategory subCategory = null;
         //        Model.AssetClassType assetClassType = null;
         //        Model.Partner partner = null;
         //        Model.CostCenter costCenter = null;
@@ -128,7 +128,7 @@ namespace Optima.Fais.EfRepository
         //                .Where(a => a.Id == assetDto.SubCategoryId).Single();
 
 
-        //            dictionaryItem = _context.Set<Model.DictionaryItem>().Where(a => a.Name == subCategory.Name).FirstOrDefault();
+        //            //dictionaryItem = _context.Set<Model.DictionaryItem>().Where(a => a.Name == subCategory.Name).FirstOrDefault();
 
         //            if (dictionaryItem == null)
         //            {
@@ -292,7 +292,7 @@ namespace Optima.Fais.EfRepository
         //            //asset.DivisionId = assetDto.DivisionId;
         //            //asset.ProjectTypeId = assetDto.ProjectTypeId;
         //            asset.AgreementNo = assetDto.PlateNo;
-        //            asset.Name = subCategory.Name;
+        //           // asset.Name = subCategory.Name;
         //            asset.MaterialId = assetDto.MaterialId;
         //            asset.AdministrationId = costCenter.AdministrationId;
         //            asset.DepartmentId = costCenter.Division.DepartmentId;
@@ -728,7 +728,7 @@ namespace Optima.Fais.EfRepository
             Model.AssetClass assetClass = null;
             // Model.AssetCategory assetCategory = null;
             Model.DictionaryItem dictionaryItem = null;
-            Model.SubCategory subCategory = null;
+            //Model.SubCategory subCategory = null;
             Model.AssetClassType assetClassType = null;
             Model.Partner partner = null;
             Model.CostCenter costCenter = null;
@@ -852,7 +852,7 @@ namespace Optima.Fais.EfRepository
                                 //    .Where(a => a.Id == requestBFMaterialCostCenter.RequestBudgetForecastMaterial.Material.SubCategoryId).SingleAsync();
 
 
-                                dictionaryItem = await _context.Set<Model.DictionaryItem>().Where(a => a.Name == subCategory.Name).SingleOrDefaultAsync();
+                                //dictionaryItem = await _context.Set<Model.DictionaryItem>().Where(a => a.Name == subCategory.Name).SingleOrDefaultAsync();
 
                                 //if (dictionaryItem == null)
                                 //{
@@ -1060,7 +1060,7 @@ namespace Optima.Fais.EfRepository
                                 //asset.DivisionId = assetDto.DivisionId;
                                 //asset.ProjectTypeId = assetDto.ProjectTypeId;
                                 asset.AgreementNo = string.Empty;// assetDto.PlateNo;
-                                asset.Name = subCategory.Name;
+                               // asset.Name = subCategory.Name;
                                 asset.MaterialId = requestBFMaterialCostCenter.RequestBudgetForecastMaterial.MaterialId;
                                 asset.AdministrationId = costCenter.AdministrationId;
                                 asset.DepartmentId = costCenter.Division.DepartmentId;
@@ -1090,7 +1090,7 @@ namespace Optima.Fais.EfRepository
                                 asset.ReceptionPrice = requestBFMaterialCostCenter.PriceRon;
                                 asset.CostCenterEmpId = employee != null && employee.CostCenter != null ? employee.CostCenter.Id : requestBFMaterialCostCenter.CostCenterId;
                                 asset.ParentAssetId = assetEntity != null ? assetEntity.Id : (int?)null;
-                                asset.SubCategoryId = requestBFMaterialCostCenter.RequestBudgetForecastMaterial.Material.SubCategoryId;
+                                //asset.SubCategoryId = requestBFMaterialCostCenter.RequestBudgetForecastMaterial.Material.SubCategoryId;
                                 asset.RequestId = offerMaterial.RequestId;
                                 asset.Wip = order.OrderType.Code == "WIP" ? true : false;
 
@@ -1600,7 +1600,7 @@ namespace Optima.Fais.EfRepository
                                     //    .Where(a => a.Id == requestBFMaterialCostCenter.RequestBudgetForecastMaterial.Material.SubCategoryId).SingleAsync();
 
 
-                                    dictionaryItem = await _context.Set<Model.DictionaryItem>().Where(a => a.Name == subCategory.Name).SingleOrDefaultAsync();
+                                    //dictionaryItem = await _context.Set<Model.DictionaryItem>().Where(a => a.Name == subCategory.Name).SingleOrDefaultAsync();
 
                                     if (dictionaryItem == null)
                                     {
@@ -1791,7 +1791,7 @@ namespace Optima.Fais.EfRepository
                                     //asset.DivisionId = assetDto.DivisionId;
                                     //asset.ProjectTypeId = assetDto.ProjectTypeId;
                                     asset.AgreementNo = "";// assetDto.PlateNo;
-                                    asset.Name = subCategory.Name;
+                                   // asset.Name = subCategory.Name;
                                     asset.MaterialId = requestBFMaterialCostCenter.RequestBudgetForecastMaterial.MaterialId;
                                     asset.AdministrationId = costCenter.AdministrationId;
                                     asset.DepartmentId = costCenter.Division.DepartmentId;
@@ -1822,7 +1822,7 @@ namespace Optima.Fais.EfRepository
                                     asset.ReceptionPrice = requestBFMaterialCostCenter.PriceRon;
                                     asset.CostCenterEmpId = employee != null && employee.CostCenter != null ? employee.CostCenter.Id : requestBFMaterialCostCenter.CostCenterId;
                                     asset.ParentAssetId = assetEntity != null ? assetEntity.Id : (int?)null;
-                                    asset.SubCategoryId = requestBFMaterialCostCenter.RequestBudgetForecastMaterial.Material.SubCategoryId;
+                                    //asset.SubCategoryId = requestBFMaterialCostCenter.RequestBudgetForecastMaterial.Material.SubCategoryId;
                                     asset.RequestId = offerMaterial.RequestId;
                                     asset.Wip = order.OrderType.Code == "WIP" ? true : false;
 
@@ -2337,7 +2337,7 @@ namespace Optima.Fais.EfRepository
             Model.AssetClass assetClass = null;
             // Model.AssetCategory assetCategory = null;
             Model.DictionaryItem dictionaryItem = null;
-            Model.SubCategory subCategory = null;
+            //Model.SubCategory subCategory = null;
             Model.AssetClassType assetClassType = null;
             Model.Partner partner = null;
             Model.CostCenter costCenter = null;
@@ -2467,7 +2467,7 @@ namespace Optima.Fais.EfRepository
                                 //    .Where(a => a.Code == "NO_SUB").SingleAsync();
                                 //}
 
-                                dictionaryItem = await _context.Set<Model.DictionaryItem>().Where(a => a.Name == subCategory.Name).SingleOrDefaultAsync();
+                                //dictionaryItem = await _context.Set<Model.DictionaryItem>().Where(a => a.Name == subCategory.Name).SingleOrDefaultAsync();
 
                                 if (dictionaryItem == null)
                                 {
@@ -2494,35 +2494,35 @@ namespace Optima.Fais.EfRepository
                                     _context.Update(offerMaterial);
                                 }
 
-                                if (requestBFMaterialCostCenter.RequestBudgetForecastMaterial.Material.SubCategoryId != null)
-                                {
-                                    //if (requestBFMaterialCostCenter.ValueRon > 2500)
-                                    //{
-                                    //    accountancy = await _context.Set<Model.Accountancy>()
+                                //if (requestBFMaterialCostCenter.RequestBudgetForecastMaterial.Material.SubCategoryId != null)
+                                //{
+                                //    //if (requestBFMaterialCostCenter.ValueRon > 2500)
+                                //    //{
+                                //    //    accountancy = await _context.Set<Model.Accountancy>()
 
-                                    //      .Include(a => a.Account)
-                                    //      .Include(a => a.ExpAccount)
-                                    //      .Include(a => a.AssetCategory)
-                                    //      .Include(a => a.AssetType)
-                                    //      .Where(a => a.SubCategoryId == requestBFMaterialCostCenter.RequestBudgetForecastMaterial.Material.SubCategoryId && a.Value > 2500 && a.IsDeleted == false)
-                                    //      .SingleOrDefaultAsync();
+                                //    //      .Include(a => a.Account)
+                                //    //      .Include(a => a.ExpAccount)
+                                //    //      .Include(a => a.AssetCategory)
+                                //    //      .Include(a => a.AssetType)
+                                //    //      .Where(a => a.SubCategoryId == requestBFMaterialCostCenter.RequestBudgetForecastMaterial.Material.SubCategoryId && a.Value > 2500 && a.IsDeleted == false)
+                                //    //      .SingleOrDefaultAsync();
 
-                                    //    // if (accountancy == null) return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Lipsa mapare cont GL pentru subCategoria: {subCategory.Code + " - " + subCategory.Name}!" };
-                                    //}
-                                    //else
-                                    //{
+                                //    //    // if (accountancy == null) return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Lipsa mapare cont GL pentru subCategoria: {subCategory.Code + " - " + subCategory.Name}!" };
+                                //    //}
+                                //    //else
+                                //    //{
 
-                                    //    accountancy = await _context.Set<Model.Accountancy>()
+                                //    //    accountancy = await _context.Set<Model.Accountancy>()
 
-                                    //     .Include(a => a.Account)
-                                    //     .Include(a => a.ExpAccount)
-                                    //     .Include(a => a.AssetCategory)
-                                    //     .Include(a => a.AssetType)
-                                    //     .Where(a => a.SubCategoryId == requestBFMaterialCostCenter.RequestBudgetForecastMaterial.Material.SubCategoryId && a.Value == 2500 && a.IsDeleted == false).SingleOrDefaultAsync();
+                                //    //     .Include(a => a.Account)
+                                //    //     .Include(a => a.ExpAccount)
+                                //    //     .Include(a => a.AssetCategory)
+                                //    //     .Include(a => a.AssetType)
+                                //    //     .Where(a => a.SubCategoryId == requestBFMaterialCostCenter.RequestBudgetForecastMaterial.Material.SubCategoryId && a.Value == 2500 && a.IsDeleted == false).SingleOrDefaultAsync();
 
-                                    //    // if (accountancy == null) return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Lipsa mapare cont GL pentru subCategoria: {subCategory.Code + " - " + subCategory.Name}!" };
-                                    //}
-                                }
+                                //    //    // if (accountancy == null) return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Lipsa mapare cont GL pentru subCategoria: {subCategory.Code + " - " + subCategory.Name}!" };
+                                //    //}
+                                //}
 
                                 document = new Model.Document
                                 {
@@ -2605,7 +2605,7 @@ namespace Optima.Fais.EfRepository
                                 //asset.DivisionId = assetDto.DivisionId;
                                 //asset.ProjectTypeId = assetDto.ProjectTypeId;
                                 asset.AgreementNo = string.Empty;// assetDto.PlateNo;
-                                asset.Name = subCategory.Name;
+                               // asset.Name = subCategory.Name;
                                 asset.MaterialId = requestBFMaterialCostCenter.RequestBudgetForecastMaterial.MaterialId;
                                 asset.AdministrationId = costCenter.AdministrationId;
                                 asset.DepartmentId = costCenter.Division.DepartmentId;
@@ -2635,7 +2635,7 @@ namespace Optima.Fais.EfRepository
                                 asset.ReceptionPrice = requestBFMaterialCostCenter.PriceRon;
                                 asset.CostCenterEmpId = employee != null && employee.CostCenter != null ? employee.CostCenter.Id : requestBFMaterialCostCenter.CostCenterId;
                                 asset.ParentAssetId = assetEntity != null ? assetEntity.Id : (int?)null;
-                                asset.SubCategoryId = requestBFMaterialCostCenter.RequestBudgetForecastMaterial.Material.SubCategoryId;
+                                //asset.SubCategoryId = requestBFMaterialCostCenter.RequestBudgetForecastMaterial.Material.SubCategoryId;
                                 asset.RequestId = offerMaterial.RequestId;
                                 asset.Wip = order.OrderType.Code == "WIP" ? true : false;
 
@@ -3098,7 +3098,7 @@ namespace Optima.Fais.EfRepository
                                     //}
 
 
-                                    dictionaryItem = await _context.Set<Model.DictionaryItem>().Where(a => a.Name == subCategory.Name).SingleOrDefaultAsync();
+                                    //dictionaryItem = await _context.Set<Model.DictionaryItem>().Where(a => a.Name == subCategory.Name).SingleOrDefaultAsync();
 
                                     if (dictionaryItem == null)
                                     {
@@ -3126,35 +3126,35 @@ namespace Optima.Fais.EfRepository
                                         _context.Update(offerMaterial);
                                     }
 
-                                    if (requestBFMaterialCostCenter.RequestBudgetForecastMaterial.Material.SubCategoryId != null)
-                                    {
-                                        //if (requestBFMaterialCostCenter.Price > 2500)
-                                        //{
+                                    //if (requestBFMaterialCostCenter.RequestBudgetForecastMaterial.Material.SubCategoryId != null)
+                                    //{
+                                    //    //if (requestBFMaterialCostCenter.Price > 2500)
+                                    //    //{
 
-                                        //    accountancy = await _context.Set<Model.Accountancy>()
+                                    //    //    accountancy = await _context.Set<Model.Accountancy>()
 
-                                        //      .Include(a => a.Account)
-                                        //      .Include(a => a.ExpAccount)
-                                        //      .Include(a => a.AssetCategory)
-                                        //      .Include(a => a.AssetType)
-                                        //      .Where(a => a.SubCategoryId == requestBFMaterialCostCenter.RequestBudgetForecastMaterial.Material.SubCategoryId && a.Value > 2500 && a.IsDeleted == false).SingleOrDefaultAsync();
+                                    //    //      .Include(a => a.Account)
+                                    //    //      .Include(a => a.ExpAccount)
+                                    //    //      .Include(a => a.AssetCategory)
+                                    //    //      .Include(a => a.AssetType)
+                                    //    //      .Where(a => a.SubCategoryId == requestBFMaterialCostCenter.RequestBudgetForecastMaterial.Material.SubCategoryId && a.Value > 2500 && a.IsDeleted == false).SingleOrDefaultAsync();
 
-                                        //    // if (accountancy == null) return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Lipsa mapare cont GL pentru subCategoria: {subCategory.Code + " - " + subCategory.Name}!" };
-                                        //}
-                                        //else
-                                        //{
+                                    //    //    // if (accountancy == null) return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Lipsa mapare cont GL pentru subCategoria: {subCategory.Code + " - " + subCategory.Name}!" };
+                                    //    //}
+                                    //    //else
+                                    //    //{
 
-                                        //    accountancy = await _context.Set<Model.Accountancy>()
+                                    //    //    accountancy = await _context.Set<Model.Accountancy>()
 
-                                        //     .Include(a => a.Account)
-                                        //     .Include(a => a.ExpAccount)
-                                        //     .Include(a => a.AssetCategory)
-                                        //     .Include(a => a.AssetType)
-                                        //     .Where(a => a.SubCategoryId == requestBFMaterialCostCenter.RequestBudgetForecastMaterial.Material.SubCategoryId && a.Value == 2500 && a.IsDeleted == false).SingleOrDefaultAsync();
+                                    //    //     .Include(a => a.Account)
+                                    //    //     .Include(a => a.ExpAccount)
+                                    //    //     .Include(a => a.AssetCategory)
+                                    //    //     .Include(a => a.AssetType)
+                                    //    //     .Where(a => a.SubCategoryId == requestBFMaterialCostCenter.RequestBudgetForecastMaterial.Material.SubCategoryId && a.Value == 2500 && a.IsDeleted == false).SingleOrDefaultAsync();
 
-                                        //    // if (accountancy == null) return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Lipsa mapare cont GL pentru subCategoria: {subCategory.Code + " - " + subCategory.Name}!" };
-                                        //}
-                                    }
+                                    //    //    // if (accountancy == null) return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Lipsa mapare cont GL pentru subCategoria: {subCategory.Code + " - " + subCategory.Name}!" };
+                                    //    //}
+                                    //}
 
 
 
@@ -3237,7 +3237,7 @@ namespace Optima.Fais.EfRepository
                                     //asset.DivisionId = assetDto.DivisionId;
                                     //asset.ProjectTypeId = assetDto.ProjectTypeId;
                                     asset.AgreementNo = "";// assetDto.PlateNo;
-                                    asset.Name = subCategory.Name;
+                                   // asset.Name = subCategory.Name;
                                     asset.MaterialId = requestBFMaterialCostCenter.RequestBudgetForecastMaterial.MaterialId;
                                     asset.AdministrationId = costCenter.AdministrationId;
                                     asset.DepartmentId = costCenter.Division.DepartmentId;
@@ -3268,7 +3268,7 @@ namespace Optima.Fais.EfRepository
                                     asset.ReceptionPrice = requestBFMaterialCostCenter.PriceRon;
                                     asset.CostCenterEmpId = employee != null && employee.CostCenter != null ? employee.CostCenter.Id : requestBFMaterialCostCenter.CostCenterId;
                                     asset.ParentAssetId = assetEntity != null ? assetEntity.Id : (int?)null;
-                                    asset.SubCategoryId = requestBFMaterialCostCenter.RequestBudgetForecastMaterial.Material.SubCategoryId;
+                                    //asset.SubCategoryId = requestBFMaterialCostCenter.RequestBudgetForecastMaterial.Material.SubCategoryId;
                                     asset.RequestId = offerMaterial.RequestId;
                                     asset.Wip = order.OrderType.Code == "WIP" ? true : false;
 
@@ -3730,7 +3730,7 @@ namespace Optima.Fais.EfRepository
             Model.AssetClass assetClass = null;
             // Model.AssetCategory assetCategory = null;
             Model.DictionaryItem dictionaryItem = null;
-            Model.SubCategory subCategory = null;
+            //Model.SubCategory subCategory = null;
             Model.AssetClassType assetClassType = null;
             Model.Partner partner = null;
             Model.CostCenter costCenter = null;
@@ -3760,7 +3760,6 @@ namespace Optima.Fais.EfRepository
             asset = await _context.Set<Model.Asset>()
                     .Include(p => p.ReqBFMCostCenter)
                     .Include(p => p.ParentAsset)
-                    .Include(p => p.SubCategory)
                     .Include(p => p.Material)
                     .Include(p => p.Document).ThenInclude(p => p.Partner)
                     .Include(p => p.CostCenter).ThenInclude(c => c.Company)
@@ -3891,7 +3890,7 @@ namespace Optima.Fais.EfRepository
             // Model.AssetClass assetClass = null;
             // Model.AssetCategory assetCategory = null;
             // Model.DictionaryItem dictionaryItem = null;
-            Model.SubCategory subCategory = null;
+            //Model.SubCategory subCategory = null;
             //Model.AssetClassType assetClassType = null;
             //Model.Partner partner = null;
             Model.CostCenter costCenter = null;
@@ -3913,7 +3912,7 @@ namespace Optima.Fais.EfRepository
             inventory = _context.Set<Model.Inventory>().AsNoTracking().Where(i => i.Active == true).Single();
             createAssetInvPlus = _context.Set<Model.Asset>().Include(d => d.Document).ThenInclude(p => p.Partner).Where(a => a.Id == assetDto.AssetId).Single();
             costCenter = _context.Set<Model.CostCenter>().Include(c => c.Company).Where(a => a.Id == createAssetInvPlus.CostCenterId).Single();
-            subCategory = _context.Set<Model.SubCategory>().Where(a => a.Id == createAssetInvPlus.SubCategoryId).Single();
+            //subCategory = _context.Set<Model.SubCategory>().Where(a => a.Id == createAssetInvPlus.SubCategoryId).Single();
             employee = _context.Set<Model.Employee>().Include(c => c.CostCenter).Where(a => a.Id == createAssetInvPlus.EmployeeId).SingleOrDefault();
 
             int quantity = 1;
@@ -4035,7 +4034,7 @@ namespace Optima.Fais.EfRepository
         //       Model.AssetClass assetClass = null;
         //       // Model.AssetCategory assetCategory = null;
         //       Model.DictionaryItem dictionaryItem = null;
-        //       Model.SubCategory subCategory = null;
+        //       //Model.SubCategory subCategory = null;
         //       Model.AssetClassType assetClassType = null;
         //       Model.Partner partner = null;
         //       Model.CostCenter costCenter = null;
@@ -4152,7 +4151,7 @@ namespace Optima.Fais.EfRepository
         //                 .Where(a => a.SubCategoryId == subCategory.Id && a.Value == 2500 && a.IsDeleted == false).Single();
         //           }
 
-        //           dictionaryItem = _context.Set<Model.DictionaryItem>().Where(a => a.Name == subCategory.Name).FirstOrDefault();
+        //           //dictionaryItem = _context.Set<Model.DictionaryItem>().Where(a => a.Name == subCategory.Name).FirstOrDefault();
 
         //           if (dictionaryItem == null)
         //           {
@@ -4239,7 +4238,7 @@ namespace Optima.Fais.EfRepository
         //           asset.DivisionId = costCenter.DivisionId;
         //           //asset.ProjectTypeId = assetDto.ProjectTypeId;
         //           // asset.AgreementNo = assetDto.PlateNo;
-        //           asset.Name = subCategory.Name;
+        //          // asset.Name = subCategory.Name;
         //           asset.StockId = assetDto.StockId;
 
         //           assetAC = new Model.AssetAC
@@ -4624,7 +4623,7 @@ namespace Optima.Fais.EfRepository
             Model.AssetClass assetClass = null;
             // Model.AssetCategory assetCategory = null;
             Model.DictionaryItem dictionaryItem = null;
-            Model.SubCategory subCategory = null;
+            //Model.SubCategory subCategory = null;
             Model.AssetClassType assetClassType = null;
             Model.Partner partner = null;
             Model.CostCenter costCenter = null;
@@ -4730,7 +4729,7 @@ namespace Optima.Fais.EfRepository
                 //    if (accountancy == null) return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Lipsa mapare cont GL pentru subCategoria: {subCategory.Code + " - " + subCategory.Name}!" };
                 //}
 
-                dictionaryItem = _context.Set<Model.DictionaryItem>().Where(a => a.Name == subCategory.Name).FirstOrDefault();
+                //dictionaryItem = _context.Set<Model.DictionaryItem>().Where(a => a.Name == subCategory.Name).FirstOrDefault();
 
                 //if (dictionaryItem == null)
                 //{
@@ -4819,10 +4818,10 @@ namespace Optima.Fais.EfRepository
                 asset.DivisionId = costCenter.DivisionId;
                 //asset.ProjectTypeId = assetDto.ProjectTypeId;
                 // asset.AgreementNo = assetDto.PlateNo;
-                asset.Name = subCategory.Name;
+               // asset.Name = subCategory.Name;
                 asset.StockId = assetDto.StockId;
                 asset.MaterialId = stock.MaterialId;
-                asset.SubCategoryId = subCategory.Id;
+                //asset.SubCategoryId = subCategory.Id;
                 asset.CostCenterEmpId = employee != null ? employee.CostCenterId : null;
                 //asset.ExpAccountId = accountancy.ExpAccountId;
 
@@ -4931,7 +4930,7 @@ namespace Optima.Fais.EfRepository
                 assetAdmMD.AdmCenterId = costCenter.AdmCenterId;
                 assetAdmMD.RegionId = costCenter.RegionId;
                 // assetAdmMD.ProjectTypeId = order.Budget.ProjectTypeId;
-                assetAdmMD.SubCategoryId = subCategory.Id;
+                //assetAdmMD.SubCategoryId = subCategory.Id;
 
 
                 _context.Set<Model.AssetAdmMD>().Add(assetAdmMD);
@@ -5714,7 +5713,7 @@ namespace Optima.Fais.EfRepository
             Model.DocumentType documentType = null;
             Model.Order order = null;
             Model.Rate rate = null;
-            Model.SubCategory subCategory = null;
+            //Model.SubCategory subCategory = null;
 
 
             string accSystemDefault = "RON";
@@ -5728,7 +5727,7 @@ namespace Optima.Fais.EfRepository
 
             inventory = _context.Set<Model.Inventory>().Where(i => i.Active == true).Single();
             asset = _context.Set<Model.Asset>().Include(a => a.Document).Where(a => a.Id == assetDto.Id).Single();
-            subCategory = _context.Set<Model.SubCategory>().Where(a => a.Id == assetDto.SubCategoryId).FirstOrDefault();
+            //subCategory = _context.Set<Model.SubCategory>().Where(a => a.Id == assetDto.SubCategoryId).FirstOrDefault();
             costCenter = _context.Set<Model.CostCenter>()
                 .Include(c => c.Division)
                 .Include(c => c.Division.Department)
@@ -5849,14 +5848,14 @@ namespace Optima.Fais.EfRepository
             asset.RateId = rate.Id;
             asset.ExpAccountId = assetDto.ExpAccountId;
             asset.AssetCategoryId = assetDto.AssetCategoryId;
-            asset.SubCategoryId = assetDto.SubCategoryId;
+            //asset.SubCategoryId = assetDto.SubCategoryId;
             asset.TaxId = assetDto.TaxId;
             asset.HeaderText = assetDto.HeaderText;
 
-            if (subCategory != null)
-            {
-                asset.Name = subCategory.Name;
-            }
+            //if (subCategory != null)
+            //{
+            //   // asset.Name = subCategory.Name;
+            //}
 
             _context.Set<Model.Asset>().Update(asset);
 
@@ -5932,7 +5931,7 @@ namespace Optima.Fais.EfRepository
 
             assetAdmMD.ExpAccountId = assetDto.ExpAccountId;
             assetAdmMD.AssetCategoryId = assetDto.AssetCategoryId;
-            assetAdmMD.SubCategoryId = assetDto.SubCategoryId;
+            //assetAdmMD.SubCategoryId = assetDto.SubCategoryId;
 
             _context.Set<Model.AssetAdmMD>().Update(assetAdmMD);
 
@@ -6327,7 +6326,7 @@ namespace Optima.Fais.EfRepository
             Model.AdmCenter admCenter = null;
             Model.DocumentType documentType = null;
            //Model.Accountancy accountancy = null;
-            Model.SubCategory subCategory = null;
+            //Model.SubCategory subCategory = null;
             Model.BudgetManager budgetManager = null;
             Model.Request request = null;
 
@@ -6342,7 +6341,7 @@ namespace Optima.Fais.EfRepository
             budgetManager = _context.Set<Model.BudgetManager>().AsNoTracking().Where(a => (a.Code == "2022")).FirstOrDefault();
             asset = _context.Set<Model.Asset>().Include(a => a.Document).Where(a => a.Id == assetDto.Id).Single();
             costCenter = _context.Set<Model.CostCenter>().Include(d => d.Division).Where(a => a.Id == assetDto.CostCenterId).SingleOrDefault();
-            subCategory = _context.Set<Model.SubCategory>().Where(a => a.Id == assetDto.SubCategoryId).SingleOrDefault();
+            //subCategory = _context.Set<Model.SubCategory>().Where(a => a.Id == assetDto.SubCategoryId).SingleOrDefault();
             request = _context.Set<Model.Request>().Where(a => a.Id == assetDto.RequestId).SingleOrDefault();
             employee = _context.Set<Model.Employee>().Where(a => a.Id == assetDto.EmployeeId).SingleOrDefault();
 
@@ -6440,7 +6439,7 @@ namespace Optima.Fais.EfRepository
 
             asset.DivisionId = costCenter.DivisionId;
             // asset.ProjectTypeId = assetDto.ProjectTypeId;
-            asset.SubCategoryId = assetDto.SubCategoryId;
+            //asset.SubCategoryId = assetDto.SubCategoryId;
             //asset.AccountId = accountancy.AccountId;
             asset.BudgetManagerId = budgetManager.Id;
             asset.RequestId = assetDto.RequestId;
@@ -6525,7 +6524,7 @@ namespace Optima.Fais.EfRepository
             assetAdmMD.RegionId = costCenter.RegionId;
             assetAdmMD.DivisionId = costCenter.DivisionId;
             //assetAdmMD.ProjectTypeId = assetDto.ProjectTypeId;
-            assetAdmMD.SubCategoryId = assetDto.SubCategoryId;
+            //assetAdmMD.SubCategoryId = assetDto.SubCategoryId;
             //assetAdmMD.AssetCategoryId = accountancy.AssetCategoryId;
             //assetAdmMD.AssetTypeId = accountancy.AssetTypeId;
             assetAdmMD.ArticleId = 151;
@@ -6676,7 +6675,7 @@ namespace Optima.Fais.EfRepository
             asset.TempSerialNumber = oldAsset.TempSerialNumber;
             asset.CostCenterEmpId = oldAsset.CostCenterEmpId;
             asset.NotSync = false;
-            asset.SubCategoryId = oldAsset.SubCategoryId;
+            //asset.SubCategoryId = oldAsset.SubCategoryId;
             asset.RequestId = oldAsset.RequestId;
             asset.DepPeriod = oldAsset.DepPeriod;
             asset.NetAmountRon = oldAsset.NetAmountRon;
@@ -6831,7 +6830,7 @@ namespace Optima.Fais.EfRepository
             assetAdmMD.AdmCenterId = assetAdmMDOld.AdmCenterId;
             assetAdmMD.RegionId = assetAdmMDOld.RegionId;
             assetAdmMD.ProjectTypeId = assetAdmMDOld.ProjectTypeId;
-            assetAdmMD.SubCategoryId = assetAdmMDOld.SubCategoryId;
+            //assetAdmMD.SubCategoryId = assetAdmMDOld.SubCategoryId;
             assetAdmMD.RequestId = assetAdmMDOld.RequestId;
 
             _context.Set<Model.AssetAdmMD>().Add(assetAdmMD);
@@ -20946,7 +20945,6 @@ namespace Optima.Fais.EfRepository
                     .Include(a => a.AssetState)
                     .Include(a => a.Tax)
                     .Include(a => a.Rate).ThenInclude(u => u.Uom)
-                    .Include(a => a.SubCategory)
                     .Include(a => a.Request)
                     .Include(a => a.DictionaryItem);
                 //.Include(a => a.AssetDepMDs);

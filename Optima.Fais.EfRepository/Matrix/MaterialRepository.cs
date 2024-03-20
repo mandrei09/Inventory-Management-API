@@ -49,12 +49,12 @@ namespace Optima.Fais.EfRepository
                     : r => materialIds.Contains(r.Id);
             }
 
-            if (hasSubCategory)
-            {
-                predicate = predicate != null
-                    ? ExpressionHelper.And<Model.Material>(predicate, r => r.SubCategoryId != null)
-                    : r => r.SubCategoryId != null;
-            }
+            //if (hasSubCategory)
+            //{
+            //    predicate = predicate != null
+            //        ? ExpressionHelper.And<Model.Material>(predicate, r => r.SubCategoryId != null)
+            //        : r => r.SubCategoryId != null;
+            //}
 
             return predicate;
         }

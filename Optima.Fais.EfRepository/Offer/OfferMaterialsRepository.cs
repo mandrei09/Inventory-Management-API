@@ -35,12 +35,12 @@ namespace Optima.Fais.EfRepository
                     : r => materialIds.Contains(r.MaterialId);
             }
 
-            if ((subCategoryIds != null) && (subCategoryIds.Count > 0))
-            {
-                predicate = predicate != null
-                    ? ExpressionHelper.And<Model.OfferMaterial>(predicate, r => subCategoryIds.Contains(r.Material.SubCategoryId))
-                    : r => subCategoryIds.Contains(r.Material.SubCategoryId);
-            }
+            //if ((subCategoryIds != null) && (subCategoryIds.Count > 0))
+            //{
+            //    predicate = predicate != null
+            //        ? ExpressionHelper.And<Model.OfferMaterial>(predicate, r => subCategoryIds.Contains(r.Material.SubCategoryId))
+            //        : r => subCategoryIds.Contains(r.Material.SubCategoryId);
+            //}
 
             if ((partnerIds != null) && (partnerIds.Count > 0))
             {

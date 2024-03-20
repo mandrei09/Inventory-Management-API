@@ -1094,8 +1094,6 @@ namespace Optima.Fais.Data.Migrations
 
                     b.Property<decimal>("StornoValueRon");
 
-                    b.Property<int?>("SubCategoryId");
-
                     b.Property<string>("SubNo");
 
                     b.Property<int?>("SubTypeId");
@@ -1226,8 +1224,6 @@ namespace Optima.Fais.Data.Migrations
                     b.HasIndex("RoomId");
 
                     b.HasIndex("StockId");
-
-                    b.HasIndex("SubCategoryId");
 
                     b.HasIndex("SubTypeId");
 
@@ -1361,8 +1357,6 @@ namespace Optima.Fais.Data.Migrations
 
                     b.Property<int?>("RoomId");
 
-                    b.Property<int?>("SubCategoryId");
-
                     b.Property<int?>("SubTypeId");
 
                     b.HasKey("AccMonthId", "AssetId");
@@ -1414,8 +1408,6 @@ namespace Optima.Fais.Data.Migrations
                     b.HasIndex("RequestId");
 
                     b.HasIndex("RoomId");
-
-                    b.HasIndex("SubCategoryId");
 
                     b.HasIndex("SubTypeId");
 
@@ -8871,10 +8863,6 @@ namespace Optima.Fais.Data.Migrations
 
                     b.Property<decimal>("Quantity");
 
-                    b.Property<int?>("SubCategoryENId");
-
-                    b.Property<int?>("SubCategoryId");
-
                     b.Property<int?>("SubTypeId");
 
                     b.Property<decimal>("Value");
@@ -8890,10 +8878,6 @@ namespace Optima.Fais.Data.Migrations
                     b.HasIndex("ExpAccountId");
 
                     b.HasIndex("MaterialTypeId");
-
-                    b.HasIndex("SubCategoryENId");
-
-                    b.HasIndex("SubCategoryId");
 
                     b.HasIndex("SubTypeId");
 
@@ -12347,76 +12331,6 @@ namespace Optima.Fais.Data.Migrations
                     b.ToTable("Storage");
                 });
 
-            modelBuilder.Entity("Optima.Fais.Model.SubCategory", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasMaxLength(30);
-
-                    b.Property<int?>("CompanyId");
-
-                    b.Property<DateTime>("CreatedAt");
-
-                    b.Property<string>("CreatedBy")
-                        .HasMaxLength(450);
-
-                    b.Property<bool>("IsDeleted");
-
-                    b.Property<DateTime?>("ModifiedAt");
-
-                    b.Property<string>("ModifiedBy")
-                        .HasMaxLength(450);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CompanyId");
-
-                    b.ToTable("SubCategory");
-                });
-
-            modelBuilder.Entity("Optima.Fais.Model.SubCategoryEN", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasMaxLength(30);
-
-                    b.Property<int?>("CompanyId");
-
-                    b.Property<DateTime>("CreatedAt");
-
-                    b.Property<string>("CreatedBy")
-                        .HasMaxLength(450);
-
-                    b.Property<bool>("IsDeleted");
-
-                    b.Property<DateTime?>("ModifiedAt");
-
-                    b.Property<string>("ModifiedBy")
-                        .HasMaxLength(450);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CompanyId");
-
-                    b.ToTable("SubCategoryEN");
-                });
-
             modelBuilder.Entity("Optima.Fais.Model.SubType", b =>
                 {
                     b.Property<int>("Id")
@@ -13415,10 +13329,6 @@ namespace Optima.Fais.Data.Migrations
                         .WithMany()
                         .HasForeignKey("StockId");
 
-                    b.HasOne("Optima.Fais.Model.SubCategory", "SubCategory")
-                        .WithMany()
-                        .HasForeignKey("SubCategoryId");
-
                     b.HasOne("Optima.Fais.Model.SubType", "SubType")
                         .WithMany()
                         .HasForeignKey("SubTypeId");
@@ -13610,10 +13520,6 @@ namespace Optima.Fais.Data.Migrations
                     b.HasOne("Optima.Fais.Model.Room", "Room")
                         .WithMany()
                         .HasForeignKey("RoomId");
-
-                    b.HasOne("Optima.Fais.Model.SubCategory", "SubCategory")
-                        .WithMany()
-                        .HasForeignKey("SubCategoryId");
 
                     b.HasOne("Optima.Fais.Model.SubType", "SubType")
                         .WithMany()
@@ -15816,14 +15722,6 @@ namespace Optima.Fais.Data.Migrations
                         .WithMany()
                         .HasForeignKey("MaterialTypeId");
 
-                    b.HasOne("Optima.Fais.Model.SubCategoryEN", "SubCategoryEN")
-                        .WithMany()
-                        .HasForeignKey("SubCategoryENId");
-
-                    b.HasOne("Optima.Fais.Model.SubCategory", "SubCategory")
-                        .WithMany()
-                        .HasForeignKey("SubCategoryId");
-
                     b.HasOne("Optima.Fais.Model.SubType", "SubType")
                         .WithMany()
                         .HasForeignKey("SubTypeId");
@@ -17100,20 +16998,6 @@ namespace Optima.Fais.Data.Migrations
                     b.HasOne("Optima.Fais.Model.Plant", "Plant")
                         .WithMany()
                         .HasForeignKey("PlantId");
-                });
-
-            modelBuilder.Entity("Optima.Fais.Model.SubCategory", b =>
-                {
-                    b.HasOne("Optima.Fais.Model.Company", "Company")
-                        .WithMany()
-                        .HasForeignKey("CompanyId");
-                });
-
-            modelBuilder.Entity("Optima.Fais.Model.SubCategoryEN", b =>
-                {
-                    b.HasOne("Optima.Fais.Model.Company", "Company")
-                        .WithMany()
-                        .HasForeignKey("CompanyId");
                 });
 
             modelBuilder.Entity("Optima.Fais.Model.SubType", b =>

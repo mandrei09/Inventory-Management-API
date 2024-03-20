@@ -2066,35 +2066,6 @@ namespace Optima.Fais.Data
                 .IsRequired()
                 .HasMaxLength(100);
 
-            //SubCategory
-            builder.Entity<SubCategory>()
-                .ToTable("SubCategory")
-                .Property(p => p.Id)
-                .HasColumnName("Id");
-            builder.Entity<SubCategory>()
-                .Property(p => p.Code)
-                .IsRequired()
-                .HasMaxLength(30);
-            builder.Entity<SubCategory>()
-                .Property(p => p.Name)
-                .IsRequired()
-                .HasMaxLength(100);
-
-
-            //SubCategoryEN
-            builder.Entity<SubCategoryEN>()
-                .ToTable("SubCategoryEN")
-                .Property(p => p.Id)
-                .HasColumnName("Id");
-            builder.Entity<SubCategoryEN>()
-                .Property(p => p.Code)
-                .IsRequired()
-                .HasMaxLength(30);
-            builder.Entity<SubCategoryEN>()
-                .Property(p => p.Name)
-                .IsRequired()
-                .HasMaxLength(100);
-
 
 
             //InsuranceCategory
@@ -4861,14 +4832,6 @@ namespace Optima.Fais.Data
                 .Property(p => p.Name)
                 .IsRequired()
                 .HasMaxLength(400);
-            builder.Entity<Material>()
-               .HasOne(a => a.SubCategory)
-               .WithMany()
-               .HasForeignKey(a => a.SubCategoryId);
-            builder.Entity<Material>()
-                  .HasOne(a => a.SubCategoryEN)
-                  .WithMany()
-                  .HasForeignKey(a => a.SubCategoryENId);
             builder.Entity<Material>()
                  .HasOne(a => a.SubType)
                  .WithMany()

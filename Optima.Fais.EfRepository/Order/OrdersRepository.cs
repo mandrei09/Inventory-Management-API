@@ -1608,14 +1608,14 @@ namespace Optima.Fais.EfRepository
             Model.Project project = null;
             Model.ErrorType errorType = null;
             Model.Stock stock = null;
-            Model.SubCategory subCategory = null;
+            //Model.SubCategory subCategory = null;
             //Model.Category category = null;
             Model.ContractAmount contractAmount = null;
             Model.Uom uom = null;
             Model.Rate rate = null;
             Model.Contract contract = null;
             Model.EmailManager emailManager = null;
-            List<Model.SubCategory> subCategories = null;
+            //List<Model.SubCategory> subCategories = null;
             bool isValid = false;
             bool newRequest = false;
             bool newOffer = false;
@@ -2231,7 +2231,7 @@ namespace Optima.Fais.EfRepository
                             //    // return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = "Sub-Category-Missing", EntityId = stock.Id };
                             //}
 
-                            newAssetFromStock.SubCategoryId = subCategories.Count > 0 ? subCategories[0].Id : subCategory.Id;
+                           // newAssetFromStock.SubCategoryId = subCategories.Count > 0 ? subCategories[0].Id : subCategory.Id;
 
                             var result = await AddAssetStock(newAssetFromStock);
 
@@ -2943,12 +2943,12 @@ namespace Optima.Fais.EfRepository
             Model.Project project = null;
             Model.ErrorType errorType = null;
             Model.Stock stock = null;
-            Model.SubCategory subCategory = null;
+            //Model.SubCategory subCategory = null;
             //Model.Category category = null;
             Model.ContractAmount contractAmount = null;
             Model.Uom uom = null;
             Model.Rate rate = null;
-            List<Model.SubCategory> subCategories = null;
+            //List<Model.SubCategory> subCategories = null;
             bool isValid = false;
 
             //float sum = (float)orderDto.OrderMaterialUpdates.Sum(a => a.Quantity);
@@ -3523,7 +3523,7 @@ namespace Optima.Fais.EfRepository
                 //                  newAssetFromStock.StockId = orderDto.OrderMaterialUpdates[i].Id;
 
                 //                  List<Model.SubCategory> subCategories = await _context.Set<Model.SubCategory>().Where(a => a.CategoryId == stock.CategoryId && a.IsDeleted == false).ToListAsync();
-                //                  Model.SubCategory subCategory = null;
+                //                  //Model.SubCategory subCategory = null;
                 //                  //Model.Category category = null;
 
                 //                  if (subCategories.Count == 0)
@@ -3549,7 +3549,7 @@ namespace Optima.Fais.EfRepository
                 //                      // return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = "Sub-Category-Missing", EntityId = stock.Id };
                 //                  }
 
-                //                  newAssetFromStock.SubCategoryId = subCategories.Count > 0 ? subCategories[0].Id : subCategory.Id;
+                //                 // newAssetFromStock.SubCategoryId = subCategories.Count > 0 ? subCategories[0].Id : subCategory.Id;
 
                 //                 var res = await AddAssetStockCheck(newAssetFromStock);
 
@@ -3716,7 +3716,7 @@ namespace Optima.Fais.EfRepository
         //                // return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = "Sub-Category-Missing", EntityId = stock.Id };
         //            }
 
-                    newAssetFromStock.SubCategoryId = subCategories.Count > 0 ? subCategories[0].Id : subCategory.Id;
+                   // newAssetFromStock.SubCategoryId = subCategories.Count > 0 ? subCategories[0].Id : subCategory.Id;
 
                     var res = await AddAssetStockCheck(newAssetFromStock);
 
@@ -3854,7 +3854,7 @@ namespace Optima.Fais.EfRepository
             Model.AssetClass assetClass = null;
             // Model.AssetCategory assetCategory = null;
             Model.DictionaryItem dictionaryItem = null;
-            Model.SubCategory subCategory = null;
+            //Model.SubCategory subCategory = null;
             Model.AssetClassType assetClassType = null;
             Model.Partner partner = null;
             Model.CostCenter costCenter = null;
@@ -3953,21 +3953,21 @@ namespace Optima.Fais.EfRepository
                 //    if (accountancy == null) return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Lipsa mapare cont GL pentru subCategoria: {subCategory.Code + " - " + subCategory.Name}!" };
                 //}
 
-                dictionaryItem = await _context.Set<Model.DictionaryItem>().Where(a => a.Name == subCategory.Name).FirstOrDefaultAsync();
+                //dictionaryItem = await _context.Set<Model.DictionaryItem>().Where(a => a.Name == subCategory.Name).FirstOrDefaultAsync();
 
-                if (dictionaryItem == null)
-                {
-                    dictionaryItem = new Model.DictionaryItem()
-                    {
-                        Code = "NEW",
-                        Name = subCategory.Name,
-                        IsDeleted = false,
-                        //AssetCategoryId = accountancy.AssetCategoryId,
-                        DictionaryTypeId = 1
-                    };
+                //if (dictionaryItem == null)
+                //{
+                //    dictionaryItem = new Model.DictionaryItem()
+                //    {
+                //        Code = "NEW",
+                //        Name = subCategory.Name,
+                //        IsDeleted = false,
+                //        //AssetCategoryId = accountancy.AssetCategoryId,
+                //        DictionaryTypeId = 1
+                //    };
 
-                    _context.Add(dictionaryItem);
-                }
+                //    _context.Add(dictionaryItem);
+                //}
 
                 document = new Model.Document
                 {
@@ -4043,10 +4043,10 @@ namespace Optima.Fais.EfRepository
                 asset.DivisionId = costCenter.DivisionId;
                 //asset.ProjectTypeId = assetDto.ProjectTypeId;
                 // asset.AgreementNo = assetDto.PlateNo;
-                asset.Name = subCategory.Name;
+               // asset.Name = subCategory.Name;
                 asset.StockId = assetDto.StockId;
                 asset.MaterialId = stock.MaterialId;
-                asset.SubCategoryId = subCategory.Id;
+                //asset.SubCategoryId = subCategory.Id;
                 asset.CostCenterEmpId = employee != null ? employee.CostCenterId : null;
                 //asset.ExpAccountId = accountancy.ExpAccountId;
 
@@ -4154,7 +4154,7 @@ namespace Optima.Fais.EfRepository
                 assetAdmMD.RegionId = costCenter.RegionId;
                 assetAdmMD.DivisionId = costCenter.DivisionId;
                 // assetAdmMD.ProjectTypeId = order.Budget.ProjectTypeId;
-                assetAdmMD.SubCategoryId = subCategory.Id;
+                //assetAdmMD.SubCategoryId = subCategory.Id;
 
 
                 _context.Set<Model.AssetAdmMD>().Add(assetAdmMD);
@@ -4337,7 +4337,7 @@ namespace Optima.Fais.EfRepository
             Model.AssetClass assetClass = null;
             // Model.AssetCategory assetCategory = null;
             Model.DictionaryItem dictionaryItem = null;
-            Model.SubCategory subCategory = null;
+            //Model.SubCategory subCategory = null;
             Model.AssetClassType assetClassType = null;
             Model.Partner partner = null;
             Model.CostCenter costCenter = null;
@@ -4453,21 +4453,21 @@ namespace Optima.Fais.EfRepository
 
                 _context.Add(asset);
 
-                dictionaryItem = await _context.Set<Model.DictionaryItem>().Where(a => a.Name == subCategory.Name).FirstOrDefaultAsync();
+                //dictionaryItem = await _context.Set<Model.DictionaryItem>().Where(a => a.Name == subCategory.Name).FirstOrDefaultAsync();
 
-                if (dictionaryItem == null)
-                {
-                    dictionaryItem = new Model.DictionaryItem()
-                    {
-                        Code = "NEW",
-                        Name = subCategory.Name,
-                        IsDeleted = true,
-                        //AssetCategoryId = accountancy.AssetCategoryId,
-                        DictionaryTypeId = 1
-                    };
+                //if (dictionaryItem == null)
+                //{
+                //    dictionaryItem = new Model.DictionaryItem()
+                //    {
+                //        Code = "NEW",
+                //        Name = subCategory.Name,
+                //        IsDeleted = true,
+                //        //AssetCategoryId = accountancy.AssetCategoryId,
+                //        DictionaryTypeId = 1
+                //    };
 
-                    _context.Add(dictionaryItem);
-                }
+                //    _context.Add(dictionaryItem);
+                //}
 
                 document = new Model.Document
                 {
@@ -4544,10 +4544,10 @@ namespace Optima.Fais.EfRepository
                 asset.DivisionId = costCenter.DivisionId;
                 //asset.ProjectTypeId = assetDto.ProjectTypeId;
                 // asset.AgreementNo = assetDto.PlateNo;
-                asset.Name = subCategory.Name;
+               // asset.Name = subCategory.Name;
                 asset.StockId = assetDto.StockId;
                 asset.MaterialId = stock.MaterialId;
-                asset.SubCategoryId = subCategory.Id;
+                //asset.SubCategoryId = subCategory.Id;
                 asset.CostCenterEmpId = employee != null ? employee.CostCenterId : null;
                 //asset.ExpAccountId = accountancy.ExpAccountId;
                 //asset.InvoiceDate = DateTime.Now;
@@ -4654,7 +4654,7 @@ namespace Optima.Fais.EfRepository
                 assetAdmMD.RegionId = costCenter.RegionId;
                 assetAdmMD.DivisionId = costCenter.DivisionId;
                 // assetAdmMD.ProjectTypeId = order.Budget.ProjectTypeId;
-                assetAdmMD.SubCategoryId = subCategory.Id;
+                //assetAdmMD.SubCategoryId = subCategory.Id;
 
 
                 _context.Set<Model.AssetAdmMD>().Add(assetAdmMD);

@@ -103,16 +103,16 @@ namespace Optima.Fais.Api.Controllers
 				//First add the headers
 				worksheet.Cells[1, 1].Value = "Cod";
 				worksheet.Cells[1, 2].Value = "Descriere";
-				worksheet.Cells[1, 3].Value = "Cod SubCategorie";
-				worksheet.Cells[1, 4].Value = "SubCategorie";
+				//worksheet.Cells[1, 3].Value = "Cod SubCategorie";
+				//worksheet.Cells[1, 4].Value = "SubCategorie";
 
 				int recordIndex = 2;
 				foreach (var item in materials)
 				{
 					worksheet.Cells[recordIndex, 1].Value = item.Code;
 					worksheet.Cells[recordIndex, 2].Value = item.Name;
-					worksheet.Cells[recordIndex, 3].Value = item.SubCategory != null ? item.SubCategory.Code : "";
-					worksheet.Cells[recordIndex, 4].Value = item.SubCategory != null ? item.SubCategory.Name : "";
+					//worksheet.Cells[recordIndex, 3].Value = item.SubCategory != null ? item.SubCategory.Code : "";
+					//worksheet.Cells[recordIndex, 4].Value = item.SubCategory != null ? item.SubCategory.Name : "";
 					recordIndex++;
 				}
 

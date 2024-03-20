@@ -262,7 +262,7 @@ namespace Optima.Fais.Api.Services
 			rowH.Cells[4].MergeRight = 1;
 			rowH.Cells[6].AddParagraph("Clasificare:");
 			rowH.Cells[6].MergeRight = 1;
-			rowH.Cells[8].AddParagraph(Convert.ToString(asset.SubCategory != null ? asset.SubCategory.Name : ""));
+			//rowH.Cells[8].AddParagraph(Convert.ToString(asset.SubCategory != null ? asset.SubCategory.Name : ""));
 
 
 			rowH = table1.AddRow();
