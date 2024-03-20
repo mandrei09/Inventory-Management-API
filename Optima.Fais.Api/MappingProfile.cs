@@ -2903,31 +2903,6 @@ namespace Optima.Fais.Api
                 .ForMember(i => i.Employee, opt => opt.Ignore())
                 .ForMember(i => i.EmployeeId, opt => opt.MapFrom(i => i.Employee.Id));
 
-            CreateMap<Model.Accountancy, Dto.Accountancy>()
-              .ForMember(i => i.Value, opt => opt.MapFrom(i => i.Value))
-              // .ForMember(i => i.InterCompany, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.InterCompany.Id, Code = i.InterCompany.Code, Name = i.InterCompany.Name }))
-              .ForMember(i => i.SubCategory, opt => opt.MapFrom(i => new Dto.SubCategory { Id = i.SubCategory.Id, Code = i.SubCategory.Code, Name = i.SubCategory.Name }))
-              .ForMember(i => i.Category, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.SubCategory.Category.Id, Code = i.SubCategory.Category.Code, Name = i.SubCategory.Category.Name }))
-              .ForMember(i => i.Account, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.Account.Id, Code = i.Account.Code, Name = i.Account.Name }))
-              .ForMember(i => i.AssetCategory, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.AssetCategory.Id, Code = i.AssetCategory.Code, Name = i.AssetCategory.Name }))
-              .ForMember(i => i.AssetType, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.AssetType.Id, Code = i.AssetType.Code, Name = i.AssetType.Name }))
-              .ForMember(i => i.ExpAccount, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.ExpAccount.Id, Code = i.ExpAccount.Code, Name = i.ExpAccount.Name }));
-            CreateMap<Dto.Accountancy, Model.Accountancy>()
-                .ForMember(i => i.Id, opt => opt.MapFrom(i => i.Id))
-                .ForMember(i => i.Value, opt => opt.MapFrom(i => i.Value))
-                //.ForMember(i => i.InterCompany, opt => opt.Ignore())
-                //.ForMember(i => i.InterCompanyId, opt => opt.MapFrom(i => i.SubCategory.Category.InterCompany.Id))
-                .ForMember(i => i.SubCategory, opt => opt.Ignore())
-                .ForMember(i => i.SubCategoryId, opt => opt.MapFrom(i => i.SubCategory.Id))
-                .ForMember(i => i.Account, opt => opt.Ignore())
-                .ForMember(i => i.AccountId, opt => opt.MapFrom(i => i.Account.Id))
-                .ForMember(i => i.AssetType, opt => opt.Ignore())
-                .ForMember(i => i.AssetTypeId, opt => opt.MapFrom(i => i.AssetType.Id))
-                .ForMember(i => i.AssetCategory, opt => opt.Ignore())
-                .ForMember(i => i.AssetCategoryId, opt => opt.MapFrom(i => i.AssetCategory.Id))
-                .ForMember(i => i.ExpAccount, opt => opt.Ignore())
-                .ForMember(i => i.ExpAccountId, opt => opt.MapFrom(i => i.ExpAccount.Id));
-
             CreateMap<Model.EntityFile, Dto.EntityFile>()
                       .ForMember(i => i.Selected, opt => opt.MapFrom(i => 1 == 1 ? true : false))
                      .ForMember(i => i.EntityType, opt => opt.MapFrom(i => new Dto.EntityType { Id = i.EntityType.Id, Code = i.EntityType.Code, Name = i.EntityType.Name, UploadFolder = i.EntityType.UploadFolder }))

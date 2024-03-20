@@ -3870,7 +3870,6 @@ namespace Optima.Fais.EfRepository
             // Model.Order order = null;
             // Model.OfferMaterial offerMaterial = null;
             Model.Stock stock = null;
-            Model.Accountancy accountancy = null;
             Model.BudgetManager budgetManager = null;
             Model.CreateAssetSAP createAssetSAP = null;
             Model.TransferInStockSAP transferInStockSAP = null;
@@ -3929,30 +3928,30 @@ namespace Optima.Fais.EfRepository
 
 
 
-                if (stock.Value > 2500)
-                {
-                    accountancy = await _context.Set<Model.Accountancy>()
+                //if (stock.Value > 2500)
+                //{
+                //    accountancy = await _context.Set<Model.Accountancy>()
 
-                      .Include(a => a.Account)
-                      .Include(a => a.ExpAccount)
-                      .Include(a => a.AssetCategory)
-                      .Include(a => a.AssetType)
-                      .Where(a => a.SubCategoryId == assetDto.SubCategoryId && a.Value > 2500 && a.IsDeleted == false).SingleOrDefaultAsync();
+                //      .Include(a => a.Account)
+                //      .Include(a => a.ExpAccount)
+                //      .Include(a => a.AssetCategory)
+                //      .Include(a => a.AssetType)
+                //      .Where(a => a.SubCategoryId == assetDto.SubCategoryId && a.Value > 2500 && a.IsDeleted == false).SingleOrDefaultAsync();
 
-                    if (accountancy == null) return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Lipsa mapare cont GL pentru subCategoria: {subCategory.Code + " - " + subCategory.Name}!" };
-                }
-                else
-                {
-                    accountancy = await _context.Set<Model.Accountancy>()
+                //    if (accountancy == null) return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Lipsa mapare cont GL pentru subCategoria: {subCategory.Code + " - " + subCategory.Name}!" };
+                //}
+                //else
+                //{
+                //    accountancy = await _context.Set<Model.Accountancy>()
 
-                     .Include(a => a.Account)
-                     .Include(a => a.ExpAccount)
-                     .Include(a => a.AssetCategory)
-                     .Include(a => a.AssetType)
-                     .Where(a => a.SubCategoryId == assetDto.SubCategoryId && a.Value == 2500 && a.IsDeleted == false).SingleOrDefaultAsync();
+                //     .Include(a => a.Account)
+                //     .Include(a => a.ExpAccount)
+                //     .Include(a => a.AssetCategory)
+                //     .Include(a => a.AssetType)
+                //     .Where(a => a.SubCategoryId == assetDto.SubCategoryId && a.Value == 2500 && a.IsDeleted == false).SingleOrDefaultAsync();
 
-                    if (accountancy == null) return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Lipsa mapare cont GL pentru subCategoria: {subCategory.Code + " - " + subCategory.Name}!" };
-                }
+                //    if (accountancy == null) return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Lipsa mapare cont GL pentru subCategoria: {subCategory.Code + " - " + subCategory.Name}!" };
+                //}
 
                 dictionaryItem = await _context.Set<Model.DictionaryItem>().Where(a => a.Name == subCategory.Name).FirstOrDefaultAsync();
 
@@ -3963,7 +3962,7 @@ namespace Optima.Fais.EfRepository
                         Code = "NEW",
                         Name = subCategory.Name,
                         IsDeleted = false,
-                        AssetCategoryId = accountancy.AssetCategoryId,
+                        //AssetCategoryId = accountancy.AssetCategoryId,
                         DictionaryTypeId = 1
                     };
 
@@ -4002,12 +4001,12 @@ namespace Optima.Fais.EfRepository
                 asset.Validated = true;
                 asset.SAPCode = costCenter.Company.Code + "OPT0000000000" + entityType.Name;
                 asset.AssetStateId = assetState.Id;
-                asset.AssetTypeId = accountancy.AssetTypeId;
+                //asset.AssetTypeId = accountancy.AssetTypeId;
                 asset.CostCenterId = costCenter.Id;
 
                 costCenter = _context.Set<Model.CostCenter>().Include(c => c.Division).Where(c => c.Id == asset.CostCenterId).SingleOrDefault();
 
-                asset.AssetCategoryId = accountancy.AssetCategoryId;
+                //asset.AssetCategoryId = accountancy.AssetCategoryId;
                 asset.EmployeeId = employee.Id;
                 asset.RoomId = costCenter.RoomId;
                 asset.ValueInv = stock.Value;
@@ -4038,7 +4037,7 @@ namespace Optima.Fais.EfRepository
                 asset.DictionaryItem = dictionaryItem;
                 asset.IsAccepted = true;
                 asset.IsReconcile = false;
-                asset.AccountId = accountancy.AccountId;
+                //asset.AccountId = accountancy.AccountId;
                 asset.OrderId = assetDto.OrderId;
                 //asset.BudgetId = order.BudgetId;
                 asset.DivisionId = costCenter.DivisionId;
@@ -4049,7 +4048,7 @@ namespace Optima.Fais.EfRepository
                 asset.MaterialId = stock.MaterialId;
                 asset.SubCategoryId = subCategory.Id;
                 asset.CostCenterEmpId = employee != null ? employee.CostCenterId : null;
-                asset.ExpAccountId = accountancy.ExpAccountId;
+                //asset.ExpAccountId = accountancy.ExpAccountId;
 
                 assetAC = new Model.AssetAC
                 {
@@ -4132,12 +4131,12 @@ namespace Optima.Fais.EfRepository
                 };
 
                 assetAdmMD.AssetStateId = assetState.Id;
-                assetAdmMD.AssetTypeId = accountancy.AssetTypeId;
+                //assetAdmMD.AssetTypeId = accountancy.AssetTypeId;
                 assetAdmMD.CostCenterId = costCenter.Id;
                 assetAdmMD.EmployeeId = employee.Id;
                 assetAdmMD.RoomId = costCenter.RoomId;
                 assetAdmMD.DepartmentId = costCenter.Division.DepartmentId;
-                assetAdmMD.AssetCategoryId = accountancy.AssetCategoryId;
+                //assetAdmMD.AssetCategoryId = accountancy.AssetCategoryId;
                 assetAdmMD.AssetClass = assetClass;
                 assetAdmMD.ArticleId = 151;
                 assetAdmMD.AdministrationId = costCenter.AdministrationId;
@@ -4190,8 +4189,8 @@ namespace Optima.Fais.EfRepository
                         EmployeeIdInitial = employee.Id,
                         EmployeeIdFinal = employee.Id,
 
-                        AssetCategoryIdInitial = accountancy.AssetCategoryId,
-                        AssetCategoryIdFinal = accountancy.AssetCategoryId,
+                        //AssetCategoryIdInitial = accountancy.AssetCategoryId,
+                        //AssetCategoryIdFinal = accountancy.AssetCategoryId,
                         InvStateIdInitial = invState.Id,
                         InvStateIdFinal = invState.Id,
                         AdministrationIdInitial = costCenter.AdministrationId,
@@ -4207,8 +4206,8 @@ namespace Optima.Fais.EfRepository
                     assetOp.DepartmentIdInitial = null;
                     assetOp.DepartmentIdFinal = null;
                     assetOp.InvName = assetDto.Name;
-                    assetOp.AssetTypeIdInitial = accountancy.AssetTypeId;
-                    assetOp.AssetTypeIdFinal = accountancy.AssetTypeId;
+                    ////assetOp.AssetTypeIdInitial = accountancy.AssetTypeId; 
+                    ////assetOp.AssetTypeIdFinal = accountancy.AssetTypeId;
                     _context.Add(assetOp);
 
                     //_context.Add(offerOp);
@@ -4233,7 +4232,7 @@ namespace Optima.Fais.EfRepository
                     createAssetSAP.COMPANYCODE = costCenter.Company.Code;
                     createAssetSAP.ASSET = asset.InvNo;
                     createAssetSAP.SUBNUMBER = "0000";
-                    createAssetSAP.ASSETCLASS = accountancy.ExpAccount.Name;
+                    //createAssetSAP.ASSETCLASS = accountancy.ExpAccount.Name;
                     createAssetSAP.POSTCAP = "";
                     createAssetSAP.DESCRIPT = countNames > 0 ? names.ElementAt(0) : "";
                     createAssetSAP.DESCRIPT2 = countNames > 1 ? names.ElementAt(1) : "";
@@ -4253,7 +4252,7 @@ namespace Optima.Fais.EfRepository
                     createAssetSAP.ROOM = "";
                     createAssetSAP.PERSON_NO = employee != null ? employee.InternalCode : "";
                     createAssetSAP.PLATE_NO = "";
-                    createAssetSAP.ZZCLAS = accountancy.AssetCategory.Code;
+                    //createAssetSAP.ZZCLAS = accountancy.AssetCategory.Code;
                     createAssetSAP.IN_CONSERVATION = "";
                     createAssetSAP.PROP_IND = "1";
                     createAssetSAP.OPTIMA_ASSET_NO = asset.InvNo;
@@ -4285,7 +4284,7 @@ namespace Optima.Fais.EfRepository
                         Quantity = 1,
                         Uom = stock.UM,
                         Batch = stock.Code,
-                        Gl_Account = accountancy.ExpAccount.Name,
+                        //Gl_Account = accountancy.ExpAccount.Name,
                         Item_Text = stock.Name,
                         Asset = asset.InvNo,
                         SubNumber = asset.SubNo,
@@ -4354,7 +4353,7 @@ namespace Optima.Fais.EfRepository
             // Model.Order order = null;
             // Model.OfferMaterial offerMaterial = null;
             Model.Stock stock = null;
-            Model.Accountancy accountancy = null;
+           //Model.Accountancy accountancy = null;
             //Model.BudgetManager budgetManager = null;
             Model.CreateAssetSAP createAssetSAP = null;
             Model.TransferInStockSAP transferInStockSAP = null;
@@ -4420,32 +4419,32 @@ namespace Optima.Fais.EfRepository
                     .Where(a => a.Id == assetDto.SubCategoryId)
                     .SingleAsync();
 
-                if (stock.Value > 2500)
-                {
-                    accountancy = await _context.Set<Model.Accountancy>()
+                //if (stock.Value > 2500)
+                //{
+                //    accountancy = await _context.Set<Model.Accountancy>()
 
-                      .Include(a => a.Account)
-                      .Include(a => a.ExpAccount)
-                      .Include(a => a.AssetCategory)
-                      .Include(a => a.AssetType)
-                      .Where(a => a.SubCategoryId == assetDto.SubCategoryId && a.Value > 2500 && a.IsDeleted == false)
-                      .FirstOrDefaultAsync();
+                //      .Include(a => a.Account)
+                //      .Include(a => a.ExpAccount)
+                //      .Include(a => a.AssetCategory)
+                //      .Include(a => a.AssetType)
+                //      .Where(a => a.SubCategoryId == assetDto.SubCategoryId && a.Value > 2500 && a.IsDeleted == false)
+                //      .FirstOrDefaultAsync();
 
-                    if (accountancy == null) return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Lipsa mapare SubCategoria: {subCategory.Code + " - " + subCategory.Name}!" };
-                }
-                else
-                {
-                    accountancy = await _context.Set<Model.Accountancy>()
+                //    if (accountancy == null) return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Lipsa mapare SubCategoria: {subCategory.Code + " - " + subCategory.Name}!" };
+                //}
+                //else
+                //{
+                //    accountancy = await _context.Set<Model.Accountancy>()
 
-                     .Include(a => a.Account)
-                     .Include(a => a.ExpAccount)
-                     .Include(a => a.AssetCategory)
-                     .Include(a => a.AssetType)
-                     .Where(a => a.SubCategoryId == assetDto.SubCategoryId && a.Value == 2500 && a.IsDeleted == false)
-                     .FirstOrDefaultAsync();
+                //     .Include(a => a.Account)
+                //     .Include(a => a.ExpAccount)
+                //     .Include(a => a.AssetCategory)
+                //     .Include(a => a.AssetType)
+                //     .Where(a => a.SubCategoryId == assetDto.SubCategoryId && a.Value == 2500 && a.IsDeleted == false)
+                //     .FirstOrDefaultAsync();
 
-                    if (accountancy == null) return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Lipsa mapare SubCategoria: {subCategory.Code + " - " + subCategory.Name}!" };
-                }
+                //    if (accountancy == null) return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = $"Lipsa mapare SubCategoria: {subCategory.Code + " - " + subCategory.Name}!" };
+                //}
 
                 asset = new Model.Asset()
                 {
@@ -4463,7 +4462,7 @@ namespace Optima.Fais.EfRepository
                         Code = "NEW",
                         Name = subCategory.Name,
                         IsDeleted = true,
-                        AssetCategoryId = accountancy.AssetCategoryId,
+                        //AssetCategoryId = accountancy.AssetCategoryId,
                         DictionaryTypeId = 1
                     };
 
@@ -4506,9 +4505,9 @@ namespace Optima.Fais.EfRepository
                 asset.SAPCode = costCenter.Company.Code + "CHECK00000000" + entityType.Name;
                 asset.AssetStateId = assetState.Id;
                 asset.AssetStateId = 1;
-                asset.AssetTypeId = accountancy.AssetTypeId;
+                //asset.AssetTypeId = accountancy.AssetTypeId;
                 asset.CostCenterId = costCenter.Id;
-                asset.AssetCategoryId = accountancy.AssetCategoryId;
+                //asset.AssetCategoryId = accountancy.AssetCategoryId;
                 asset.EmployeeId = employee.Id;
                 asset.RoomId = costCenter.RoomId;
                 asset.ValueInv = stock.Value;
@@ -4539,7 +4538,7 @@ namespace Optima.Fais.EfRepository
                 asset.DictionaryItem = dictionaryItem;
                 asset.IsAccepted = true;
                 asset.IsReconcile = false;
-                asset.AccountId = accountancy.AccountId;
+                //asset.AccountId = accountancy.AccountId;
                 asset.OrderId = assetDto.OrderId;
                 //asset.BudgetId = order.BudgetId;
                 asset.DivisionId = costCenter.DivisionId;
@@ -4550,7 +4549,7 @@ namespace Optima.Fais.EfRepository
                 asset.MaterialId = stock.MaterialId;
                 asset.SubCategoryId = subCategory.Id;
                 asset.CostCenterEmpId = employee != null ? employee.CostCenterId : null;
-                asset.ExpAccountId = accountancy.ExpAccountId;
+                //asset.ExpAccountId = accountancy.ExpAccountId;
                 //asset.InvoiceDate = DateTime.Now;
                 asset.IsDeleted = true;
 
@@ -4632,12 +4631,12 @@ namespace Optima.Fais.EfRepository
                 };
 
                 assetAdmMD.AssetStateId = assetState.Id;
-                assetAdmMD.AssetTypeId = accountancy.AssetTypeId;
+                //assetAdmMD.AssetTypeId = accountancy.AssetTypeId;
                 assetAdmMD.CostCenterId = costCenter.Id;
                 assetAdmMD.EmployeeId = employee.Id;
                 assetAdmMD.RoomId = costCenter.RoomId;
                 assetAdmMD.DepartmentId = costCenter.Division.DepartmentId;
-                assetAdmMD.AssetCategoryId = accountancy.AssetCategoryId;
+                //assetAdmMD.AssetCategoryId = accountancy.AssetCategoryId;
                 assetAdmMD.AssetClass = assetClass;
                 assetAdmMD.ArticleId = 151;
                 assetAdmMD.AdministrationId = costCenter.AdministrationId;
@@ -4688,8 +4687,8 @@ namespace Optima.Fais.EfRepository
                     EmployeeIdInitial = employee.Id,
                     EmployeeIdFinal = employee.Id,
 
-                    AssetCategoryIdInitial = accountancy.AssetCategoryId,
-                    AssetCategoryIdFinal = accountancy.AssetCategoryId,
+                    //AssetCategoryIdInitial = accountancy.AssetCategoryId,
+                    //AssetCategoryIdFinal = accountancy.AssetCategoryId,
                     InvStateIdInitial = invState.Id,
                     InvStateIdFinal = invState.Id,
                     AdministrationIdInitial = costCenter.AdministrationId,
@@ -4705,8 +4704,8 @@ namespace Optima.Fais.EfRepository
                 assetOp.DepartmentIdInitial = null;
                 assetOp.DepartmentIdFinal = null;
                 assetOp.InvName = assetDto.Name;
-                assetOp.AssetTypeIdInitial = accountancy.AssetTypeId;
-                assetOp.AssetTypeIdFinal = accountancy.AssetTypeId;
+                //assetOp.AssetTypeIdInitial = accountancy.AssetTypeId; 
+                //assetOp.AssetTypeIdFinal = accountancy.AssetTypeId;
                 assetOp.IsDeleted = true;
                 _context.Add(assetOp);
 
@@ -4732,7 +4731,7 @@ namespace Optima.Fais.EfRepository
                 createAssetSAP.COMPANYCODE = costCenter.Company.Code;
                 createAssetSAP.ASSET = asset.InvNo;
                 createAssetSAP.SUBNUMBER = "0000";
-                createAssetSAP.ASSETCLASS = accountancy.ExpAccount.Name;
+                //createAssetSAP.ASSETCLASS = accountancy.ExpAccount.Name;
                 createAssetSAP.POSTCAP = "";
                 createAssetSAP.DESCRIPT = countNames > 0 ? names.ElementAt(0) : "";
                 createAssetSAP.DESCRIPT2 = countNames > 1 ? names.ElementAt(1) : "";
@@ -4752,7 +4751,7 @@ namespace Optima.Fais.EfRepository
                 createAssetSAP.ROOM = "";
                 createAssetSAP.PERSON_NO = employee != null ? employee.InternalCode : "";
                 createAssetSAP.PLATE_NO = "";
-                createAssetSAP.ZZCLAS = accountancy.AssetCategory.Code;
+                //createAssetSAP.ZZCLAS = accountancy.AssetCategory.Code;
                 createAssetSAP.IN_CONSERVATION = "";
                 createAssetSAP.PROP_IND = "1";
                 createAssetSAP.OPTIMA_ASSET_NO = asset.InvNo;
@@ -4785,7 +4784,7 @@ namespace Optima.Fais.EfRepository
                     Quantity = 1,
                     Uom = stock.UM,
                     Batch = stock.Code,
-                    Gl_Account = accountancy.ExpAccount.Name,
+                    //Gl_Account = accountancy.ExpAccount.Name,
                     Item_Text = stock.Name,
                     Asset = asset.InvNo,
                     SubNumber = asset.SubNo,

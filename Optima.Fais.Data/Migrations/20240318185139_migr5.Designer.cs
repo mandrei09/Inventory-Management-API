@@ -12,9 +12,10 @@ using System;
 namespace Optima.Fais.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240318185139_migr5")]
+    partial class migr5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -219,6 +220,51 @@ namespace Optima.Fais.Data.Migrations
                     b.HasIndex("CompanyId");
 
                     b.ToTable("Account");
+                });
+
+            modelBuilder.Entity("Optima.Fais.Model.Accountancy", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("Id");
+
+                    b.Property<int>("AccountId");
+
+                    b.Property<int>("AssetCategoryId");
+
+                    b.Property<int>("AssetTypeId");
+
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450);
+
+                    b.Property<int>("ExpAccountId");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("ModifiedAt");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasMaxLength(450);
+
+                    b.Property<int?>("SubCategoryId");
+
+                    b.Property<decimal>("Value");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AccountId");
+
+                    b.HasIndex("AssetCategoryId");
+
+                    b.HasIndex("AssetTypeId");
+
+                    b.HasIndex("ExpAccountId");
+
+                    b.HasIndex("SubCategoryId");
+
+                    b.ToTable("Accountancy");
                 });
 
             modelBuilder.Entity("Optima.Fais.Model.AccSystem", b =>
@@ -13218,6 +13264,33 @@ namespace Optima.Fais.Data.Migrations
                     b.HasOne("Optima.Fais.Model.Company", "Company")
                         .WithMany()
                         .HasForeignKey("CompanyId");
+                });
+
+            modelBuilder.Entity("Optima.Fais.Model.Accountancy", b =>
+                {
+                    b.HasOne("Optima.Fais.Model.Account", "Account")
+                        .WithMany()
+                        .HasForeignKey("AccountId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Optima.Fais.Model.AssetCategory", "AssetCategory")
+                        .WithMany()
+                        .HasForeignKey("AssetCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Optima.Fais.Model.AssetType", "AssetType")
+                        .WithMany()
+                        .HasForeignKey("AssetTypeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Optima.Fais.Model.ExpAccount", "ExpAccount")
+                        .WithMany()
+                        .HasForeignKey("ExpAccountId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Optima.Fais.Model.SubCategory", "SubCategory")
+                        .WithMany()
+                        .HasForeignKey("SubCategoryId");
                 });
 
             modelBuilder.Entity("Optima.Fais.Model.AccSystem", b =>

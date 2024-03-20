@@ -3803,36 +3803,6 @@ namespace Optima.Fais.Data
             // builder.Entity<BudgetMonth>().Ignore(a => a.Budget);
             .HasForeignKey(a => a.OfferId);
 
-
-            //Accountancy
-            builder.Entity<Accountancy>()
-                .ToTable("Accountancy")
-                .Property(p => p.Id)
-                .HasColumnName("Id");
-            builder.Entity<Accountancy>()
-                       .HasOne(a => a.Account)
-                       .WithMany()
-                       .HasForeignKey(a => a.AccountId);
-            builder.Entity<Accountancy>()
-                          .HasOne(a => a.ExpAccount)
-                          .WithMany()
-                          .HasForeignKey(a => a.ExpAccountId);
-            builder.Entity<Accountancy>()
-                             .HasOne(a => a.AssetType)
-                             .WithMany()
-                             .HasForeignKey(a => a.AssetTypeId);
-            builder.Entity<Accountancy>()
-                                .HasOne(a => a.AssetCategory)
-                                .WithMany()
-                                .HasForeignKey(a => a.AssetCategoryId);
-            //builder.Entity<Accountancy>()
-            //           .HasOne(a => a.InterCompany)
-            //           .WithMany(a => a.Accountancies)
-            //// builder.Entity<BudgetMonth>().Ignore(a => a.Budget);
-            //.HasForeignKey(a => a.InterCompanyId);
-
-
-
             //OrderMatwrial
             builder.Entity<OrderMaterial>()
                 .ToTable("OrderMaterial")
