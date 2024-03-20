@@ -20,19 +20,19 @@ namespace Optima.Fais.EfRepository
             Expression<Func<Model.SubCategory, bool>> predicate = null;
             if ((filter != null) && (filter.Length > 0)) predicate = ExpressionHelper.GetAllPartsFilter(filter, _filterPredicate);
 
-            if ((categoryIds != null) && (categoryIds.Count > 0))
-            {
-                predicate = predicate != null
-                    ? ExpressionHelper.And<Model.SubCategory>(predicate, r => categoryIds.Contains(r.CategoryId.Value))
-                    : r => categoryIds.Contains(r.CategoryId.Value);
-            }
+            //if ((categoryIds != null) && (categoryIds.Count > 0))
+            //{
+            //    predicate = predicate != null
+            //        ? ExpressionHelper.And<Model.SubCategory>(predicate, r => categoryIds.Contains(r.CategoryId.Value))
+            //        : r => categoryIds.Contains(r.CategoryId.Value);
+            //}
 
-            if ((subIds != null) && (subIds.Count > 0))
-            {
-                predicate = predicate != null
-                    ? ExpressionHelper.And<Model.SubCategory>(predicate, r => subIds.Contains(r.Id))
-                    : r => subIds.Contains(r.Id);
-            }
+            //if ((subIds != null) && (subIds.Count > 0))
+            //{
+            //    predicate = predicate != null
+            //        ? ExpressionHelper.And<Model.SubCategory>(predicate, r => subIds.Contains(r.Id))
+            //        : r => subIds.Contains(r.Id);
+            //}
 
             return predicate;
         }

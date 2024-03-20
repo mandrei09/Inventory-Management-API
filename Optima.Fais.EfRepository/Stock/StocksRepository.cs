@@ -25,12 +25,12 @@ namespace Optima.Fais.EfRepository
             //        ? ExpressionHelper.And<Location>(predicate, l => admCenterIds.Contains(l.AdmCenterId.GetValueOrDefault()))
             //        : l => admCenterIds.Contains(l.AdmCenterId.GetValueOrDefault());
 
-            if ((categoryIds != null) && (categoryIds.Count > 0))
-            {
-                predicate = predicate != null
-                    ? ExpressionHelper.And<Model.Stock>(predicate, r => categoryIds.Contains(r.CategoryId))
-                    : r => categoryIds.Contains(r.CategoryId);
-            }
+            //if ((categoryIds != null) && (categoryIds.Count > 0))
+            //{
+            //    predicate = predicate != null
+            //        ? ExpressionHelper.And<Model.Stock>(predicate, r => categoryIds.Contains(r.CategoryId))
+            //        : r => categoryIds.Contains(r.CategoryId);
+            //}
 
             if ((plantInitialIds != null) && (plantInitialIds.Count > 0))
             {

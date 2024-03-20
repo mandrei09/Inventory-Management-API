@@ -17,9 +17,5 @@ namespace Optima.Fais.Model
 
 		public virtual Company Company { get; set; }
 
-		public int? CategoryENId { get; set; }
-
-		public virtual CategoryEN CategoryEN { get; set; }
-
 	}
 }

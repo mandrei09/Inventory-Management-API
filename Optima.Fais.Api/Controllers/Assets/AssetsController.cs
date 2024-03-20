@@ -13097,7 +13097,7 @@ namespace Optima.Fais.Api.Controllers
 
 					if (saveStockResult.Data != null && saveStockResult.Data.Return_Code == "1")
                     {
-                        Model.Category category = null;
+                       // Model.Category category = null;
                         Model.Company company = null;
                         Model.Uom uom = null;
                         Model.Material material = null;
@@ -13185,19 +13185,19 @@ namespace Optima.Fais.Api.Controllers
 
                             if (saveStockResult.Data.E_OutPut[c].Category != "")
                             {
-                                category = _context.Set<Model.Category>().Where(com => com.Code.Trim() == saveStockResult.Data.E_OutPut[c].Category.Trim()).FirstOrDefault();
+                                //category = _context.Set<Model.Category>().Where(com => com.Code.Trim() == saveStockResult.Data.E_OutPut[c].Category.Trim()).FirstOrDefault();
 
-                                if (category == null)
-                                {
-                                    category = new Model.Category()
-                                    {
-                                        Code = saveStockResult.Data.E_OutPut[c].Category.Trim(),
-                                        Name = saveStockResult.Data.E_OutPut[c].Category_Descr.Trim(),
-                                        IsDeleted = false
-                                    };
+                                //if (category == null)
+                                //{
+                                //    category = new Model.Category()
+                                //    {
+                                //        Code = saveStockResult.Data.E_OutPut[c].Category.Trim(),
+                                //        Name = saveStockResult.Data.E_OutPut[c].Category_Descr.Trim(),
+                                //        IsDeleted = false
+                                //    };
 
-                                    _context.Add(category);
-                                }
+                                //    _context.Add(category);
+                                //}
                             }
 							
 
@@ -13359,7 +13359,7 @@ namespace Optima.Fais.Api.Controllers
                                 Storage_Location = saveStockResult.Data.E_OutPut[c].Storage_Location.Trim(),
                                 Value = saveStockResult.Data.E_OutPut[c].UnitCost,
                                 UM = saveStockResult.Data.E_OutPut[c].Uom.Trim(),
-                                Category = category,
+                                //Category = category,
                                 Company = company,
                                 Uom = uom,
                                 Material = material,
@@ -13393,28 +13393,28 @@ namespace Optima.Fais.Api.Controllers
 					}
 					else
 					{
-                        if(saveStockResult.Meta.Code == 400)
-						{
-                            Model.Category category = _context.Set<Model.Category>().Where(a => a.IsDeleted == false && a.Code == categoryID).FirstOrDefault();
+      //                  if(saveStockResult.Meta.Code == 400)
+						//{
+      //                      Model.Category category = _context.Set<Model.Category>().Where(a => a.IsDeleted == false && a.Code == categoryID).FirstOrDefault();
 
-                            if(category != null)
-							{
-                                List<Model.Stock> stocks = _context.Set<Model.Stock>().Where(a => a.CategoryId == category.Id  && a.IsDeleted == false).ToList();
+      //                      if(category != null)
+						//	{
+      //                          List<Model.Stock> stocks = _context.Set<Model.Stock>().Where(a => a.CategoryId == category.Id  && a.IsDeleted == false).ToList();
 
-                                if (stocks.Count > 0)
-                                {
+      //                          if (stocks.Count > 0)
+      //                          {
 
-                                    for (int a = 0; a < stocks.Count; a++)
-                                    {
-                                        Model.Stock stockToUpdate = _context.Set<Model.Stock>().Where(s => s.Id == stocks[a].Id).SingleOrDefault();
-                                        stockToUpdate.IsDeleted = true;
+      //                              for (int a = 0; a < stocks.Count; a++)
+      //                              {
+      //                                  Model.Stock stockToUpdate = _context.Set<Model.Stock>().Where(s => s.Id == stocks[a].Id).SingleOrDefault();
+      //                                  stockToUpdate.IsDeleted = true;
 
-                                        _context.Update(stockToUpdate);
-                                        _context.SaveChanges();
-                                    }
-                                }
-                            }
-						}
+      //                                  _context.Update(stockToUpdate);
+      //                                  _context.SaveChanges();
+      //                              }
+      //                          }
+      //                      }
+						//}
 					}
                 }
                 catch (Exception ex)

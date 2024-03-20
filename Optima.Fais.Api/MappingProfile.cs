@@ -103,7 +103,6 @@ namespace Optima.Fais.Api
                  .ForMember(i => i.Validated, opt => opt.MapFrom(i => i.Validated))
                  .ForMember(i => i.Imported, opt => opt.MapFrom(i => i.Imported))
                  .ForMember(i => i.Error, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.Error.Id, Code = i.Error.Code, Name = i.Error.Name }))
-                 .ForMember(i => i.Category, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.Category.Id, Code = i.Category.Code, Name = i.Category.Name }))
                  .ForMember(i => i.PlantInitial, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.PlantInitial.Id, Code = i.PlantInitial.Code, Name = i.PlantInitial.Name }))
                  .ForMember(i => i.PlantActual, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.PlantActual.Id, Code = i.PlantActual.Code, Name = i.PlantActual.Name }))
                  .ForMember(i => i.StorageInitial, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.StorageInitial.Id, Code = i.StorageInitial.Code, Name = i.StorageInitial.Name }))
@@ -125,8 +124,6 @@ namespace Optima.Fais.Api
                  .ForMember(i => i.UM, opt => opt.MapFrom(i => i.UM))
                  .ForMember(i => i.Quantity, opt => opt.MapFrom(i => i.Quantity))
                  .ForMember(i => i.Value, opt => opt.MapFrom(i => i.Value))
-                 .ForMember(i => i.Category, opt => opt.Ignore())
-                 .ForMember(i => i.CategoryId, opt => opt.MapFrom(i => i.Category.Id))
                  .ForMember(i => i.Company, opt => opt.Ignore())
                  .ForMember(i => i.CompanyId, opt => opt.MapFrom(i => i.Company.Id))
                  .ForMember(i => i.Uom, opt => opt.Ignore())
@@ -3237,42 +3234,6 @@ namespace Optima.Fais.Api
 				.ForMember(i => i.Id, opt => opt.MapFrom(i => i.Id))
 				.ForMember(i => i.Code, opt => opt.MapFrom(i => i.Code))
 				.ForMember(i => i.Name, opt => opt.MapFrom(i => i.Name));
-
-            CreateMap<Model.Category, Dto.Category>()
-                .ForMember(i => i.Id, opt => opt.MapFrom(i => i.Id))
-                .ForMember(i => i.Code, opt => opt.MapFrom(i => i.Code))
-                .ForMember(i => i.Name, opt => opt.MapFrom(i => i.Name))
-                .ForMember(i => i.CategoryEN, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.CategoryEN.Id, Code = i.CategoryEN.Code, Name = i.CategoryEN.Name }));
-            CreateMap<Dto.Category, Model.Category>()
-                 .ForMember(i => i.CategoryEN, opt => opt.Ignore())
-                 .ForMember(i => i.CategoryENId, opt => opt.MapFrom(i => i.CategoryEN.Id));
-
-
-            CreateMap<Model.CategoryEN, Dto.CategoryEN>()
-                 .ForMember(i => i.Id, opt => opt.MapFrom(i => i.Id))
-                .ForMember(i => i.Code, opt => opt.MapFrom(i => i.Code))
-                .ForMember(i => i.Name, opt => opt.MapFrom(i => i.Name));
-
-            CreateMap<Model.SubCategory, Dto.SubCategory>()
-                .ForMember(i => i.Id, opt => opt.MapFrom(i => i.Id))
-                .ForMember(i => i.Code, opt => opt.MapFrom(i => i.Code))
-                .ForMember(i => i.Name, opt => opt.MapFrom(i => i.Name))
-                .ForMember(i => i.Category, opt => opt.MapFrom(i => new Dto.Category { Id = i.Category.Id, Code = i.Category.Code, Name = i.Category.Name }))
-                .ForMember(i => i.CategoryEN, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.CategoryEN.Id, Code = i.CategoryEN.Code, Name = i.CategoryEN.Name }));
-            CreateMap<Dto.SubCategory, Model.SubCategory>()
-                .ForMember(i => i.Category, opt => opt.Ignore())
-                .ForMember(i => i.CategoryId, opt => opt.MapFrom(i => i.Category.Id))
-                .ForMember(i => i.CategoryEN, opt => opt.Ignore())
-                .ForMember(i => i.CategoryENId, opt => opt.MapFrom(i => i.CategoryEN.Id));
-
-            CreateMap<Model.SubCategoryEN, Dto.SubCategoryEN>()
-                .ForMember(i => i.Id, opt => opt.MapFrom(i => i.Id))
-                .ForMember(i => i.Code, opt => opt.MapFrom(i => i.Code))
-                .ForMember(i => i.Name, opt => opt.MapFrom(i => i.Name))
-                .ForMember(i => i.CategoryEN, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.CategoryEN.Id, Code = i.CategoryEN.Code, Name = i.CategoryEN.Name }));
-            CreateMap<Dto.SubCategoryEN, Model.SubCategoryEN>()
-                .ForMember(i => i.CategoryEN, opt => opt.Ignore())
-                .ForMember(i => i.CategoryENId, opt => opt.MapFrom(i => i.CategoryEN.Id));
 
             CreateMap<Model.Company, Dto.Company>();
 			CreateMap<Dto.Company, Model.Company>()

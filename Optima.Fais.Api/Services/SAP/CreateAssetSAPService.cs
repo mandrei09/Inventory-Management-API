@@ -685,85 +685,85 @@ namespace Optima.Fais.Api.Services
 
 						syncStatus.SyncStart = DateTime.Now;
 						var res = string.Empty;
-						for (int i = 0; i < assets.Count; i++)
-						{
-							asset = dbContext.Set<Model.Asset>()
-								.Include(s => s.Stock).ThenInclude(s => s.Material)
-								.Include(s => s.Stock).ThenInclude(s => s.Category)
-								.AsNoTracking()
-								.Where(a => a.InvNo == assets[i].Asset && a.SubNo == assets[i].SubNumber && a.AssetStateId == assetState.Id)
-								.SingleOrDefault();
+						//for (int i = 0; i < assets.Count; i++)
+						//{
+						//	asset = dbContext.Set<Model.Asset>()
+						//		.Include(s => s.Stock).ThenInclude(s => s.Material)
+						//		.Include(s => s.Stock).ThenInclude(s => s.Category)
+						//		.AsNoTracking()
+						//		.Where(a => a.InvNo == assets[i].Asset && a.SubNo == assets[i].SubNumber && a.AssetStateId == assetState.Id)
+						//		.SingleOrDefault();
 
-							if(asset != null)
-							{
-								res = await CheckAssetStock(asset.Stock.Category.Code, assets[i].Material, asset.Stock.Code);
+						//	if(asset != null)
+						//	{
+						//		res = await CheckAssetStock(asset.Stock.Category.Code, assets[i].Material, asset.Stock.Code);
 
-								if (res != "")
-								{
-									try
-									{
-										checkStockResult = JsonConvert.DeserializeObject<GetStockResult>(res);
+						//		if (res != "")
+						//		{
+						//			try
+						//			{
+						//				checkStockResult = JsonConvert.DeserializeObject<GetStockResult>(res);
 
-										if (checkStockResult.Data != null && checkStockResult.Data.Return_Code == "1")
-										{
-											transferInStockSAP = dbContext.Set<Model.TransferInStockSAP>().Include(a => a.CreateAssetSAP).Where(a => a.Asset == assets[i].Asset).SingleOrDefault();
+						//				if (checkStockResult.Data != null && checkStockResult.Data.Return_Code == "1")
+						//				{
+						//					transferInStockSAP = dbContext.Set<Model.TransferInStockSAP>().Include(a => a.CreateAssetSAP).Where(a => a.Asset == assets[i].Asset).SingleOrDefault();
 
-											createAssetSAP = new Dto.CreateAssetSAP()
-											{
-												XSUBNO = transferInStockSAP.CreateAssetSAP.XSUBNO,
-												COMPANYCODE = transferInStockSAP.CreateAssetSAP.COMPANYCODE,
-												ASSET = transferInStockSAP.CreateAssetSAP.ASSET,
-												SUBNUMBER = transferInStockSAP.CreateAssetSAP.SUBNUMBER,
-												ASSETCLASS = transferInStockSAP.CreateAssetSAP.ASSETCLASS,
-												POSTCAP = transferInStockSAP.CreateAssetSAP.POSTCAP,
-												DESCRIPT = transferInStockSAP.CreateAssetSAP.DESCRIPT,
-												DESCRIPT2 = transferInStockSAP.CreateAssetSAP.DESCRIPT2,
-												INVENT_NO = transferInStockSAP.CreateAssetSAP.INVENT_NO,
-												SERIAL_NO = transferInStockSAP.CreateAssetSAP.SERIAL_NO,
-												QUANTITY = transferInStockSAP.CreateAssetSAP.QUANTITY,
-												BASE_UOM = transferInStockSAP.CreateAssetSAP.BASE_UOM,
-												LAST_INVENTORY_DATE = transferInStockSAP.CreateAssetSAP.LAST_INVENTORY_DATE,
-												LAST_INVENTORY_DOCNO = transferInStockSAP.CreateAssetSAP.LAST_INVENTORY_DOCNO,
-												CAP_DATE = transferInStockSAP.CreateAssetSAP.CAP_DATE,
-												COSTCENTER = transferInStockSAP.CreateAssetSAP.COSTCENTER,
-												RESP_CCTR = transferInStockSAP.CreateAssetSAP.RESP_CCTR,
-												INTERN_ORD = transferInStockSAP.CreateAssetSAP.INTERN_ORD,
-												PLANT = transferInStockSAP.CreateAssetSAP.PLANT,
-												LOCATION = transferInStockSAP.CreateAssetSAP.LOCATION,
-												ROOM = transferInStockSAP.CreateAssetSAP.ROOM,
-												PERSON_NO = transferInStockSAP.CreateAssetSAP.PERSON_NO,
-												PLATE_NO = transferInStockSAP.CreateAssetSAP.PLATE_NO,
-												ZZCLAS = transferInStockSAP.CreateAssetSAP.ZZCLAS,
-												IN_CONSERVATION = transferInStockSAP.CreateAssetSAP.IN_CONSERVATION,
-												PROP_IND = transferInStockSAP.CreateAssetSAP.PROP_IND,
-												OPTIMA_ASSET_NO = transferInStockSAP.CreateAssetSAP.OPTIMA_ASSET_NO,
-												OPTIMA_ASSET_PARENT_NO = transferInStockSAP.CreateAssetSAP.OPTIMA_ASSET_PARENT_NO,
-												TESTRUN = transferInStockSAP.CreateAssetSAP.TESTRUN,
-												VENDOR_NO = transferInStockSAP.CreateAssetSAP.VENDOR_NO,
-												INVOICE = transferInStockSAP.CreateAssetSAP.INVOICE,
-											};
+						//					createAssetSAP = new Dto.CreateAssetSAP()
+						//					{
+						//						XSUBNO = transferInStockSAP.CreateAssetSAP.XSUBNO,
+						//						COMPANYCODE = transferInStockSAP.CreateAssetSAP.COMPANYCODE,
+						//						ASSET = transferInStockSAP.CreateAssetSAP.ASSET,
+						//						SUBNUMBER = transferInStockSAP.CreateAssetSAP.SUBNUMBER,
+						//						ASSETCLASS = transferInStockSAP.CreateAssetSAP.ASSETCLASS,
+						//						POSTCAP = transferInStockSAP.CreateAssetSAP.POSTCAP,
+						//						DESCRIPT = transferInStockSAP.CreateAssetSAP.DESCRIPT,
+						//						DESCRIPT2 = transferInStockSAP.CreateAssetSAP.DESCRIPT2,
+						//						INVENT_NO = transferInStockSAP.CreateAssetSAP.INVENT_NO,
+						//						SERIAL_NO = transferInStockSAP.CreateAssetSAP.SERIAL_NO,
+						//						QUANTITY = transferInStockSAP.CreateAssetSAP.QUANTITY,
+						//						BASE_UOM = transferInStockSAP.CreateAssetSAP.BASE_UOM,
+						//						LAST_INVENTORY_DATE = transferInStockSAP.CreateAssetSAP.LAST_INVENTORY_DATE,
+						//						LAST_INVENTORY_DOCNO = transferInStockSAP.CreateAssetSAP.LAST_INVENTORY_DOCNO,
+						//						CAP_DATE = transferInStockSAP.CreateAssetSAP.CAP_DATE,
+						//						COSTCENTER = transferInStockSAP.CreateAssetSAP.COSTCENTER,
+						//						RESP_CCTR = transferInStockSAP.CreateAssetSAP.RESP_CCTR,
+						//						INTERN_ORD = transferInStockSAP.CreateAssetSAP.INTERN_ORD,
+						//						PLANT = transferInStockSAP.CreateAssetSAP.PLANT,
+						//						LOCATION = transferInStockSAP.CreateAssetSAP.LOCATION,
+						//						ROOM = transferInStockSAP.CreateAssetSAP.ROOM,
+						//						PERSON_NO = transferInStockSAP.CreateAssetSAP.PERSON_NO,
+						//						PLATE_NO = transferInStockSAP.CreateAssetSAP.PLATE_NO,
+						//						ZZCLAS = transferInStockSAP.CreateAssetSAP.ZZCLAS,
+						//						IN_CONSERVATION = transferInStockSAP.CreateAssetSAP.IN_CONSERVATION,
+						//						PROP_IND = transferInStockSAP.CreateAssetSAP.PROP_IND,
+						//						OPTIMA_ASSET_NO = transferInStockSAP.CreateAssetSAP.OPTIMA_ASSET_NO,
+						//						OPTIMA_ASSET_PARENT_NO = transferInStockSAP.CreateAssetSAP.OPTIMA_ASSET_PARENT_NO,
+						//						TESTRUN = transferInStockSAP.CreateAssetSAP.TESTRUN,
+						//						VENDOR_NO = transferInStockSAP.CreateAssetSAP.VENDOR_NO,
+						//						INVOICE = transferInStockSAP.CreateAssetSAP.INVOICE,
+						//					};
 
-											if (asset.NotSync)
-											{
-												result = await CreateAssetSAPAsync(createAssetSAP);
-											}
+						//					if (asset.NotSync)
+						//					{
+						//						result = await CreateAssetSAPAsync(createAssetSAP);
+						//					}
 
-											if (result.Success)
-											{
-												var rst = await TransferInStockAsync(assets[i]);
-												await this._notifyService.NotifyDataCreateAssetAsync(result);
-												//return result;
-											}
-										}
-									}
-									catch (Exception ex)
-									{
-									}
-								}
+						//					if (result.Success)
+						//					{
+						//						var rst = await TransferInStockAsync(assets[i]);
+						//						await this._notifyService.NotifyDataCreateAssetAsync(result);
+						//						//return result;
+						//					}
+						//				}
+						//			}
+						//			catch (Exception ex)
+						//			{
+						//			}
+						//		}
 								
-							}
+						//	}
 							
-						}
+						//}
 
 						// var count = dbContext.Set<Model.RecordCount>().FromSql("UpdateAllContractAmount").ToList();
 

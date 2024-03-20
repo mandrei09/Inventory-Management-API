@@ -70,57 +70,57 @@ namespace Optima.Fais.Api.Controllers
 			}
 		}
 
-        [HttpGet("export")]
-        public IActionResult Export(string filter)
-        {
-            List<Model.SubCategory> interCompanies = null;
+    //    [HttpGet("export")]
+    //    public IActionResult Export(string filter)
+    //    {
+    //        List<Model.SubCategory> interCompanies = null;
 
-            using (OfficeOpenXml.ExcelPackage package = new ExcelPackage())
-            {
-                interCompanies = (_itemsRepository as ISubCategoriesRepository).GetByFilters(filter, "Category.InterCompany.AssetType", null, null, null, null, null, null, null).ToList();
+    //        using (OfficeOpenXml.ExcelPackage package = new ExcelPackage())
+    //        {
+    //            interCompanies = (_itemsRepository as ISubCategoriesRepository).GetByFilters(filter, "Category.InterCompany.AssetType", null, null, null, null, null, null, null).ToList();
 
-                // add a new worksheet to the empty workbook
-                ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("SubCategories");
-                //First add the headers
-                worksheet.Cells[1, 1].Value = "Cod";
-                worksheet.Cells[1, 2].Value = "Descriere";
-                worksheet.Cells[1, 3].Value = "Cod Categorie";
-				worksheet.Cells[1, 4].Value = "Categorie";
+    //            // add a new worksheet to the empty workbook
+    //            ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("SubCategories");
+    //            //First add the headers
+    //            worksheet.Cells[1, 1].Value = "Cod";
+    //            worksheet.Cells[1, 2].Value = "Descriere";
+    //            worksheet.Cells[1, 3].Value = "Cod Categorie";
+				//worksheet.Cells[1, 4].Value = "Categorie";
 
-				int recordIndex = 2;
-                foreach (var item in interCompanies)
-                {
-					worksheet.Cells[recordIndex, 1].Value = item.Code;
-					worksheet.Cells[recordIndex, 2].Value = item.Name;
-					worksheet.Cells[recordIndex, 3].Value = item.Category != null ? item.Category.Code : "";
-					worksheet.Cells[recordIndex, 4].Value = item.Category != null ? item.Category.Name : "";
-					recordIndex++;
-                }
+				//int recordIndex = 2;
+    //            foreach (var item in interCompanies)
+    //            {
+				//	worksheet.Cells[recordIndex, 1].Value = item.Code;
+				//	worksheet.Cells[recordIndex, 2].Value = item.Name;
+				//	worksheet.Cells[recordIndex, 3].Value = item.Category != null ? item.Category.Code : "";
+				//	worksheet.Cells[recordIndex, 4].Value = item.Category != null ? item.Category.Name : "";
+				//	recordIndex++;
+    //            }
 
-                worksheet.Column(1).AutoFit();
-                worksheet.Column(2).AutoFit();
-                worksheet.Column(3).AutoFit();
-				worksheet.Column(4).AutoFit();
+    //            worksheet.Column(1).AutoFit();
+    //            worksheet.Column(2).AutoFit();
+    //            worksheet.Column(3).AutoFit();
+				//worksheet.Column(4).AutoFit();
 
 
-				using (var cells = worksheet.Cells[1, 1, 1, 6])
-                {
-                    cells.Style.Font.Bold = true;
-                    cells.Style.Fill.PatternType = ExcelFillStyle.Solid;
-                    cells.Style.Fill.BackgroundColor.SetColor(Color.Aqua);
-                }
+				//using (var cells = worksheet.Cells[1, 1, 1, 6])
+    //            {
+    //                cells.Style.Font.Bold = true;
+    //                cells.Style.Fill.PatternType = ExcelFillStyle.Solid;
+    //                cells.Style.Fill.BackgroundColor.SetColor(Color.Aqua);
+    //            }
 
-                string contentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-                //HttpContext.Response.ContentType = entityFile.FileType;
-                HttpContext.Response.ContentType = contentType;
-                FileContentResult result = new FileContentResult(package.GetAsByteArray(), contentType)
-                {
-                    FileDownloadName = "SubCategories.xlsx"
-                };
+    //            string contentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+    //            //HttpContext.Response.ContentType = entityFile.FileType;
+    //            HttpContext.Response.ContentType = contentType;
+    //            FileContentResult result = new FileContentResult(package.GetAsByteArray(), contentType)
+    //            {
+    //                FileDownloadName = "SubCategories.xlsx"
+    //            };
 
-                return result;
+    //            return result;
 
-            }
-        }
+    //        }
+    //    }
 	}
 }

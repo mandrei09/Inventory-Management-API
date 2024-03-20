@@ -1609,7 +1609,7 @@ namespace Optima.Fais.EfRepository
             Model.ErrorType errorType = null;
             Model.Stock stock = null;
             Model.SubCategory subCategory = null;
-            Model.Category category = null;
+            //Model.Category category = null;
             Model.ContractAmount contractAmount = null;
             Model.Uom uom = null;
             Model.Rate rate = null;
@@ -2201,35 +2201,35 @@ namespace Optima.Fais.EfRepository
                                 OrderId = order.Id
                             };
 
-                            subCategories = await _context.Set<Model.SubCategory>()
-                                .Where(a => a.CategoryId == stock.CategoryId && a.IsDeleted == false)
-                                .ToListAsync();
+                            //subCategories = await _context.Set<Model.SubCategory>()
+                            //    .Where(a => a.CategoryId == stock.CategoryId && a.IsDeleted == false)
+                            //    .ToListAsync();
 
 
-                            if (subCategories.Count == 0)
-                            {
-                                category = await _context.Set<Model.Category>().AsNoTracking().Where(a => a.Id == stock.CategoryId).SingleAsync();
+                            //if (subCategories.Count == 0)
+                            //{
+                            //    category = await _context.Set<Model.Category>().AsNoTracking().Where(a => a.Id == stock.CategoryId).SingleAsync();
 
-                                subCategory = new Model.SubCategory()
-                                {
-                                    CategoryENId = null,
-                                    CategoryId = stock.CategoryId,
-                                    Code = category.Code,
-                                    CompanyId = stock.CompanyId,
-                                    CreatedAt = DateTime.Now,
-                                    CreatedBy = _context.UserId,
-                                    IsDeleted = false,
-                                    ModifiedAt = DateTime.Now,
-                                    ModifiedBy = _context.UserId,
-                                    Name = category.Name
-                                };
+                            //    subCategory = new Model.SubCategory()
+                            //    {
+                            //        CategoryENId = null,
+                            //        CategoryId = stock.CategoryId,
+                            //        Code = category.Code,
+                            //        CompanyId = stock.CompanyId,
+                            //        CreatedAt = DateTime.Now,
+                            //        CreatedBy = _context.UserId,
+                            //        IsDeleted = false,
+                            //        ModifiedAt = DateTime.Now,
+                            //        ModifiedBy = _context.UserId,
+                            //        Name = category.Name
+                            //    };
 
-                                _context.Add(subCategory);
+                            //    _context.Add(subCategory);
 
-                                _context.SaveChanges();
+                            //    _context.SaveChanges();
 
-                                // return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = "Sub-Category-Missing", EntityId = stock.Id };
-                            }
+                            //    // return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = "Sub-Category-Missing", EntityId = stock.Id };
+                            //}
 
                             newAssetFromStock.SubCategoryId = subCategories.Count > 0 ? subCategories[0].Id : subCategory.Id;
 
@@ -2944,7 +2944,7 @@ namespace Optima.Fais.EfRepository
             Model.ErrorType errorType = null;
             Model.Stock stock = null;
             Model.SubCategory subCategory = null;
-            Model.Category category = null;
+            //Model.Category category = null;
             Model.ContractAmount contractAmount = null;
             Model.Uom uom = null;
             Model.Rate rate = null;
@@ -3524,7 +3524,7 @@ namespace Optima.Fais.EfRepository
 
                 //                  List<Model.SubCategory> subCategories = await _context.Set<Model.SubCategory>().Where(a => a.CategoryId == stock.CategoryId && a.IsDeleted == false).ToListAsync();
                 //                  Model.SubCategory subCategory = null;
-                //                  Model.Category category = null;
+                //                  //Model.Category category = null;
 
                 //                  if (subCategories.Count == 0)
                 //                  {
@@ -3688,33 +3688,33 @@ namespace Optima.Fais.EfRepository
                         OrderId = order.Id
 					};
 
-				    subCategories = await _context.Set<Model.SubCategory>().Where(a => a.CategoryId == stock.CategoryId && a.IsDeleted == false).ToListAsync();
+				    //subCategories = await _context.Set<Model.SubCategory>().Where(a => a.CategoryId == stock.CategoryId && a.IsDeleted == false).ToListAsync();
                     
 
-                    if (subCategories.Count == 0)
-                    {
-                        category = await _context.Set<Model.Category>().AsNoTracking().Where(a => a.Id == stock.CategoryId).SingleAsync();
+        //            if (subCategories.Count == 0)
+        //            {
+        //                category = await _context.Set<Model.Category>().AsNoTracking().Where(a => a.Id == stock.CategoryId).SingleAsync();
 
-                        subCategory = new Model.SubCategory()
-                        {
-                            CategoryENId = null,
-                            CategoryId = stock.CategoryId,
-                            Code = category.Code,
-                            CompanyId = stock.CompanyId,
-                            CreatedAt = DateTime.Now,
-                            CreatedBy = _context.UserId,
-                            IsDeleted = false,
-                            ModifiedAt = DateTime.Now,
-                            ModifiedBy = _context.UserId,
-                            Name = category.Name
-                        };
+        //                subCategory = new Model.SubCategory()
+        //                {
+        //                    CategoryENId = null,
+        //                    CategoryId = stock.CategoryId,
+        //                    Code = category.Code,
+        //                    CompanyId = stock.CompanyId,
+        //                    CreatedAt = DateTime.Now,
+        //                    CreatedBy = _context.UserId,
+        //                    IsDeleted = false,
+        //                    ModifiedAt = DateTime.Now,
+        //                    ModifiedBy = _context.UserId,
+        //                    Name = category.Name
+        //                };
 
-                        _context.Add(subCategory);
+        //                _context.Add(subCategory);
 
-                        _context.SaveChanges();
+        //                _context.SaveChanges();
 
-                        // return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = "Sub-Category-Missing", EntityId = stock.Id };
-                    }
+        //                // return new Model.CreateAssetSAPResult { Success = false, ErrorMessage = "Sub-Category-Missing", EntityId = stock.Id };
+        //            }
 
                     newAssetFromStock.SubCategoryId = subCategories.Count > 0 ? subCategories[0].Id : subCategory.Id;
 
@@ -3922,9 +3922,9 @@ namespace Optima.Fais.EfRepository
                     assetDto.SubCategoryId = 131;
                 }
 
-                subCategory = await _context.Set<Model.SubCategory>()
-                    .Include(c => c.Category)
-                    .Where(a => a.Id == assetDto.SubCategoryId).SingleAsync();
+                //subCategory = await _context.Set<Model.SubCategory>()
+                //    .Include(c => c.Category)
+                //    .Where(a => a.Id == assetDto.SubCategoryId).SingleAsync();
 
 
 
@@ -4414,10 +4414,10 @@ namespace Optima.Fais.EfRepository
                     .SingleAsync();
 
 
-                subCategory = await _context.Set<Model.SubCategory>()
-                    .Include(c => c.Category)
-                    .Where(a => a.Id == assetDto.SubCategoryId)
-                    .SingleAsync();
+                //subCategory = await _context.Set<Model.SubCategory>()
+                //    .Include(c => c.Category)
+                //    .Where(a => a.Id == assetDto.SubCategoryId)
+                //    .SingleAsync();
 
                 //if (stock.Value > 2500)
                 //{

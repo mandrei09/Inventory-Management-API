@@ -1198,7 +1198,8 @@ namespace Optima.Fais.Api.Controllers
                 Model.Level nextLevel = null;
 
                 string appStateCode = appStateRequest.Code;
-                string documentTypeCode = "VALIDATE_" + appStateCode; 
+                string appStateRequestCode = appStateRequest.Code;
+                string documentTypeCode = "VALIDATE_" + appStateCode;
 
                 string errorMessage = $"Nu exista stare nivel {appStateCode}!";
                 documentType = await _context.Set<Model.DocumentType>().Where(d => d.Code == documentTypeCode).SingleAsync();
@@ -1241,25 +1242,25 @@ namespace Optima.Fais.Api.Controllers
                         }
                         nextLevel = await _context.Set<Model.Level>().Where(l => l.Code == nextLevel.NextLevelCode).FirstOrDefaultAsync();
                         condition1 = GetOrderStatusSkip(emailOrderStatus, nextLevel.Code);
-                        condition2 = IsEmployeeNull(order, employeeNull, nextLevel.Code);  
+                        condition2 = IsEmployeeNull(order, employeeNull, nextLevel.Code);
                     }
 
-                    if(nextLevel.NextLevelCode == "ACCEPTED")
+                    if (nextLevel.NextLevelCode == "ACCEPTED")
                     {
                         emailTypeCode = "VALIDATED_OFFER";
                         appStateCode = "ACCEPTED";
                     }
                     else
                         if (nextLevel.Code == "L1" || nextLevel.Code == "L2" || nextLevel.Code == "L3" || nextLevel.Code == "L4")
-                        {
-                            emailTypeCode = "ORDER_VALIDATE_LEVEL" + nextLevel.Code[1];
-                            appStateCode = "ORDER_LEVEL" + nextLevel.Code[1];
-                        }
-                        else
-                        {
-                            emailTypeCode = "ORDER_VALIDATE_LEVEL" + nextLevel.Code;
-                            appStateCode = "ORDER_LEVEL" + nextLevel.Code;
-                        }
+                    {
+                        emailTypeCode = "ORDER_VALIDATE_LEVEL" + nextLevel.Code[1];
+                        appStateCode = "ORDER_LEVEL" + nextLevel.Code[1];
+                    }
+                    else
+                    {
+                        emailTypeCode = "ORDER_VALIDATE_LEVEL" + nextLevel.Code;
+                        appStateCode = "ORDER_LEVEL" + nextLevel.Code;
+                    }
 
                     emailType = await _context.Set<Model.EmailType>().Where(c => c.Code == emailTypeCode).SingleAsync();
                     appState = await _context.Set<Model.AppState>().AsNoTracking().Where(c => c.Code == appStateCode).SingleAsync();
@@ -1273,7 +1274,7 @@ namespace Optima.Fais.Api.Controllers
                     emailOrderStatus.AppStateId = appState.Id;
                     emailOrderStatus.EmailTypeId = emailType.Id;
 
-                    switch (appStateCode)
+                    switch (appStateRequestCode)
                     {
                         case "ORDER_LEVELB1":
                             {
@@ -1371,6 +1372,8 @@ namespace Optima.Fais.Api.Controllers
                         EmployeeIdFinal = order.EmployeeId,
                         InfoIni = order.Info,
                         InfoFin = order.Info,
+                        //InterCompanyIdInitial = order.InterCompanyId,
+                        //InterCompanyIdFinal = order.InterCompanyId,
                         IsAccepted = false,
                         IsDeleted = false,
                         ModifiedAt = DateTime.Now,
@@ -1409,7 +1412,7 @@ namespace Optima.Fais.Api.Controllers
             }
         }
 
-		[AllowAnonymous]
+        [AllowAnonymous]
 		[HttpPost]
 		[Route("validatemobilelevelB1/{guid}")]
 		public async Task<CreateAssetSAPResult> OrderMobileValidateB1(Guid guid)

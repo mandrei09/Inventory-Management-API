@@ -193,8 +193,8 @@ namespace Optima.Fais.Api.Controllers
 				ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("stock");
 				//First add the headers
 				worksheet.Cells[1, 1].Value = "Batch";
-				worksheet.Cells[1, 2].Value = "Cod categorie";
-				worksheet.Cells[1, 3].Value = "Categorie";
+				//worksheet.Cells[1, 2].Value = "Cod categorie";
+				//worksheet.Cells[1, 3].Value = "Categorie";
 				worksheet.Cells[1, 4].Value = "Companie";
 				worksheet.Cells[1, 5].Value = "Moneda";
 				worksheet.Cells[1, 6].Value = "Last_Incoming_Date";
@@ -216,8 +216,8 @@ namespace Optima.Fais.Api.Controllers
 				foreach (var item in items)
 				{
 					worksheet.Cells[recordIndex, 1].Value = item.Code;
-					worksheet.Cells[recordIndex, 2].Value = item.Category != null ? item.Category.Code : "";
-					worksheet.Cells[recordIndex, 3].Value = item.Category != null ? item.Category.Name : "";
+					//worksheet.Cells[recordIndex, 2].Value = item.Category != null ? item.Category.Code : "";
+					//worksheet.Cells[recordIndex, 3].Value = item.Category != null ? item.Category.Name : "";
 					worksheet.Cells[recordIndex, 4].Value = item.Company != null ? item.Company.Code : "";
 					worksheet.Cells[recordIndex, 5].Value = item.Uom != null ? item.Uom.Code : "";
 					worksheet.Cells[recordIndex, 6].Value = item.Last_Incoming_Date;

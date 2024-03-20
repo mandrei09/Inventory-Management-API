@@ -2066,34 +2066,6 @@ namespace Optima.Fais.Data
                 .IsRequired()
                 .HasMaxLength(100);
 
-            //Category
-            builder.Entity<Category>()
-                .ToTable("Category")
-                .Property(p => p.Id)
-                .HasColumnName("Id");
-            builder.Entity<Category>()
-                .Property(p => p.Code)
-                .IsRequired()
-                .HasMaxLength(30);
-            builder.Entity<Category>()
-                .Property(p => p.Name)
-                .IsRequired()
-                .HasMaxLength(100);
-
-            //CategoryEN
-            builder.Entity<CategoryEN>()
-                .ToTable("CategoryEN")
-                .Property(p => p.Id)
-                .HasColumnName("Id");
-            builder.Entity<CategoryEN>()
-                .Property(p => p.Code)
-                .IsRequired()
-                .HasMaxLength(30);
-            builder.Entity<CategoryEN>()
-                .Property(p => p.Name)
-                .IsRequired()
-                .HasMaxLength(100);
-
             //SubCategory
             builder.Entity<SubCategory>()
                 .ToTable("SubCategory")
@@ -2107,14 +2079,6 @@ namespace Optima.Fais.Data
                 .Property(p => p.Name)
                 .IsRequired()
                 .HasMaxLength(100);
-            builder.Entity<SubCategory>()
-                .HasOne(a => a.Category)
-                .WithMany()
-                .HasForeignKey(a => a.CategoryId);
-            builder.Entity<SubCategory>()
-               .HasOne(a => a.CategoryEN)
-               .WithMany()
-               .HasForeignKey(a => a.CategoryENId);
 
 
             //SubCategoryEN
@@ -2130,10 +2094,6 @@ namespace Optima.Fais.Data
                 .Property(p => p.Name)
                 .IsRequired()
                 .HasMaxLength(100);
-            builder.Entity<SubCategoryEN>()
-                .HasOne(a => a.CategoryEN)
-                .WithMany()
-                .HasForeignKey(a => a.CategoryENId);
 
 
 

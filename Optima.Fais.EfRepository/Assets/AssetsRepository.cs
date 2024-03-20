@@ -847,9 +847,9 @@ namespace Optima.Fais.EfRepository
                                     .ThenInclude(d => d.Department)
                                     .Where(a => a.Id == requestBFMaterialCostCenter.CostCenterId).SingleAsync();
 
-                                subCategory = await _context.Set<Model.SubCategory>()
-                                    .Include(a => a.Category)
-                                    .Where(a => a.Id == requestBFMaterialCostCenter.RequestBudgetForecastMaterial.Material.SubCategoryId).SingleAsync();
+                                //subCategory = await _context.Set<Model.SubCategory>()
+                                //    .Include(a => a.Category)
+                                //    .Where(a => a.Id == requestBFMaterialCostCenter.RequestBudgetForecastMaterial.Material.SubCategoryId).SingleAsync();
 
 
                                 dictionaryItem = await _context.Set<Model.DictionaryItem>().Where(a => a.Name == subCategory.Name).SingleOrDefaultAsync();
@@ -1595,9 +1595,9 @@ namespace Optima.Fais.EfRepository
                                         .ThenInclude(d => d.Department)
                                         .Where(a => a.Id == requestBFMaterialCostCenter.CostCenterId).SingleAsync();
 
-                                    subCategory = await _context.Set<Model.SubCategory>()
-                                        .Include(a => a.Category)
-                                        .Where(a => a.Id == requestBFMaterialCostCenter.RequestBudgetForecastMaterial.Material.SubCategoryId).SingleAsync();
+                                    //subCategory = await _context.Set<Model.SubCategory>()
+                                    //    .Include(a => a.Category)
+                                    //    .Where(a => a.Id == requestBFMaterialCostCenter.RequestBudgetForecastMaterial.Material.SubCategoryId).SingleAsync();
 
 
                                     dictionaryItem = await _context.Set<Model.DictionaryItem>().Where(a => a.Name == subCategory.Name).SingleOrDefaultAsync();
@@ -2454,18 +2454,18 @@ namespace Optima.Fais.EfRepository
                                     .ThenInclude(d => d.Department)
                                     .Where(a => a.Id == requestBFMaterialCostCenter.CostCenterId).SingleAsync();
 
-                                if (requestBFMaterialCostCenter.RequestBudgetForecastMaterial.Material != null && requestBFMaterialCostCenter.RequestBudgetForecastMaterial.Material.SubCategoryId != null)
-                                {
-                                    subCategory = await _context.Set<Model.SubCategory>()
-                                    .Include(a => a.Category)
-                                    .Where(a => a.Id == requestBFMaterialCostCenter.RequestBudgetForecastMaterial.Material.SubCategoryId).SingleAsync();
-                                }
-                                else
-                                {
-                                    subCategory = await _context.Set<Model.SubCategory>()
-                                    .Include(a => a.Category)
-                                    .Where(a => a.Code == "NO_SUB").SingleAsync();
-                                }
+                                //if (requestBFMaterialCostCenter.RequestBudgetForecastMaterial.Material != null && requestBFMaterialCostCenter.RequestBudgetForecastMaterial.Material.SubCategoryId != null)
+                                //{
+                                //    subCategory = await _context.Set<Model.SubCategory>()
+                                //    .Include(a => a.Category)
+                                //    .Where(a => a.Id == requestBFMaterialCostCenter.RequestBudgetForecastMaterial.Material.SubCategoryId).SingleAsync();
+                                //}
+                                //else
+                                //{
+                                //    subCategory = await _context.Set<Model.SubCategory>()
+                                //    .Include(a => a.Category)
+                                //    .Where(a => a.Code == "NO_SUB").SingleAsync();
+                                //}
 
                                 dictionaryItem = await _context.Set<Model.DictionaryItem>().Where(a => a.Name == subCategory.Name).SingleOrDefaultAsync();
 
@@ -3082,20 +3082,20 @@ namespace Optima.Fais.EfRepository
                                         .ThenInclude(d => d.Department)
                                         .Where(a => a.Id == requestBFMaterialCostCenter.CostCenterId).SingleAsync();
 
-                                    if (requestBFMaterialCostCenter.RequestBudgetForecastMaterial.Material.SubCategoryId != null)
-                                    {
-                                        subCategory = await _context.Set<Model.SubCategory>()
-                                        .Include(a => a.Category)
+                                    //if (requestBFMaterialCostCenter.RequestBudgetForecastMaterial.Material.SubCategoryId != null)
+                                    //{
+                                    //    subCategory = await _context.Set<Model.SubCategory>()
+                                    //    .Include(a => a.Category)
                                             
-                                        .Where(a => a.Id == requestBFMaterialCostCenter.RequestBudgetForecastMaterial.Material.SubCategoryId).SingleAsync();
-                                    }
-                                    else
-                                    {
-                                        subCategory = await _context.Set<Model.SubCategory>()
-                                        .Include(a => a.Category)
+                                    //    .Where(a => a.Id == requestBFMaterialCostCenter.RequestBudgetForecastMaterial.Material.SubCategoryId).SingleAsync();
+                                    //}
+                                    //else
+                                    //{
+                                    //    subCategory = await _context.Set<Model.SubCategory>()
+                                    //    .Include(a => a.Category)
                                             
-                                        .Where(a => a.Code == "NO_SUB").SingleAsync();
-                                    }
+                                    //    .Where(a => a.Code == "NO_SUB").SingleAsync();
+                                    //}
 
 
                                     dictionaryItem = await _context.Set<Model.DictionaryItem>().Where(a => a.Name == subCategory.Name).SingleOrDefaultAsync();
@@ -4699,9 +4699,9 @@ namespace Optima.Fais.EfRepository
 
                 stock = _context.Set<Model.Stock>().Include(c => c.Company).Include(m => m.Material).Where(a => a.Id == assetDto.StockId).Single();
 
-                subCategory = _context.Set<Model.SubCategory>()
-                    .Include(c => c.Category)
-                    .Where(a => a.Id == assetDto.SubCategoryId).Single();
+                //subCategory = _context.Set<Model.SubCategory>()
+                //    .Include(c => c.Category)
+                //    .Where(a => a.Id == assetDto.SubCategoryId).Single();
 
 
 
