@@ -11,7 +11,7 @@ namespace Optima.Fais.Dto
         public int? AssetCategoryId { get; set; }
         public int? PartnerId { get; set; }
 
-        public int? ArticleId { get; set; }
+        
         public int? CostCenterId { get; set; }
         public int? DepartmentId { get; set; }
         public int? DivisionId { get; set; }

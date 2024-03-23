@@ -4797,20 +4797,6 @@ namespace Optima.Fais.Data
                    .IsRequired()
                    .HasMaxLength(400);
 
-            //Articles
-            builder.Entity<Article>()
-                .ToTable("Article")
-                .Property(p => p.Id)
-                .HasColumnName("Id");
-            builder.Entity<Article>()
-                .Property(p => p.Code)
-                .IsRequired()
-                .HasMaxLength(30);
-            builder.Entity<Article>()
-                .Property(p => p.Name)
-                .IsRequired()
-                .HasMaxLength(100);
-
             //Partner
             builder.Entity<Partner>()
                 .ToTable("Partner")

@@ -106,7 +106,7 @@ namespace Optima.Fais.Model
 
         public int? BudgetManagerId { get; set; }
 
-        public int? ArticleId { get; set; }
+        
 
 		public virtual Room Room { get; set; }
 
@@ -148,7 +148,7 @@ namespace Optima.Fais.Model
 
         public virtual BudgetManager BudgetManager { get; set; }
 
-        public virtual Article Article { get; set; }
+        
 
 		public string SAPCode { get; set; }
 

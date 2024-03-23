@@ -118,8 +118,6 @@ namespace Optima.Fais.Api
                  .ForMember(i => i.BrandId, opt => opt.MapFrom(i => i.Brand.Id))
                  .ForMember(i => i.Partner, opt => opt.Ignore())
                  .ForMember(i => i.PartnerId, opt => opt.MapFrom(i => i.Partner.Id));
-            CreateMap<Model.Article, Dto.Article>();
-            CreateMap<Dto.Article, Model.Article>();
             CreateMap<Model.Department, Dto.Department>();
             CreateMap<Dto.Department, Model.Department>();
             CreateMap<Dto.AssetNiInvDet, Model.AssetNi>();
@@ -662,7 +660,7 @@ namespace Optima.Fais.Api
 			   .ForMember(a => a.Adm, opt => opt.MapFrom(a => new Dto.AssetAdmDetail
                {
                    AssetCategory = (a.Adm.AssetCategory != null ? new Dto.CodeNameEntity { Id = a.Adm.AssetCategory.Id, Code = a.Adm.AssetCategory.Code, Name = a.Adm.AssetCategory.Name } : null),
-                   Article = (a.Adm.Article != null ? new Dto.CodeNameEntity { Id = a.Adm.Article.Id, Code = a.Adm.Article.Code, Name = a.Adm.Article.Name } : null),
+                   
                    CostCenter = (a.Adm.CostCenter != null ? new Dto.CodeNameEntity { Id = a.Adm.CostCenter.Id, Code = a.Adm.CostCenter.Code, Name = a.Adm.CostCenter.Name } : null),
                    Department = (a.Adm.Department != null ? new Dto.CodeNameEntity { Id = a.Adm.Department.Id, Code = a.Adm.Department.Code, Name = a.Adm.Department.Name } : null),
                    Division = ((a.Adm.Division != null && a.Adm.Division != null) ? new Dto.CodeNameEntity { Id = a.Adm.Division.Id, Code = a.Adm.Division.Code, Name = a.Adm.Division.Name } : null),
@@ -886,7 +884,7 @@ namespace Optima.Fais.Api
                .ForMember(a => a.Adm, opt => opt.MapFrom(a => new Dto.AssetAdmDetail
                {
                    AssetCategory = (a.Adm.AssetCategory != null ? new Dto.CodeNameEntity { Id = a.Adm.AssetCategory.Id, Code = a.Adm.AssetCategory.Code, Name = a.Adm.AssetCategory.Name } : null),
-                   Article = (a.Adm.Article != null ? new Dto.CodeNameEntity { Id = a.Adm.Article.Id, Code = a.Adm.Article.Code, Name = a.Adm.Article.Name } : null),
+                   
                    CostCenter = (a.Adm.CostCenter != null ? new Dto.CodeNameEntity { Id = a.Adm.CostCenter.Id, Code = a.Adm.CostCenter.Code, Name = a.Adm.CostCenter.Name } : null),
                    Department = (a.Adm.Department != null ? new Dto.CodeNameEntity { Id = a.Adm.Department.Id, Code = a.Adm.Department.Code, Name = a.Adm.Department.Name } : null),
                    Division = ((a.Adm.Division != null && a.Adm.Division != null) ? new Dto.CodeNameEntity { Id = a.Adm.Division.Id, Code = a.Adm.Division.Code, Name = a.Adm.Division.Name } : null),
@@ -1090,7 +1088,7 @@ namespace Optima.Fais.Api
                  {
                     
                     AssetCategory = (a.AssetCategory != null ? new Dto.CodeNameEntity { Id = a.AssetCategory.Id, Code = a.AssetCategory.Code, Name = a.AssetCategory.Name } : null),
-                    Article = (a.Article != null ? new Dto.CodeNameEntity { Id = a.Article.Id, Code = a.Article.Code, Name = a.Article.Name } : null),
+                    
                     CostCenter = (a.CostCenter != null ? new Dto.CodeNameEntity { Id = a.CostCenter.Id, Code = a.CostCenter.Code, Name = a.CostCenter.Name } : null),
                     Department = (a.CostCenter != null && a.Division != null && a.Department != null ? new Dto.CodeNameEntity { Id = a.CostCenter.Division.Department.Id, Code = a.CostCenter.Division.Department.Code, Name = a.CostCenter.Division.Department.Name } : null),
                     Division = (a.CostCenter != null &&  a.Division != null ? new Dto.CodeNameEntity { Id = a.CostCenter.Division.Id, Code = a.CostCenter.Division.Code, Name = a.CostCenter.Division.Name } : null),

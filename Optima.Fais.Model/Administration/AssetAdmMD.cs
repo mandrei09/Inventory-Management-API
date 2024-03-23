@@ -45,7 +45,7 @@
 
         public int? BudgetManagerId { get; set; }
 
-        public int? ArticleId { get; set; }
+        
 
         public int? AssetClassId { get; set; }
 
@@ -87,7 +87,7 @@
 
         public virtual BudgetManager BudgetManager { get; set; }
 
-        public virtual Article Article { get; set; }
+        
 
         public virtual AssetClass AssetClass { get; set; }
 

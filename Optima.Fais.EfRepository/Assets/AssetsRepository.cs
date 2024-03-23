@@ -268,7 +268,7 @@ namespace Optima.Fais.EfRepository
         //            //asset.UomId = assetDto.UomId;
         //            asset.Company = costCenter.Company;
         //            asset.Validated = true;
-        //            asset.ArticleId = 151;
+        //            
         //            asset.BudgetManagerId = budgetManager.Id;
         //            //asset.AssetNatureId = assetDto.AssetNatureId;
         //            asset.SubTypeId = material.SubTypeId;
@@ -401,7 +401,7 @@ namespace Optima.Fais.EfRepository
         //            assetAdmMD.RoomId = costCenter.RoomId;
         //            //assetAdmMD.AssetCategoryId = accountancy.AssetCategoryId;
         //            assetAdmMD.AssetClass = assetClass;
-        //            assetAdmMD.ArticleId = 151;
+        //            
 
         //            //assetAdmMD.AssetNatureId = assetDto.AssetNatureId;
         //            assetAdmMD.BudgetManagerId = budgetManager.Id;
@@ -1036,7 +1036,7 @@ namespace Optima.Fais.EfRepository
                                 //asset.UomId = assetDto.UomId;
                                 asset.Company = costCenter.Company;
                                 asset.Validated = true;
-                                asset.ArticleId = 151;
+                                
                                 asset.BudgetManagerId = inventory.BudgetManagerId;
                                 //asset.AssetNatureId = assetDto.AssetNatureId;
                                 asset.SubTypeId = material.SubTypeId;
@@ -1186,7 +1186,7 @@ namespace Optima.Fais.EfRepository
                                 assetAdmMD.RoomId = costCenter.RoomId;
                                 //assetAdmMD.AssetCategoryId = accountancy.AssetCategoryId;
                                 assetAdmMD.AssetClass = assetClass;
-                                assetAdmMD.ArticleId = 151;
+                                
 
                                 //assetAdmMD.AssetNatureId = assetDto.AssetNatureId;
                                 assetAdmMD.BudgetManagerId = inventory.BudgetManagerId;
@@ -1767,7 +1767,7 @@ namespace Optima.Fais.EfRepository
                                     //asset.UomId = assetDto.UomId;
                                     asset.Company = costCenter.Company;
                                     asset.Validated = true;
-                                    asset.ArticleId = 151;
+                                    
                                     asset.BudgetManagerId = inventory.BudgetManagerId;
                                     //asset.AssetNatureId = assetDto.AssetNatureId;
                                     asset.SubTypeId = material.SubTypeId;
@@ -1913,7 +1913,7 @@ namespace Optima.Fais.EfRepository
                                     assetAdmMD.RoomId = costCenter.RoomId;
                                     //assetAdmMD.AssetCategoryId = accountancy.AssetCategoryId;
                                     assetAdmMD.AssetClass = assetClass;
-                                    assetAdmMD.ArticleId = 151;
+                                    
 
                                     //assetAdmMD.AssetNatureId = assetDto.AssetNatureId;
                                     assetAdmMD.BudgetManagerId = inventory.BudgetManagerId;
@@ -2581,7 +2581,7 @@ namespace Optima.Fais.EfRepository
                                 //asset.UomId = assetDto.UomId;
                                 asset.Company = costCenter.Company;
                                 asset.Validated = true;
-                                asset.ArticleId = 151;
+                                
                                 asset.BudgetManagerId = inventory.BudgetManagerId;
                                 //asset.AssetNatureId = assetDto.AssetNatureId;
                                 asset.SubTypeId = material.SubTypeId;
@@ -2727,7 +2727,7 @@ namespace Optima.Fais.EfRepository
                                 assetAdmMD.RoomId = costCenter.RoomId;
                                 //assetAdmMD.AssetCategoryId = accountancy != null ? accountancy.AssetCategoryId : defaultNull;
                                 assetAdmMD.AssetClass = assetClass;
-                                assetAdmMD.ArticleId = 151;
+                                
 
                                 //assetAdmMD.AssetNatureId = assetDto.AssetNatureId;
                                 assetAdmMD.BudgetManagerId = inventory.BudgetManagerId;
@@ -3213,7 +3213,7 @@ namespace Optima.Fais.EfRepository
                                     //asset.UomId = assetDto.UomId;
                                     asset.Company = costCenter.Company;
                                     asset.Validated = true;
-                                    asset.ArticleId = 151;
+                                    
                                     asset.BudgetManagerId = inventory.BudgetManagerId;
                                     //asset.AssetNatureId = assetDto.AssetNatureId;
                                     asset.SubTypeId = material.SubTypeId;
@@ -3359,7 +3359,7 @@ namespace Optima.Fais.EfRepository
                                     assetAdmMD.RoomId = costCenter.RoomId;
                                     //assetAdmMD.AssetCategoryId = accountancy != null ? accountancy.AssetCategoryId : defaultNull;
                                     assetAdmMD.AssetClass = assetClass;
-                                    assetAdmMD.ArticleId = 151;
+                                    
 
                                     //assetAdmMD.AssetNatureId = assetDto.AssetNatureId;
                                     assetAdmMD.BudgetManagerId = inventory.BudgetManagerId;
@@ -4213,7 +4213,7 @@ namespace Optima.Fais.EfRepository
         //           //asset.UomId = assetDto.UomId;
         //           asset.CompanyId = costCenter.CompanyId;
         //           asset.Validated = true;
-        //           asset.ArticleId = 151;
+        //           
         //           asset.BudgetManager = budgetManager;
         //           //asset.AssetNatureId = assetDto.AssetNatureId;
         //           //asset.SubTypeId = assetDto.SubTypeId;
@@ -4329,7 +4329,7 @@ namespace Optima.Fais.EfRepository
         //           assetAdmMD.DepartmentId = costCenter.Division.DepartmentId;
         //           //assetAdmMD.AssetCategoryId = accountancy.AssetCategoryId;
         //           assetAdmMD.AssetClass = assetClass;
-        //           assetAdmMD.ArticleId = 151;
+        //           
         //           assetAdmMD.AdministrationId = costCenter.AdministrationId;
 
         //           //assetAdmMD.AssetNatureId = assetDto.AssetNatureId;
@@ -4791,7 +4791,7 @@ namespace Optima.Fais.EfRepository
                 //asset.UomId = assetDto.UomId;
                 asset.CompanyId = costCenter.CompanyId;
                 asset.Validated = true;
-                asset.ArticleId = 151;
+                
                 asset.BudgetManager = budgetManager;
                 //asset.AssetNatureId = assetDto.AssetNatureId;
                 //asset.SubTypeId = assetDto.SubTypeId;
@@ -4913,7 +4913,7 @@ namespace Optima.Fais.EfRepository
                 assetAdmMD.DepartmentId = costCenter.Division.DepartmentId;
                 //assetAdmMD.AssetCategoryId = accountancy.AssetCategoryId;
                 assetAdmMD.AssetClass = assetClass;
-                assetAdmMD.ArticleId = 151;
+                
                 assetAdmMD.AdministrationId = costCenter.AdministrationId;
 
                 //assetAdmMD.AssetNatureId = assetDto.AssetNatureId;
@@ -6412,7 +6412,7 @@ namespace Optima.Fais.EfRepository
             //asset.AssetStateId = assetState.Id;
             //asset.CompanyId = 1;
             //asset.Custody = false;
-            asset.ArticleId = 151;
+            
             asset.BudgetManagerId = assetDto.BudgetManagerId;
             //asset.AssetNatureId = assetDto.AssetNatureId;
             //asset.SubTypeId = assetDto.SubTypeId;
@@ -6522,7 +6522,7 @@ namespace Optima.Fais.EfRepository
             //assetAdmMD.SubCategoryId = assetDto.SubCategoryId;
             //assetAdmMD.AssetCategoryId = accountancy.AssetCategoryId;
             //assetAdmMD.AssetTypeId = accountancy.AssetTypeId;
-            assetAdmMD.ArticleId = 151;
+            
             //assetAdmMD.AccountId = accountancy.AccountId;
             assetAdmMD.BudgetManagerId = budgetManager.Id;
             assetAdmMD.RequestId = assetDto.RequestId;
@@ -6608,7 +6608,7 @@ namespace Optima.Fais.EfRepository
             //asset.OutDate = null;
             //asset.QuantityOut = 0;
             //asset.ValueInvOut= 0;
-            asset.ArticleId = oldAsset.ArticleId;
+            
             asset.BudgetManagerId = oldAsset.BudgetManagerId;
             asset.AssetNatureId = oldAsset.AssetNatureId;
             asset.AccountId = oldAsset.AccountId;
@@ -6811,7 +6811,7 @@ namespace Optima.Fais.EfRepository
             assetAdmMD.EmployeeId = assetAdmMDOld.EmployeeId;
             assetAdmMD.RoomId = assetAdmMDOld.RoomId;
             assetAdmMD.AssetClassId = assetAdmMDOld.AssetClassId;
-            assetAdmMD.ArticleId = assetAdmMDOld.ArticleId;
+            
             assetAdmMD.AssetNatureId = assetAdmMDOld.AssetNatureId;
             assetAdmMD.BudgetManagerId = assetAdmMDOld.BudgetManagerId;
             assetAdmMD.AccountId = assetAdmMDOld.AccountId;
@@ -7249,7 +7249,7 @@ namespace Optima.Fais.EfRepository
                     asset.UomId = assetDto.UomId;
                     asset.CompanyId = assetDto.CompanyId;
                     asset.Validated = true;
-                    asset.ArticleId = 151;
+                    
                     asset.BudgetManagerId = assetDto.BudgetManagerId;
                     asset.AssetNatureId = assetDto.AssetNatureId;
                     asset.SubTypeId = assetDto.SubTypeId;
@@ -7365,7 +7365,7 @@ namespace Optima.Fais.EfRepository
                     assetAdmMD.DepartmentId = costCenter.Division.DepartmentId;
                     assetAdmMD.DivisionId = costCenter.DivisionId; assetAdmMD.AssetCategoryId = assetDto.AssetCategoryId;
                     assetAdmMD.AssetClass = assetClass;
-                    assetAdmMD.ArticleId = 151;
+                    
                     assetAdmMD.AdministrationId = assetDto.AdministrationId;
 
                     assetAdmMD.AssetNatureId = assetDto.AssetNatureId;
@@ -9693,7 +9693,7 @@ namespace Optima.Fais.EfRepository
             Model.BudgetManager budgetManager = null;
             Model.Project project = null;
             Model.Company company = null;
-            Model.Article article = null;
+            
             
             
             Model.Employee employeeTeamLeader = null;
@@ -10155,18 +10155,18 @@ namespace Optima.Fais.EfRepository
             //    _context.Set<Model.Uom>().Add(uom);
             //}
 
-            article = _context.Set<Model.Article>().Where(a => a.Code == articleDefault).FirstOrDefault();
+            //article = _context.Set<Model.Article>().Where(a => a.Code == articleDefault).FirstOrDefault();
 
-            if (article == null)
-            {
-                article = new Model.Article
-                {
-                    Code = articleDefault,
-                    Name = articleDefault,
-                    IsDeleted = false
-                };
-                _context.Set<Model.Article>().Add(article);
-            }
+            //if (article == null)
+            //{
+            //    article = new Model.Article
+            //    {
+            //        Code = articleDefault,
+            //        Name = articleDefault,
+            //        IsDeleted = false
+            //    };
+            //    _context.Set<Model.Article>().Add(article);
+            //}
 
             //expAccount = _context.Set<Model.ExpAccount>().Where(a => a.Code == expAccountDefault).FirstOrDefault();
 
@@ -10459,7 +10459,7 @@ namespace Optima.Fais.EfRepository
                     Validated = true,
                     ValueInv = assetImport.ValueInv,
                     ValueRem = assetImport.ValueDep,
-                    ArticleId = article.Id,
+                    
                     BudgetManagerId = budgetManager.Id,
                     AssetNatureId = assetNature.Id,
                     
@@ -10627,7 +10627,7 @@ namespace Optima.Fais.EfRepository
                     Employee = employee,
                     Room = room,
                     AssetClassId = assetClass.Id,
-                    ArticleId = article.Id,
+                    
                     BudgetManagerId = budgetManager.Id,
                     AssetNatureId = assetNature.Id,
                     
@@ -10830,7 +10830,7 @@ namespace Optima.Fais.EfRepository
                         Employee = employee,
                         Room = room,
                         AssetClassId = assetClass.Id,
-                        ArticleId = article.Id,
+                        
                         BudgetManagerId = budgetManager.Id,
                         AssetNatureId = assetNature.Id,
                         
@@ -10859,7 +10859,7 @@ namespace Optima.Fais.EfRepository
                     assetAdmMD.Employee = employee;
                     assetAdmMD.Room = room;
                     assetAdmMD.AssetClass = assetClass;
-                    assetAdmMD.Article = article;
+                    
                     assetAdmMD.BudgetManager = budgetManager;
                     assetAdmMD.AssetNature = assetNature;
                     
@@ -10893,7 +10893,7 @@ namespace Optima.Fais.EfRepository
             asset.Validated = true;
             asset.ValueInv = assetImport.ValueInv;
             asset.ValueRem = assetImport.ValueDep;
-            asset.Article = article;
+            
             asset.BudgetManager = budgetManager;
             asset.AssetNature = assetNature;
             
@@ -10948,7 +10948,7 @@ namespace Optima.Fais.EfRepository
             // Model.BudgetManager budgetManager = null;
             //Model.Project project = null;
             // Model.InterCompany interCompany = null;
-            Model.Article article = null;
+            
             
             
             Model.Employee employeeTeamLeader = null;
@@ -11172,18 +11172,18 @@ namespace Optima.Fais.EfRepository
                 _context.Set<Model.AssetCategory>().Add(assetCategory);
             }
 
-            article = await _context.Set<Model.Article>().Where(a => a.Code == assetImport.Article).FirstOrDefaultAsync();
+            //article = await _context.Set<Model.Article>().Where(a => a.Code == assetImport.Article).FirstOrDefaultAsync();
 
-            if (article == null)
-            {
-                article = new Model.Article
-                {
-                    Code = assetImport.Article,
-                    Name = assetImport.Article,
-                    IsDeleted = false
-                };
-                _context.Set<Model.Article>().Add(article);
-            }
+            //if (article == null)
+            //{
+            //    article = new Model.Article
+            //    {
+            //        Code = assetImport.Article,
+            //        Name = assetImport.Article,
+            //        IsDeleted = false
+            //    };
+            //    _context.Set<Model.Article>().Add(article);
+            //}
 
             //expAccount = await _context.Set<Model.ExpAccount>().Where(a => a.Code == assetImport.ExpAccount).FirstOrDefaultAsync();
 
@@ -11383,7 +11383,7 @@ namespace Optima.Fais.EfRepository
                     //OutDate = assetImport.RemovalDate,
                     //QuantityOut = assetImport.Quantity,
                     //ValueInvOut = assetImport.ValueInv,
-                    ArticleId = article.Id,
+                    
                     BudgetManagerId = assetImport.BudgetManagerId,
                     AssetNatureId = null,
                     
@@ -11596,7 +11596,7 @@ namespace Optima.Fais.EfRepository
                     Employee = employee,
                     RoomId = costCenter != null ? costCenter.RoomId : null,
                     AssetClassId = assetImport.AssetClassId,
-                    ArticleId = article.Id,
+                    
                     AssetNatureId = null,
                     BudgetManagerId = assetImport.BudgetManagerId,
                     
@@ -11917,7 +11917,7 @@ namespace Optima.Fais.EfRepository
             //            EmployeeId = employee != null ? employee.Id : (int?)null,
             //            RoomId = costCenter != null ? costCenter.RoomId : null,
             //            AssetClassId = assetImport.AssetClassId,
-            //            ArticleId = article.Id,
+            //            
             //            AssetNatureId = null,
             //            BudgetManagerId = assetImport.BudgetManagerId,
             //            
@@ -18512,7 +18512,7 @@ namespace Optima.Fais.EfRepository
             Model.Brand brand = null;
             Model.Model model = null;
             Model.Company company = null;
-            Model.Article article = null;
+            
             Model.InvState invState = null;
             Model.AssetType assetType = null;
             Model.Uom uom = null;
@@ -18820,18 +18820,18 @@ namespace Optima.Fais.EfRepository
             }
 
 
-            article = _context.Set<Model.Article>().Where(a => a.Code == assetImport.InvName.Trim()).FirstOrDefault();
+            //article = _context.Set<Model.Article>().Where(a => a.Code == assetImport.InvName.Trim()).FirstOrDefault();
 
-            if (article == null)
-            {
-                article = new Model.Article
-                {
-                    Code = assetImport.InvName.Trim().Substring(0, 2),
-                    Name = assetImport.InvName.Trim(),
-                    IsDeleted = false
-                };
-                _context.Set<Model.Article>().Add(article);
-            }
+            //if (article == null)
+            //{
+            //    article = new Model.Article
+            //    {
+            //        Code = assetImport.InvName.Trim().Substring(0, 2),
+            //        Name = assetImport.InvName.Trim(),
+            //        IsDeleted = false
+            //    };
+            //    _context.Set<Model.Article>().Add(article);
+            //}
 
             partnerLocation = _context.Set<Model.PartnerLocation>().Where(a => a.Denumire == codeDefault.Trim()).FirstOrDefault();
 
@@ -18926,7 +18926,7 @@ namespace Optima.Fais.EfRepository
                         SAPCode = entityType.Code + entityType.Name,
                         AssetNatureId = assetNature.Id,
                         Name = Encoding.ASCII.GetString(Encoding.ASCII.GetBytes(assetImport.Name)),
-                        Article = article,
+                        
                         IsTemp = false,
                         Document = document,
                         Brand = brand,
@@ -19061,7 +19061,7 @@ namespace Optima.Fais.EfRepository
                             Room = room,
                             AssetStateId = assetState.Id,
                             AssetNatureId = assetNature.Id,
-                            Article = article,
+                            
                             Brand = brand,
                             Model = model,
                             Department = department,
@@ -19733,7 +19733,7 @@ namespace Optima.Fais.EfRepository
             Model.Brand brand = null;
             Model.Model model = null;
             Model.Company company = null;
-            Model.Article article = null;
+            
             Model.InvState invState = null;
             Model.AssetType assetType = null;
             Model.Uom uom = null;
@@ -20054,18 +20054,18 @@ namespace Optima.Fais.EfRepository
             }
 
 
-            article = _context.Set<Model.Article>().Where(a => a.Name == assetImport.Description.Trim()).FirstOrDefault();
+            //article = _context.Set<Model.Article>().Where(a => a.Name == assetImport.Description.Trim()).FirstOrDefault();
 
-            if (article == null)
-            {
-                article = new Model.Article
-                {
-                    Code = assetImport.Description.Length > 2 ? assetImport.Description.Trim().Substring(0, 2) : assetImport.Description.Trim(),
-                    Name = assetImport.Description.Trim(),
-                    IsDeleted = false
-                };
-                _context.Set<Model.Article>().Add(article);
-            }
+            //if (article == null)
+            //{
+            //    article = new Model.Article
+            //    {
+            //        Code = assetImport.Description.Length > 2 ? assetImport.Description.Trim().Substring(0, 2) : assetImport.Description.Trim(),
+            //        Name = assetImport.Description.Trim(),
+            //        IsDeleted = false
+            //    };
+            //    _context.Set<Model.Article>().Add(article);
+            //}
 
             partnerLocation = _context.Set<Model.PartnerLocation>().Where(a => a.Denumire == codeDefault.Trim()).FirstOrDefault();
 
@@ -20177,7 +20177,7 @@ namespace Optima.Fais.EfRepository
                         SAPCode = assetImport.SAPCode.Trim(),
                         AssetNatureId = assetNature.Id,
                         Name = Encoding.ASCII.GetString(Encoding.ASCII.GetBytes(assetImport.Description)),
-                        Article = article,
+                        
                         IsTemp = false,
                         Document = document,
                         Brand = brand,
@@ -20316,7 +20316,7 @@ namespace Optima.Fais.EfRepository
                             Room = room,
                             AssetStateId = assetState.Id,
                             AssetNatureId = assetNature.Id,
-                            Article = article,
+                            
                             Brand = brand,
                             Model = model,
                             Department = department,
@@ -20876,7 +20876,7 @@ namespace Optima.Fais.EfRepository
                     .Include(a => a.Document)
                         .ThenInclude(d => d.DocumentType)
                     .Include(a => a.AssetCategory)
-                    .Include(a => a.Article)
+                    
                     .Include(a => a.Uom)
                     .Include(a => a.CostCenter)
                         .ThenInclude(c => c.Division)
@@ -26776,7 +26776,7 @@ namespace Optima.Fais.EfRepository
 				Partner = a.Asset.Document.Partner != null ? a.Asset.Document.Partner.RegistryNumber : "",
 				PartnerName = a.Asset.Document.Partner != null ? a.Asset.Document.Partner.Name : "",
 				Manufacturier = a.Asset.Manufacturer,
-				Location = a.Adm.Article != null ? a.Adm.Article.Name : "",
+				
 				CostCenterCode = a.Adm.CostCenter != null ? a.Adm.CostCenter.Code : "",
 				CostCenterName = a.Adm.CostCenter != null ? a.Adm.CostCenter.Name : "",
 				PurchaseDate = a.Asset.PurchaseDate,
@@ -26942,7 +26942,7 @@ namespace Optima.Fais.EfRepository
                 Partner = a.Asset.Document.Partner != null ? a.Asset.Document.Partner.RegistryNumber : "",
                 PartnerName = a.Asset.Document.Partner != null ? a.Asset.Document.Partner.Name : "",
                 Manufacturier = a.Asset.Manufacturer,
-                Location = a.Adm.Article != null ? a.Adm.Article.Name : "",
+                
                 CostCenterCode = a.Adm.CostCenter != null ? a.Adm.CostCenter.Code : "",
                 CostCenterName = a.Adm.CostCenter != null ? a.Adm.CostCenter.Name : "",
                 PurchaseDate = a.Asset.PurchaseDate,
@@ -27055,7 +27055,7 @@ namespace Optima.Fais.EfRepository
 				Partner = a.Asset.Document.Partner != null ? a.Asset.Document.Partner.RegistryNumber : "",
 				PartnerName = a.Asset.Document.Partner != null ? a.Asset.Document.Partner.Name : "",
 				Manufacturier = a.Asset.Manufacturer,
-				Location = a.Adm.Article != null ? a.Adm.Article.Name : "",
+				
 				CostCenterCode = a.Adm.CostCenter != null ? a.Adm.CostCenter.Code : "",
 				CostCenterName = a.Adm.CostCenter != null ? a.Adm.CostCenter.Name : "",
 				PurchaseDate = a.Asset.PurchaseDate,
@@ -32355,8 +32355,6 @@ namespace Optima.Fais.EfRepository
                         .ThenInclude(i => i.Division)
                      .Include(i => i.Asset)
                         .ThenInclude(i => i.Department)
-                      .Include(i => i.Asset)
-                        .ThenInclude(i => i.Article)
                     .Include(i => i.Asset)
                      .ThenInclude(i => i.SubType)
                             .ThenInclude(i => i.Type)
@@ -35208,7 +35206,7 @@ namespace Optima.Fais.EfRepository
                     //OutDate = assetImport.RemovalDate,
                     //QuantityOut = assetImport.Quantity,
                     //ValueInvOut = assetImport.ValueInv,
-                    ArticleId = null,
+                    
                     BudgetManagerId = inventory.BudgetManagerId,
                     AssetNatureId = null,
                     AccountId = null,
@@ -35429,7 +35427,7 @@ namespace Optima.Fais.EfRepository
                     EmployeeId = employee.Id,
                     RoomId = 34072,
                     AssetClassId = 23,
-                    ArticleId = null,
+                    
                     AssetNatureId = null,
                     BudgetManagerId = null,
                     AccountId = null,

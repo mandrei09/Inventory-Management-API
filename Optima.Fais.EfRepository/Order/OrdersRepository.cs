@@ -4015,7 +4015,7 @@ namespace Optima.Fais.EfRepository
                 //asset.UomId = assetDto.UomId;
                 asset.CompanyId = costCenter.CompanyId;
                 asset.Validated = true;
-                asset.ArticleId = 151;
+                
                 asset.BudgetManager = budgetManager;
                 //asset.AssetNatureId = assetDto.AssetNatureId;
                 //asset.SubTypeId = assetDto.SubTypeId;
@@ -4135,7 +4135,7 @@ namespace Optima.Fais.EfRepository
                 assetAdmMD.DepartmentId = costCenter.Division.DepartmentId;
                 //assetAdmMD.AssetCategoryId = accountancy.AssetCategoryId;
                 assetAdmMD.AssetClass = assetClass;
-                assetAdmMD.ArticleId = 151;
+                
                 assetAdmMD.AdministrationId = costCenter.AdministrationId;
 
                 //assetAdmMD.AssetNatureId = assetDto.AssetNatureId;
@@ -4514,7 +4514,7 @@ namespace Optima.Fais.EfRepository
                 //asset.UomId = assetDto.UomId;
                 asset.CompanyId = costCenter.CompanyId;
                 asset.Validated = true;
-                asset.ArticleId = 151;
+                
                 asset.BudgetManagerId = inventory.BudgetManagerId;
                 //asset.AssetNatureId = assetDto.AssetNatureId;
                 //asset.SubTypeId = assetDto.SubTypeId;
@@ -4633,7 +4633,7 @@ namespace Optima.Fais.EfRepository
                 assetAdmMD.DepartmentId = costCenter.Division.DepartmentId;
                 //assetAdmMD.AssetCategoryId = accountancy.AssetCategoryId;
                 assetAdmMD.AssetClass = assetClass;
-                assetAdmMD.ArticleId = 151;
+                
                 assetAdmMD.AdministrationId = costCenter.AdministrationId;
 
                 //assetAdmMD.AssetNatureId = assetDto.AssetNatureId;

@@ -1179,7 +1179,7 @@ namespace Optima.Fais.Api.Controllers
                                 .ThenInclude(d => d.PartnerLocation)
                     .Include(a => a.EmployeeTransfer)
                     .Include(a => a.AssetCategory)
-                    .Include(a => a.Article)
+                    
                     .Include(a => a.Uom)
                     .Include(a => a.CostCenter)
                         .ThenInclude(c => c.Division)
@@ -10200,7 +10200,7 @@ namespace Optima.Fais.Api.Controllers
                 worksheet.Cells[1, 13].Value = "Agreement number";
 
                 worksheet.Cells[1, 14].Value = "Manufacturer of asset";
-                worksheet.Cells[1, 15].Value = "Location";
+                //worksheet.Cells[1, 15].Value = "Location";
                 worksheet.Cells[1, 16].Value = "Cost Center";
                 worksheet.Cells[1, 17].Value = "Capitalized on";
                 worksheet.Cells[1, 18].Value = "Ord.dep.start date";
@@ -10295,7 +10295,7 @@ namespace Optima.Fais.Api.Controllers
                     worksheet.Cells[recordIndex, 12].Value = item.Asset.Document.Partner != null ? item.Asset.Document.Partner.Name : "";
                     worksheet.Cells[recordIndex, 13].Value = item.Asset.AgreementNo;
                     worksheet.Cells[recordIndex, 14].Value = item.Asset.Manufacturer;
-                    worksheet.Cells[recordIndex, 15].Value = item.Asset.Article != null ? item.Asset.Article.Name : "";
+                    //worksheet.Cells[recordIndex, 15].Value = item.Asset.Article != null ? item.Asset.Article.Name : "";
                     worksheet.Cells[recordIndex, 16].Value = item.Asset.CostCenter != null ? item.Asset.CostCenter.Code : "";
                     worksheet.Cells[recordIndex, 17].Value = item.Asset.PurchaseDate;
                     worksheet.Cells[recordIndex, 17].Style.Numberformat.Format = "yyyy-mm-dd";
