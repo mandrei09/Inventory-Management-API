@@ -69,7 +69,7 @@
 
 		public virtual SubType SubType { get; set; }
 
-		public virtual InsuranceCategory InsuranceCategory { get; set; }
+		
 
 		public virtual Model Model { get; set; }
 

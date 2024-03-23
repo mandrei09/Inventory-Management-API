@@ -214,7 +214,6 @@ namespace Optima.Fais.Api
 			services.AddTransient<IDictionaryItemsRepository, DictionaryItemsRepository>();
 			services.AddTransient<IBrandsRepository, BrandsRepository>();
 			services.AddTransient<IModelsRepository, ModelsRepository>();
-			services.AddTransient<IInsuranceCategoriesRepository, InsuranceCategoriesRepository>();
 			services.AddTransient<IMasterTypesRepository, MasterTypesRepository>();
 			services.AddTransient<IProjectsRepository, ProjectsRepository>();
 			services.AddTransient<IProjectTypesRepository, ProjectTypesRepository>();

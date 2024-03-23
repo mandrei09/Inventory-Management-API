@@ -205,7 +205,7 @@ namespace Optima.Fais.Model
 
         public int? InsuranceCategoryId { get; set; }
 
-        public virtual InsuranceCategory InsuranceCategory { get; set; }
+        
 
         public int? TaxId { get; set; }
 

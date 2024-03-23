@@ -709,7 +709,7 @@ namespace Optima.Fais.Api
                    AdmCenter = (a.Adm.CostCenter != null && a.Adm.CostCenter.AdmCenter != null ? new Dto.CodeNameEntity { Id = a.Adm.CostCenter.AdmCenter.Id, Code = a.Adm.CostCenter.AdmCenter.Code, Name = a.Adm.CostCenter.AdmCenter.Name } : null),
                    Region = ((a.Adm.CostCenter != null && a.Adm.CostCenter.AdmCenter != null && a.Adm.CostCenter.Region != null) ? new Dto.CodeNameEntity { Id = a.Adm.CostCenter.Region.Id, Code = a.Adm.CostCenter.Region.Code, Name = a.Adm.CostCenter.Region.Name } : null),
                    Location = ((a.Adm.Room != null && a.Adm.Room.Location != null) ? new Dto.CodeNameEntity { Id = a.Adm.Room.LocationId, Code = a.Adm.Room.Location.Code, Name = a.Adm.Room.Location.Name } : null),
-                   InsuranceCategory = (a.Adm.InsuranceCategory != null ? new Dto.CodeNameEntity { Id = a.Adm.InsuranceCategory.Id, Code = a.Adm.InsuranceCategory.Code, Name = a.Adm.InsuranceCategory.Name } : null),
+                   //InsuranceCategory = (a.Adm.InsuranceCategory != null ? new Dto.CodeNameEntity { Id = a.Adm.InsuranceCategory.Id, Code = a.Adm.InsuranceCategory.Code, Name = a.Adm.InsuranceCategory.Name } : null),
                    Project = (a.Adm.Project != null ? new Dto.CodeNameEntity { Id = a.Adm.Project.Id, Code = a.Adm.Project.Code, Name = a.Adm.Project.Name } : null),
                    AssetType = (a.Adm.AssetType != null ? new Dto.CodeNameEntity { Id = a.Adm.AssetType.Id, Code = a.Adm.AssetType.Code, Name = a.Adm.AssetType.Name } : null),
                    AssetState = (a.Adm.AssetState != null ? new Dto.CodeNameEntity { Id = a.Adm.AssetState.Id, Code = a.Adm.AssetState.Code, Name = a.Adm.AssetState.Name } : null),
@@ -900,7 +900,7 @@ namespace Optima.Fais.Api
                    AdmCenter = (a.Adm.CostCenter != null && a.Adm.CostCenter.AdmCenter != null ? new Dto.CodeNameEntity { Id = a.Adm.CostCenter.AdmCenter.Id, Code = a.Adm.CostCenter.AdmCenter.Code, Name = a.Adm.CostCenter.AdmCenter.Name } : null),
                    Region = ((a.Adm.CostCenter != null && a.Adm.CostCenter.AdmCenter != null && a.Adm.CostCenter.Region != null) ? new Dto.CodeNameEntity { Id = a.Adm.CostCenter.Region.Id, Code = a.Adm.CostCenter.Region.Code, Name = a.Adm.CostCenter.Region.Name } : null),
                    Location = ((a.Adm.Room != null && a.Adm.Room.Location != null) ? new Dto.CodeNameEntity { Id = a.Adm.Room.LocationId, Code = a.Adm.Room.Location.Code, Name = a.Adm.Room.Location.Name } : null),
-                   InsuranceCategory = (a.Adm.InsuranceCategory != null ? new Dto.CodeNameEntity { Id = a.Adm.InsuranceCategory.Id, Code = a.Adm.InsuranceCategory.Code, Name = a.Adm.InsuranceCategory.Name } : null),
+                   //InsuranceCategory = (a.Adm.InsuranceCategory != null ? new Dto.CodeNameEntity { Id = a.Adm.InsuranceCategory.Id, Code = a.Adm.InsuranceCategory.Code, Name = a.Adm.InsuranceCategory.Name } : null),
                    Project = (a.Adm.Project != null ? new Dto.CodeNameEntity { Id = a.Adm.Project.Id, Code = a.Adm.Project.Code, Name = a.Adm.Project.Name } : null),
                    AssetType = (a.Adm.AssetType != null ? new Dto.CodeNameEntity { Id = a.Adm.AssetType.Id, Code = a.Adm.AssetType.Code, Name = a.Adm.AssetType.Name } : null),
                    AssetState = (a.Adm.AssetState != null ? new Dto.CodeNameEntity { Id = a.Adm.AssetState.Id, Code = a.Adm.AssetState.Code, Name = a.Adm.AssetState.Name } : null),
@@ -1107,7 +1107,7 @@ namespace Optima.Fais.Api
                     AdmCenter = ((a.CostCenter != null && a.CostCenter.AdmCenter != null) ? new Dto.CodeNameEntity { Id = a.CostCenter.AdmCenterId.Value, Code = a.CostCenter.AdmCenter.Code, Name = a.CostCenter.AdmCenter.Name } : null),
                     Region = (a.CostCenter != null && a.CostCenter.Region != null ? new Dto.CodeNameEntity { Id = a.CostCenter.Region.Id, Code = a.CostCenter.Region.Code, Name = a.CostCenter.Region.Name } : null),
                     Company = (a.Company != null ? new Dto.CodeNameEntity { Id = a.Company.Id, Code = a.Company.Code, Name = a.Company.Name } : null),
-                    InsuranceCategory = (a.InsuranceCategory != null ? new Dto.CodeNameEntity { Id = a.InsuranceCategory.Id, Code = a.InsuranceCategory.Code, Name = a.InsuranceCategory.Name } : null),
+                    //InsuranceCategory = (a.InsuranceCategory != null ? new Dto.CodeNameEntity { Id = a.InsuranceCategory.Id, Code = a.InsuranceCategory.Code, Name = a.InsuranceCategory.Name } : null),
                     AssetType = (a.AssetType != null ? new Dto.CodeNameEntity { Id = a.AssetType.Id, Code = a.AssetType.Code, Name = a.AssetType.Name } : null),
                     Project = (a.Project != null ? new Dto.CodeNameEntity { Id = a.Project.Id, Code = a.Project.Code, Name = a.Project.Name } : null),
                     AssetState = (a.AssetState != null ? new Dto.CodeNameEntity { Id = a.AssetState.Id, Code = a.AssetState.Code, Name = a.AssetState.Name } : null),
@@ -3172,12 +3172,6 @@ namespace Optima.Fais.Api
                 .ForMember(i => i.Brand, opt => opt.Ignore())
                 .ForMember(i => i.BrandId, opt => opt.MapFrom(i => i.Brand.Id));
 
-            CreateMap<Model.InsuranceCategory, Dto.InsuranceCategory>();
-			CreateMap<Dto.InsuranceCategory, Model.InsuranceCategory>()
-				.ForMember(i => i.Id, opt => opt.MapFrom(i => i.Id))
-				.ForMember(i => i.Code, opt => opt.MapFrom(i => i.Code))
-				.ForMember(i => i.Name, opt => opt.MapFrom(i => i.Name));
-
             CreateMap<Model.Company, Dto.Company>();
 			CreateMap<Dto.Company, Model.Company>()
 				.ForMember(i => i.Id, opt => opt.MapFrom(i => i.Id))
@@ -3530,7 +3524,6 @@ namespace Optima.Fais.Api
             CreateMap<Model.DictionaryItem, Dto.DictionaryItemSync>();
             CreateMap<Model.Dimension, Dto.DimensionSync>();
             CreateMap<Model.Company, Dto.CompanySync>();
-            CreateMap<Model.InsuranceCategory, Dto.InsuranceCategorySync>();
             CreateMap<Model.AssetNature, Dto.AssetNatureSync>();
             CreateMap<Model.Material, Dto.MaterialSync>();
 

@@ -9685,7 +9685,7 @@ namespace Optima.Fais.EfRepository
             Model.MasterType masterType = null;
             Model.Type type = null;
             Model.SubType subType = null;
-            Model.InsuranceCategory insuranceCategory = null;
+            
             Model.Model model = null;
             Model.Brand brand = null;
             Model.Department department = null;
@@ -9887,18 +9887,18 @@ namespace Optima.Fais.EfRepository
                 _context.Set<Model.SubType>().Add(subType);
             }
 
-            insuranceCategory = _context.Set<Model.InsuranceCategory>().Where(a => a.Code == assetImport.InsuranceCategory).SingleOrDefault();
+            //insuranceCategory = _context.Set<Model.InsuranceCategory>().Where(a => a.Code == assetImport.InsuranceCategory).SingleOrDefault();
 
-            if (insuranceCategory == null)
-            {
-                insuranceCategory = new Model.InsuranceCategory
-                {
-                    Code = assetImport.InsuranceCategory,
-                    Name = assetImport.InsuranceCategory,
-                    IsDeleted = false
-                };
-                _context.Set<Model.InsuranceCategory>().Add(insuranceCategory);
-            }
+            //if (insuranceCategory == null)
+            //{
+            //    insuranceCategory = new Model.InsuranceCategory
+            //    {
+            //        Code = assetImport.InsuranceCategory,
+            //        Name = assetImport.InsuranceCategory,
+            //        IsDeleted = false
+            //    };
+            //    _context.Set<Model.InsuranceCategory>().Add(insuranceCategory);
+            //}
 
             //model = _context.Set<Model.Model>().Where(a => a.Code == assetImport.Model.Trim()).SingleOrDefault();
 
@@ -10467,7 +10467,7 @@ namespace Optima.Fais.EfRepository
                     SAPCode = assetImport.ERPCode,
                     IsInTransfer = false,
                     SubTypeId = subType.Id,
-                    InsuranceCategoryId = insuranceCategory.Id,
+                    
                     BrandId = brand.Id,
                     ModelId = model.Id,
                     
@@ -10633,7 +10633,7 @@ namespace Optima.Fais.EfRepository
                     
                     
                     SubTypeId = subType.Id,
-                    InsuranceCategoryId = insuranceCategory.Id,
+                    
                     BrandId = brand.Id,
                     ModelId = model.Id,
                     ProjectId = project.Id
@@ -10836,7 +10836,7 @@ namespace Optima.Fais.EfRepository
                         
                         
                         SubTypeId = subType.Id,
-                        InsuranceCategoryId = insuranceCategory.Id,
+                        
                         BrandId = brand.Id,
                         ModelId = model.Id,
                         
@@ -10865,7 +10865,7 @@ namespace Optima.Fais.EfRepository
                     
                     
                     assetAdmMD.SubType = subType;
-                    assetAdmMD.InsuranceCategory = insuranceCategory;
+                    
                     assetAdmMD.Brand = brand;
                     assetAdmMD.Model = model;
                     
@@ -10900,7 +10900,7 @@ namespace Optima.Fais.EfRepository
             
             asset.SAPCode = assetImport.ERPCode;
             asset.SubType = subType;
-            asset.InsuranceCategory = insuranceCategory;
+            
             asset.Brand = brand;
             asset.Model = model;
             
@@ -10940,7 +10940,7 @@ namespace Optima.Fais.EfRepository
             Model.MasterType masterType = null;
             //Model.Type type = null;
             //Model.SubType subType = null;
-            // Model.InsuranceCategory insuranceCategory = null;
+            // 
             // Model.Model model = null;
             //Model.Brand brand = null;
             // Model.Department department = null;
@@ -20900,7 +20900,6 @@ namespace Optima.Fais.EfRepository
                         .ThenInclude(c => c.AdmCenter)
                    .Include(a => a.CostCenter)
                         .ThenInclude(c => c.Region)
-                    .Include(a => a.InsuranceCategory)
                     .Include(a => a.AssetType)
                     .Include(a => a.Project)
                     .Include(a => a.Order)
@@ -32341,8 +32340,6 @@ namespace Optima.Fais.EfRepository
                         .ThenInclude(i => i.AssetCategory)
                      .Include(i => i.Asset)
                         .ThenInclude(i => i.Project)
-                     .Include(i => i.Asset)
-                        .ThenInclude(i => i.InsuranceCategory)
                      .Include(i => i.Asset)
                         
                      .Include(i => i.Asset)

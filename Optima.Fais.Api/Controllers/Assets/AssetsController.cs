@@ -1203,7 +1203,6 @@ namespace Optima.Fais.Api.Controllers
                         .ThenInclude(c => c.AdmCenter)
                    .Include(a => a.CostCenter)
                         .ThenInclude(c => c.Region)
-                    .Include(a => a.InsuranceCategory)
                     .Include(a => a.AssetType)
                     .Include(a => a.Project)
                     .Include(a => a.Order)
@@ -10258,7 +10257,7 @@ namespace Optima.Fais.Api.Controllers
                 worksheet.Cells[1, 67].Value = "Clasificare asset";
                 worksheet.Cells[1, 68].Value = "Profit Ctr";
                 worksheet.Cells[1, 69].Value = "PC Detaliu";
-                worksheet.Cells[1, 70].Value = "BS";
+                //worksheet.Cells[1, 70].Value = "BS";
                 worksheet.Cells[1, 71].Value = "Type";
                 worksheet.Cells[1, 72].Value = "WBS element";
 
@@ -10372,7 +10371,7 @@ namespace Optima.Fais.Api.Controllers
                     worksheet.Cells[recordIndex, 67].Value = item.Adm.AssetClass != null ? item.Adm.AssetClass.Name : "";
                     worksheet.Cells[recordIndex, 68].Value = item.Asset.CostCenter != null && item.Asset.CostCenter.AdmCenter != null ? item.Asset.CostCenter.AdmCenter.Name : "";
                     worksheet.Cells[recordIndex, 69].Value = item.Asset.CostCenter != null && item.Asset.CostCenter.Region != null ? item.Asset.CostCenter.Region.Name : "";
-                    worksheet.Cells[recordIndex, 70].Value = item.Asset.InsuranceCategory != null ? item.Asset.InsuranceCategory.Name : "";
+                    //worksheet.Cells[recordIndex, 70].Value = item.Asset.InsuranceCategory != null ? item.Asset.InsuranceCategory.Name : "";
                     worksheet.Cells[recordIndex, 71].Value = item.Asset.AssetType != null ? item.Asset.AssetType.Name : "";
                     worksheet.Cells[recordIndex, 72].Value = item.Asset.Project != null ? item.Asset.Project.Name : "";
 

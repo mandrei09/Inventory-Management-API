@@ -130,7 +130,7 @@ namespace Optima.Fais.Model
 
 		public virtual Project Project { get; set; }
 
-		public virtual InsuranceCategory InsuranceCategory { get; set; }
+		
 
 		public virtual AssetType AssetType { get; set; }
 

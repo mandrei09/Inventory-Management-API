@@ -68,7 +68,6 @@ namespace Optima.Fais.Data
         public DbSet<Model.CostCenter> CostCenters { get; set; }
         public DbSet<Model.Company> Companies { get; set; }
         public DbSet<Model.Committee> Committees { get; set; }
-        public DbSet<Model.InsuranceCategory> InsuranceCategories { get; set; }
         public DbSet<Model.EntityFile> EntityFiles { get; set; }
         public DbSet<Model.Employee> Employees { get; set; }
         public DbSet<Model.EmployeeCostCenter> EmployeeCostCenters { get; set; }
@@ -2037,25 +2036,6 @@ namespace Optima.Fais.Data
                 .IsRequired()
                 .HasMaxLength(100);
 
-
-
-            //InsuranceCategory
-            builder.Entity<InsuranceCategory>()
-                .ToTable("InsuranceCategory")
-                .Property(p => p.Id)
-                .HasColumnName("Id");
-            builder.Entity<InsuranceCategory>()
-                .Property(p => p.Code)
-                .IsRequired()
-                .HasMaxLength(30);
-            builder.Entity<InsuranceCategory>()
-                .Property(p => p.Name)
-                .IsRequired()
-                .HasMaxLength(100);
-
-
-
-
             //MasterType
             builder.Entity<MasterType>()
                 .ToTable("MasterType")
@@ -2254,10 +2234,6 @@ namespace Optima.Fais.Data
                .HasOne(a => a.SubType)
                .WithMany()
                .HasForeignKey(a => a.SubTypeId);
-            builder.Entity<Asset>()
-               .HasOne(a => a.InsuranceCategory)
-               .WithMany()
-               .HasForeignKey(a => a.InsuranceCategoryId);
             builder.Entity<Asset>()
                .HasOne(a => a.Model)
                .WithMany()
@@ -3598,10 +3574,6 @@ namespace Optima.Fais.Data
                .HasOne(a => a.SubType)
                .WithMany()
                .HasForeignKey(a => a.SubTypeId);
-            builder.Entity<AssetAdmMD>()
-               .HasOne(a => a.InsuranceCategory)
-               .WithMany()
-               .HasForeignKey(a => a.InsuranceCategoryId);
             builder.Entity<AssetAdmMD>()
                .HasOne(a => a.Model)
                .WithMany()
