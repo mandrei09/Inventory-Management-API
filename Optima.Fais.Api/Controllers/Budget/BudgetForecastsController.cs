@@ -4119,8 +4119,6 @@ namespace Optima.Fais.Api.Controllers
 									{
 										AccMonthId = order.AccMonthId,
 										AccSystemId = null,
-										AccountIdInitial = order.AccountId,
-										AccountIdFinal = order.AccountId,
 										AdministrationIdInitial = order.AdministrationId,
 										AdministrationIdFinal = order.AdministrationId,
 										Order = order,

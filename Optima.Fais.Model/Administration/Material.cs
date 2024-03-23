@@ -20,13 +20,9 @@ namespace Optima.Fais.Model
 
         public virtual SubType SubType { get; set; }
 
-        public int? AccountId { get; set; }
+        
 
-        public virtual Account Account { get; set; }
-
-        public int? ExpAccountId { get; set; }
-
-        public virtual ExpAccount ExpAccount { get; set; }
+        
 
         public int? AssetCategoryId { get; set; }
 

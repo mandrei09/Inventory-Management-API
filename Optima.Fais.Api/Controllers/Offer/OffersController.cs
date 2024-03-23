@@ -776,8 +776,8 @@ namespace Optima.Fais.Api.Controllers
             //        OfferId = budget.Id,
                     
             //        AccMonthId = budget.AccMonthId,
-            //        AccountIdFinal = budget.AccountId,
-            //        AccountIdInitial = budget.AccountId,
+            //        
+            //        
             //        AdministrationIdFinal = budget.AdministrationId,
             //        AdministrationIdInitial = budget.AdministrationId,
             //        BudgetManagerIdFinal = budget.BudgetManagerId,

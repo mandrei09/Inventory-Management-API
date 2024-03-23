@@ -23,7 +23,7 @@ namespace Optima.Fais.Dto
         //public int? OrderId { get; set; }
         //public int? EmployeeId { get; set; }
         //public int? MaterialId { get; set; }
-        //public int? ExpAccountId { get; set; }
+        //
 		//public bool PostCap { get; set; }
   //      public bool InConservation { get; set; }
         // public string Name2 { get; set; }

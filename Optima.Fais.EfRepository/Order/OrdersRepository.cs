@@ -535,7 +535,7 @@ namespace Optima.Fais.EfRepository
         //             order = new Model.Order()
         //             {
         //                 AccMonthId = inventory.AccMonthId,
-        //                 AccountId = offer.AccountId,
+        //                 
         //                 AdministrationId = offer.AdministrationId,
         //                 AppStateId = appState.Id,
         //                 BudgetManagerId = inventory.BudgetManagerId,
@@ -1018,7 +1018,6 @@ namespace Optima.Fais.EfRepository
                 order = new Model.Order()
                 {
                     AccMonthId = inventory.AccMonthId,
-                    AccountId = offer.AccountId,
                     AdministrationId = offer.AdministrationId,
                     AppStateId = appState.Id,
                     BudgetManagerId = inventory.BudgetManagerId,
@@ -2008,7 +2007,7 @@ namespace Optima.Fais.EfRepository
                 order = new Model.Order()
                 {
                     AccMonthId = inventory.AccMonthId,
-                    AccountId = offer.AccountId,
+                    
                     AdministrationId = offer.AdministrationId,
                     AppStateId = appState.Id,
                     BudgetManagerId = inventory.BudgetManagerId,
@@ -3347,7 +3346,7 @@ namespace Optima.Fais.EfRepository
                 order = new Model.Order()
                 {
                     AccMonthId = inventory.AccMonthId,
-                    AccountId = offer.AccountId,
+                    
                     AdministrationId = offer.AdministrationId,
                     AppStateId = appState.Id,
                     BudgetManagerId = inventory.BudgetManagerId,
@@ -3931,7 +3930,7 @@ namespace Optima.Fais.EfRepository
                 //    accountancy = await _context.Set<Model.Accountancy>()
 
                 //      .Include(a => a.Account)
-                //      .Include(a => a.ExpAccount)
+                //      
                 //      .Include(a => a.AssetCategory)
                 //      .Include(a => a.AssetType)
                 //      .Where(a => a.SubCategoryId == assetDto.SubCategoryId && a.Value > 2500 && a.IsDeleted == false).SingleOrDefaultAsync();
@@ -3943,7 +3942,7 @@ namespace Optima.Fais.EfRepository
                 //    accountancy = await _context.Set<Model.Accountancy>()
 
                 //     .Include(a => a.Account)
-                //     .Include(a => a.ExpAccount)
+                //     
                 //     .Include(a => a.AssetCategory)
                 //     .Include(a => a.AssetType)
                 //     .Where(a => a.SubCategoryId == assetDto.SubCategoryId && a.Value == 2500 && a.IsDeleted == false).SingleOrDefaultAsync();
@@ -4420,7 +4419,7 @@ namespace Optima.Fais.EfRepository
                 //    accountancy = await _context.Set<Model.Accountancy>()
 
                 //      .Include(a => a.Account)
-                //      .Include(a => a.ExpAccount)
+                //      
                 //      .Include(a => a.AssetCategory)
                 //      .Include(a => a.AssetType)
                 //      .Where(a => a.SubCategoryId == assetDto.SubCategoryId && a.Value > 2500 && a.IsDeleted == false)
@@ -4433,7 +4432,7 @@ namespace Optima.Fais.EfRepository
                 //    accountancy = await _context.Set<Model.Accountancy>()
 
                 //     .Include(a => a.Account)
-                //     .Include(a => a.ExpAccount)
+                //     
                 //     .Include(a => a.AssetCategory)
                 //     .Include(a => a.AssetType)
                 //     .Where(a => a.SubCategoryId == assetDto.SubCategoryId && a.Value == 2500 && a.IsDeleted == false)
@@ -4908,7 +4907,6 @@ namespace Optima.Fais.EfRepository
                 .Include(b => b.AccMonth)
                 
                 .Include(b => b.Partner)
-                .Include(b => b.Account)
                 .Include(b => b.CostCenter)
                 .Include(b => b.Uom)
                 .Include(b => b.OrderType)

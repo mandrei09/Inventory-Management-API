@@ -1177,9 +1177,7 @@ namespace Optima.Fais.Api.Controllers
                     .Include(a => a.Document)
                             .ThenInclude(d => d.Partner)
                                 .ThenInclude(d => d.PartnerLocation)
-                    .Include(a => a.Account)
                     .Include(a => a.EmployeeTransfer)
-                    .Include(a => a.ExpAccount)
                     .Include(a => a.AssetCategory)
                     .Include(a => a.Article)
                     .Include(a => a.Uom)
@@ -9958,7 +9956,7 @@ namespace Optima.Fais.Api.Controllers
                 //First add the headers
                 worksheet.Cells[1, 1].Value = "Nr.Crt";
                 worksheet.Cells[1, 2].Value = "Asset";
-                worksheet.Cells[1, 3].Value = "Bal.sh.acct APC";
+                //worksheet.Cells[1, 3].Value = "Bal.sh.acct APC";
                 worksheet.Cells[1, 4].Value = "Asset description";
                 worksheet.Cells[1, 5].Value = "Data Achizitiei/Fabricarii/Modernizarii";
                 worksheet.Cells[1, 6].Value = "Valoarea (Baza Impozabila)";
@@ -9984,7 +9982,7 @@ namespace Optima.Fais.Api.Controllers
 
                     worksheet.Cells[recordIndex, 1].Value = rowNumber;
                     worksheet.Cells[recordIndex, 2].Value = item.Asset.InvNo;
-                    worksheet.Cells[recordIndex, 3].Value = item.Asset.ExpAccount != null ? item.Asset.ExpAccount.Code : "";
+                    //worksheet.Cells[recordIndex, 3].Value = item.Asset.ExpAccount != null ? item.Asset.ExpAccount.Code : "";
                     worksheet.Cells[recordIndex, 4].Value = item.Asset.Name;
                     worksheet.Cells[recordIndex, 5].Value = item.Asset.PurchaseDate;
                     worksheet.Cells[recordIndex, 5].Style.Numberformat.Format = "yyyy-mm-dd";
@@ -10190,8 +10188,8 @@ namespace Optima.Fais.Api.Controllers
                 worksheet.Cells[1, 1].Value = "Asset";
                 worksheet.Cells[1, 2].Value = "PCS";
                 worksheet.Cells[1, 3].Value = "Subnumber";
-                worksheet.Cells[1, 4].Value = "Bal.sh.acct APC";
-                worksheet.Cells[1, 5].Value = "Asset Class";
+                //worksheet.Cells[1, 4].Value = "Bal.sh.acct APC";
+                //worksheet.Cells[1, 5].Value = "Asset Class";
                 worksheet.Cells[1, 6].Value = "Asset clasif.";
                 worksheet.Cells[1, 7].Value = "Asset description";
                 worksheet.Cells[1, 8].Value = "Inventorynumber";
@@ -10286,8 +10284,8 @@ namespace Optima.Fais.Api.Controllers
                     worksheet.Cells[recordIndex, 1].Value = item.Asset.InvNo;
                     worksheet.Cells[recordIndex, 2].Value = item.Asset.Quantity;
                     worksheet.Cells[recordIndex, 3].Value = item.Asset.SubNo;
-                    worksheet.Cells[recordIndex, 4].Value = item.Asset.Account != null ? item.Asset.Account.Name : ""; ;
-                    worksheet.Cells[recordIndex, 5].Value = item.Asset.ExpAccount != null ? item.Asset.ExpAccount.Name : "";
+                    //worksheet.Cells[recordIndex, 4].Value = item.Asset.Account != null ? item.Asset.Account.Name : ""; ;
+                    //worksheet.Cells[recordIndex, 5].Value = item.Asset.ExpAccount != null ? item.Asset.ExpAccount.Name : "";
                     worksheet.Cells[recordIndex, 6].Value = item.Asset.AssetCategory != null ? item.Asset.AssetCategory.Name : "";
                     worksheet.Cells[recordIndex, 7].Value = item.Asset.Name;
                     worksheet.Cells[recordIndex, 8].Value = item.Asset.SAPCode;

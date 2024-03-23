@@ -50,8 +50,6 @@ namespace Optima.Fais.Model
 
         public int? AccountId { get; set; }
 
-        public virtual Account Account { get; set; }
-
         public int? AppStateId { get; set; }
 
         public virtual AppState AppState { get; set; }

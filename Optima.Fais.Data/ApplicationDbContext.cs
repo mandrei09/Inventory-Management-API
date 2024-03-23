@@ -85,8 +85,6 @@ namespace Optima.Fais.Data
         public DbSet<Model.PartnerLocation> PartnerLocations { get; set; }
         public DbSet<Model.AssetNature> AssetNatures { get; set; }
         public DbSet<Model.BudgetManager> BudgetManagers { get; set; }
-        public DbSet<Model.Account> Accounts { get; set; }
-        public DbSet<Model.ExpAccount> ExpAccounts { get; set; }
         public DbSet<Model.InventoryListApn> InventoryListApns { get; set; }
 
         public DbSet<Model.DictionaryType> DictionaryTypes { get; set; }
@@ -172,7 +170,6 @@ namespace Optima.Fais.Data
 		public DbSet<AuditHistory> AuditLogs { get; set; }
         public DbSet<ERPImportResult> ERPImportResults { get; set; }
 
-        public DbSet<Model.ExpAccountGroup> ExpAccountGroups { get; set; }
         public DbSet<Model.EntityFilePartner> EntityFilePartners { get; set; }
 
 		public DbSet<Model.PrintLabel> PrintLabels { get; set; }
@@ -1138,10 +1135,6 @@ namespace Optima.Fais.Data
                   .WithMany()
                   .HasForeignKey(i => i.CompanyId);
             builder.Entity<Budget>()
-                  .HasOne(i => i.Account)
-                  .WithMany()
-                  .HasForeignKey(i => i.AccountId);
-            builder.Entity<Budget>()
                   .HasOne(i => i.AppState)
                   .WithMany()
                   .HasForeignKey(i => i.AppStateId);
@@ -1253,10 +1246,6 @@ namespace Optima.Fais.Data
                   .HasOne(i => i.Company)
                   .WithMany()
                   .HasForeignKey(i => i.CompanyId);
-            builder.Entity<Offer>()
-                  .HasOne(i => i.Account)
-                  .WithMany()
-                  .HasForeignKey(i => i.AccountId);
             builder.Entity<Offer>()
                   .HasOne(i => i.AppState)
                   .WithMany()
@@ -1682,10 +1671,6 @@ namespace Optima.Fais.Data
                   .HasOne(i => i.Company)
                   .WithMany()
                   .HasForeignKey(i => i.CompanyId);
-            builder.Entity<Order>()
-                  .HasOne(i => i.Account)
-                  .WithMany()
-                  .HasForeignKey(i => i.AccountId);
             builder.Entity<Order>()
                   .HasOne(i => i.AppState)
                   .WithMany()
@@ -2600,14 +2585,6 @@ namespace Optima.Fais.Data
                 .WithMany()
                 .HasForeignKey(i => i.AdministrationIdFinal);
             builder.Entity<BudgetOp>()
-                .HasOne(i => i.AccountInitial)
-                .WithMany()
-                .HasForeignKey(i => i.AccountIdInitial);
-            builder.Entity<BudgetOp>()
-                .HasOne(i => i.AccountFinal)
-                .WithMany()
-                .HasForeignKey(i => i.AccountIdFinal);
-            builder.Entity<BudgetOp>()
                   .HasOne(i => i.BudgetManagerInitial)
                   .WithMany()
                   .HasForeignKey(i => i.BudgetManagerIdInitial);
@@ -2944,14 +2921,6 @@ namespace Optima.Fais.Data
                 .WithMany()
                 .HasForeignKey(i => i.AdministrationIdFinal);
             builder.Entity<OrderOp>()
-                .HasOne(i => i.AccountInitial)
-                .WithMany()
-                .HasForeignKey(i => i.AccountIdInitial);
-            builder.Entity<OrderOp>()
-                .HasOne(i => i.AccountFinal)
-                .WithMany()
-                .HasForeignKey(i => i.AccountIdFinal);
-            builder.Entity<OrderOp>()
                   .HasOne(i => i.BudgetManagerInitial)
                   .WithMany()
                   .HasForeignKey(i => i.BudgetManagerIdInitial);
@@ -3134,14 +3103,6 @@ namespace Optima.Fais.Data
                 .HasOne(i => i.AdministrationFinal)
                 .WithMany()
                 .HasForeignKey(i => i.AdministrationIdFinal);
-            builder.Entity<OfferOp>()
-                .HasOne(i => i.AccountInitial)
-                .WithMany()
-                .HasForeignKey(i => i.AccountIdInitial);
-            builder.Entity<OfferOp>()
-                .HasOne(i => i.AccountFinal)
-                .WithMany()
-                .HasForeignKey(i => i.AccountIdFinal);
             builder.Entity<OfferOp>()
                   .HasOne(i => i.BudgetManagerInitial)
                   .WithMany()
@@ -4809,14 +4770,6 @@ namespace Optima.Fais.Data
                  .WithMany()
                  .HasForeignKey(a => a.SubTypeId);
             builder.Entity<Material>()
-                 .HasOne(a => a.Account)
-                 .WithMany()
-                 .HasForeignKey(a => a.AccountId);
-            builder.Entity<Material>()
-                 .HasOne(a => a.ExpAccount)
-                 .WithMany()
-                 .HasForeignKey(a => a.ExpAccountId);
-            builder.Entity<Material>()
                 .HasOne(a => a.AssetCategory)
                 .WithMany()
                 .HasForeignKey(a => a.AssetCategoryId);
@@ -4843,34 +4796,6 @@ namespace Optima.Fais.Data
                    .Property(p => p.LongName)
                    .IsRequired()
                    .HasMaxLength(400);
-
-            //Account
-            builder.Entity<Account>()
-                .ToTable("Account")
-                .Property(p => p.Id)
-                .HasColumnName("Id");
-            builder.Entity<Account>()
-                .Property(p => p.Code)
-                .IsRequired()
-                .HasMaxLength(30);
-            builder.Entity<Account>()
-                .Property(p => p.Name)
-                .IsRequired()
-                .HasMaxLength(100);
-
-            //ExpAccount
-            builder.Entity<ExpAccount>()
-                .ToTable("ExpAccount")
-                .Property(p => p.Id)
-                .HasColumnName("Id");
-            builder.Entity<ExpAccount>()
-                .Property(p => p.Code)
-                .IsRequired()
-                .HasMaxLength(30);
-            builder.Entity<ExpAccount>()
-                .Property(p => p.Name)
-                .IsRequired()
-                .HasMaxLength(100);
 
             //Articles
             builder.Entity<Article>()

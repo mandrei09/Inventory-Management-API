@@ -12,9 +12,10 @@ using System;
 namespace Optima.Fais.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240323152905_remove-account")]
+    partial class removeaccount
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -917,6 +918,8 @@ namespace Optima.Fais.Data.Migrations
 
                     b.Property<int?>("EmployeeTransferId");
 
+                    b.Property<int?>("ExpAccountId");
+
                     b.Property<bool>("FirstTransfer");
 
                     b.Property<Guid>("Guid");
@@ -1152,6 +1155,8 @@ namespace Optima.Fais.Data.Migrations
 
                     b.HasIndex("EmployeeTransferId");
 
+                    b.HasIndex("ExpAccountId");
+
                     b.HasIndex("InsuranceCategoryId");
 
                     b.HasIndex("InvStateId");
@@ -1300,6 +1305,8 @@ namespace Optima.Fais.Data.Migrations
 
                     b.Property<int?>("EmployeeId");
 
+                    b.Property<int?>("ExpAccountId");
+
                     b.Property<int?>("InsuranceCategoryId");
 
                     b.Property<int?>("ModelId");
@@ -1347,6 +1354,8 @@ namespace Optima.Fais.Data.Migrations
                     b.HasIndex("DivisionId");
 
                     b.HasIndex("EmployeeId");
+
+                    b.HasIndex("ExpAccountId");
 
                     b.HasIndex("InsuranceCategoryId");
 
@@ -7644,6 +7653,77 @@ namespace Optima.Fais.Data.Migrations
                     b.ToTable("ErrorType");
                 });
 
+            modelBuilder.Entity("Optima.Fais.Model.ExpAccount", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("Id");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasMaxLength(30);
+
+                    b.Property<int?>("CompanyId");
+
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450);
+
+                    b.Property<string>("Description");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("ModifiedAt");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasMaxLength(450);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100);
+
+                    b.Property<bool>("RequireSN");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CompanyId");
+
+                    b.ToTable("ExpAccount");
+                });
+
+            modelBuilder.Entity("Optima.Fais.Model.ExpAccountGroup", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<decimal>("AccumulDep");
+
+                    b.Property<decimal>("Acquisition");
+
+                    b.Property<decimal>("ApcfyStart");
+
+                    b.Property<decimal>("BkValFYStart");
+
+                    b.Property<decimal>("CurrBkValue");
+
+                    b.Property<decimal>("CurrentAPC");
+
+                    b.Property<decimal>("DepFYStart");
+
+                    b.Property<decimal>("DepForYear");
+
+                    b.Property<decimal>("DepRetirement");
+
+                    b.Property<string>("ExpAccount");
+
+                    b.Property<decimal>("Retirement");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ExpAccountGroups");
+                });
+
             modelBuilder.Entity("Optima.Fais.Model.IconRoute", b =>
                 {
                     b.Property<int>("Id")
@@ -8675,6 +8755,8 @@ namespace Optima.Fais.Data.Migrations
 
                     b.Property<string>("EAN");
 
+                    b.Property<int?>("ExpAccountId");
+
                     b.Property<bool>("IsDeleted");
 
                     b.Property<int?>("MaterialTypeId");
@@ -8703,6 +8785,8 @@ namespace Optima.Fais.Data.Migrations
                     b.HasIndex("AssetCategoryId");
 
                     b.HasIndex("CompanyId");
+
+                    b.HasIndex("ExpAccountId");
 
                     b.HasIndex("MaterialTypeId");
 
@@ -13012,6 +13096,10 @@ namespace Optima.Fais.Data.Migrations
                         .WithMany()
                         .HasForeignKey("EmployeeTransferId");
 
+                    b.HasOne("Optima.Fais.Model.ExpAccount", "ExpAccount")
+                        .WithMany()
+                        .HasForeignKey("ExpAccountId");
+
                     b.HasOne("Optima.Fais.Model.InsuranceCategory", "InsuranceCategory")
                         .WithMany()
                         .HasForeignKey("InsuranceCategoryId");
@@ -13231,6 +13319,10 @@ namespace Optima.Fais.Data.Migrations
                     b.HasOne("Optima.Fais.Model.Employee", "Employee")
                         .WithMany()
                         .HasForeignKey("EmployeeId");
+
+                    b.HasOne("Optima.Fais.Model.ExpAccount", "ExpAccount")
+                        .WithMany()
+                        .HasForeignKey("ExpAccountId");
 
                     b.HasOne("Optima.Fais.Model.InsuranceCategory", "InsuranceCategory")
                         .WithMany()
@@ -15170,6 +15262,13 @@ namespace Optima.Fais.Data.Migrations
                         .HasForeignKey("CompanyId");
                 });
 
+            modelBuilder.Entity("Optima.Fais.Model.ExpAccount", b =>
+                {
+                    b.HasOne("Optima.Fais.Model.Company", "Company")
+                        .WithMany()
+                        .HasForeignKey("CompanyId");
+                });
+
             modelBuilder.Entity("Optima.Fais.Model.Info", b =>
                 {
                     b.HasOne("Optima.Fais.Model.Company", "Company")
@@ -15412,6 +15511,10 @@ namespace Optima.Fais.Data.Migrations
                     b.HasOne("Optima.Fais.Model.Company", "Company")
                         .WithMany()
                         .HasForeignKey("CompanyId");
+
+                    b.HasOne("Optima.Fais.Model.ExpAccount", "ExpAccount")
+                        .WithMany()
+                        .HasForeignKey("ExpAccountId");
 
                     b.HasOne("Optima.Fais.Model.MaterialType", "MaterialType")
                         .WithMany()

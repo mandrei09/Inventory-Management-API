@@ -268,7 +268,9 @@ namespace Optima.Fais.Api.Controllers
                     if (offer == null) return new Model.OrderResult { Success = false, Message = "Lipsa oferta!", OrderId = 0 };
                     decimal valueRon = orderSave.OrderMaterialUpdates.Sum(a => a.ValueRon);
 
-                    if(orderSave.RequestBudgetForecasts.Count > 0)
+                    int employeeNullId = await _context.Set<Model.Employee>().Where(e => (e.InternalCode == "-" && e.IsDeleted == true)).Select(e => e.Id).FirstOrDefaultAsync();
+
+                    if (orderSave.RequestBudgetForecasts.Count > 0)
 					{
                         requestBudgetForecast = await _context.Set<Model.RequestBudgetForecast>()
                             .Include(b => b.BudgetForecast).ThenInclude(b => b.BudgetBase)
@@ -307,14 +309,14 @@ namespace Optima.Fais.Api.Controllers
                                             order = await _context.Set<Model.Order>().Where(c => c.Id == orderResult.OrderId).FirstOrDefaultAsync();
                                             if (order == null) return new Model.OrderResult { Success = false, Message = "Lipsa comanda", OrderId = 0 };
 
-											order.EmployeeB1Id = result.ElementAt(0).EmployeeB1.Validate ? result.ElementAt(0).EmployeeB1.Id : null;
-											order.EmployeeL4Id = result.ElementAt(0).EmployeeL4.Validate ? result.ElementAt(0).EmployeeL4.Id : null;
-                                            order.EmployeeL3Id = result.ElementAt(0).EmployeeL3.Validate ? result.ElementAt(0).EmployeeL3.Id : null;
-                                            order.EmployeeL2Id = result.ElementAt(0).EmployeeL2.Validate ? result.ElementAt(0).EmployeeL2.Id : null;
-                                            order.EmployeeL1Id = result.ElementAt(0).EmployeeL1.Validate ? result.ElementAt(0).EmployeeL1.Id : null;
-                                            order.EmployeeS3Id = result.ElementAt(0).EmployeeS3.Validate ? result.ElementAt(0).EmployeeS3.Id : null;
-                                            order.EmployeeS2Id = result.ElementAt(0).EmployeeS2.Validate ? result.ElementAt(0).EmployeeS2.Id : null;
-                                            order.EmployeeS1Id = result.ElementAt(0).EmployeeS1.Validate ? result.ElementAt(0).EmployeeS1.Id : null;
+                                            order.EmployeeB1Id = result.ElementAt(0).EmployeeB1.Validate ? result.ElementAt(0).EmployeeB1.Id : employeeNullId;
+                                            order.EmployeeL4Id = result.ElementAt(0).EmployeeL4.Validate ? result.ElementAt(0).EmployeeL4.Id : employeeNullId;
+                                            order.EmployeeL3Id = result.ElementAt(0).EmployeeL3.Validate ? result.ElementAt(0).EmployeeL3.Id : employeeNullId;
+                                            order.EmployeeL2Id = result.ElementAt(0).EmployeeL2.Validate ? result.ElementAt(0).EmployeeL2.Id : employeeNullId;
+                                            order.EmployeeL1Id = result.ElementAt(0).EmployeeL1.Validate ? result.ElementAt(0).EmployeeL1.Id : employeeNullId;
+                                            order.EmployeeS3Id = result.ElementAt(0).EmployeeS3.Validate ? result.ElementAt(0).EmployeeS3.Id : employeeNullId;
+                                            order.EmployeeS2Id = result.ElementAt(0).EmployeeS2.Validate ? result.ElementAt(0).EmployeeS2.Id : employeeNullId;
+                                            order.EmployeeS1Id = result.ElementAt(0).EmployeeS1.Validate ? result.ElementAt(0).EmployeeS1.Id : employeeNullId;
 
                                             //if (!orderSave.NeedBudgetAmount)
                                             //{
@@ -1351,8 +1353,6 @@ namespace Optima.Fais.Api.Controllers
                     {
                         AccMonthId = order.AccMonthId,
                         AccSystemId = null,
-                        AccountIdInitial = order.AccountId,
-                        AccountIdFinal = order.AccountId,
                         AdministrationIdInitial = order.AdministrationId,
                         AdministrationIdFinal = order.AdministrationId,
                         Order = order,
@@ -1589,8 +1589,8 @@ namespace Optima.Fais.Api.Controllers
 			{
 				AccMonthId = order.AccMonthId,
 				AccSystemId = null,
-				AccountIdInitial = order.AccountId,
-				AccountIdFinal = order.AccountId,
+				
+				
 				AdministrationIdInitial = order.AdministrationId,
 				AdministrationIdFinal = order.AdministrationId,
 				Order = order,
@@ -1735,8 +1735,8 @@ namespace Optima.Fais.Api.Controllers
 			{
 				AccMonthId = order.AccMonthId,
 				AccSystemId = null,
-				AccountIdInitial = order.AccountId,
-				AccountIdFinal = order.AccountId,
+				
+				
 				AdministrationIdInitial = order.AdministrationId,
 				AdministrationIdFinal = order.AdministrationId,
 				Order = order,
@@ -1955,8 +1955,8 @@ namespace Optima.Fais.Api.Controllers
             {
                 AccMonthId = order.AccMonthId,
                 AccSystemId = null,
-                AccountIdInitial = order.AccountId,
-                AccountIdFinal = order.AccountId,
+                
+                
                 AdministrationIdInitial = order.AdministrationId,
                 AdministrationIdFinal = order.AdministrationId,
                 Order = order,
@@ -2101,8 +2101,8 @@ namespace Optima.Fais.Api.Controllers
             {
                 AccMonthId = order.AccMonthId,
                 AccSystemId = null,
-                AccountIdInitial = order.AccountId,
-                AccountIdFinal = order.AccountId,
+                
+                
                 AdministrationIdInitial = order.AdministrationId,
                 AdministrationIdFinal = order.AdministrationId,
                 Order = order,
@@ -2288,8 +2288,8 @@ namespace Optima.Fais.Api.Controllers
             {
                 AccMonthId = order.AccMonthId,
                 AccSystemId = null,
-                AccountIdInitial = order.AccountId,
-                AccountIdFinal = order.AccountId,
+                
+                
                 AdministrationIdInitial = order.AdministrationId,
                 AdministrationIdFinal = order.AdministrationId,
                 Order = order,
@@ -2434,8 +2434,8 @@ namespace Optima.Fais.Api.Controllers
             {
                 AccMonthId = order.AccMonthId,
                 AccSystemId = null,
-                AccountIdInitial = order.AccountId,
-                AccountIdFinal = order.AccountId,
+                
+                
                 AdministrationIdInitial = order.AdministrationId,
                 AdministrationIdFinal = order.AdministrationId,
                 Order = order,
@@ -2605,8 +2605,8 @@ namespace Optima.Fais.Api.Controllers
             {
                 AccMonthId = order.AccMonthId,
                 AccSystemId = null,
-                AccountIdInitial = order.AccountId,
-                AccountIdFinal = order.AccountId,
+                
+                
                 AdministrationIdInitial = order.AdministrationId,
                 AdministrationIdFinal = order.AdministrationId,
                 Order = order,
@@ -2750,8 +2750,8 @@ namespace Optima.Fais.Api.Controllers
             {
                 AccMonthId = order.AccMonthId,
                 AccSystemId = null,
-                AccountIdInitial = order.AccountId,
-                AccountIdFinal = order.AccountId,
+                
+                
                 AdministrationIdInitial = order.AdministrationId,
                 AdministrationIdFinal = order.AdministrationId,
                 Order = order,
@@ -2920,8 +2920,8 @@ namespace Optima.Fais.Api.Controllers
             {
                 AccMonthId = order.AccMonthId,
                 AccSystemId = null,
-                AccountIdInitial = order.AccountId,
-                AccountIdFinal = order.AccountId,
+                
+                
                 AdministrationIdInitial = order.AdministrationId,
                 AdministrationIdFinal = order.AdministrationId,
                 Order = order,
@@ -3065,8 +3065,8 @@ namespace Optima.Fais.Api.Controllers
             {
                 AccMonthId = order.AccMonthId,
                 AccSystemId = null,
-                AccountIdInitial = order.AccountId,
-                AccountIdFinal = order.AccountId,
+                
+                
                 AdministrationIdInitial = order.AdministrationId,
                 AdministrationIdFinal = order.AdministrationId,
                 Order = order,
@@ -3217,8 +3217,8 @@ namespace Optima.Fais.Api.Controllers
             {
                 AccMonthId = order.AccMonthId,
                 AccSystemId = null,
-                AccountIdInitial = order.AccountId,
-                AccountIdFinal = order.AccountId,
+                
+                
                 AdministrationIdInitial = order.AdministrationId,
                 AdministrationIdFinal = order.AdministrationId,
                 Order = order,
@@ -3362,8 +3362,8 @@ namespace Optima.Fais.Api.Controllers
             {
                 AccMonthId = order.AccMonthId,
                 AccSystemId = null,
-                AccountIdInitial = order.AccountId,
-                AccountIdFinal = order.AccountId,
+                
+                
                 AdministrationIdInitial = order.AdministrationId,
                 AdministrationIdFinal = order.AdministrationId,
                 Order = order,
@@ -3540,8 +3540,8 @@ namespace Optima.Fais.Api.Controllers
             {
                 AccMonthId = order.AccMonthId,
                 AccSystemId = null,
-                AccountIdInitial = order.AccountId,
-                AccountIdFinal = order.AccountId,
+                
+                
                 AdministrationIdInitial = order.AdministrationId,
                 AdministrationIdFinal = order.AdministrationId,
                 Order = order,
@@ -3685,8 +3685,8 @@ namespace Optima.Fais.Api.Controllers
             {
                 AccMonthId = order.AccMonthId,
                 AccSystemId = null,
-                AccountIdInitial = order.AccountId,
-                AccountIdFinal = order.AccountId,
+                
+                
                 AdministrationIdInitial = order.AdministrationId,
                 AdministrationIdFinal = order.AdministrationId,
                 Order = order,
@@ -3890,8 +3890,8 @@ namespace Optima.Fais.Api.Controllers
             {
                 AccMonthId = order.AccMonthId,
                 AccSystemId = null,
-                AccountIdInitial = order.AccountId,
-                AccountIdFinal = order.AccountId,
+                
+                
                 AdministrationIdInitial = order.AdministrationId,
                 AdministrationIdFinal = order.AdministrationId,
                 Order = order,
@@ -4034,8 +4034,8 @@ namespace Optima.Fais.Api.Controllers
             {
                 AccMonthId = order.AccMonthId,
                 AccSystemId = null,
-                AccountIdInitial = order.AccountId,
-                AccountIdFinal = order.AccountId,
+                
+                
                 AdministrationIdInitial = order.AdministrationId,
                 AdministrationIdFinal = order.AdministrationId,
                 Order = order,
@@ -4127,8 +4127,8 @@ namespace Optima.Fais.Api.Controllers
                 {
                     AccMonthId = order.AccMonthId,
                     AccSystemId = null,
-                    AccountIdInitial = order.AccountId,
-                    AccountIdFinal = order.AccountId,
+                    
+                    
                     AdministrationIdInitial = order.AdministrationId,
                     AdministrationIdFinal = order.AdministrationId,
                     Order = order,
@@ -4223,8 +4223,8 @@ namespace Optima.Fais.Api.Controllers
                 {
                     AccMonthId = order.AccMonthId,
                     AccSystemId = null,
-                    AccountIdInitial = order.AccountId,
-                    AccountIdFinal = order.AccountId,
+                    
+                    
                     AdministrationIdInitial = order.AdministrationId,
                     AdministrationIdFinal = order.AdministrationId,
                     Order = order,
@@ -4349,8 +4349,8 @@ namespace Optima.Fais.Api.Controllers
                     {
                         AccMonthId = order.AccMonthId,
                         AccSystemId = null,
-                        AccountIdInitial = order.AccountId,
-                        AccountIdFinal = order.AccountId,
+                        
+                        
                         AdministrationIdInitial = order.AdministrationId,
                         AdministrationIdFinal = order.AdministrationId,
                         Order = order,

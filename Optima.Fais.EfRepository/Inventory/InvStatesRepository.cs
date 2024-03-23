@@ -231,10 +231,10 @@ namespace Optima.Fais.EfRepository
                 query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Asset.DimensionId == id; }, assetFilter.DimensionIds));
             }
 
-            if ((assetFilter.ExpAccountIds != null) && (assetFilter.ExpAccountIds.Count > 0))
-            {
-                query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Asset.ExpAccountId == id; }, assetFilter.ExpAccountIds));
-            }
+            //if ((assetFilter.ExpAccountIds != null) && (assetFilter.ExpAccountIds.Count > 0))
+            //{
+            //    query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Asset.ExpAccountId == id; }, assetFilter.ExpAccountIds));
+            //}
 
             //if ((assetFilter.EmployeeIds != null) && (assetFilter.EmployeeIds.Count > 0))
             //{

@@ -105,7 +105,7 @@ namespace Optima.Fais.Api.Controllers
 						Model.Asset asset = _context.Set<Model.Asset>()
 							.Include(c => c.Company)
 							.Include(a => a.AssetCategory)
-							.Include(a => a.ExpAccount)
+							
 							.Include(a => a.Document).ThenInclude(p => p.Partner)
 							.Where(a => a.Id == emailStatuses[i].AssetId).SingleOrDefault();
 
@@ -144,7 +144,6 @@ namespace Optima.Fais.Api.Controllers
 							COMPANYCODE = asset.Company.Code,
 							ASSET = asset.InvNo,
 							SUBNUMBER = asset.SubNo,
-							ASSETCLASS = asset.ExpAccount.Name,
 							POSTCAP = "",
 							DESCRIPT = countNames > 0 ? names.ElementAt(0) : "",
 							DESCRIPT2 = countNames > 1 ? names.ElementAt(1) : "",

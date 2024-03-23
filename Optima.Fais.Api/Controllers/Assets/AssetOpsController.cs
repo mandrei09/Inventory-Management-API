@@ -544,7 +544,7 @@ namespace Optima.Fais.Api.Controllers
 					.Include(a => a.CostCenter)
 					.Include(a => a.Employee)
 						.ThenInclude(a => a.CostCenter)
-					.Include(a => a.ExpAccount)
+					
                     .Include(a => a.AssetCategory)
 					.Include(a => a.Document)
 						.ThenInclude(a => a.Partner)

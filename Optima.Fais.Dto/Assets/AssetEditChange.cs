@@ -5,7 +5,7 @@ namespace Optima.Fais.Dto
     public class AssetEditChange
     {
         public int Id { get; set; }
-        public int? ExpAccountId { get; set; }
+        
         public int? AssetCategoryId { get; set; }
         public int? PartnerId { get; set; }
         public int? CostCenterId { get; set; }

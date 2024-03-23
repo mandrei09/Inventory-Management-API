@@ -53,8 +53,6 @@ namespace Optima.Fais.Api
                    .ForMember(i => i.Height, opt => opt.MapFrom(i => i.Height))
                    .ForMember(i => i.AssetCategory, opt => opt.Ignore())
                    .ForMember(i => i.AssetCategoryId, opt => opt.MapFrom(i => i.AssetCategory.Id));
-            CreateMap<Model.Account, Dto.Account>();
-            CreateMap<Dto.Account, Model.Account>();
             CreateMap<Model.Material, Dto.Material>()
                   .ForMember(i => i.EAN, opt => opt.MapFrom(i => i.EAN))
                   .ForMember(i => i.PartNumber, opt => opt.MapFrom(i => i.PartNumber))
@@ -63,8 +61,6 @@ namespace Optima.Fais.Api
                   .ForMember(i => i.Quantity, opt => opt.MapFrom(i => i.Quantity))
                   .ForMember(i => i.EAN, opt => opt.MapFrom(i => i.EAN))
                   .ForMember(i => i.PartNumber, opt => opt.MapFrom(i => i.PartNumber))
-                 .ForMember(i => i.Account, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.Account.Id, Code = i.Account.Code, Name = i.Account.Name }))
-                 .ForMember(i => i.ExpAccount, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.ExpAccount.Id, Code = i.ExpAccount.Code, Name = i.ExpAccount.Name }))
                  .ForMember(i => i.AssetCategory, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.AssetCategory.Id, Code = i.AssetCategory.Code, Name = i.AssetCategory.Name }))
                  .ForMember(i => i.SubType, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.SubType.Id, Code = i.SubType.Code, Name = i.SubType.Name }));
             CreateMap<Dto.Material, Model.Material>()
@@ -76,10 +72,6 @@ namespace Optima.Fais.Api
                   .ForMember(i => i.Quantity, opt => opt.MapFrom(i => i.Quantity))
                   .ForMember(i => i.EAN, opt => opt.MapFrom(i => i.EAN))
                   .ForMember(i => i.PartNumber, opt => opt.MapFrom(i => i.PartNumber))
-                 .ForMember(i => i.Account, opt => opt.Ignore())
-                 .ForMember(i => i.AccountId, opt => opt.MapFrom(i => i.Account.Id))
-                 .ForMember(i => i.ExpAccount, opt => opt.Ignore())
-                 .ForMember(i => i.ExpAccountId, opt => opt.MapFrom(i => i.ExpAccount.Id))
                  .ForMember(i => i.AssetCategory, opt => opt.Ignore())
                  .ForMember(i => i.AssetCategoryId, opt => opt.MapFrom(i => i.AssetCategory.Id))
                  .ForMember(i => i.SubType, opt => opt.Ignore())
@@ -126,16 +118,6 @@ namespace Optima.Fais.Api
                  .ForMember(i => i.BrandId, opt => opt.MapFrom(i => i.Brand.Id))
                  .ForMember(i => i.Partner, opt => opt.Ignore())
                  .ForMember(i => i.PartnerId, opt => opt.MapFrom(i => i.Partner.Id));
-            CreateMap<Model.ExpAccount, Dto.ExpAccount>()
-                .ForMember(i => i.Id, opt => opt.MapFrom(i => i.Id))
-                .ForMember(i => i.Code, opt => opt.MapFrom(i => i.Code))
-                .ForMember(i => i.Name, opt => opt.MapFrom(i => i.Name))
-                .ForMember(i => i.Description, opt => opt.MapFrom(i => i.Description));
-            CreateMap<Dto.ExpAccount, Model.ExpAccount>()
-                .ForMember(i => i.Id, opt => opt.MapFrom(i => i.Id))
-                .ForMember(i => i.Code, opt => opt.MapFrom(i => i.Code))
-                .ForMember(i => i.Name, opt => opt.MapFrom(i => i.Name))
-                .ForMember(i => i.Description, opt => opt.MapFrom(i => i.Description));
             CreateMap<Model.Article, Dto.Article>();
             CreateMap<Dto.Article, Model.Article>();
             CreateMap<Model.Department, Dto.Department>();
@@ -679,8 +661,6 @@ namespace Optima.Fais.Api
 			   .ForMember(a => a.Partner, opt => opt.MapFrom(a => new Dto.CodePartnerEntity { Id = a.Asset.Document.Partner.Id, Name = a.Asset.Document.Partner.Name, RegistryNumber= a.Asset.Document.Partner.RegistryNumber }))
 			   .ForMember(a => a.Adm, opt => opt.MapFrom(a => new Dto.AssetAdmDetail
                {
-                   Account = (a.Adm.Account != null ? new Dto.CodeNameEntity { Id = a.Adm.Account.Id, Code = a.Adm.Account.Code, Name = a.Adm.Account.Name } : null),
-                   ExpAccount = (a.Adm.ExpAccount != null ? new Dto.CodeNameEntity { Id = a.Adm.ExpAccount.Id, Code = a.Adm.ExpAccount.Code, Name = a.Adm.ExpAccount.Name } : null),
                    AssetCategory = (a.Adm.AssetCategory != null ? new Dto.CodeNameEntity { Id = a.Adm.AssetCategory.Id, Code = a.Adm.AssetCategory.Code, Name = a.Adm.AssetCategory.Name } : null),
                    Article = (a.Adm.Article != null ? new Dto.CodeNameEntity { Id = a.Adm.Article.Id, Code = a.Adm.Article.Code, Name = a.Adm.Article.Name } : null),
                    CostCenter = (a.Adm.CostCenter != null ? new Dto.CodeNameEntity { Id = a.Adm.CostCenter.Id, Code = a.Adm.CostCenter.Code, Name = a.Adm.CostCenter.Name } : null),
@@ -905,8 +885,6 @@ namespace Optima.Fais.Api
                .ForMember(a => a.Partner, opt => opt.MapFrom(a => new Dto.CodePartnerEntity { Id = a.Asset.Document.Partner.Id, Name = a.Asset.Document.Partner.Name, RegistryNumber = a.Asset.Document.Partner.RegistryNumber }))
                .ForMember(a => a.Adm, opt => opt.MapFrom(a => new Dto.AssetAdmDetail
                {
-                   Account = (a.Adm.Account != null ? new Dto.CodeNameEntity { Id = a.Adm.Account.Id, Code = a.Adm.Account.Code, Name = a.Adm.Account.Name } : null),
-                   ExpAccount = (a.Adm.ExpAccount != null ? new Dto.CodeNameEntity { Id = a.Adm.ExpAccount.Id, Code = a.Adm.ExpAccount.Code, Name = a.Adm.ExpAccount.Name } : null),
                    AssetCategory = (a.Adm.AssetCategory != null ? new Dto.CodeNameEntity { Id = a.Adm.AssetCategory.Id, Code = a.Adm.AssetCategory.Code, Name = a.Adm.AssetCategory.Name } : null),
                    Article = (a.Adm.Article != null ? new Dto.CodeNameEntity { Id = a.Adm.Article.Id, Code = a.Adm.Article.Code, Name = a.Adm.Article.Name } : null),
                    CostCenter = (a.Adm.CostCenter != null ? new Dto.CodeNameEntity { Id = a.Adm.CostCenter.Id, Code = a.Adm.CostCenter.Code, Name = a.Adm.CostCenter.Name } : null),
@@ -1111,8 +1089,6 @@ namespace Optima.Fais.Api
                  .ForMember(a => a.Adm, opt => opt.MapFrom(a => new Dto.AssetAdmDetail
                  {
                     
-                    Account = (a.Account != null ? new Dto.CodeNameEntity { Id = a.Account.Id, Code = a.Account.Code, Name = a.Account.Name } : null),
-                    ExpAccount = (a.ExpAccount != null ? new Dto.CodeNameEntity { Id = a.ExpAccount.Id, Code = a.ExpAccount.Code, Name = a.ExpAccount.Name } : null),
                     AssetCategory = (a.AssetCategory != null ? new Dto.CodeNameEntity { Id = a.AssetCategory.Id, Code = a.AssetCategory.Code, Name = a.AssetCategory.Name } : null),
                     Article = (a.Article != null ? new Dto.CodeNameEntity { Id = a.Article.Id, Code = a.Article.Code, Name = a.Article.Name } : null),
                     CostCenter = (a.CostCenter != null ? new Dto.CodeNameEntity { Id = a.CostCenter.Id, Code = a.CostCenter.Code, Name = a.CostCenter.Name } : null),
@@ -2286,8 +2262,6 @@ namespace Optima.Fais.Api
                  .ForMember(i => i.AccMonth, opt => opt.MapFrom(i => new Dto.MonthEntity { Id = i.AccMonth.Id, Year = i.AccMonth.Year }))
                  .ForMember(i => i.PartnerInitial, opt => opt.MapFrom(i => new Dto.CodePartnerEntity { Id = i.PartnerInitial.Id, Name = i.PartnerInitial.Name }))
                  .ForMember(i => i.PartnerFinal, opt => opt.MapFrom(i => new Dto.CodePartnerEntity { Id = i.PartnerFinal.Id, Name = i.PartnerFinal.Name }))
-                 .ForMember(i => i.AccountInitial, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.AccountInitial.Id, Code = i.AccountInitial.Code, Name = i.AccountInitial.Name }))
-                 .ForMember(i => i.AccountFinal, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.AccountFinal.Id, Code = i.AccountFinal.Code, Name = i.AccountFinal.Name }))
                  .ForMember(i => i.CostCenterInitial, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.CostCenterInitial.Id, Code = i.CostCenterInitial.Code, Name = i.CostCenterInitial.Name }))
                  .ForMember(i => i.CostCenterFinal, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.CostCenterFinal.Id, Code = i.CostCenterFinal.Code, Name = i.CostCenterFinal.Name }))
                  .ForMember(i => i.State, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.BudgetState.Id, Code = i.BudgetState.Code, Name = i.BudgetState.Name }))
@@ -2323,8 +2297,6 @@ namespace Optima.Fais.Api
                 .ForMember(i => i.AccMonth, opt => opt.MapFrom(i => new Dto.MonthEntity { Id = i.AccMonth.Id, Year = i.AccMonth.Year }))
                 .ForMember(i => i.PartnerInitial, opt => opt.MapFrom(i => new Dto.CodePartnerEntity { Id = i.PartnerInitial.Id, Name = i.PartnerInitial.Name }))
                 .ForMember(i => i.PartnerFinal, opt => opt.MapFrom(i => new Dto.CodePartnerEntity { Id = i.PartnerFinal.Id, Name = i.PartnerFinal.Name }))
-                .ForMember(i => i.AccountInitial, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.AccountInitial.Id, Code = i.AccountInitial.Code, Name = i.AccountInitial.Name }))
-                .ForMember(i => i.AccountFinal, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.AccountFinal.Id, Code = i.AccountFinal.Code, Name = i.AccountFinal.Name }))
                 .ForMember(i => i.CostCenterInitial, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.CostCenterInitial.Id, Code = i.CostCenterInitial.Code, Name = i.CostCenterInitial.Name }))
                 .ForMember(i => i.CostCenterFinal, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.CostCenterFinal.Id, Code = i.CostCenterFinal.Code, Name = i.CostCenterFinal.Name }))
                 .ForMember(i => i.State, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.BudgetState.Id, Code = i.BudgetState.Code, Name = i.BudgetState.Name }))
@@ -2356,8 +2328,6 @@ namespace Optima.Fais.Api
                .ForMember(i => i.AccMonth, opt => opt.MapFrom(i => new Dto.MonthEntity { Id = i.AccMonth.Id, Year = i.AccMonth.Year }))
                .ForMember(i => i.PartnerInitial, opt => opt.MapFrom(i => new Dto.CodePartnerEntity { Id = i.PartnerInitial.Id, Name = i.PartnerInitial.Name }))
                .ForMember(i => i.PartnerFinal, opt => opt.MapFrom(i => new Dto.CodePartnerEntity { Id = i.PartnerFinal.Id, Name = i.PartnerFinal.Name }))
-               .ForMember(i => i.AccountInitial, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.AccountInitial.Id, Code = i.AccountInitial.Code, Name = i.AccountInitial.Name }))
-               .ForMember(i => i.AccountFinal, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.AccountFinal.Id, Code = i.AccountFinal.Code, Name = i.AccountFinal.Name }))
                .ForMember(i => i.CostCenterInitial, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.CostCenterInitial.Id, Code = i.CostCenterInitial.Code, Name = i.CostCenterInitial.Name }))
                .ForMember(i => i.CostCenterFinal, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.CostCenterFinal.Id, Code = i.CostCenterFinal.Code, Name = i.CostCenterFinal.Name }))
                .ForMember(i => i.State, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.BudgetState.Id, Code = i.BudgetState.Code, Name = i.BudgetState.Name }))

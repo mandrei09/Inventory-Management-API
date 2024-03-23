@@ -19,11 +19,7 @@ namespace Optima.Fais.Model
 
         public int? AccountIdInitial { get; set; }
 
-        public virtual Account AccountInitial { get; set; }
-
         public int? AccountIdFinal { get; set; }
-
-        public virtual Account AccountFinal { get; set; }
 
         public int? AccMonthId { get; set; }
 

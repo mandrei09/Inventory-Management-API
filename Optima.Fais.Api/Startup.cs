@@ -180,8 +180,6 @@ namespace Optima.Fais.Api
 			services.AddTransient<IOffersRepository, OffersRepository>();
 			services.AddTransient<IOfferOpsRepository, OfferOpsRepository>();
 			services.AddTransient<IRepository<Model.Article>, Repository<Model.Article>>();
-			services.AddTransient<IAccountsRepository, AccountsRepository>();
-			services.AddTransient<IExpAccountsRepository, ExpAccountsRepository>();
 			services.AddTransient<IAssetTypesRepository, AssetTypesRepository>();
 			services.AddTransient<IAccMonthsRepository, AccMonthsRepository>();
 			services.AddTransient<IAdmCentersRepository, AdmCentersRepository>();

@@ -54,7 +54,7 @@ namespace Optima.Fais.EfRepository
 							 .Include(c => c.Stock)
 							 .Include(c => c.BudgetForecast).ThenInclude(b => b.BudgetBase).ThenInclude(b => b.Project)
 							 .Include(a => a.AssetCategory)
-                             .Include(a => a.ExpAccount)
+                             
                              .Include(a => a.Document).ThenInclude(p => p.Partner)
                          .Where(a => a.Id == data.AssetIds[i] && a.IsInTransfer == true).FirstOrDefaultAsync();
                     if (asset == null) return new Model.TransferResult { Success = false, Message = $"Numarul de inventar nu se afla intr - un flux de tranfer" };
@@ -169,7 +169,6 @@ namespace Optima.Fais.EfRepository
                         COMPANYCODE = asset.Company.Code,
                         ASSET = asset.InvNo,
                         SUBNUMBER = asset.SubNo == "0" ? "0000" : asset.SubNo,
-                        ASSETCLASS = asset.ExpAccount.Name,
                         POSTCAP = "",
                         DESCRIPT = countNames > 0 ? names.ElementAt(0) : "",
                         DESCRIPT2 = countNames > 1 ? names.ElementAt(1) : "",
@@ -251,7 +250,7 @@ namespace Optima.Fais.EfRepository
                              .Include(a => a.AppState)
                              .Include(c => c.Company)
                              .Include(a => a.AssetCategory)
-                             .Include(a => a.ExpAccount)
+                             
                              .Include(a => a.Document).ThenInclude(p => p.Partner)
                          .Where(a => a.Id == data.AssetIds[i]).FirstOrDefaultAsync();
                     if (asset == null) return new Model.TransferResult { Success = false, Message = $"Numarul de inventar nu se afla intr - un flux de transfer" };
@@ -389,7 +388,7 @@ namespace Optima.Fais.EfRepository
                                 .Include(a => a.AppState)
                                 .Include(c => c.Company)
                                 .Include(a => a.AssetCategory)
-                                .Include(a => a.ExpAccount)
+                                
 								.Include(c => c.Stock)
 							    .Include(c => c.BudgetForecast).ThenInclude(b => b.BudgetBase).ThenInclude(b => b.Project)
 								.Include(a => a.Document).ThenInclude(p => p.Partner)
@@ -505,7 +504,6 @@ namespace Optima.Fais.EfRepository
                                     COMPANYCODE = asset.Company.Code,
                                     ASSET = asset.InvNo,
                                     SUBNUMBER = asset.SubNo == "0" ? "0000" : asset.SubNo,
-                                    ASSETCLASS = asset.ExpAccount.Name,
                                     POSTCAP = "",
                                     DESCRIPT = countNames > 0 ? names.ElementAt(0) : "",
                                     DESCRIPT2 = countNames > 1 ? names.ElementAt(1) : "",
@@ -630,7 +628,7 @@ namespace Optima.Fais.EfRepository
 								.Include(a => a.AppState)
 								.Include(c => c.Company)
 								.Include(a => a.AssetCategory)
-								.Include(a => a.ExpAccount)
+								
 								.Include(a => a.Document).ThenInclude(p => p.Partner)
 								.Where(a => a.Id == emailStatuses[i].AssetId).SingleAsync();
 
@@ -910,7 +908,7 @@ namespace Optima.Fais.EfRepository
 								.Include(a => a.AppState)
 								.Include(c => c.Company)
 								.Include(a => a.AssetCategory)
-								.Include(a => a.ExpAccount)
+								
 								.Include(a => a.Document).ThenInclude(p => p.Partner)
 								.Where(a => a.Id == emailStatuses[i].AssetId).SingleAsync();
 

@@ -100,7 +100,7 @@ namespace Optima.Fais.Model
 
         public int? AccountId { get; set; }
 
-        public int? ExpAccountId { get; set; }
+        
 
         public int? AssetNatureId { get; set; }
 
@@ -142,9 +142,7 @@ namespace Optima.Fais.Model
 
         public virtual Uom Uom { get; set; }
 
-        public virtual Account Account { get; set; }
-
-        public virtual ExpAccount ExpAccount { get; set; }
+        
 
         public virtual AssetNature AssetNature { get; set; }
 

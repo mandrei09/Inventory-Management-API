@@ -17,14 +17,6 @@ namespace Optima.Fais.Model
 
         public virtual Document Document { get; set; }
 
-        public int? AccountIdInitial { get; set; }
-
-        public virtual Account AccountInitial { get; set; }
-
-        public int? AccountIdFinal { get; set; }
-
-        public virtual Account AccountFinal { get; set; }
-
         public int? AccMonthId { get; set; }
 
         public virtual AccMonth AccMonth { get; set; }

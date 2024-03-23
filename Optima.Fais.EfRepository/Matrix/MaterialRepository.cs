@@ -25,15 +25,15 @@ namespace Optima.Fais.EfRepository
             //        ? ExpressionHelper.And<Location>(predicate, l => admCenterIds.Contains(l.AdmCenterId.GetValueOrDefault()))
             //        : l => admCenterIds.Contains(l.AdmCenterId.GetValueOrDefault());
 
-            if ((countyIds != null) && (countyIds.Count > 0))
-            {
-                var inListPredicate = ExpressionHelper.GetInListPredicate<Model.Material, int>((id) => { return c => c.AccountId == id; }, countyIds);
-                inListPredicate = ExpressionHelper.Or<Model.Material>(inListPredicate, c => c.AccountId == null);
+            //if ((countyIds != null) && (countyIds.Count > 0))
+            //{
+            //    var inListPredicate = ExpressionHelper.GetInListPredicate<Model.Material, int>((id) => { return c => c.AccountId == id; }, countyIds);
+            //    inListPredicate = ExpressionHelper.Or<Model.Material>(inListPredicate, c => c.AccountId == null);
 
-                predicate = predicate != null
-                    ? ExpressionHelper.And<Model.Material>(predicate, inListPredicate)
-                    : inListPredicate;
-            }
+            //    predicate = predicate != null
+            //        ? ExpressionHelper.And<Model.Material>(predicate, inListPredicate)
+            //        : inListPredicate;
+            //}
 
             if ((exceptMaterialIds != null) && (exceptMaterialIds.Count > 0))
             {

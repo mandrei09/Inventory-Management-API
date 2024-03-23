@@ -490,8 +490,8 @@ namespace Optima.Fais.EfRepository
                 {
                     AccMonthId = inventory.AccMonthId,
                     AccSystemId = null,
-                    AccountIdInitial = null,
-                    AccountIdFinal = null,
+                    
+                    
                     AdministrationIdInitial = null,
                     AdministrationIdFinal = null,
                     Offer = offer,
@@ -585,7 +585,6 @@ namespace Optima.Fais.EfRepository
                 .Include(b => b.AccMonth)
                 
                 .Include(b => b.Partner)
-                .Include(b => b.Account)
                 .Include(b => b.CostCenter)
                 .SingleOrDefault();
         }
@@ -760,7 +759,6 @@ namespace Optima.Fais.EfRepository
                             .ThenInclude(e => e.MasterType)
                     .Include(e => e.Employee)
                     .Include(e => e.Partner)
-                    .Include(e => e.Account)
                     .Include(e => e.AccMonth)
                     .Where(a => a.Id == budgetId).Single();
 
@@ -796,7 +794,6 @@ namespace Optima.Fais.EfRepository
                                                             <td class=""description"">" + budget.SubType.Type.Name + @" </ td >
                                                             <td class=""description"">" + budget.SubType.Name + @" </ td >
                                                             <td class=""description"">" + budget.Partner.Name + @" </td >
-                                                            <td class=""description"">" + budget.Account.Name + @" </td >
                                                         </tr>
                                                         <tfoot>
                                                             <br>
