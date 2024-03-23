@@ -39,10 +39,6 @@ namespace Optima.Fais.Model
 
         public Employee Employee { get; set; }
 
-        public int? DeviceId { get; set; }
-
-        public Device Device { get; set; }
-
         public int? SubstituteId { get; set; }
 
         public Employee Substitute { get; set; }

@@ -30,7 +30,7 @@ namespace Optima.Fais.Dto
 
         //public string Locations { get; set; }
 
-        public Device Device { get; set; }
+        
 
         public string Mac { get; set; }
 

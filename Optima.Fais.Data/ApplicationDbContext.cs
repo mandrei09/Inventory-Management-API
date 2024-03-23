@@ -135,10 +135,6 @@ namespace Optima.Fais.Data
         public DbSet<Model.TypeReport> TypeReports { get; set; }
         public DbSet<Model.AssetTypeReport> AssetTypeReports { get; set; }
         public DbSet<Model.DashboardExport> DashboardExports { get; set; }
-
-        public DbSet<Model.Device> Devices { get; set; }
-        public DbSet<Model.DeviceType> DeviceTypes { get; set; }
-
         public DbSet<Model.BudgetMonth> BudgetMonths { get; set; }
 
         public DbSet<Model.LocationStatus> LocationStatus { get; set; }
@@ -993,38 +989,6 @@ namespace Optima.Fais.Data
                 .Property(p => p.Name)
                 .IsRequired()
                 .HasMaxLength(200);
-
-            //Device
-            builder.Entity<Device>()
-                .ToTable("Device")
-                .Property(p => p.Id)
-                .HasColumnName("DeviceId");
-            builder.Entity<Device>()
-                .Property(p => p.Code)
-                .IsRequired()
-                .HasMaxLength(30);
-            builder.Entity<Device>()
-                .Property(p => p.Name)
-                .IsRequired()
-                .HasMaxLength(200);
-            builder.Entity<Device>()
-                .HasOne(a => a.Employee)
-                .WithMany()
-                .HasForeignKey(a => a.EmployeeId);
-
-            //DeviceType
-            builder.Entity<DeviceType>()
-                .ToTable("DeviceType")
-                .Property(p => p.Id)
-                .HasColumnName("DeviceTypeId");
-            builder.Entity<DeviceType>()
-                .Property(p => p.Code)
-                .IsRequired()
-                .HasMaxLength(30);
-            builder.Entity<DeviceType>()
-                .Property(p => p.Name)
-                .IsRequired()
-                .HasMaxLength(100);
 
 			//MobilePhone
 			builder.Entity<MobilePhone>()

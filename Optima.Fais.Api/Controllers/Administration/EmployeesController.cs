@@ -99,10 +99,6 @@ namespace Optima.Fais.Api.Controllers
             {
                 modelEmployee.CostCenter = _context.CostCenters.Find(employee.CostCenter.Id);
             }
-            if (employee.AdmCenter != null)
-            {
-                modelEmployee.AdmCenter = _context.AdmCenters.Find(employee.AdmCenter.Id);
-            }
             if(employee.DepartmentId != null)
             {
                 modelEmployee.Department = _context.Departments.Find(employee.DepartmentId);

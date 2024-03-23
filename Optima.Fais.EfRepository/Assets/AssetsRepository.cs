@@ -15730,7 +15730,6 @@ namespace Optima.Fais.EfRepository
                 employee.LastName = lastName;
                 employee.IsDeleted = false;
                 employee.CostCenterId = costCenter.Id;
-                employee.AdmCenterId = admCenter.Id;
                 // employee.LocationId = location.Id;
 
 
@@ -17973,7 +17972,6 @@ namespace Optima.Fais.EfRepository
                 employee.LastName = string.Empty;
                 employee.IsDeleted = false;
                 employee.CostCenterId = null;
-                employee.AdmCenterId = null;
                 // employee.LocationId = location.Id;
 
 

@@ -3356,7 +3356,6 @@ namespace Optima.Fais.Api
                 .ForMember(i => i.GivenName, opt => opt.MapFrom(i => i.Claims.Where(c => c.ClaimType == "given_name").ToList().FirstOrDefault().ClaimValue))
                 .ForMember(i => i.FamilyName, opt => opt.MapFrom(i => i.Claims.Where(c => c.ClaimType == "family_name").ToList().FirstOrDefault().ClaimValue))
                 .ForMember(i => i.Mac, opt => opt.MapFrom(i => i.Claims.Where(c => c.ClaimType == "printerAddress").ToList().FirstOrDefault().ClaimValue))
-                .ForMember(i => i.Device, opt => opt.MapFrom(i => new Dto.Device { Id = i.Device.Id, UUI = i.Device.UUI }))
                 //.ForMember(i => i.TempInterval7, opt => opt.MapFrom(i => i.Claims.Where(c => c.ClaimType == "tempInterval7").ToList().FirstOrDefault().ClaimValue))
                 //.ForMember(i => i.TempInterval8, opt => opt.MapFrom(i => i.Claims.Where(c => c.ClaimType == "tempInterval8").ToList().FirstOrDefault().ClaimValue))
                 //.ForMember(i => i.TempInterval9, opt => opt.MapFrom(i => i.Claims.Where(c => c.ClaimType == "tempInterval9").ToList().FirstOrDefault().ClaimValue))
@@ -3636,41 +3635,6 @@ namespace Optima.Fais.Api
                  .ForMember(i => i.Id, opt => opt.MapFrom(i => i.Id))
                   .ForMember(i => i.Code, opt => opt.MapFrom(i => i.Code))
                   .ForMember(i => i.Name, opt => opt.MapFrom(i => i.Name));
-
-			CreateMap<Model.DeviceType, Dto.DeviceType>();
-            CreateMap<Dto.DeviceType, Model.DeviceType>()
-                 .ForMember(i => i.Id, opt => opt.MapFrom(i => i.Id))
-                  .ForMember(i => i.Code, opt => opt.MapFrom(i => i.Code))
-                  .ForMember(i => i.Name, opt => opt.MapFrom(i => i.Name));
-			CreateMap<Model.MobilePhone, Dto.MobilePhone>();
-			CreateMap<Dto.MobilePhone, Model.MobilePhone>()
-				 .ForMember(i => i.Id, opt => opt.MapFrom(i => i.Id))
-				  .ForMember(i => i.Code, opt => opt.MapFrom(i => i.Code))
-				  .ForMember(i => i.Name, opt => opt.MapFrom(i => i.Name));
-			CreateMap<Model.Device, Dto.Device>()
-                    .ForMember(i => i.Code, opt => opt.MapFrom(i => i.Code))
-                    .ForMember(i => i.Name, opt => opt.MapFrom(i => i.Name))
-                    .ForMember(i => i.Model, opt => opt.MapFrom(i => i.Model))
-                    .ForMember(i => i.Producer, opt => opt.MapFrom(i => i.Producer))
-                    .ForMember(i => i.Platform, opt => opt.MapFrom(i => i.Platform))
-                    .ForMember(i => i.Version, opt => opt.MapFrom(i => i.Version))
-                    .ForMember(i => i.UUI, opt => opt.MapFrom(i => i.UUI))
-                    .ForMember(i => i.Serial, opt => opt.MapFrom(i => i.Serial))
-                    .ForMember(i => i.Employee, opt => opt.MapFrom(i => new Dto.EmployeeResource { Id = i.Employee.Id, LastName = i.Employee.LastName, FirstName = i.Employee.FirstName }))
-                     .ForMember(i => i.DeviceType, opt => opt.MapFrom(i => new Dto.DeviceType { Id = i.DeviceType.Id, Code = i.DeviceType.Code, Name = i.DeviceType.Name, IsDeleted = i.DeviceType.IsDeleted }));
-            CreateMap<Dto.Device, Model.Device>()
-                    .ForMember(i => i.Id, opt => opt.MapFrom(i => i.Id))
-                    .ForMember(i => i.Code, opt => opt.MapFrom(i => i.Code))
-                    .ForMember(i => i.Name, opt => opt.MapFrom(i => i.Name))
-                    .ForMember(i => i.Model, opt => opt.MapFrom(i => i.Model))
-                    .ForMember(i => i.Producer, opt => opt.MapFrom(i => i.Producer))
-                    .ForMember(i => i.Platform, opt => opt.MapFrom(i => i.Platform))
-                    .ForMember(i => i.Version, opt => opt.MapFrom(i => i.Version))
-                    .ForMember(i => i.UUI, opt => opt.MapFrom(i => i.UUI))
-                    .ForMember(i => i.Serial, opt => opt.MapFrom(i => i.Serial))
-                    .ForMember(i => i.DeviceType, opt => opt.Ignore())
-                    .ForMember(i => i.DeviceTypeId, opt => opt.MapFrom(i => i.DeviceType.Id))
-                    .ForMember(i => i.Employee, opt => opt.Ignore());
 
 			CreateMap<Model.WFHCheck, Dto.WFHCheck>()
 					.ForMember(i => i.Imei, opt => opt.MapFrom(i => i.Imei))

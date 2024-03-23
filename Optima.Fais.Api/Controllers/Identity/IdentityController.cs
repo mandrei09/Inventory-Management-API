@@ -68,7 +68,6 @@ namespace Optima.Fais.Api.Controllers
             if (role == "all")
             {
                 users = _userManager.Users
-                    .Include(d => d.Device)
                     .Include(c => c.Claims)
                     .Include(e => e.Employee).ThenInclude(c => c.Company)
                     .Include(e => e.Substitute)
@@ -79,7 +78,6 @@ namespace Optima.Fais.Api.Controllers
             else
             {
                 users = _userManager.Users
-                    .Include(d => d.Device)
                     .Include(c => c.Claims)
                     .Include(e => e.Employee).ThenInclude(c => c.Company)
                     .Include(e => e.Substitute)
@@ -100,8 +98,7 @@ namespace Optima.Fais.Api.Controllers
                 || (u.Employee?.InternalCode?.Contains(filter, StringComparison.InvariantCultureIgnoreCase) ?? false)
                 || (u.Employee?.FirstName?.Contains(filter, StringComparison.InvariantCultureIgnoreCase) ?? false)
                 || (u.Employee?.LastName?.Contains(filter, StringComparison.InvariantCultureIgnoreCase) ?? false)
-                || (u.Employee?.Company?.Code?.Contains(filter, StringComparison.InvariantCultureIgnoreCase) ?? false)
-                || (u.Device?.UUI?.Contains(filter, StringComparison.InvariantCultureIgnoreCase) ?? false));
+                || (u.Employee?.Company?.Code?.Contains(filter, StringComparison.InvariantCultureIgnoreCase) ?? false));
             }
 
             int totalItems = usersMap.Count();
@@ -578,89 +575,88 @@ namespace Optima.Fais.Api.Controllers
         }
 
 
-        [HttpPost("device")]
-        [AllowAnonymous]
-        public async Task<IActionResult> SetDevice([FromBody] Dto.UserDeviceSave model)
-        {
+        //[HttpPost("device")]
+        //[AllowAnonymous]
+        //public async Task<IActionResult> SetDevice([FromBody] Dto.UserDeviceSave model)
+        //{
 
-            var user = _context.Set<Model.ApplicationUser>().Where(u => u.Id == model.userId).Single();
-            var device = _context.Set<Model.Device>().Where(u => u.Id == model.deviceId).Single();
-            var employee = _context.Set<Model.Employee>().Where(u => u.Id == user.EmployeeId).Single();
+        //    var user = _context.Set<Model.ApplicationUser>().Where(u => u.Id == model.userId).Single();
+        //    var employee = _context.Set<Model.Employee>().Where(u => u.Id == user.EmployeeId).Single();
 
-            user.DeviceId = model.deviceId;
-            device.EmployeeId = user.EmployeeId;
+        //    user.DeviceId = model.deviceId;
+        //    device.EmployeeId = user.EmployeeId;
 
-            var claims = await _userManager.GetClaimsAsync(user);
-            var claim = claims.FirstOrDefault(c => c.Type == "uui");
-            var claimPrinterAddress = claims.FirstOrDefault(c => c.Type == "printerAddress");
-
-
-
-            if (claim != null)
-            {
-                var newClaim = new Claim("uui", device.UUI);
-                var result = await _userManager.ReplaceClaimAsync(user, claim, newClaim);
-            }
-            else
-            {
-                var newClaim = new Claim("uui", device.UUI);
-                var result = await _userManager.AddClaimAsync(user, newClaim);
-            }
-
-
-            if (claimPrinterAddress != null)
-            {
-                var newClaimPrinterAddress = new Claim("printerAddress", employee.ERPCode);
-                var result = await _userManager.ReplaceClaimAsync(user, claimPrinterAddress, newClaimPrinterAddress);
-            }
-            else
-            {
-                var newClaimPrinterAddress = new Claim("printerAddress", employee.ERPCode);
-                var result = await _userManager.AddClaimAsync(user, newClaimPrinterAddress);
-            }
-
-            _context.Update(user);
-           await _context.SaveChangesAsync();
-
-            return Ok(user);
-        }
-
-        [HttpPut("updateDevice/{userId}")]
-        [AllowAnonymous]
-        public async Task<IActionResult> UpdateDevice(string userId)
-        {
-
-            var user = _context.Set<Model.ApplicationUser>().Where(u => u.Id == userId).FirstOrDefault();
-            var device = _context.Set<Model.Device>().Where(u => u.Id == user.DeviceId).FirstOrDefault();
-            var claims = await _userManager.GetClaimsAsync(user);
-            var claim = claims.FirstOrDefault(c => c.Type == "uui");
-            var claimPrinterAddress = claims.FirstOrDefault(c => c.Type == "printerAddress");
+        //    var claims = await _userManager.GetClaimsAsync(user);
+        //    var claim = claims.FirstOrDefault(c => c.Type == "uui");
+        //    var claimPrinterAddress = claims.FirstOrDefault(c => c.Type == "printerAddress");
 
 
 
-            if (claim != null)
-            {
-                var result = await _userManager.RemoveClaimAsync(user, claim);
-            }
+        //    if (claim != null)
+        //    {
+        //        var newClaim = new Claim("uui", device.UUI);
+        //        var result = await _userManager.ReplaceClaimAsync(user, claim, newClaim);
+        //    }
+        //    else
+        //    {
+        //        var newClaim = new Claim("uui", device.UUI);
+        //        var result = await _userManager.AddClaimAsync(user, newClaim);
+        //    }
 
 
-            if (claimPrinterAddress != null)
-            {
-                var result = await _userManager.RemoveClaimAsync(user, claimPrinterAddress);
-            }
+        //    if (claimPrinterAddress != null)
+        //    {
+        //        var newClaimPrinterAddress = new Claim("printerAddress", employee.ERPCode);
+        //        var result = await _userManager.ReplaceClaimAsync(user, claimPrinterAddress, newClaimPrinterAddress);
+        //    }
+        //    else
+        //    {
+        //        var newClaimPrinterAddress = new Claim("printerAddress", employee.ERPCode);
+        //        var result = await _userManager.AddClaimAsync(user, newClaimPrinterAddress);
+        //    }
 
-            if(device != null)
-			{
-                device.EmployeeId = null;
-            }
+        //    _context.Update(user);
+        //   await _context.SaveChangesAsync();
+
+        //    return Ok(user);
+        //}
+
+   //     [HttpPut("updateDevice/{userId}")]
+   //     [AllowAnonymous]
+   //     public async Task<IActionResult> UpdateDevice(string userId)
+   //     {
+
+   //         var user = _context.Set<Model.ApplicationUser>().Where(u => u.Id == userId).FirstOrDefault();
+   //         var device = _context.Set<Model.Device>().Where(u => u.Id == user.DeviceId).FirstOrDefault();
+   //         var claims = await _userManager.GetClaimsAsync(user);
+   //         var claim = claims.FirstOrDefault(c => c.Type == "uui");
+   //         var claimPrinterAddress = claims.FirstOrDefault(c => c.Type == "printerAddress");
+
+
+
+   //         if (claim != null)
+   //         {
+   //             var result = await _userManager.RemoveClaimAsync(user, claim);
+   //         }
+
+
+   //         if (claimPrinterAddress != null)
+   //         {
+   //             var result = await _userManager.RemoveClaimAsync(user, claimPrinterAddress);
+   //         }
+
+   //         if(device != null)
+			//{
+   //             device.EmployeeId = null;
+   //         }
 
             
-            user.DeviceId = null;
+   //         user.DeviceId = null;
 
-            await _context.SaveChangesAsync();
+   //         await _context.SaveChangesAsync();
 
-            return Ok();
-        }
+   //         return Ok();
+   //     }
 
 		// Add other methods.
 
@@ -672,7 +668,6 @@ namespace Optima.Fais.Api.Controllers
             if (role == "all")
 			{
                 users = _userManager.Users
-                    .Include(d => d.Device)
                     .Include(c => c.Claims)
                     .Include(c => c.Employee)
                         .ThenInclude(c => c.Company)
@@ -686,7 +681,6 @@ namespace Optima.Fais.Api.Controllers
 			else
 			{
                 users = _userManager.Users
-                   .Include(d => d.Device)
                    .Include(c => c.Claims)
 					.Include(c => c.Employee)
 						.ThenInclude(c => c.Company)

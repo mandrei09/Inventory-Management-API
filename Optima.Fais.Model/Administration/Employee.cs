@@ -35,10 +35,6 @@ namespace Optima.Fais.Model
 
         //public virtual Location Location { get; set; }
 
-        public int? AdmCenterId { get; set; }
-
-        public AdmCenter AdmCenter { get; set; }
-
         public int? DivisionId { get; set; }
 
         public Division Division { get; set; }
