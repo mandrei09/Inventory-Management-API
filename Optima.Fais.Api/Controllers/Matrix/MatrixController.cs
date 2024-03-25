@@ -66,54 +66,6 @@ namespace Optima.Fais.Api.Controllers
             string role = string.Empty;
             string employeeId = string.Empty;
 
-            //if (HttpContext.User.Identity.Name != null)
-            //{
-            //    userName = HttpContext.User.Identity.Name;
-            //    role = HttpContext.User.Claims.First(c => c.Type.EndsWith("role")).Value;
-            //    employeeId = HttpContext.User.Claims.First(c => c.Type.EndsWith("employeeId")).Value;
-
-            //    if (role != "administrator")
-            //    {
-            //        cIds = _context.Set<Model.EmployeeCostCenter>().AsNoTracking().Where(l => l.EmployeeId == int.Parse(employeeId) && l.IsDeleted == false).Select(e => e.CostCenterId).ToList();
-            //    }
-            //}
-
-            //if (assetTypeIds != null && !assetTypeIds.StartsWith("["))
-            //{
-            //    assetTypeIds = "[" + assetTypeIds + "]";
-            //}
-
-            //if (areaIds != null && !areaIds.StartsWith("["))
-            //{
-            //    areaIds = "[" + areaIds + "]";
-            //}
-
-            //if (countryIds != null && !countryIds.StartsWith("["))
-            //{
-            //    countryIds = "[" + countryIds + "]";
-            //}
-
-            //if (companyIds != null && !companyIds.StartsWith("["))
-            //{
-            //    companyIds = "[" + companyIds + "]";
-            //}
-
-            //if (costCenterIds != null && !costCenterIds.StartsWith("["))
-            //{
-            //    costCenterIds = "[" + costCenterIds + "]";
-            //}
-
-            //if (projectIds != null && !projectIds.StartsWith("["))
-            //{
-            //    projectIds = "[" + projectIds + "]";
-            //}
-
-            //if (projectTypeIds != null && !projectTypeIds.StartsWith("["))
-            //{
-            //    projectTypeIds = "[" + projectTypeIds + "]";
-            //}
-
-
             if (divisionIds != null && !divisionIds.StartsWith("["))
             {
                 divisionIds = "[" + divisionIds + "]";
