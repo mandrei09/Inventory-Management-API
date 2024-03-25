@@ -60,33 +60,37 @@ namespace Optima.Fais.Api.Controllers
 			{
 				project = (_itemsRepository as IProjectsRepository).GetByFilters(filter, null, null, null, null, null).ToList();
 
-				// add a new worksheet to the empty workbook
-				ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("WBS");
-				//First add the headers
+				ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Projects");
 
-				worksheet.Cells[1, 1].Value = "Code";
+                worksheet.Cells[1, 1].Value = "Code";
 				worksheet.Cells[1, 2].Value = "Name";
 
-				int recordIndex = 2;
+				int recordIndex = 2, rowIndex = 0;
 				foreach (var item in project)
 				{
-					worksheet.Cells[recordIndex, 1].Value = item.Code;
-					worksheet.Cells[recordIndex, 2].Value = item.Name;
+					rowIndex = 0;
+                    worksheet.Cells[recordIndex, ++rowIndex].Value = item.Code;
+					worksheet.Cells[recordIndex, ++rowIndex].Value = item.Name;
 					recordIndex++;
 				}
 
-				worksheet.Column(1).AutoFit();
+                worksheet.Row(1).Height = 30.00;
+                worksheet.Cells["A1:C1"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                worksheet.Cells["A1:C1"].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+
+                worksheet.Column(1).AutoFit();
 				worksheet.Column(2).AutoFit();
+                worksheet.Column(3).AutoFit();
 
-				using (var cells = worksheet.Cells[1, 1, 1, 2])
-				{
-					cells.Style.Font.Bold = true;
-					cells.Style.Fill.PatternType = ExcelFillStyle.Solid;
-					cells.Style.Fill.BackgroundColor.SetColor(Color.Aqua);
-				}
+                using (var cells = worksheet.Cells[1, 1, 1, rowIndex])
+                {
+                    cells.Style.Font.Bold = true;
+                    cells.Style.Fill.PatternType = ExcelFillStyle.Solid;
+                    cells.Style.Fill.BackgroundColor.SetColor(Color.LightBlue);
 
-				string contentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-				//HttpContext.Response.ContentType = entityFile.FileType;
+                }
+
+                string contentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
 				HttpContext.Response.ContentType = contentType;
 				FileContentResult result = new FileContentResult(package.GetAsByteArray(), contentType)
 				{
