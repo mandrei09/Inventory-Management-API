@@ -12,7 +12,7 @@ namespace Optima.Fais.EfRepository
     public class MatrixLevelsRepository : Repository<MatrixLevel>, IMatrixLevelsRepository
     {
         public MatrixLevelsRepository(ApplicationDbContext context)
-            : base(context, (filter) => { return (a) => (a.Matrix.AssetType.Code.Contains(filter) || a.Uom.Name.Contains(filter) || a.Level.Code.Contains(filter)); })
+            : base(context, (filter) => { return (a) => ( a.Uom.Name.Contains(filter) || a.Level.Code.Contains(filter)); })
         { }
 
         private Expression<Func<Model.MatrixLevel, bool>> GetFiltersPredicate(string filter, List<int?> matrixIds, List<int?> costCenterIds, List<int?> subCategoryIds)
@@ -26,20 +26,6 @@ namespace Optima.Fais.EfRepository
 					? ExpressionHelper.And<Model.MatrixLevel>(predicate, r => matrixIds.Contains(r.MatrixId))
 					: r => matrixIds.Contains(r.MatrixId);
 			}
-
-			if ((costCenterIds != null) && (costCenterIds.Count > 0))
-			{
-				predicate = predicate != null
-					? ExpressionHelper.And<Model.MatrixLevel>(predicate, r => costCenterIds.Contains(r.Matrix.CostCenterId))
-					: r => costCenterIds.Contains(r.Matrix.CostCenterId);
-			}
-
-			//if ((subCategoryIds != null) && (subCategoryIds.Count > 0))
-			//{
-			//    predicate = predicate != null
-			//        ? ExpressionHelper.And<Model.MatrixLevel>(predicate, r => subCategoryIds.Contains(r.Material.SubCategoryId))
-			//        : r => subCategoryIds.Contains(r.Material.SubCategoryId);
-			//}
 
 			return predicate;
         }

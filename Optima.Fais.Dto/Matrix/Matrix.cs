@@ -36,18 +36,5 @@
         public decimal AmountS1 { get; set; }
         public decimal AmountS2 { get; set; }
         public decimal AmountS3 { get; set; }
-		public int PriorityL4 { get; set; }
-
-		public int PriorityL3 { get; set; }
-
-		public int PriorityL2 { get; set; }
-
-		public int PriorityL1 { get; set; }
-
-		public int PriorityS3 { get; set; }
-
-		public int PriorityS2 { get; set; }
-
-		public int PriorityS1 { get; set; }
 	}
 }

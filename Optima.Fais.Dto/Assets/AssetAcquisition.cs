@@ -6,7 +6,7 @@ namespace Optima.Fais.Dto
     {
         public int Id { get; set; }
 
-        public int? AccountId { get; set; }
+        
         
         public int? AssetCategoryId { get; set; }
         public int? PartnerId { get; set; }

@@ -98,7 +98,7 @@ namespace Optima.Fais.Model
 
         public int? UomId { get; set; }
 
-        public int? AccountId { get; set; }
+        
 
         
 

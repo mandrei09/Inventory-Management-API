@@ -5566,7 +5566,7 @@ namespace Optima.Fais.EfRepository
             asset.BrandId = asset.BrandId;
             asset.ProjectId = assetDto.ProjectId;
             asset.AssetCategoryId = assetDto.AssetCategoryId;
-            asset.AccountId = assetDto.AccountId;
+            //asset.AccountId = assetDto.AccountId;
 
             Model.Asset assetTest = null;
             assetTest = _context.Set<Model.Asset>().Include(a => a.Document).Where(a => a.Id == assetDto.Id).Single();
@@ -6611,7 +6611,7 @@ namespace Optima.Fais.EfRepository
             
             asset.BudgetManagerId = oldAsset.BudgetManagerId;
             asset.AssetNatureId = oldAsset.AssetNatureId;
-            asset.AccountId = oldAsset.AccountId;
+            //asset.AccountId = oldAsset.AccountId;
             
             asset.TempReco = oldAsset.TempReco;
             asset.TempName = oldAsset.TempName;
@@ -6814,7 +6814,6 @@ namespace Optima.Fais.EfRepository
             
             assetAdmMD.AssetNatureId = assetAdmMDOld.AssetNatureId;
             assetAdmMD.BudgetManagerId = assetAdmMDOld.BudgetManagerId;
-            assetAdmMD.AccountId = assetAdmMDOld.AccountId;
             
             assetAdmMD.SubTypeId = assetAdmMDOld.SubTypeId;
             assetAdmMD.InsuranceCategoryId = assetAdmMDOld.InsuranceCategoryId;
@@ -7268,7 +7267,7 @@ namespace Optima.Fais.EfRepository
                     asset.DictionaryItemId = assetDto.DictionaryItemId;
                     asset.IsAccepted = true;
                     asset.IsReconcile = false;
-                    asset.AccountId = assetDto.AccountId;
+                    //asset.AccountId = assetDto.AccountId;
                     asset.OrderId = assetDto.OrderId;
                     asset.BudgetId = order.BudgetId;
                     asset.ProjectTypeId = assetDto.ProjectTypeId;
@@ -7545,8 +7544,6 @@ namespace Optima.Fais.EfRepository
                             {
                                 AccMonthId = order.Offer.AccMonthId,
                                 AccSystemId = null,
-                                AccountIdInitial = order.Offer.AccountId,
-                                AccountIdFinal = order.Offer.AccountId,
                                 AdministrationIdInitial = order.Offer.AdministrationId,
                                 AdministrationIdFinal = order.Offer.AdministrationId,
                                 OfferId = order.Offer.Id,
@@ -25156,11 +25153,6 @@ namespace Optima.Fais.EfRepository
 				query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Asset.InvStateId == id; }, columnFilters.InvStateIds));
 			}
 
-            if ((columnFilters != null && columnFilters.AccountIds != null) && (columnFilters.AccountIds.Count > 0))
-            {
-                query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Asset.AccountId == id; }, columnFilters.AccountIds));
-            }
-
             if ((columnFilters != null && columnFilters.LocationIds != null) && (columnFilters.LocationIds.Count > 0))
             {
                 query = query.Where(ExpressionHelper.GetInListPredicate<Model.AssetMonthDetail, int?>((id) => { return a => a.Adm.Room.LocationId == id; }, columnFilters.LocationIds));
@@ -35204,7 +35196,6 @@ namespace Optima.Fais.EfRepository
                     
                     BudgetManagerId = inventory.BudgetManagerId,
                     AssetNatureId = null,
-                    AccountId = null,
                     
                     TempReco = null,
                     TempName = null,
@@ -35425,7 +35416,6 @@ namespace Optima.Fais.EfRepository
                     
                     AssetNatureId = null,
                     BudgetManagerId = null,
-                    AccountId = null,
                     
                     SubTypeId = null,
                     InsuranceCategoryId = null,

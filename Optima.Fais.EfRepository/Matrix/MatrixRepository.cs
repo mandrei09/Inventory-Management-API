@@ -35,21 +35,6 @@ namespace Optima.Fais.EfRepository
             Expression<Func<Model.Matrix, bool>> predicate = null;
             if ((filter != null) && (filter.Length > 0)) predicate = ExpressionHelper.GetAllPartsFilter(filter, _filterPredicate);
 
-            if ((assetTypeIds != null) && (assetTypeIds.Count > 0))
-            {
-                predicate = predicate != null
-                    ? ExpressionHelper.And<Model.Matrix>(predicate, r => assetTypeIds.Contains(r.AssetTypeId))
-                    : r => assetTypeIds.Contains(r.AssetTypeId);
-            }
-
-            if ((countryIds != null) && (countryIds.Count > 0))
-            {
-                predicate = predicate != null
-                    ? ExpressionHelper.And<Model.Matrix>(predicate, r => countryIds.Contains(r.CountryId))
-                    : r => countryIds.Contains(r.CountryId);
-            }
-
-
             if ((companyIds != null) && (companyIds.Count > 0))
             {
                 predicate = predicate != null
@@ -62,30 +47,6 @@ namespace Optima.Fais.EfRepository
 				predicate = predicate != null
 					? ExpressionHelper.And<Model.Matrix>(predicate, r => divisionIds.Contains(r.DivisionId))
 					: r => divisionIds.Contains(r.DivisionId);
-			}
-
-
-			if ((costCenterIds != null) && (costCenterIds.Count > 0))
-            {
-                predicate = predicate != null
-                    ? ExpressionHelper.And<Model.Matrix>(predicate, r => costCenterIds.Contains(r.CostCenterId))
-                    : r => costCenterIds.Contains(r.CostCenterId);
-            }
-
-
-            if ((projectIds != null) && (projectIds.Count > 0))
-            {
-                predicate = predicate != null
-                    ? ExpressionHelper.And<Model.Matrix>(predicate, r => projectIds.Contains(r.ProjectId))
-                    : r => projectIds.Contains(r.ProjectId);
-            }
-
-
-			if ((projectTypeIds != null) && (projectTypeIds.Count > 0))
-			{
-				predicate = predicate != null
-					? ExpressionHelper.And<Model.Matrix>(predicate, r => projectTypeIds.Contains(r.Project.ProjectTypeId))
-					: r => projectTypeIds.Contains(r.Project.ProjectTypeId);
 			}
 
 			if ((employeeL1Ids != null) && (employeeL1Ids.Count > 0))
@@ -860,13 +821,13 @@ namespace Optima.Fais.EfRepository
 
 		}
 
-		public async Task<List<Matrix>> GetAllMatrixChildrensAsync(int projectId, int costCenterId)
-		{
-			return await _context.Set<Matrix>()
-				.Include(i => i.MatrixLevels)
-					.ThenInclude(e => e.Employee)
-				.Where(r => r.ProjectId == projectId && r.CostCenterId == costCenterId && r.IsDeleted == false).ToListAsync();
-		}
+		//public async Task<List<Matrix>> GetAllMatrixChildrensAsync(int projectId, int costCenterId)
+		//{
+		//	return await _context.Set<Matrix>()
+		//		.Include(i => i.MatrixLevels)
+		//			.ThenInclude(e => e.Employee)
+		//		.Where(r => r.ProjectId == projectId && r.CostCenterId == costCenterId && r.IsDeleted == false).ToListAsync();
+		//}
 
 		public async Task<List<Matrix>> GetMatchMatrixAsync(int divisionId)
 		{

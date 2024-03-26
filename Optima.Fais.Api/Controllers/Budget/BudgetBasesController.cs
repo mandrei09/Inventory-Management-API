@@ -246,13 +246,6 @@ namespace Optima.Fais.Api.Controllers
 
 				var result = await (_itemsRepository as IBudgetBasesRepository).BudgetBaseImport(assetImport);
 
-				//var budget = _context.Set<Model.BudgetBase>().Include(b => b.BudgetMonthBase).Include(b => b.BudgetForecast).Where(b => b.Id == budgetId).Single();
-
-				////budget.ValueIni = budget.BudgetMonthBase.Sum(a => a.t);
-				////budget.ValueFin = budget.BudgetMonths.Sum(a => a.Value);
-
-				//_context.SaveChanges();
-
 				return new Model.ImportBudgetResult { Success = result.Success, Message = result.Message, Id = result.Id };
 			}
 			else
@@ -262,6 +255,84 @@ namespace Optima.Fais.Api.Controllers
 
 			
 		}
+
+        [HttpGet("templateImport")]
+        public async Task<IActionResult> Template()
+        {
+            using (ExcelPackage package = new ExcelPackage())
+            {
+                // add a new worksheet to the empty workbook
+
+                int rowIndex = 0;
+
+                ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Template_Budget");
+
+                string[] columnNames = {
+                    "Project ID",
+                    "Budget Owner (email address)",
+                    "WBS",
+                    "Tara Name",
+                    "Tara Code",
+                    "Activity",
+                    "Business Unit Name",
+                    "Business Unit Code",
+                    "Profit Center",
+                    "PC Details",
+                    "Departament Name",
+                    "Departament Code",
+                    "Project Name",
+                    "Project Code",
+                    "Project Details",
+                    "Cost Type Name",
+                    "Cost Type Code",
+                    "ACQ type",
+                    "Implementation Date (month&year)",
+                    "Dep Per BGT (month)",
+                    "Dep Per ACT (month)",
+                    "mar.23",
+                    "apr.23",
+                    "mai.23",
+                    "iun.23",
+                    "iul.23",
+                    "aug.23",
+                    "sept.23",
+                    "oct.23",
+                    "nov.23",
+                    "dec.23",
+                    "ian.24",
+                    "feb.24",
+                    "mar.24"
+                };
+
+                foreach (var columnName in columnNames)
+                {
+                    worksheet.Cells[4, ++rowIndex].Value = columnName;
+                }
+
+                worksheet.Cells["V3:AH3"].Value = "RON";
+
+                worksheet.View.ZoomScale = 100;
+
+                worksheet.Cells.AutoFitColumns();
+
+                worksheet.Row(4).Height = 30.00;
+
+                worksheet.Cells["A1:AH4"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                worksheet.Cells["A1:AH4"].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+
+                worksheet.Cells["A4:AH4"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells["A4:AH4"].Style.Fill.BackgroundColor.SetColor(Color.FromArgb(0, 176, 240));
+
+                string contentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                HttpContext.Response.ContentType = contentType;
+                FileContentResult result = new FileContentResult(package.GetAsByteArray(), contentType)
+                {
+                    FileDownloadName = "Template_Import_Far_Dante.xlsx"
+                };
+
+                return result;
+            }
+        }
 
         [HttpGet("export")]
         public IActionResult ExporteMAG(int page, int pageSize, string sortColumn, string sortDirection, string includes, string jsonFilter)

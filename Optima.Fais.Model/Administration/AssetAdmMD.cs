@@ -37,7 +37,7 @@
 
         public int? AssetStateId { get; set; }
 
-        public int? AccountId { get; set; }
+        
 
         
 

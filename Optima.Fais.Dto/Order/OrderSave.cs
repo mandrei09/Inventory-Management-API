@@ -20,7 +20,7 @@ namespace Optima.Fais.Dto
         //public int? InterCompanyId { get; set; }
         //public int? PartnerId { get; set; }
         //public int? UomId { get; set; }
-        //public int? AccountId { get; set; }
+        //
         //public int? CostCenterId { get; set; }
         public int? OfferId { get; set; }
         //public int? BudgetId { get; set; }

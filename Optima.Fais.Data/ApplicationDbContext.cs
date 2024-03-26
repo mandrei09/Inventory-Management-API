@@ -42,7 +42,6 @@ namespace Optima.Fais.Data
         public DbSet<Model.City> Cities { get; set; }
         public DbSet<Model.Dimension> Dimensions { get; set; }
         public DbSet<Model.EntityType> EntityTypes { get; set; }
-
         public DbSet<Model.Budget> Budgets { get; set; }
         public DbSet<Model.BudgetOp> BudgetOps { get; set; }
         public DbSet<Model.BudgetBaseOp> BudgetBaseOps { get; set; }
@@ -1244,25 +1243,9 @@ namespace Optima.Fais.Data
                .WithMany()
                .HasForeignKey(a => a.AppStateId);
             builder.Entity<Matrix>()
-               .HasOne(a => a.Country)
-               .WithMany()
-               .HasForeignKey(a => a.CountryId);
-            builder.Entity<Matrix>()
-               .HasOne(a => a.Project)
-               .WithMany()
-               .HasForeignKey(a => a.ProjectId);
-            builder.Entity<Matrix>()
-                .HasOne(a => a.CostCenter)
-                .WithMany()
-                .HasForeignKey(a => a.CostCenterId);
-            builder.Entity<Matrix>()
                 .HasOne(i => i.Company)
                 .WithMany()
                 .HasForeignKey(i => i.CompanyId);
-            builder.Entity<Matrix>()
-                 .HasOne(i => i.AssetType)
-                 .WithMany()
-                 .HasForeignKey(i => i.AssetTypeId);
             builder.Entity<Matrix>()
                .HasOne(i => i.EmployeeL1)
                .WithMany()

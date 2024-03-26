@@ -60,7 +60,7 @@ namespace Optima.Fais.Dto
 
         //public CodePartnerEntity Partner { get; set; }
 
-        //public int? AccountId { get; set; }
+        //
 
         //public CodeNameEntity Account { get; set; }
 

@@ -18,25 +18,9 @@ namespace Optima.Fais.Model
 
         public virtual Company Company { get; set; }
 
-        public int? CostCenterId { get; set; }
-
-        public virtual CostCenter CostCenter { get; set; }
-
         public int AppStateId { get; set; }
 
         public virtual AppState AppState { get; set; }
-
-        public int? CountryId { get; set; }
-
-        public virtual Country Country { get; set; }
-
-        public int? AssetTypeId { get; set; }
-
-        public virtual AssetType AssetType { get; set; }
-
-        public int? ProjectId { get; set; }
-
-        public virtual Project Project { get; set; }
 
         public virtual ICollection<MatrixLevel> MatrixLevels { get; set; }
 
@@ -82,10 +66,6 @@ namespace Optima.Fais.Model
 
         public decimal AmountS3 { get; set; }
 
-        public int? ProjectTypeId { get; set; }
-
-        public virtual ProjectType ProjectType { get; set; }
-
         public int? DivisionId { get; set; }
 
         public virtual Division Division { get; set; }
@@ -93,19 +73,5 @@ namespace Optima.Fais.Model
 		public int? EmployeeB1Id { get; set; }
 
 		public virtual Employee EmployeeB1 { get; set; }
-
-        public int PriorityL4 { get; set; }
-
-		public int PriorityL3 { get; set; }
-
-		public int PriorityL2 { get; set; }
-
-		public int PriorityL1 { get; set; }
-
-		public int PriorityS3 { get; set; }
-
-		public int PriorityS2 { get; set; }
-
-		public int PriorityS1 { get; set; }
 	}
 }

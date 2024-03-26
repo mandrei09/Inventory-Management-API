@@ -207,19 +207,6 @@ namespace Optima.Fais.Model
 
 		public int SyncEmployeeB1ErrorCount { get; set; }
 
-		public int PriorityL4 { get; set; }
-
-		public int PriorityL3 { get; set; }
-
-		public int PriorityL2 { get; set; }
-
-		public int PriorityL1 { get; set; }
-
-		public int PriorityS3 { get; set; }
-
-		public int PriorityS2 { get; set; }
-
-		public int PriorityS1 { get; set; }
 
 		[DataType(DataType.DateTime)]
 		public DateTime? EmployeeB1ValidateAt { get; set; }

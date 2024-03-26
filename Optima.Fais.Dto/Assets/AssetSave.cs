@@ -49,7 +49,7 @@ namespace Optima.Fais.Dto
        
         public int? SubTypeId { get; set; }
         public int? CostCenterId { get; set; }
-        public int? AccountId { get; set; }
+        
         public int? UomId { get; set; }
 
         public int? AdmCenterId { get; set; }

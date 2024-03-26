@@ -145,14 +145,14 @@ namespace Optima.Fais.Api.Controllers
             }
         }
 
-        [HttpGet("data/{projectId}/{costCenterId}")]
-        public virtual async Task<IActionResult> GetDownloadData(int projectId, int costCenterId)
-        {
-            IMatrixRepository repo = _itemsRepository as IMatrixRepository;
-            var items = await repo.GetAllMatrixChildrensAsync(projectId, costCenterId);
+        //[HttpGet("data/{projectId}/{costCenterId}")]
+        //public virtual async Task<IActionResult> GetDownloadData(int projectId, int costCenterId)
+        //{
+        //    IMatrixRepository repo = _itemsRepository as IMatrixRepository;
+        //    var items = await repo.GetAllMatrixChildrensAsync(projectId, costCenterId);
 
-            return Ok(items.Select(i => _mapper.Map<Dto.MatrixData>(i)));
-        }
+        //    return Ok(items.Select(i => _mapper.Map<Dto.MatrixData>(i)));
+        //}
 
         //[HttpPost]
         //[Route("import")]

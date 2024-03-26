@@ -24,10 +24,7 @@
         public CodeNameEntity Department { get; set; }
         public CodeNameEntity Company { get; set; }
         public EmployeeResource Employee { get; set; }
-
-        public CodeNameEntity Account { get; set; }
-        public CodeNameEntity ExpAccount { get; set; }
-        public CodeNameEntity Article { get; set; }
+        
         public CodeNameEntity Division { get; set; }
         public CodeNameEntity City { get; set; }
         public CodeNameEntity County { get; set; }

@@ -2823,10 +2823,6 @@ namespace Optima.Fais.Api
                  Code = i.Matrix.Code,
                  Name = i.Matrix.Name,
                  Company = new Dto.CodeNameEntity() { Id = i.Matrix.Company.Id, Code = i.Matrix.Company.Code, Name = i.Matrix.Company.Name },
-                 CostCenter = new Dto.CodeNameEntity() { Id = i.Matrix.CostCenter.Id, Code = i.Matrix.CostCenter.Code, Name = i.Matrix.CostCenter.Name },
-                 Project = new Dto.CodeNameEntity() { Id = i.Matrix.Project.Id, Code = i.Matrix.Project.Code, Name = i.Matrix.Project.Name },
-                 AdmCenter = new Dto.CodeNameEntity() { Id = i.Matrix.CostCenter.AdmCenter.Id, Code = i.Matrix.CostCenter.AdmCenter.Code, Name = i.Matrix.CostCenter.AdmCenter.Name }
-
              }))
              .ForMember(i => i.Level, opt => opt.MapFrom(i => new Dto.CodeNameEntity { Id = i.Level.Id, Code = i.Level.Code, Name = i.Level.Name }))
              .ForMember(i => i.Employee, opt => opt.MapFrom(i => new Dto.EmployeeResource { Id = i.Employee.Id, InternalCode = i.Employee.InternalCode, FirstName = i.Employee.FirstName, LastName = i.Employee.LastName, Email = i.Employee.Email }))

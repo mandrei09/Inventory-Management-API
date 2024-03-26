@@ -396,14 +396,7 @@ namespace Optima.Fais.Api.Controllers
                                                 EmployeeL4EmailSkip = !result.ElementAt(0).EmployeeL4.Validate,
                                                 EmployeeS1EmailSkip = !result.ElementAt(0).EmployeeS1.Validate,
                                                 EmployeeS2EmailSkip = !result.ElementAt(0).EmployeeS2.Validate,
-                                                EmployeeS3EmailSkip = !result.ElementAt(0).EmployeeS3.Validate,
-                                                PriorityL4 = result.ElementAt(0).PriorityL4,
-												PriorityL3 = result.ElementAt(0).PriorityL3,
-												PriorityL2 = result.ElementAt(0).PriorityL2,
-												PriorityL1 = result.ElementAt(0).PriorityL1,
-												PriorityS1 = result.ElementAt(0).PriorityS1,
-												PriorityS2 = result.ElementAt(0).PriorityS2,
-												PriorityS3 = result.ElementAt(0).PriorityS3,
+                                                EmployeeS3EmailSkip = !result.ElementAt(0).EmployeeS3.Validate
 											};
 
                                             _context.Update(order);
@@ -4473,14 +4466,7 @@ namespace Optima.Fais.Api.Controllers
                         EmployeeL4EmailSkip = !result.ElementAt(0).EmployeeL4.Validate,
                         EmployeeS1EmailSkip = !result.ElementAt(0).EmployeeS1.Validate,
                         EmployeeS2EmailSkip = !result.ElementAt(0).EmployeeS2.Validate,
-                        EmployeeS3EmailSkip = !result.ElementAt(0).EmployeeS3.Validate,
-						PriorityL4 = result.ElementAt(0).PriorityL4,
-						PriorityL3 = result.ElementAt(0).PriorityL3,
-						PriorityL2 = result.ElementAt(0).PriorityL2,
-						PriorityL1 = result.ElementAt(0).PriorityL1,
-						PriorityS1 = result.ElementAt(0).PriorityS1,
-						PriorityS2 = result.ElementAt(0).PriorityS2,
-						PriorityS3 = result.ElementAt(0).PriorityS3,
+                        EmployeeS3EmailSkip = !result.ElementAt(0).EmployeeS3.Validate
 					};
 
                     _context.Add(emailOrderStatus);

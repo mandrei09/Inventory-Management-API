@@ -48,7 +48,7 @@ namespace Optima.Fais.Model
 
         public virtual Partner Partner { get; set; }
 
-        public int? AccountId { get; set; }
+        
 
         public int? AppStateId { get; set; }
 

@@ -1802,7 +1802,6 @@ namespace Optima.Fais.EfRepository
 					offer = new Model.Offer()
                     {
                         AccMonthId = inventory.AccMonthId,
-                        AccountId = null,
                         AdministrationId = null,
                         AppStateId = appState.Id,
                         BudgetManagerId = inventory.BudgetManagerId,
@@ -3123,7 +3122,6 @@ namespace Optima.Fais.EfRepository
                     offer = new Model.Offer()
                     {
                         AccMonthId = inventory.AccMonthId,
-                        AccountId = null,
                         AdministrationId = null,
                         AppStateId = appState.Id,
                         BudgetManagerId = inventory.BudgetManagerId,

@@ -352,8 +352,6 @@ namespace Optima.Fais.Api.Controllers
                     {
                         AccMonthId = offer.AccMonthId,
                         AccSystemId = null,
-                        AccountIdInitial = offer.AccountId,
-                        AccountIdFinal = offer.AccountId,
                         AdministrationIdInitial = offer.AdministrationId,
                         AdministrationIdFinal = offer.AdministrationId,
                         Offer = offer,

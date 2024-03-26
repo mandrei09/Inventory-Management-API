@@ -34,8 +34,6 @@ namespace Optima.Fais.EfRepository
 
             budgetQuery = _context.BudgetBases.AsNoTracking().AsQueryable();
 
-            /*if (budgetFilter.Filter != "" && budgetFilter.Filter != null) budgetQuery = budgetQuery.Where(a => (a.Name.Contains(budgetFilter.Filter) || a.Code.Contains(budgetFilter.Filter) || a.Project.Name.Contains(budgetFilter.Filter) || a.Project.Code.Contains(budgetFilter.Filter)));
-*/
             if (budgetFilter.Filter != "" && budgetFilter.Filter != null) budgetQuery = budgetQuery.Where(a => (a.Name.Contains(budgetFilter.Filter) || a.Code.Contains(budgetFilter.Filter)) || a.BudgetManager.Name.Contains(budgetFilter.Filter) || a.Employee.Email.Contains(budgetFilter.Filter) || a.Country.Name.Contains(budgetFilter.Filter) || a.Country.Code.Contains(budgetFilter.Filter) || a.Department.Name.Contains(budgetFilter.Filter) || a.Department.Code.Contains(budgetFilter.Filter) || a.AdmCenter.Name.Contains(budgetFilter.Filter) || a.Division.Name.Contains(budgetFilter.Filter) || a.Division.Code.Contains(budgetFilter.Filter) || a.ProjectType.Name.Contains(budgetFilter.Filter) || a.AssetType.Name.Contains(budgetFilter.Filter) || a.AssetType.Code.Contains(budgetFilter.Filter) || a.AppState.Name.Contains(budgetFilter.Filter) || a.Info.Contains(budgetFilter.Filter) || a.Project.Name.Contains(budgetFilter.Filter) || a.Project.Code.Contains(budgetFilter.Filter));
 
             includes = includes ?? string.Empty;
@@ -128,34 +126,22 @@ namespace Optima.Fais.EfRepository
 
             depTotal = new AssetDepTotal();
             depTotal.Count = query.Count();
-            //depTotal.ValueInv = budgetQuery.Sum(a => a.ValueIni);
-            //depTotal.ValueRem = budgetQuery.Sum(a => a.ValueFin);
 
             catTotal = new AssetCategoryTotal();
-            //catTotal.AssetCategoryDeskPhone = _context.AssetAdmMDs.Include(a => a.Asset).Where(a => a.AssetCategoryId == 42 && a.EmployeeId == 7228 && a.AccMonthId == budgetFilter.AccMonthId && a.Asset.IsDeleted == false && a.Asset.Validated == true).Count();
-            //catTotal.AssetCategoryMonitor = _context.AssetAdmMDs.Include(a => a.Asset).Where(a => a.AssetCategoryId == 72 && a.EmployeeId == 7228 && a.AccMonthId == budgetFilter.AccMonthId && a.Asset.IsDeleted == false && a.Asset.Validated == true).Count();
-            //catTotal.AssetCategoryThinClient = _context.AssetAdmMDs.Include(a => a.Asset).Where(a => a.AssetCategoryId == 1035 && a.EmployeeId == 7228 && a.AccMonthId == budgetFilter.AccMonthId && a.Asset.IsDeleted == false && a.Asset.Validated == true).Count();
 
             if (sorting != null)
             {
-               /* query = sorting.Direction.ToLower() == "asc"
+                query = sorting.Direction.ToLower() == "asc"
                     ? query.OrderBy(ExpressionHelper.GenericEvaluateOrderBy<Model.BudgetBaseDetail>(sorting.Column))
-                    : query.OrderByDescending(ExpressionHelper.GenericEvaluateOrderBy<Model.BudgetBaseDetail>(sorting.Column));*/
+                    : query.OrderByDescending(ExpressionHelper.GenericEvaluateOrderBy<Model.BudgetBaseDetail>(sorting.Column));
             }
 
             if (paging != null)
                 query = query.Skip((paging.Page - 1) * paging.PageSize).Take(paging.PageSize);
 
-            var list = query.ToList();
+            var a = query.Count();
 
-            //list = list.GroupBy(item => item.Budget.ProjectId)
-            //        .Select(group => new BudgetDetail()
-            //        {
-            //            Budget = list.First().Budget,
-            //              // = group.Key,
-            //              //Orders = group.ToList()
-            //          })
-            //        .ToList();
+            var list = query.ToList();
 
             return list;
         }
@@ -368,7 +354,6 @@ namespace Optima.Fais.EfRepository
         public async Task<ImportBudgetResult> BudgetBaseImport(BudgetBaseImport budgetDto)
         {
             Model.BudgetBase budget = null;
-            // Model.BudgetOp budgetOp = null;
             Model.Document document = null;
             Model.DocumentType documentType = null;
             Model.EntityType entityType = null;
@@ -382,10 +367,8 @@ namespace Optima.Fais.EfRepository
             Model.ProjectType projectType = null;
             Model.AppState appState = null;
             Model.Inventory inventory = null;
-            //Model.BudgetManager budgetManager = null;
             Model.BudgetType budgetType = null;
             Model.BudgetType budgetTypeTotal = null;
-            //Model.AccMonth accMonth = null;
             Model.AccMonth startAccMonth = null;
             Model.Department department = null;
             Model.Division division = null;
@@ -405,19 +388,12 @@ namespace Optima.Fais.EfRepository
             Model.BudgetMonthBase budgetMonth11 = null;
             Model.BudgetMonthBase budgetMonth12 = null;
 
-            // Model.BudgetForecast budgetForecast = null;
             Model.BudgetMonthBase budgetMonthBase = null;
-            //Model.BudgetMonth budgetTotal = null;
 
             _context.UserId = budgetDto.UserId;
 
 			inventory = await _context.Set<Model.Inventory>().Where(i => i.Active == true).FirstOrDefaultAsync();
 			if (inventory == null) return new ImportBudgetResult { Success = false, Message = "Lipsa inventar activ", Id = 0 };
-			//accMonth = await _context.Set<Model.AccMonth>().Where(i => i.Id == 60).FirstOrDefaultAsync();
-
-			//budgetType = _context.Set<Model.BudgetType>().Where(i => i.Code == "V1" && i.IsDeleted == false).SingleOrDefault();
-
-			//budgetManager = await _context.Set<Model.BudgetManager>().Where(i => i.Name == "2024" && i.IsDeleted == false).FirstOrDefaultAsync();
 
 			uom = await _context.Set<Model.Uom>().Where(i => i.Code == "RON" && i.IsDeleted == false).FirstOrDefaultAsync();
 			if (uom == null) return new ImportBudgetResult { Success = false, Message = "Lipsa moneda RON", Id = 0 };
@@ -432,38 +408,12 @@ namespace Optima.Fais.EfRepository
                 };
                 _context.Set<Model.BudgetType>().Add(budgetType);
             }
-            //budgetTypeTotal = _context.Set<Model.BudgetType>().Where(i => i.Code == "B" && i.IsDeleted == false).SingleOrDefault();
-
-   //         if(budgetDto.StartMonth != "" && budgetDto.StartMonth != null)
-			//{
-   //             startMonth = _context.Set<Model.AccMonth>().Where(i => i.GetHashCode == 37).SingleOrDefault();
-   //         }
             
             company = await _context.Set<Model.Company>().Where(c => c.Code == "RO10" && c.IsDeleted == false).FirstOrDefaultAsync();
 			if (company == null) return new ImportBudgetResult { Success = false, Message = "Lipsa companie RO10", Id = 0 };
-			//if (company == null)
-			//{
-			//    company = new Model.Company
-			//    {
-			//        Code = budgetDto.Company.Trim(),
-			//        Name = budgetDto.Company.Trim(),
-			//        IsDeleted = false
-			//    };
-			//    _context.Set<Model.Company>().Add(company);
-			//}
 
 			employee = await _context.Set<Model.Employee>().Where(c => c.Email == budgetDto.Employee).FirstOrDefaultAsync();
 			if (employee == null) return new ImportBudgetResult { Success = false, Message = $"Lipsa owner {budgetDto.Employee}", Id = 0 };
-			//if (employee == null)
-			//{
-			//    employee = new Model.Employee
-			//    {
-			//        FirstName = budgetDto.Project,
-			//        Name = budgetDto.Project.Trim(),
-			//        IsDeleted = false
-			//    };
-			//    _context.Set<Model.Employee>().Add(employee);
-			//}
 
 			project = await _context.Set<Model.Project>().Where(c => c.Name == budgetDto.Project && c.IsDeleted == false).FirstOrDefaultAsync();
 
@@ -480,18 +430,6 @@ namespace Optima.Fais.EfRepository
 
 			country = await _context.Set<Model.Country>().Where(c => c.Name == budgetDto.CountryName && c.IsDeleted == false).FirstOrDefaultAsync();
 			if (country == null) return new ImportBudgetResult { Success = false, Message = $"Lipsa country {budgetDto.CountryCode}", Id = 0 };
-			//if (country == null)
-			//{
-			//    country = new Model.Country
-			//    {
-			//        Code = budgetDto.CountryCode.Trim(),
-			//        Name = budgetDto.CountryName.Trim(),
-			//        IsDeleted = false
-			//    };
-			//    _context.Set<Model.Country>().Add(country);
-			//}
-
-
 
 			activity = await _context.Set<Model.Activity>().Where(c => c.Name == budgetDto.Activity && c.IsDeleted == false).FirstOrDefaultAsync();
 
@@ -508,19 +446,6 @@ namespace Optima.Fais.EfRepository
 
             department = await _context.Set<Model.Department>().Where(c => c.Code == budgetDto.DepartmentCode && c.IsDeleted == false).FirstOrDefaultAsync();
 			if (department == null) return new ImportBudgetResult { Success = false, Message = $"Lipsa B.U. {budgetDto.DepartmentCode}", Id = 0 };
-
-			//if (department == null)
-			//{
-			//    department = new Model.Department
-			//    {
-			//        Code = budgetDto.DepartmentCode.Trim(),
-			//        Name = budgetDto.DepartmentName.Trim(),
-			//        IsDeleted = false
-			//    };
-			//    _context.Set<Model.Department>().Add(department);
-
-
-			//}
 
 			admCenter = await _context.Set<Model.AdmCenter>().Where(c => c.Name == budgetDto.AdmCenter && c.IsDeleted == false).FirstOrDefaultAsync();
 
@@ -551,50 +476,14 @@ namespace Optima.Fais.EfRepository
 
 			division = await _context.Set<Model.Division>().Where(c => c.Code == budgetDto.DivisionCode && c.DepartmentId == department.Id && c.IsDeleted == false).FirstOrDefaultAsync();
 			if (division == null) return new ImportBudgetResult { Success = false, Message = $"Lipsa departament {budgetDto.DivisionCode}", Id = 0 };
-			//if (division == null)
-			//{
-			//    division = new Model.Division
-			//    {
-			//        Code = budgetDto.DivisionCode.Trim(),
-			//        Name = budgetDto.DivisionName.Trim(),
-			//        IsDeleted = false
-			//    };
-			//    _context.Set<Model.Division>().Add(division);
-
-
-			//}
-
 
 			projectType = await _context.Set<Model.ProjectType>().Where(c => c.Code == budgetDto.ProjectTypeCode && c.IsDeleted == false).FirstOrDefaultAsync();
 			if (projectType == null) return new ImportBudgetResult { Success = false, Message = $"Lipsa tip {budgetDto.ProjectTypeCode}", Id = 0 };
-			//if (projectType == null)
-			//{
-			//    projectType = new Model.ProjectType
-			//    {
-			//        Code = budgetDto.ProjectTypeCode.Trim(),
-			//        Name = budgetDto.ProjectTypeName.Trim(),
-			//        IsDeleted = false
-			//    };
-			//    _context.Set<Model.ProjectType>().Add(projectType);
-			//}
-
 
 			assetType = await _context.Set<Model.AssetType>().Where(c => c.Code == budgetDto.AssetTypeCode && c.IsDeleted == false).FirstOrDefaultAsync();
 			if (assetType == null) return new ImportBudgetResult { Success = false, Message = $"Lipsa type {budgetDto.AssetTypeCode}", Id = 0 };
-			//if (assetType == null)
-			//{
-			//    assetType = new Model.AssetType
-			//    {
-			//        Code = budgetDto.AssetTypeCode.Trim(),
-			//        Name = budgetDto.AssetTypeName.Trim(),
-			//        IsDeleted = false
-			//    };
-			//    _context.Set<Model.AssetType>().Add(assetType);
-			//}
-
 
 			appState = await _context.Set<Model.AppState>().Where(c => c.Name == budgetDto.AppState && c.IsDeleted == false).FirstOrDefaultAsync();
-
 
             if (appState == null)
             {
@@ -687,8 +576,6 @@ namespace Optima.Fais.EfRepository
 				ValueRem = valueMonthSum,
 				Total = valueMonthSum,
 				Uom = uom,
-				//BudgetForecast = budgetForecast,
-				//BudgetMonthBase = budgetMonthBase,
 				BudgetType = budgetType,
 				BudgetManagerId = inventory.BudgetManagerId,
 				IsFirst = true
